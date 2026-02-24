@@ -2,6 +2,21 @@
 
 Performance benchmarking suite for CIM (Common Information Model) parsers and serializers.
 
+## 🔧 dev-cimpy Branch
+
+**This branch contains the cimpy adapter implementation for future investigation.**
+
+The cimpy library (v1.1.0) has compatibility issues with the current test datasets:
+- **CGMES 3.0 (Svedala)**: Not supported - only cgmes_v2_4_15 classes available
+- **CGMES 2.4.15 (RealGrid)**: Parsing bug - tries to convert floats to integers
+
+The implementation is preserved here for when:
+1. cimpy releases fixes for these issues
+2. Alternative CGMES 2.4.15 datasets become available that don't trigger the bug
+3. Someone wants to investigate or contribute fixes to cimpy
+
+See detailed issue notes in `parsers/cimpy_adapter.py` and benchmark files.
+
 ## Benchmark Results
 
 Latest results on AMD Ryzen AI 9 HX 370, 64GB RAM, Python 3.13.12:
@@ -99,7 +114,7 @@ See `tools/*/README.md` for detailed per-tool documentation and analysis.
 | ✅ | **GridCal/VeraGrid** | Python | Power systems analysis with UI | Indirect (CGMES circuit model) | CGMES 2.4.15/3.0 import | [SanPen/GridCal](https://github.com/SanPen/GridCal) | Sub-microsecond queries, full circuit model |
 | ✅ | **RDFlib** | Python | Generic RDF parser/triple store | Excellent (native triples) | None (generic) | [RDFLib/rdflib](https://github.com/RDFLib/rdflib) | Baseline for speed/memory comparison with Oxigraph |
 | ✅ | **CIMantic Graphs** | Python | In-memory labeled property graph | Yes (strong, knowledge graph API) | CIM15–18, custom profiles | [PNNL-CIM-Tools/CIM-Graph](https://github.com/PNNL-CIM-Tools/CIM-Graph) | Modern API, uses RDFlib with typed CIM objects |
-| ⚠️ | **cimpy** | Python | Import/export/modify CGMES XML/RDF | Yes (via object topology dict) | CGMES 2.4.15 (partial) | [sogno-platform/cimpy](https://github.com/sogno-platform/cimpy) | Compatibility issues: v1.1.0 only has cgmes_v2_4_15 classes (no CGMES 3.0), parsing bugs with test datasets |
+| ⚠️ | **cimpy** | Python | Import/export/modify CGMES XML/RDF | Yes (via object topology dict) | CGMES 2.4.15 (partial) | [sogno-platform/cimpy](https://github.com/sogno-platform/cimpy) | Compatibility issues: v1.1.0 only has cgmes_v2_4_15 classes (no CGMES 3.0), parsing bugs with test datasets. Implementation available in `dev-cimpy` branch |
 | ❌ | **pycgmes** | Python | Dataclasses + RDF schema + SHACL | Yes (dataclass mapping) | CGMES 3.0+ | [alliander-opensource/pycgmes](https://github.com/alliander-opensource/pycgmes) | No file import capability - dataclass definitions only |
 | 📋 | **libcimpp** | C++ | Fast serialize/deserialize CIM XML/RDF | Partial (object model) | CGMES / IEC61970/61968/62325 | [sogno-platform/libcimpp](https://github.com/sogno-platform/libcimpp) | Likely fastest/lowest memory |
 | 📋 | **OpenCGMES** | Java | Suite for CGMES / CIM RDF parser | Yes (CIMXML parser) | CGMES / IEC61970-552 | [SOPTIM/OpenCGMES](https://github.com/SOPTIM/OpenCGMES) | Recent CIMXML-specific fixes |
