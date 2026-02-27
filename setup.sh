@@ -23,6 +23,6 @@ if [ -d ".git" ]; then
 fi
 
 # Install dependencies
-uv sync --extra visualization
+uv sync --extra visualization --prerelease=allow
 
 echo "✓ Setup complete! Run: ./run_benchmarks.sh"
