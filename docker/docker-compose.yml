@@ -1,0 +1,59 @@
+# This is the single source of truth for what benchmarks to run
+# Add/remove services here to control which benchmarks are executed
+
+x-common: &common
+  volumes:
+    - ../data:/benchmarks/data:ro,z
+    - ../results-docker:/output:z
+  network_mode: none
+
+services:
+  triplets-svedala:
+    <<: *common
+    image: cim-bench/triplets:latest
+    command: pytest triplets_svedala_benchmark.py --benchmark-only --benchmark-json=/output/triplets_svedala_benchmark.json
+
+  triplets-realgrid:
+    <<: *common
+    image: cim-bench/triplets:latest
+    command: pytest triplets_realgrid_benchmark.py --benchmark-only --benchmark-json=/output/triplets_realgrid_benchmark.json
+
+  pypowsybl-svedala:
+    <<: *common
+    image: cim-bench/pypowsybl:latest
+    command: pytest pypowsybl_svedala_benchmark.py --benchmark-only --benchmark-json=/output/pypowsybl_svedala_benchmark.json
+
+  pypowsybl-realgrid:
+    <<: *common
+    image: cim-bench/pypowsybl:latest
+    command: pytest pypowsybl_realgrid_benchmark.py --benchmark-only --benchmark-json=/output/pypowsybl_realgrid_benchmark.json
+
+  veragrid-svedala:
+    <<: *common
+    image: cim-bench/veragrid:latest
+    command: pytest veragrid_svedala_benchmark.py --benchmark-only --benchmark-json=/output/veragrid_svedala_benchmark.json
+
+  veragrid-realgrid:
+    <<: *common
+    image: cim-bench/veragrid:latest
+    command: pytest veragrid_realgrid_benchmark.py --benchmark-only --benchmark-json=/output/veragrid_realgrid_benchmark.json
+
+  cimgraph-svedala:
+    <<: *common
+    image: cim-bench/cimgraph:latest
+    command: pytest cimgraph_svedala_benchmark.py --benchmark-only --benchmark-json=/output/cimgraph_svedala_benchmark.json
+
+  cimgraph-realgrid:
+    <<: *common
+    image: cim-bench/cimgraph:latest
+    command: pytest cimgraph_realgrid_benchmark.py --benchmark-only --benchmark-json=/output/cimgraph_realgrid_benchmark.json
+
+  rdflib-svedala:
+    <<: *common
+    image: cim-bench/rdflib:latest
+    command: pytest rdflib_svedala_benchmark.py --benchmark-only --benchmark-json=/output/rdflib_svedala_benchmark.json
+
+  rdflib-realgrid:
+    <<: *common
+    image: cim-bench/rdflib:latest
+    command: pytest rdflib_realgrid_benchmark.py --benchmark-only --benchmark-json=/output/rdflib_realgrid_benchmark.json

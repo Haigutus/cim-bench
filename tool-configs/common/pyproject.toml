@@ -1,0 +1,9 @@
+[project]
+name = "cim-bench-common"
+version = "0.1.0"
+description = "Common testing framework dependencies for cim-bench"
+dependencies = [
+    "pytest>=7.0.0",
+    "pytest-benchmark>=4.0.0",
+    "psutil>=5.9.0"
+]

@@ -222,52 +222,90 @@ Graphs showing all three parsers across both datasets for each metric:
 
 *All graphs are generated in SVG format for scalability and web compatibility. Query performance graphs use logarithmic scale to show differences between fast parsers while keeping slower ones visible.*
 
-### 🔧 Planned Infrastructure Changes
+### 🐳 Podman Containerization
 
-**Goal**: Isolated, reproducible benchmark environment per parser
+**Isolated, reproducible benchmark environment per parser using uv-managed Python environments**
 
-#### Docker-based Testing
+#### Features
 - **One container per parser/tool** with all dependencies pre-installed
+- **uv-managed Python versions**: Each tool specifies its exact Python version (==3.14.* or ==3.13.*) and dependencies
+- **Multi-language support**: Base image supports Python (via uv), Java, C++, and Rust
 - **Standardized test interface**: Same input datasets, same output format
-- **Resource limits**: CPU/memory constraints for fair comparison
-- **Version pinning**: Lock parser versions for reproducible results
+- **No dependency conflicts**: Each parser runs in complete isolation
+- **Reproducible**: Exact version pinning for consistent results across machines
+- **Rootless execution**: Podman runs without root privileges, no daemon required
 
-#### Benefits
-- ✅ No dependency conflicts between parsers
-- ✅ Easy CI/CD integration
-- ✅ Reproducible across different machines
-- ✅ Clean test environment per run
-- ✅ Support for Java/C++/Python/JS parsers without local installs
-
-#### Structure
+#### Architecture
 ```
-benchmarks/
-├── docker/
-│   ├── triplets/
-│   │   ├── Dockerfile
-│   │   └── requirements.txt
-│   ├── pypowsybl/
-│   │   ├── Dockerfile
-│   │   └── requirements.txt
-│   ├── cimpy/
-│   ├── libcimpp/
-│   └── ...
-├── run_all_benchmarks.sh
-└── collect_results.py
+docker/
+├── base.dockerfile              # Multi-lang base with uv + source files
+├── tools/
+│   ├── triplets.dockerfile      # Install deps (Python 3.14 from pyproject.toml)
+│   ├── pypowsybl.dockerfile     # Install deps + Java (Python 3.13)
+│   ├── veragrid.dockerfile      # Install deps (Python 3.14)
+│   ├── cimgraph.dockerfile      # Install deps (Python 3.14)
+│   └── rdflib.dockerfile        # Install deps (Python 3.14)
+├── docker-compose.yml           # Single source of truth for benchmarks
+├── setup.sh                     # Build all images (reads docker-compose.yml)
+└── run_benchmark.sh             # Run benchmarks + generate reports/graphs
+
+tool-configs/
+├── triplets/pyproject.toml      # Python ==3.14.* + dependencies
+├── pypowsybl/pyproject.toml     # Python ==3.13.* + dependencies
+├── veragrid/pyproject.toml      # Python ==3.14.* + dependencies
+├── cimgraph/pyproject.toml      # Python ==3.14.* + dependencies
+└── rdflib/pyproject.toml        # Python ==3.14.* + dependencies
 ```
 
-#### Execution Flow
+**Key Design:**
+- `docker-compose.yml` is the single source of truth for benchmarks
+- `tool-configs/*/pyproject.toml` is the single source of truth for Python versions and dependencies
+- `setup.sh` dynamically discovers tools from docker-compose.yml
+- Source files in base image, tool images only install dependencies
+- Results saved to `results-docker/` for easy comparison with native execution
+
+#### Quick Start
 ```bash
-# Run all benchmarks in containers
-./benchmarks/run_all_benchmarks.sh
+# Build all Podman images
+./docker/setup.sh
 
-# Results collected to results/ with standardized JSON format
-# Auto-generate comparison reports
+# Run all benchmarks in containers (includes report/graph generation)
+./docker/run_benchmark.sh
+
+# Parallel execution
+./docker/run_benchmark.sh --parallel
+
+# Using podman-compose directly
+podman-compose -f docker/docker-compose.yml up
 ```
+
+#### Container Image Sizes
+- **Base**: ~100MB (Debian + uv + system tools)
+- **triplets**: ~250MB (Base + Python 3.14 + deps)
+- **pypowsybl**: ~450MB (Base + Python 3.13 + JDK 17 + deps)
+- **veragrid**: ~300MB (Base + Python 3.14 + deps)
+- **cimgraph**: ~350MB (Base + Python 3.14 + rdflib/Oxigraph)
+- **rdflib**: ~300MB (Base + Python 3.14 + rdflib/Oxigraph)
+
+**Total disk space**: ~1.75GB (base shared, actual ~1.5GB incremental)
+
+#### Performance Validation
+Containerized benchmarks validated against native execution on Podman 5.7.1 / Fedora 43:
+
+**Load Test Overhead** (Primary Metric):
+- **triplets**: +7.66% (acceptable)
+- **rdflib**: -48% 🚀 (FASTER in container due to Python 3.14 improvements!)
+- **pypowsybl**: +5.95% (acceptable)
+
+All overhead within acceptable range for benchmarking. Python 3.14 provides significant performance benefits for some workloads.
+
+See `CONTAINERIZATION_VALIDATION.md` for detailed validation results.
 
 ## Getting Started
 
 ### Prerequisites
+
+#### Required for Native Execution
 
 This repository uses **Git LFS** (Large File Storage) for large dataset files. Install it before cloning:
 
@@ -283,6 +321,23 @@ git lfs install
 ```
 
 For other systems, see: https://git-lfs.github.com/
+
+#### Optional for Containerized Execution
+
+If you want to run benchmarks in Podman containers:
+
+```bash
+# Fedora
+sudo dnf install podman podman-compose
+
+# Ubuntu/Debian
+sudo apt-get install podman podman-compose
+
+# macOS
+brew install podman podman-compose
+```
+
+**Note**: Podman runs rootless by default (no daemon, no root privileges required). No additional user configuration needed.
 
 ### Quick Setup
 
@@ -393,6 +448,63 @@ This creates SVG graphs in `results/graphs/`:
 **Adding new benchmarks:**
 
 The benchmark runner automatically discovers all `*_benchmark.py` files in the `benchmarks/` directory. Simply create a new benchmark file following the adapter pattern (see `CLAUDE.md` for details) and it will be included in the next run.
+
+### Running Benchmarks with Podman
+
+**Quick Start - Build and run all benchmarks in containers:**
+```bash
+# Build all Podman images
+./docker/setup.sh
+
+# Run all benchmarks (includes report/graph generation)
+./docker/run_benchmark.sh
+```
+
+**Parallel execution (all tools at once):**
+```bash
+./docker/run_benchmark.sh --parallel
+```
+
+**Using podman-compose:**
+```bash
+# Run all benchmarks in parallel
+podman-compose -f docker/docker-compose.yml up
+
+# Run specific tool
+podman-compose -f docker/docker-compose.yml run --rm triplets-svedala
+```
+
+**Manual Podman execution:**
+```bash
+# Run specific tool benchmark
+podman run --rm \
+  -v $(pwd)/data:/benchmarks/data:ro,z \
+  -v $(pwd)/results-docker:/output:z \
+  cim-bench/triplets:latest
+
+# Run with custom pytest options
+podman run --rm \
+  -v $(pwd)/data:/benchmarks/data:ro,z \
+  -v $(pwd)/results-docker:/output:z \
+  cim-bench/triplets:latest \
+  pytest triplets_svedala_benchmark.py --benchmark-only --benchmark-min-rounds=3
+```
+
+**Note**: The `:z` flag in volume mounts enables SELinux relabeling (required on Fedora/RHEL).
+
+This will:
+1. Run all configured benchmarks in isolated containers
+2. Save JSON results to `results-docker/`
+3. Generate individual markdown reports
+4. Generate comparison summary
+5. Generate performance visualization graphs
+
+**Podman vs Native:**
+- Podman adds 5-8% overhead (acceptable for benchmarking)
+- Python 3.14 in containers provides performance benefits (48% faster for rdflib!)
+- Use Podman for reproducibility, isolation, and consistent Python versions
+- Use native for fastest iteration during development
+- Both produce identical JSON output format
 
 ## Contributing
 
