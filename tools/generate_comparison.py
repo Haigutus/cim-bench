@@ -99,6 +99,8 @@ def generate_comparison_report(json_files):
                 elements.append(f"{extra['generators']} gen")
             if "loads" in extra:
                 elements.append(f"{extra['loads']} loads")
+            if "substations" in extra:
+                elements.append(f"{extra['substations']} subs")
             elements_str = ", ".join(elements) if elements else "N/A"
 
             notes = ""

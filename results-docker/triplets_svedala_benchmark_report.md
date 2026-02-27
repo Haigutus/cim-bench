@@ -13,14 +13,14 @@
 
 ### Triplets Load Svedala
 
-- **Mean time**: 123.5 ms
-- **Min time**: 107.1 ms
-- **Max time**: 139.3 ms
-- **Std dev**: 8.6 ms
-- **Rounds**: 10
+- **Mean time**: 138.1 ms
+- **Min time**: 127.7 ms
+- **Max time**: 144.6 ms
+- **Std dev**: 6.0 ms
+- **Rounds**: 9
 
 **Metrics**:
-- Memory Mb: 44.6
+- Memory Mb: 44.2
 - Triplets Count: 95539
 - Unique Objects: 14540
 - Instances: 5
@@ -36,11 +36,11 @@
 
 ### Triplets Get Lines
 
-- **Mean time**: 5.8 ms
-- **Min time**: 5.1 ms
-- **Max time**: 7.2 ms
-- **Std dev**: 467.6 μs
-- **Rounds**: 78
+- **Mean time**: 6.1 ms
+- **Min time**: 5.3 ms
+- **Max time**: 8.0 ms
+- **Std dev**: 533.0 μs
+- **Rounds**: 71
 
 **Metrics**:
 - Line Count: 97
@@ -52,11 +52,11 @@
 
 ### Triplets Get Generators
 
-- **Mean time**: 5.9 ms
-- **Min time**: 5.1 ms
-- **Max time**: 8.4 ms
-- **Std dev**: 422.9 μs
-- **Rounds**: 163
+- **Mean time**: 6.5 ms
+- **Min time**: 5.6 ms
+- **Max time**: 8.3 ms
+- **Std dev**: 553.1 μs
+- **Rounds**: 152
 
 **Metrics**:
 - Generator Count: 39
@@ -68,11 +68,11 @@
 
 ### Triplets Get Loads
 
-- **Mean time**: 16.4 ms
-- **Min time**: 14.9 ms
-- **Max time**: 22.4 ms
-- **Std dev**: 1.3 ms
-- **Rounds**: 50
+- **Mean time**: 17.6 ms
+- **Min time**: 15.9 ms
+- **Max time**: 21.9 ms
+- **Std dev**: 1.4 ms
+- **Rounds**: 38
 
 **Metrics**:
 - Load Count: 73
@@ -85,10 +85,10 @@
 ### Triplets Get Substations
 
 - **Mean time**: 5.7 ms
-- **Min time**: 4.9 ms
-- **Max time**: 9.7 ms
-- **Std dev**: 676.5 μs
-- **Rounds**: 158
+- **Min time**: 5.0 ms
+- **Max time**: 7.9 ms
+- **Std dev**: 393.3 μs
+- **Rounds**: 169
 
 **Metrics**:
 - Substation Count: 57

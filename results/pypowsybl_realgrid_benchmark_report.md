@@ -13,14 +13,14 @@
 
 ### Pypowsybl Load Realgrid
 
-- **Mean time**: 4.62 s
-- **Min time**: 4.56 s
-- **Max time**: 4.72 s
-- **Std dev**: 87.6 ms
-- **Rounds**: 3
+- **Mean time**: 4.88 s
+- **Min time**: 4.81 s
+- **Max time**: 4.98 s
+- **Std dev**: 75.9 ms
+- **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 3340.1
+- Memory Mb: 1266.1
 - Buses: 6051
 - Lines: 7561
 - Ac Lines: 7561
@@ -36,11 +36,11 @@
 
 ### Pypowsybl Get Lines
 
-- **Mean time**: 45.1 ms
-- **Min time**: 37.1 ms
-- **Max time**: 58.0 ms
-- **Std dev**: 5.7 ms
-- **Rounds**: 24
+- **Mean time**: 39.3 ms
+- **Min time**: 35.8 ms
+- **Max time**: 56.6 ms
+- **Std dev**: 4.3 ms
+- **Rounds**: 27
 
 **Metrics**:
 - Line Count: 7561
@@ -52,11 +52,11 @@
 
 ### Pypowsybl Get Generators
 
-- **Mean time**: 4.2 ms
-- **Min time**: 2.7 ms
-- **Max time**: 8.1 ms
-- **Std dev**: 1.3 ms
-- **Rounds**: 143
+- **Mean time**: 3.3 ms
+- **Min time**: 2.8 ms
+- **Max time**: 9.1 ms
+- **Std dev**: 851.4 μs
+- **Rounds**: 199
 
 **Metrics**:
 - Generator Count: 1347
@@ -68,11 +68,11 @@
 
 ### Pypowsybl Get Loads
 
-- **Mean time**: 24.4 ms
-- **Min time**: 18.2 ms
-- **Max time**: 83.2 ms
-- **Std dev**: 10.3 ms
-- **Rounds**: 37
+- **Mean time**: 20.7 ms
+- **Min time**: 18.7 ms
+- **Max time**: 33.3 ms
+- **Std dev**: 2.6 ms
+- **Rounds**: 47
 
 **Metrics**:
 - Load Count: 6687
@@ -84,11 +84,11 @@
 
 ### Pypowsybl Get Substations
 
-- **Mean time**: 5.9 ms
-- **Min time**: 3.9 ms
-- **Max time**: 12.2 ms
-- **Std dev**: 1.3 ms
-- **Rounds**: 123
+- **Mean time**: 5.7 ms
+- **Min time**: 4.5 ms
+- **Max time**: 15.8 ms
+- **Std dev**: 1.9 ms
+- **Rounds**: 137
 
 **Metrics**:
 - Substation Count: 4791

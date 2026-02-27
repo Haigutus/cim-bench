@@ -13,14 +13,14 @@
 
 ### Triplets Load Realgrid
 
-- **Mean time**: 1.35 s
-- **Min time**: 1.22 s
-- **Max time**: 1.43 s
-- **Std dev**: 87.4 ms
+- **Mean time**: 1.55 s
+- **Min time**: 1.40 s
+- **Max time**: 1.68 s
+- **Std dev**: 103.3 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 593.9
+- Memory Mb: 594.4
 - Triplets Count: 1146215
 - Unique Objects: 149174
 - Instances: 4
@@ -36,11 +36,11 @@
 
 ### Triplets Get Lines
 
-- **Mean time**: 64.5 ms
-- **Min time**: 63.7 ms
-- **Max time**: 65.3 ms
-- **Std dev**: 490.4 μs
-- **Rounds**: 9
+- **Mean time**: 67.3 ms
+- **Min time**: 64.9 ms
+- **Max time**: 69.7 ms
+- **Std dev**: 1.6 ms
+- **Rounds**: 8
 
 **Metrics**:
 - Line Count: 7561
@@ -52,10 +52,10 @@
 
 ### Triplets Get Generators
 
-- **Mean time**: 64.6 ms
-- **Min time**: 64.0 ms
-- **Max time**: 65.3 ms
-- **Std dev**: 392.2 μs
+- **Mean time**: 64.8 ms
+- **Min time**: 63.5 ms
+- **Max time**: 66.0 ms
+- **Std dev**: 748.4 μs
 - **Rounds**: 16
 
 **Metrics**:
@@ -68,10 +68,10 @@
 
 ### Triplets Get Loads
 
-- **Mean time**: 193.8 ms
-- **Min time**: 193.0 ms
-- **Max time**: 195.6 ms
-- **Std dev**: 939.1 μs
+- **Mean time**: 196.8 ms
+- **Min time**: 196.1 ms
+- **Max time**: 198.3 ms
+- **Std dev**: 808.0 μs
 - **Rounds**: 6
 
 **Metrics**:
@@ -84,11 +84,11 @@
 
 ### Triplets Get Substations
 
-- **Mean time**: 64.4 ms
-- **Min time**: 63.2 ms
-- **Max time**: 65.7 ms
-- **Std dev**: 584.3 μs
-- **Rounds**: 16
+- **Mean time**: 66.5 ms
+- **Min time**: 65.2 ms
+- **Max time**: 67.9 ms
+- **Std dev**: 807.7 μs
+- **Rounds**: 15
 
 **Metrics**:
 - Substation Count: 4875

@@ -13,14 +13,14 @@
 
 ### Pypowsybl Load Svedala
 
-- **Mean time**: 460.0 ms
-- **Min time**: 444.0 ms
-- **Max time**: 482.3 ms
-- **Std dev**: 19.9 ms
-- **Rounds**: 3
+- **Mean time**: 498.3 ms
+- **Min time**: 472.2 ms
+- **Max time**: 520.3 ms
+- **Std dev**: 22.0 ms
+- **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 921.9
+- Memory Mb: 895.1
 - Buses: 105
 - Lines: 97
 - Ac Lines: 90
@@ -36,11 +36,11 @@
 
 ### Pypowsybl Get Lines
 
-- **Mean time**: 350.8 μs
-- **Min time**: 310.8 μs
-- **Max time**: 2.2 ms
-- **Std dev**: 78.3 μs
-- **Rounds**: 1020
+- **Mean time**: 409.9 μs
+- **Min time**: 383.2 μs
+- **Max time**: 746.7 μs
+- **Std dev**: 30.0 μs
+- **Rounds**: 769
 
 **Metrics**:
 - Line Count: 90
@@ -52,11 +52,11 @@
 
 ### Pypowsybl Get Generators
 
-- **Mean time**: 367.9 μs
-- **Min time**: 300.4 μs
-- **Max time**: 3.4 ms
-- **Std dev**: 125.5 μs
-- **Rounds**: 1581
+- **Mean time**: 408.9 μs
+- **Min time**: 361.5 μs
+- **Max time**: 3.0 ms
+- **Std dev**: 112.7 μs
+- **Rounds**: 1201
 
 **Metrics**:
 - Generator Count: 39
@@ -68,11 +68,11 @@
 
 ### Pypowsybl Get Loads
 
-- **Mean time**: 238.5 μs
-- **Min time**: 211.6 μs
-- **Max time**: 1.2 ms
-- **Std dev**: 48.1 μs
-- **Rounds**: 2102
+- **Mean time**: 294.5 μs
+- **Min time**: 263.9 μs
+- **Max time**: 1.7 ms
+- **Std dev**: 52.4 μs
+- **Rounds**: 1560
 
 **Metrics**:
 - Load Count: 73
@@ -84,11 +84,11 @@
 
 ### Pypowsybl Get Substations
 
-- **Mean time**: 167.6 μs
-- **Min time**: 153.4 μs
-- **Max time**: 598.8 μs
-- **Std dev**: 18.6 μs
-- **Rounds**: 2742
+- **Mean time**: 215.8 μs
+- **Min time**: 185.6 μs
+- **Max time**: 912.4 μs
+- **Std dev**: 44.7 μs
+- **Rounds**: 2637
 
 **Metrics**:
 - Substation Count: 57
