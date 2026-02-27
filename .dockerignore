@@ -1,0 +1,10 @@
+.git/
+.venv/
+**/.venv/
+results/
+__pycache__/
+*.pyc
+.pytest_cache/
+.claude/
+*.md
+CLAUDE.md

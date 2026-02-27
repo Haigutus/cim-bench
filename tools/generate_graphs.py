@@ -264,8 +264,12 @@ def plot_cross_dataset(data, output_dir):
     plt.close()
 
 
-def main():
-    results_dir = Path("results")
+def main(results_dir=None):
+    if results_dir is None:
+        results_dir = Path("results")
+    else:
+        results_dir = Path(results_dir)
+
     graphs_dir = results_dir / "graphs"
     graphs_dir.mkdir(exist_ok=True)
 
@@ -292,4 +296,6 @@ if __name__ == "__main__":
         print("   Install with: uv sync --extra visualization")
         sys.exit(1)
 
-    main()
+    # Accept optional results directory as command line argument
+    results_dir = sys.argv[1] if len(sys.argv) > 1 else None
+    main(results_dir)

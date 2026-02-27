@@ -42,7 +42,7 @@ htmlcov/
 # Benchmark results
 .benchmarks/
 results/*.json
-results/*.html
+results-docker/*.json
 
 # OS
 .DS_Store
