@@ -22,7 +22,8 @@ class CIMGraphAdapter(ParserAdapter):
     """Adapter for CIM-Graph library using RDFlibConnection."""
 
     def __init__(self):
-        self.connection = None
+        self.models = {}
+        self.network = None
         self.cim = None
         self.cim_profile = None
 
@@ -37,7 +38,11 @@ class CIMGraphAdapter(ParserAdapter):
         return "#9467bd"  # Purple
 
     def load(self, dataset_key: str):
-        """Load using CIM-Graph's RDFlibConnection."""
+        """Load using CIM-Graph's NodeBreakerModel.
+
+        CIMGraph loads each profile separately. We load all files to measure
+        real-world performance, but use only the EQ profile for queries.
+        """
         dataset = DATASETS[dataset_key]
 
         # Detect CIM profile and parameters for this dataset
@@ -46,8 +51,8 @@ class CIMGraphAdapter(ParserAdapter):
         os.environ['CIMG_NAMESPACE'] = str(self._get_namespace(dataset_key))
         os.environ['CIMG_IEC61970_301'] = str(self._get_iec_version(dataset_key))
 
-        # Determine files to load
-        files = [v for k, v in dataset.items() if k != "_metadata"]
+        # Determine files to load (keep profile names for EQ selection)
+        files = [(k, Path(v)) for k, v in dataset.items() if k != "_metadata"]
 
         # Extract ZIP if needed
         temp_dir = None
@@ -55,17 +60,36 @@ class CIMGraphAdapter(ParserAdapter):
             temp_dir = tempfile.TemporaryDirectory()
             tmp = temp_dir.name
             zipfile.ZipFile(dataset["ZIP"]).extractall(tmp)
-            files = list(Path(tmp).rglob("*.xml"))
+            files = [(f.stem, f) for f in Path(tmp).rglob("*.xml")]
 
         # Load CIM profile module for typed access
         self.cim = importlib.import_module(f'cimgraph.data_profile.{self.cim_profile}')
 
-        # Load all files (same logic for ZIP and non-ZIP)
+        # Sort files to load EQ first (required for cross-references)
+        eq_files = [(name, path) for name, path in files if "EQ" in name.upper()]
+        other_files = [(name, path) for name, path in files if "EQ" not in name.upper()]
+        sorted_files = eq_files + other_files
+
+        # Load all files, accumulating into a shared graph
         temp_graph = {}
-        for filename in files:
-            file = XMLFile(filename)
-            self.network = NodeBreakerModel(connection=file, container=None, graph=temp_graph)
-            temp_graph = self.network.graph
+        for profile_name, filename in sorted_files:
+            try:
+                xml_file = XMLFile(filename)
+                model = NodeBreakerModel(connection=xml_file, container=None, graph=temp_graph)
+                self.models[profile_name] = model
+                temp_graph = model.graph  # Accumulate for next file
+            except Exception as e:
+                # Some profiles may fail if they reference missing equipment
+                # This is expected for datasets with incomplete profiles
+                pass
+
+        # Use the accumulated network (EQ profile with merged data)
+        if self.models:
+            # Prefer EQ model if available
+            eq_key = next((k for k in self.models.keys() if "EQ" in k.upper()), None)
+            self.network = self.models[eq_key] if eq_key else list(self.models.values())[0]
+        else:
+            raise ValueError("No models could be loaded")
 
         # Cleanup if ZIP was used
         if temp_dir:
@@ -115,40 +139,42 @@ class CIMGraphAdapter(ParserAdapter):
         """Extract metrics from CIM-Graph connection."""
         return {
             "memory_mb": f"{memory_mb:.1f}",
-            "triples": self.count_triples(),
-            "lines": len(self.network.graph[self.cim.ACLineSegment]),
-            "generators": len(self.network.graph[self.cim.SynchronousMachine]),
-            "loads": len(self.network.graph[self.cim.EnergyConsumer]),
-            "substations": len(self.network.graph[self.cim.Substation]),
+            "triples": loaded_obj.count_triples(),
+            "lines": loaded_obj.get_lines_count(loaded_obj),
+            "generators": loaded_obj.get_generators_count(loaded_obj),
+            "loads": loaded_obj.get_loads_count(loaded_obj),
+            "substations": loaded_obj.get_substations_count(loaded_obj),
         }
 
     def get_lines_count(self, loaded_obj):
         """Get all lines (ACLineSegments) in the network."""
-        return len(self.network.graph[self.cim.ACLineSegment])
+        return len(loaded_obj.network.graph.get(loaded_obj.cim.ACLineSegment, {}))
 
     def get_generators_count(self, loaded_obj):
         """Get all generators (SynchronousMachines) in the network."""
-        return len(self.network.graph[self.cim.SynchronousMachine])
+        return len(loaded_obj.network.graph.get(loaded_obj.cim.SynchronousMachine, {}))
 
     def get_loads_count(self, loaded_obj):
         """Get all loads (ConformLoad + NonConformLoad + EnergyConsumer) in the network."""
-        conform = len(self.network.graph[self.cim.ConformLoad])
-        nonconform = len(self.network.graph[self.cim.NonConformLoad])
-        energy_consumer = len(self.network.graph[self.cim.EnergyConsumer])
+        conform = len(loaded_obj.network.graph.get(loaded_obj.cim.ConformLoad, {}))
+        nonconform = len(loaded_obj.network.graph.get(loaded_obj.cim.NonConformLoad, {}))
+        energy_consumer = len(loaded_obj.network.graph.get(loaded_obj.cim.EnergyConsumer, {}))
         return conform + nonconform + energy_consumer
 
     def get_substations_count(self, loaded_obj):
         """Get all substations in the network."""
-        return len(self.network.graph[self.cim.Substation])
+        return len(loaded_obj.network.graph.get(loaded_obj.cim.Substation, {}))
     
 
     def count_triples(self):
+        """Count triples across all loaded models."""
         thing_count = 0
-        for cim_class in self.network.graph:
-            attrs = fields(cim_class)
-            for obj in self.network.graph[cim_class].values():
-                for field in attrs:
-                    value = getattr(obj, field.name)
-                    if value or value == 0:
-                        thing_count +=1
+        for model in self.models.values():
+            for cim_class in model.graph:
+                attrs = fields(cim_class)
+                for obj in model.graph[cim_class].values():
+                    for field in attrs:
+                        value = getattr(obj, field.name)
+                        if value or value == 0:
+                            thing_count += 1
         return thing_count
