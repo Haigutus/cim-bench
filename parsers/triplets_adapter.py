@@ -31,13 +31,13 @@ class TripletsAdapter(ParserAdapter):
         """Load using triplets library directly."""
         dataset = DATASETS[dataset_key]
 
+        # Determine files to load
+        files_to_load = [v for k, v in dataset.items() if k != "_metadata"]
         if "ZIP" in dataset:
-            # Single ZIP file (RealGrid)
-            self.df = pandas.read_RDF(str(dataset["ZIP"]))
-        else:
-            # Multiple files (Svedala)
-            files = [v for k, v in dataset.items() if k != "_metadata"]
-            self.df = pandas.read_RDF([str(f) for f in files])
+            files_to_load = dataset["ZIP"]
+
+        # Load all files (single call regardless of format)
+        self.df = pandas.read_RDF(files_to_load)
 
         return self
 

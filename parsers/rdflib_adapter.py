@@ -38,31 +38,24 @@ class RDFlibAdapter(ParserAdapter):
         # Use Oxigraph store for better performance
         self.libgraph = Graph(store='Oxigraph')
 
-        if "ZIP" in dataset:
-            # Single ZIP file (RealGrid) - load EQ files only to avoid duplicates
-            # due to rdf:ID creating file-specific URIs
-            with tempfile.TemporaryDirectory() as tmpdir:
-                with zipfile.ZipFile(dataset["ZIP"], 'r') as zf:
-                    zf.extractall(tmpdir)
-                    # Parse EQ (Equipment) files only for canonical counts
-                    # Try multiple naming patterns: *_EQ_*.xml, *_EQ.xml, *EQ.xml
-                    eq_files = list(Path(tmpdir).rglob("*_EQ_*.xml"))
-                    eq_files.extend(Path(tmpdir).rglob("*_EQ.xml"))
-                    eq_files.extend(Path(tmpdir).rglob("*EQ.xml"))
+        # Determine files to load
+        files = (v for k, v in dataset.items() if k != "_metadata")
 
-                    for xml_file in set(eq_files):  # Use set to avoid duplicates
-                        self.libgraph.parse(xml_file)
-        else:
-            # Multiple files (Svedala) - load EQ file only
-            # SSH/SV/TP files reference equipment but use file-specific URIs
-            # with rdf:ID, causing duplicates
-            if "EQ" in dataset:
-                self.libgraph.parse(dataset["EQ"])
-            else:
-                # Fallback: load all files if no EQ file specified
-                files = [v for k, v in dataset.items() if k != "_metadata"]
-                for file_path in files:
-                    self.libgraph.parse(file_path)
+        # Extract ZIP if needed
+        temp_dir = None
+        if "ZIP" in dataset:
+            temp_dir = tempfile.TemporaryDirectory()
+            tmp = temp_dir.name
+            zipfile.ZipFile(dataset["ZIP"]).extractall(tmp)
+            files = Path(tmp).rglob("*.xml")
+
+        # Load all files (same logic for ZIP and non-ZIP)
+        for f in files:
+            self.libgraph.parse(f)
+
+        # Cleanup if ZIP was used
+        if temp_dir:
+            temp_dir.cleanup()
 
         # Detect CIM namespace from loaded data
         self._detect_namespace()

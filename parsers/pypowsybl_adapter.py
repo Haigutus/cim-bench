@@ -8,7 +8,6 @@ Documentation: https://pypowsybl.readthedocs.io/
 
 import tempfile
 import zipfile
-import os
 from pathlib import Path
 
 from parser_adapter import ParserAdapter
@@ -20,7 +19,7 @@ class PypowsyblAdapter(ParserAdapter):
     """Adapter for pypowsybl library."""
 
     def __init__(self):
-        self._temp_zip = None  # Track temp file for cleanup
+        self.network = None
 
     @classmethod
     def get_display_name(cls) -> str:
@@ -36,26 +35,33 @@ class PypowsyblAdapter(ParserAdapter):
         """Load using pypowsybl."""
         dataset = DATASETS[dataset_key]
 
-        if "ZIP" in dataset:
-            # Already a ZIP (RealGrid)
-            return pn.load(str(dataset["ZIP"]))
-        else:
-            # Multiple files - create temp ZIP (Svedala)
-            files = [v for k, v in dataset.items() if k != "_metadata"]
-            self._temp_zip = tempfile.NamedTemporaryFile(suffix=".zip", delete=False)
-            with zipfile.ZipFile(self._temp_zip.name, "w") as zf:
-                for f in files:
-                    zf.write(f, arcname=f.name)
-            return pn.load(self._temp_zip.name)
+        # Determine files and prepare ZIP if needed
+        files = [v for k, v in dataset.items() if k != "_metadata"]
+        zip_to_load = dataset.get("ZIP")
+        temp_dir = None
 
-    def cleanup(self):
-        """Cleanup temp ZIP if created."""
-        if self._temp_zip:
-            os.unlink(self._temp_zip.name)
-            self._temp_zip = None
+        if not zip_to_load:
+            # Create temp ZIP for multiple files
+            temp_dir = tempfile.TemporaryDirectory()
+            tmpzip = Path(temp_dir.name) / "dataset.zip"
+            zf = zipfile.ZipFile(tmpzip, 'w')
+            for f in files:
+                zf.write(f, arcname=Path(f).name)
+            zf.close()
+            zip_to_load = tmpzip
 
-    def get_load_metrics(self, network, memory_mb):
+        # Load ZIP
+        self.network = pn.load(zip_to_load)
+
+        # Cleanup if temp ZIP was created
+        if temp_dir:
+            temp_dir.cleanup()
+
+        return self
+
+    def get_load_metrics(self, loaded_obj, memory_mb):
         """Extract metrics from pypowsybl network."""
+        network = loaded_obj.network
         return {
             "memory_mb": f"{memory_mb:.1f}",
             "buses": len(network.get_buses()),
@@ -67,14 +73,14 @@ class PypowsyblAdapter(ParserAdapter):
             "substations": len(network.get_substations()),
         }
 
-    def get_lines_count(self, network):
-        return len(network.get_lines())
+    def get_lines_count(self, loaded_obj):
+        return len(loaded_obj.network.get_lines())
 
-    def get_generators_count(self, network):
-        return len(network.get_generators())
+    def get_generators_count(self, loaded_obj):
+        return len(loaded_obj.network.get_generators())
 
-    def get_loads_count(self, network):
-        return len(network.get_loads())
+    def get_loads_count(self, loaded_obj):
+        return len(loaded_obj.network.get_loads())
 
-    def get_substations_count(self, network):
-        return len(network.get_substations())
+    def get_substations_count(self, loaded_obj):
+        return len(loaded_obj.network.get_substations())

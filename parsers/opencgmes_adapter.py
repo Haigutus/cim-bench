@@ -54,37 +54,33 @@ class OpenCGMESAdapter(ParserAdapter):
 
         parser = CimXmlParser()
 
-        # OpenCGMES parseCimModel() only loads individual XML files
-        # Load ALL files to demonstrate loading capability
+        # Determine files to load
+        files = [(k, Path(v)) for k, v in dataset.items() if k != "_metadata"]
+
+        # Extract ZIP if needed
+        temp_dir = None
         if "ZIP" in dataset:
-            # Single ZIP file (RealGrid) - extract and load each file individually
-            with tempfile.TemporaryDirectory() as tmpdir:
-                with zipfile.ZipFile(dataset["ZIP"], 'r') as zf:
-                    zf.extractall(tmpdir)
-                    xml_files = list(Path(tmpdir).rglob("*.xml"))
+            temp_dir = tempfile.TemporaryDirectory()
+            tmp = temp_dir.name
+            zipfile.ZipFile(dataset["ZIP"]).extractall(tmp)
+            files = [(f.stem, f) for f in Path(tmp).rglob("*.xml")]
 
-                    for xml_file in xml_files:
-                        profile_name = xml_file.stem  # Use filename as profile name
-                        java_path = Paths.get(str(xml_file))
-                        self.all_profiles[profile_name] = parser.parseCimModel(java_path)
+        # Load all files into separate profile datasets
+        for profile_name, file_path in files:
+            java_path = Paths.get(str(file_path))
+            self.all_profiles[profile_name] = parser.parseCimModel(java_path)
 
-                    # Use first EQ file for queries
-                    eq_profiles = [k for k in self.all_profiles.keys() if "_EQ" in k]
-                    if eq_profiles:
-                        self.dataset = self.all_profiles[eq_profiles[0]]
+        # Cleanup if ZIP was used
+        if temp_dir:
+            temp_dir.cleanup()
+
+        # Select EQ dataset for queries
+        eq_key = next((k for k in self.all_profiles.keys() if "EQ" in k), None)
+        if eq_key:
+            self.dataset = self.all_profiles[eq_key]
         else:
-            # Multiple files (Svedala) - load each file individually
-            for profile_name, file_path in dataset.items():
-                if profile_name == "_metadata":
-                    continue
-                java_path = Paths.get(str(file_path))
-                self.all_profiles[profile_name] = parser.parseCimModel(java_path)
+            raise ValueError(f"No EQ profile found in {list(self.all_profiles.keys())}")
 
-            # Use EQ dataset for queries (main equipment data)
-            if "EQ" in self.all_profiles:
-                self.dataset = self.all_profiles["EQ"]
-
-        # Detect CIM namespace from loaded data
         self._detect_namespace()
 
         return self

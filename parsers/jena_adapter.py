@@ -53,36 +53,34 @@ class JenaAdapter(ParserAdapter):
         # Import Jena classes (after JVM started)
         from org.apache.jena.rdf.model import ModelFactory
 
-        def load_files(files):
-            """Load XML files into Jena models."""
-            for xml_file in files:
-                model = ModelFactory.createDefaultModel()
-                file_url = f"file://{str(xml_file)}"
-                try:
-                    model.read(file_url, file_url, "RDF/XML")
-                    self.models[xml_file.stem] = model
-                except Exception as e:
-                    print(f"Error loading {xml_file.name}: {e}")
+        # Determine files to load
+        files = [Path(v) for k, v in dataset.items() if k != "_metadata"]
 
+        # Extract ZIP if needed
+        temp_dir = None
         if "ZIP" in dataset:
-            with tempfile.TemporaryDirectory() as tmpdir:
-                with zipfile.ZipFile(dataset["ZIP"], 'r') as zf:
-                    zf.extractall(tmpdir)
-                    files_to_load = list(Path(tmpdir).rglob("*.xml"))
-                load_files(files_to_load)
+            temp_dir = tempfile.TemporaryDirectory()
+            tmp = temp_dir.name
+            zipfile.ZipFile(dataset["ZIP"]).extractall(tmp)
+            files = Path(tmp).rglob("*.xml")
+
+        # Load all files into separate models
+        for xml_file in files:
+            model = ModelFactory.createDefaultModel()
+            file_url = f"file://{str(xml_file)}"
+            model.read(file_url, file_url, "RDF/XML")
+            self.models[xml_file.stem] = model
+
+        # Cleanup if ZIP was used
+        if temp_dir:
+            temp_dir.cleanup()
+
+        # Select EQ model for queries
+        eq_key = next((k for k in self.models.keys() if "EQ" in k), None)
+        if eq_key:
+            self.model = self.models[eq_key]
         else:
-            files_to_load = [Path(value) for key, value in dataset.items() if key != "_metadata"]
-            load_files(files_to_load)
-
-        # Find and use EQ model for queries
-        for key, model in self.models.items():
-            if "EQ" in key:
-                self.model = model
-                break
-
-        # Ensure we have a model before detecting namespace
-        if not self.model:
-            raise ValueError(f"No EQ profile found in loaded models. Available profiles: {list(self.models.keys())}")
+            raise ValueError(f"No EQ profile found in {list(self.models.keys())}")
 
         # Detect CIM namespace from loaded data
         self._detect_namespace()

@@ -43,7 +43,7 @@ class PowsyblCgmesAdapter(ParserAdapter):
     @classmethod
     def get_color(cls) -> str:
         """Get the color hex code for graph visualization."""
-        return "#8c564b"  # Brown
+        return "#9b59b6"  # Purple
 
     def load(self, dataset_key: str):
         """Load using PowSyBL CGMES Model library via JPype."""
@@ -54,31 +54,33 @@ class PowsyblCgmesAdapter(ParserAdapter):
         from com.powsybl.commons.datasource import ZipArchiveDataSource
         from java.nio.file import Paths
 
-        if "ZIP" in dataset:
-            # Single ZIP file (RealGrid)
-            java_path = Paths.get(str(dataset["ZIP"]))
-            datasource = ZipArchiveDataSource(java_path)
-            self.model = CgmesModelFactory.create(datasource)
-        else:
-            # Multiple files (Svedala) - create temp ZIP with ALL files like PyPowSyBL
-            with tempfile.TemporaryDirectory() as tmpdir:
-                tmpzip = Path(tmpdir) / "svedala_all.zip"
-                files = [v for k, v in dataset.items() if k != "_metadata"]
-                with zipfile.ZipFile(tmpzip, 'w', zipfile.ZIP_DEFLATED) as zf:
-                    for file_path in files:
-                        zf.write(file_path, Path(file_path).name)
+        # Determine files and prepare ZIP if needed
+        files = [v for k, v in dataset.items() if k != "_metadata"]
+        zip_to_load = dataset.get("ZIP")
+        temp_dir = None
 
-                java_path = Paths.get(str(tmpzip))
-                datasource = ZipArchiveDataSource(java_path)
-                self.model = CgmesModelFactory.create(datasource)
-                # Keep triplestore reference before tmpdir is deleted
-                self.triplestore = self.model.tripleStore()
-                return self
+        if not zip_to_load:
+            # Create temp ZIP for multiple files
+            temp_dir = tempfile.TemporaryDirectory()
+            tmpzip = Path(temp_dir.name) / "all_files.zip"
+            zf = zipfile.ZipFile(tmpzip, 'w', zipfile.ZIP_DEFLATED)
+            for file_path in files:
+                zf.write(file_path, Path(file_path).name)
+            zf.close()
+            zip_to_load = tmpzip
+
+        # Load ZIP
+        java_path = Paths.get(str(zip_to_load))
+        datasource = ZipArchiveDataSource(java_path)
+        self.model = CgmesModelFactory.create(datasource)
 
         # Get underlying triplestore for SPARQL queries
         self.triplestore = self.model.tripleStore()
 
-        # Detect CIM namespace from loaded data
+        # Cleanup if temp ZIP was created
+        if temp_dir:
+            temp_dir.cleanup()
+
         self._detect_namespace()
 
         return self

@@ -11,6 +11,9 @@ from datasets import DATASETS
 class VeragridAdapter(ParserAdapter):
     """Adapter for VeraGrid library using low-level CGMES API."""
 
+    def __init__(self):
+        self.cgmes_circuit = None
+
     @classmethod
     def get_display_name(cls) -> str:
         """Get the display name for this parser."""
@@ -28,55 +31,55 @@ class VeragridAdapter(ParserAdapter):
         dataset = DATASETS[dataset_key]
 
         # Collect file paths (handles both ZIP and multiple XML files)
+        files = [v for k, v in dataset.items() if k != "_metadata"]
         if "ZIP" in dataset:
-            files = [str(dataset["ZIP"])]
-        else:
-            files = [str(v) for k, v in dataset.items() if k != "_metadata"]
+            files = [dataset["ZIP"]]
 
         # Parse using low-level CGMES API
         logger = gce.Logger()
         data_parser = gce.CgmesDataParser()
         data_parser.load_files(files=files)
 
-        cgmes_circuit = gce.CgmesCircuit(
+        self.cgmes_circuit = gce.CgmesCircuit(
             cgmes_version=data_parser.cgmes_version,
             cgmes_map_areas_like_raw=False,
             logger=logger
         )
-        cgmes_circuit.parse_files(data_parser=data_parser)
+        self.cgmes_circuit.parse_files(data_parser=data_parser)
 
-        return cgmes_circuit
+        return self
 
-    def get_load_metrics(self, cgmes_circuit, memory_mb):
+    def get_load_metrics(self, loaded_obj, memory_mb):
         """Extract metrics from VeraGrid CGMES circuit."""
+        cgmes_circuit = loaded_obj.cgmes_circuit
         assets = cgmes_circuit.cgmes_assets
 
         return {
             "memory_mb": f"{memory_mb:.1f}",
-            "lines": self.get_lines_count(cgmes_circuit),
-            "generators": self.get_generators_count(cgmes_circuit),
-            "loads": self.get_loads_count(cgmes_circuit),
-            "substations": self.get_substations_count(cgmes_circuit),
+            "lines": self.get_lines_count(loaded_obj),
+            "generators": self.get_generators_count(loaded_obj),
+            "loads": self.get_loads_count(loaded_obj),
+            "substations": self.get_substations_count(loaded_obj),
             "cgmes_version": cgmes_circuit.cgmes_version,
         }
 
-    def get_lines_count(self, cgmes_circuit):
+    def get_lines_count(self, loaded_obj):
         """Count ACLineSegments."""
-        return len(cgmes_circuit.cgmes_assets.ACLineSegment_list)
+        return len(loaded_obj.cgmes_circuit.cgmes_assets.ACLineSegment_list)
 
-    def get_generators_count(self, cgmes_circuit):
+    def get_generators_count(self, loaded_obj):
         """Count SynchronousMachines."""
-        return len(cgmes_circuit.cgmes_assets.SynchronousMachine_list)
+        return len(loaded_obj.cgmes_circuit.cgmes_assets.SynchronousMachine_list)
 
-    def get_loads_count(self, cgmes_circuit):
+    def get_loads_count(self, loaded_obj):
         """Count all load types (ConformLoad + NonConformLoad + EnergyConsumer)."""
-        assets = cgmes_circuit.cgmes_assets
+        assets = loaded_obj.cgmes_circuit.cgmes_assets
         return (
             len(assets.ConformLoad_list) +
             len(assets.NonConformLoad_list) +
             len(assets.EnergyConsumer_list)
         )
 
-    def get_substations_count(self, cgmes_circuit):
+    def get_substations_count(self, loaded_obj):
         """Count Substations."""
-        return len(cgmes_circuit.cgmes_assets.Substation_list)
+        return len(loaded_obj.cgmes_circuit.cgmes_assets.Substation_list)

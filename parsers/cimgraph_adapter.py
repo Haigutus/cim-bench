@@ -42,42 +42,34 @@ class CIMGraphAdapter(ParserAdapter):
 
         # Detect CIM profile and parameters for this dataset
         self.cim_profile = self._get_cim_profile(dataset_key)
-        # os.environ['CIMG_VALIDATION_LOG_LEVEL'] = 'DEBUG'
         os.environ['CIMG_CIM_PROFILE'] = self.cim_profile
         os.environ['CIMG_NAMESPACE'] = str(self._get_namespace(dataset_key))
         os.environ['CIMG_IEC61970_301'] = str(self._get_iec_version(dataset_key))
-        
-        print('DATASET NAME:', dataset)
 
+        # Determine files to load
+        files = [v for k, v in dataset.items() if k != "_metadata"]
+
+        # Extract ZIP if needed
+        temp_dir = None
         if "ZIP" in dataset:
-            # Single ZIP file (RealGrid) - extract and load EQ files
-            # with tempfile.TemporaryDirectory() as tmpdir:
-            tmpdir = './tmpdir'
-            with zipfile.ZipFile(dataset["ZIP"], 'r') as zf:
-                zf.extractall(tmpdir)
-                # Parse EQ (Equipment) files only for canonical counts
-                eq_files = list(Path(tmpdir).rglob("*_EQ_*.xml"))
-                eq_files.extend(Path(tmpdir).rglob("*_EQ.xml"))
-                eq_files.extend(Path(tmpdir).rglob("*EQ.xml"))
-                
-                xml_file_set = eq_files
-        else:
-            # Multiple files (Svedala) - load EQ file only
-            if "EQ" in dataset:
-                xml_file_set = [dataset["EQ"]]
-            else:
-                # Fallback: load all files if no EQ file specified
-                files = [v for k, v in dataset.items() if k != "_metadata"]
-                xml_file_set = files
+            temp_dir = tempfile.TemporaryDirectory()
+            tmp = temp_dir.name
+            zipfile.ZipFile(dataset["ZIP"]).extractall(tmp)
+            files = list(Path(tmp).rglob("*.xml"))
 
         # Load CIM profile module for typed access
         self.cim = importlib.import_module(f'cimgraph.data_profile.{self.cim_profile}')
-        
-        temp_graph = {} # temp var to merge graphs from multiple XML file
-        for filename in xml_file_set: # loop through all files in set
-            file = XMLFile(filename) # open xml file
-            self.network = NodeBreakerModel(connection=file, container=None, graph = temp_graph)
-            temp_graph = self.network.graph # copy graph out of XML file to load into next one
+
+        # Load all files (same logic for ZIP and non-ZIP)
+        temp_graph = {}
+        for filename in files:
+            file = XMLFile(filename)
+            self.network = NodeBreakerModel(connection=file, container=None, graph=temp_graph)
+            temp_graph = self.network.graph
+
+        # Cleanup if ZIP was used
+        if temp_dir:
+            temp_dir.cleanup()
 
         return self
 
