@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 #
-# Run all CIM-bench benchmarks and generate reports
+# Run all CIM-bench benchmarks and generate reports (Python-only)
+#
+# This script runs ONLY native Python benchmarks. Docker-only benchmarks
+# (prefixed with docker_*) require JPype+JVM and must be run via:
+#   ./docker/run_benchmark.sh
 #
 # Usage:
 #   ./run_benchmarks.sh [--quick] [--skip-existing]
@@ -56,6 +60,9 @@ for test_file in "${BENCHMARK_FILES[@]}"; do
     basename="${test_file##*/}"
     [[ "$basename" == test_* ]] && continue
 
+    # Skip docker_ prefixed files (Docker-only benchmarks requiring JPype+JVM)
+    [[ "$basename" == docker_* ]] && continue
+
     # Extract basename for output file
     output_json="$RESULTS_DIR/${basename%.py}.json"
 
@@ -79,9 +86,10 @@ echo "📝 Generating markdown reports..."
 for json_file in "$RESULTS_DIR"/*_benchmark.json; do
     [[ -f "$json_file" ]] || continue
 
-    # Skip test_ prefixed files
+    # Skip test_ and docker_ prefixed files
     basename_json="$(basename "$json_file")"
     [[ "$basename_json" == test_* ]] && continue
+    [[ "$basename_json" == docker_* ]] && continue
 
     report_file="${json_file%.json}_report.md"
     uv run python tools/generate_report.py "$json_file" "$report_file"
@@ -117,9 +125,10 @@ echo "Reports:"
 for report in "$RESULTS_DIR"/*_report.md; do
     [[ -f "$report" ]] || continue
 
-    # Skip test_ prefixed files
+    # Skip test_ and docker_ prefixed files
     basename_report="$(basename "$report")"
     [[ "$basename_report" == test_* ]] && continue
+    [[ "$basename_report" == docker_* ]] && continue
 
     echo "  - $basename_report"
 done
