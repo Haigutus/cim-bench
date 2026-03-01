@@ -144,17 +144,10 @@ def plot_cross_dataset(data, output_dir):
                 colors[t] = data[ds][t].get("color", "#999999")
                 break
 
-    # Import comparison - separate subplots per dataset
-    fig, axes = plt.subplots(len(datasets), 1, figsize=(12, 5 * len(datasets)))
+    # Import comparison - separate subplots per dataset (independent y-axis scales)
+    fig, axes = plt.subplots(len(datasets), 1, figsize=(12, 5 * len(datasets)), sharex=False)
     if len(datasets) == 1:
         axes = [axes]
-
-    # Find max value across all datasets for consistent scale
-    max_time = max(
-        data[ds].get(tool, {}).get("load", {}).get("time", 0)
-        for ds in datasets
-        for tool in tools
-    )
 
     for idx, ds in enumerate(datasets):
         ax = axes[idx]
@@ -174,7 +167,12 @@ def plot_cross_dataset(data, output_dir):
         bars = ax.barh(labels, values, color=bar_colors)
         ax.set_xlabel('Import Time (ms)', fontsize=12)
         ax.set_title(ds_label, fontsize=12, fontweight='bold')
-        ax.set_xlim(0, max_time * 1.15)
+
+        # Auto-scale x-axis independently per dataset
+        if values:
+            max_time_ds = max(values)
+            ax.set_xlim(0, max_time_ds * 1.15)
+
         ax.grid(axis='x', alpha=0.3)
 
         for i, (bar, val) in enumerate(zip(bars, values)):
@@ -186,17 +184,10 @@ def plot_cross_dataset(data, output_dir):
     print("   → import_comparison.svg")
     plt.close()
 
-    # Memory comparison - separate subplots per dataset
-    fig, axes = plt.subplots(len(datasets), 1, figsize=(12, 5 * len(datasets)))
+    # Memory comparison - separate subplots per dataset (independent y-axis scales)
+    fig, axes = plt.subplots(len(datasets), 1, figsize=(12, 5 * len(datasets)), sharex=False)
     if len(datasets) == 1:
         axes = [axes]
-
-    # Find max value across all datasets for consistent scale
-    max_memory = max(
-        data[ds].get(tool, {}).get("load", {}).get("memory", 0)
-        for ds in datasets
-        for tool in tools
-    )
 
     for idx, ds in enumerate(datasets):
         ax = axes[idx]
@@ -216,7 +207,12 @@ def plot_cross_dataset(data, output_dir):
         bars = ax.barh(labels, values, color=bar_colors)
         ax.set_xlabel('Memory Usage (MB)', fontsize=12)
         ax.set_title(ds_label, fontsize=12, fontweight='bold')
-        ax.set_xlim(0, max_memory * 1.15)
+
+        # Auto-scale x-axis independently per dataset
+        if values:
+            max_memory_ds = max(values)
+            ax.set_xlim(0, max_memory_ds * 1.15)
+
         ax.grid(axis='x', alpha=0.3)
 
         for i, (bar, val) in enumerate(zip(bars, values)):
@@ -228,8 +224,8 @@ def plot_cross_dataset(data, output_dir):
     print("   → memory_comparison.svg")
     plt.close()
 
-    # Query comparison - separate subplots per dataset
-    fig, axes = plt.subplots(len(datasets), 1, figsize=(12, 5 * len(datasets)))
+    # Query comparison - separate subplots per dataset (independent y-axis scales)
+    fig, axes = plt.subplots(len(datasets), 1, figsize=(12, 5 * len(datasets)), sharex=False)
     if len(datasets) == 1:
         axes = [axes]
 
