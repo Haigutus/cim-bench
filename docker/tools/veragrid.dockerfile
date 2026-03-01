@@ -1,4 +1,4 @@
-FROM cim-bench/base:latest
+FROM localhost/cim-bench/base:latest
 
 WORKDIR /app
 

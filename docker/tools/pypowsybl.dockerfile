@@ -1,4 +1,4 @@
-FROM cim-bench/base:latest
+FROM localhost/cim-bench/base:latest
 
 # Note: Java NOT needed - pypowsybl v1.14.0 uses GraalVM native libraries
 # Built with GraalVM JDK 21, but runtime is pure native code
