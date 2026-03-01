@@ -1,0 +1,193 @@
+"""Apache Jena parser adapter for benchmarking CGMES files.
+
+This adapter uses Apache Jena (Java RDF library) via JPype to parse CGMES/CIMXML files.
+Jena provides robust RDF parsing and SPARQL query capabilities.
+
+Apache Jena: https://jena.apache.org/
+
+This adapter uses JPype to bridge Python and Java (JNI), allowing direct
+Java method calls from Python while maintaining single-process execution
+for accurate memory measurement via psutil.
+"""
+
+import tempfile
+import zipfile
+from pathlib import Path
+import jpype
+import jpype.imports
+from jpype.types import *
+from parser_adapter import ParserAdapter
+from datasets import DATASETS
+
+
+class JenaAdapter(ParserAdapter):
+    """Adapter for Apache Jena library using JPype bridge."""
+
+    _jvm_started = False
+
+    def __init__(self):
+        self.models = {}  # Dict of profile -> model
+        self.model = None  # Active model for queries (will be EQ)
+        self.cim_namespace = None
+
+        # Start JVM if not already started
+        if not JenaAdapter._jvm_started:
+            classpath = "/app/lib/*"
+            jpype.startJVM(classpath=[classpath], convertStrings=False)
+            JenaAdapter._jvm_started = True
+
+    @classmethod
+    def get_display_name(cls) -> str:
+        """Get the display name for this parser."""
+        return "Apache Jena"
+
+    @classmethod
+    def get_color(cls) -> str:
+        """Get the color hex code for graph visualization."""
+        return "#d62728"  # Red
+
+    def load(self, dataset_key: str):
+        """Load using Apache Jena via JPype."""
+        dataset = DATASETS[dataset_key]
+
+        # Import Jena classes (after JVM started)
+        from org.apache.jena.rdf.model import ModelFactory
+
+        def load_files(files):
+            """Load XML files into Jena models."""
+            for xml_file in files:
+                model = ModelFactory.createDefaultModel()
+                file_url = f"file://{str(xml_file)}"
+                try:
+                    model.read(file_url, file_url, "RDF/XML")
+                    self.models[xml_file.stem] = model
+                except Exception as e:
+                    print(f"Error loading {xml_file.name}: {e}")
+
+        if "ZIP" in dataset:
+            with tempfile.TemporaryDirectory() as tmpdir:
+                with zipfile.ZipFile(dataset["ZIP"], 'r') as zf:
+                    zf.extractall(tmpdir)
+                    files_to_load = list(Path(tmpdir).rglob("*.xml"))
+                load_files(files_to_load)
+        else:
+            files_to_load = [Path(value) for key, value in dataset.items() if key != "_metadata"]
+            load_files(files_to_load)
+
+        # Find and use EQ model for queries
+        for key, model in self.models.items():
+            if "EQ" in key:
+                self.model = model
+                break
+
+        # Ensure we have a model before detecting namespace
+        if not self.model:
+            raise ValueError(f"No EQ profile found in loaded models. Available profiles: {list(self.models.keys())}")
+
+        # Detect CIM namespace from loaded data
+        self._detect_namespace()
+
+        return self
+
+    def _detect_namespace(self):
+        """Detect the CIM namespace used in the loaded RDF model."""
+        namespaces = [
+            "http://iec.ch/TC57/CIM100#",  # CGMES 3.0
+            "http://iec.ch/TC57/2013/CIM-schema-cim16#",  # CGMES 2.4.15
+        ]
+
+        # Import Jena query classes
+        from org.apache.jena.query import QueryFactory, QueryExecutionFactory
+
+        for ns in namespaces:
+            test_query = f'''
+            ASK {{
+                ?s a <{ns}ACLineSegment> .
+            }}
+            '''
+            query = QueryFactory.create(test_query)
+            with QueryExecutionFactory.create(query, self.model) as qexec:
+                if qexec.execAsk():
+                    self.cim_namespace = ns
+                    return
+
+        # Default to CIM100 if nothing found
+        self.cim_namespace = "http://iec.ch/TC57/CIM100#"
+
+    def _count_instances(self, class_name: str) -> int:
+        """Count instances of a CIM class using SPARQL."""
+        if not self.model:
+            raise ValueError("No data loaded")
+
+        if not self.cim_namespace:
+            self._detect_namespace()
+
+        # Import Jena query classes
+        from org.apache.jena.query import QueryFactory, QueryExecutionFactory
+
+        query_string = f'''
+        SELECT (COUNT(DISTINCT ?s) as ?count)
+        WHERE {{
+            ?s a <{self.cim_namespace}{class_name}> .
+        }}
+        '''
+
+        query = QueryFactory.create(query_string)
+        with QueryExecutionFactory.create(query, self.model) as qexec:
+            results = qexec.execSelect()
+            if results.hasNext():
+                soln = results.next()
+                count_literal = soln.get("count")
+                return count_literal.getInt()
+
+        return 0
+
+    def get_load_metrics(self, loaded_obj, memory_mb):
+        """Extract metrics from loaded model."""
+        # Count triples in model
+        triples = 0
+        if loaded_obj.model:
+            triples = loaded_obj.model.size()
+
+        return {
+            "memory_mb": f"{memory_mb:.1f}",
+            "triples": triples,
+            "lines": loaded_obj.get_lines_count(loaded_obj),
+            "generators": loaded_obj.get_generators_count(loaded_obj),
+            "loads": loaded_obj.get_loads_count(loaded_obj),
+            "substations": loaded_obj.get_substations_count(loaded_obj),
+        }
+
+    def get_lines_count(self, loaded_obj):
+        """Get all lines (ACLineSegments) in the network."""
+        if loaded_obj.model is None:
+            raise ValueError("No data loaded")
+        return loaded_obj._count_instances("ACLineSegment")
+
+    def get_generators_count(self, loaded_obj):
+        """Get all generators (SynchronousMachines) in the network."""
+        if loaded_obj.model is None:
+            raise ValueError("No data loaded")
+        return loaded_obj._count_instances("SynchronousMachine")
+
+    def get_loads_count(self, loaded_obj):
+        """Get all loads (ConformLoad + NonConformLoad + EnergyConsumer) in the network."""
+        if loaded_obj.model is None:
+            raise ValueError("No data loaded")
+        conform = loaded_obj._count_instances("ConformLoad")
+        nonconform = loaded_obj._count_instances("NonConformLoad")
+        energy_consumer = loaded_obj._count_instances("EnergyConsumer")
+        return conform + nonconform + energy_consumer
+
+    def get_substations_count(self, loaded_obj):
+        """Get all substations in the network."""
+        if loaded_obj.model is None:
+            raise ValueError("No data loaded")
+        return loaded_obj._count_instances("Substation")
+
+    def cleanup(self):
+        """Cleanup resources (shutdown JVM if needed)."""
+        # Note: JVM shutdown is optional and typically not done
+        # as it cannot be restarted in the same process
+        # Let the process exit naturally to clean up JVM
+        pass

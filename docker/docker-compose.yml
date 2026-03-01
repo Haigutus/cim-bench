@@ -57,3 +57,33 @@ services:
     <<: *common
     image: cim-bench/rdflib:latest
     command: pytest rdflib_realgrid_benchmark.py --benchmark-only --benchmark-json=/output/rdflib_realgrid_benchmark.json
+
+  jena-svedala:
+    <<: *common
+    image: cim-bench/jena:latest
+    command: pytest docker_jena_svedala_benchmark.py --benchmark-only --benchmark-json=/output/jena_svedala_benchmark.json
+
+  jena-realgrid:
+    <<: *common
+    image: cim-bench/jena:latest
+    command: pytest docker_jena_realgrid_benchmark.py --benchmark-only --benchmark-json=/output/jena_realgrid_benchmark.json
+
+  opencgmes-svedala:
+    <<: *common
+    image: cim-bench/opencgmes:latest
+    command: pytest docker_opencgmes_svedala_benchmark.py --benchmark-only --benchmark-json=/output/opencgmes_svedala_benchmark.json
+
+  opencgmes-realgrid:
+    <<: *common
+    image: cim-bench/opencgmes:latest
+    command: pytest docker_opencgmes_realgrid_benchmark.py --benchmark-only --benchmark-json=/output/opencgmes_realgrid_benchmark.json
+
+  powsybl-cgmes-svedala:
+    <<: *common
+    image: cim-bench/powsybl-cgmes:latest
+    command: pytest docker_powsybl_cgmes_svedala_benchmark.py --benchmark-only --benchmark-json=/output/powsybl_cgmes_svedala_benchmark.json
+
+  powsybl-cgmes-realgrid:
+    <<: *common
+    image: cim-bench/powsybl-cgmes:latest
+    command: pytest docker_powsybl_cgmes_realgrid_benchmark.py --benchmark-only --benchmark-json=/output/powsybl_cgmes_realgrid_benchmark.json

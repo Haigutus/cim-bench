@@ -30,10 +30,11 @@ Latest results on AMD Ryzen AI 9 HX 370, 64GB RAM, Python 3.13.12:
 
 *pypowsybl converts some substations to voltage levels when connected by transformers, resulting in 84 fewer substations in RealGrid*
 
+> **⚠️ Query Performance Note**: Query times are not directly comparable across parsers. Some parsers (triplets) use `type_tableview()` which retrieves **all element data with parameters**, while others (RDFlib, Jena, OpenCGMES, PowSyBL CGMES) use SPARQL `COUNT()` queries that only return **element counts**. Retrieving full data is 10-100x slower but provides complete element information. Future work will standardize all parsers to retrieve full element data for fair comparison.
 
 ### Import Performance Comparison
 
-![Import Performance](results/graphs/import_comparison.svg)
+![Import Performance](docker-results/graphs/import_comparison.svg)
 <!-- ![Memory Usgae](results/graphs/memory_comparison.svg) -->
 
 *Cross-dataset comparison showing how all five parsers scale from small (7.3 MB) to large (86.5 MB) datasets*
