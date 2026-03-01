@@ -1,7 +1,7 @@
 """Triplets parser adapter for benchmarking.
 
 Triplets is a Python library for parsing CIM RDF/XML data to pandas DataFrames.
-Repository: https://github.com/Baltic-RCC/triplets
+Repository: https://github.com/Haigutus/triplets
 Documentation: https://haigutus.github.io/triplets/
 """
 
@@ -58,25 +58,34 @@ class TripletsAdapter(ParserAdapter):
         """Get all lines (ACLineSegments) in the network."""
         if loaded_obj.df is None:
             raise ValueError("No data loaded")
-        return loaded_obj.df.query("KEY == 'Type' & VALUE == 'ACLineSegment'")["ID"].nunique()
+        table = loaded_obj.df.type_tableview("ACLineSegment", string_to_number=False)
+        return len(table) if table is not None else 0
 
     def get_generators_count(self, loaded_obj):
         """Get all generators (SynchronousMachines) in the network."""
         if loaded_obj.df is None:
             raise ValueError("No data loaded")
-        return loaded_obj.df.query("KEY == 'Type' & VALUE == 'SynchronousMachine'")["ID"].nunique()
+        table = loaded_obj.df.type_tableview("SynchronousMachine", string_to_number=False)
+        return len(table) if table is not None else 0
 
     def get_loads_count(self, loaded_obj):
         """Get all loads (ConformLoad + NonConformLoad + EnergyConsumer) in the network."""
         if loaded_obj.df is None:
             raise ValueError("No data loaded")
-        conform = loaded_obj.df.query("KEY == 'Type' & VALUE == 'ConformLoad'")["ID"].nunique()
-        nonconform = loaded_obj.df.query("KEY == 'Type' & VALUE == 'NonConformLoad'")["ID"].nunique()
-        energy_consumer = loaded_obj.df.query("KEY == 'Type' & VALUE == 'EnergyConsumer'")["ID"].nunique()
+
+        conform_table = loaded_obj.df.type_tableview("ConformLoad", string_to_number=False)
+        nonconform_table = loaded_obj.df.type_tableview("NonConformLoad", string_to_number=False)
+        energy_consumer_table = loaded_obj.df.type_tableview("EnergyConsumer", string_to_number=False)
+
+        conform = len(conform_table) if conform_table is not None else 0
+        nonconform = len(nonconform_table) if nonconform_table is not None else 0
+        energy_consumer = len(energy_consumer_table) if energy_consumer_table is not None else 0
+
         return conform + nonconform + energy_consumer
 
     def get_substations_count(self, loaded_obj):
         """Get all substations in the network."""
         if loaded_obj.df is None:
             raise ValueError("No data loaded")
-        return loaded_obj.df.query("KEY == 'Type' & VALUE == 'Substation'")["ID"].nunique()
+        table = loaded_obj.df.type_tableview("Substation", string_to_number=False)
+        return len(table) if table is not None else 0
