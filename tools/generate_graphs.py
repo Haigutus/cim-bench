@@ -17,8 +17,16 @@ def load_benchmarks(results_dir):
     data = defaultdict(lambda: defaultdict(dict))
 
     for json_file in Path(results_dir).glob("*_benchmark.json"):
-        with open(json_file) as f:
-            benchmarks = json.load(f)["benchmarks"]
+        try:
+            with open(json_file) as f:
+                content = json.load(f)
+                if not content or "benchmarks" not in content:
+                    print(f"⚠️  Skipping {json_file.name}: empty or missing benchmarks")
+                    continue
+                benchmarks = content["benchmarks"]
+        except (json.JSONDecodeError, KeyError) as e:
+            print(f"⚠️  Skipping {json_file.name}: {e}")
+            continue
 
         for bench in benchmarks:
             extra = bench.get("extra_info", {})
@@ -30,7 +38,7 @@ def load_benchmarks(results_dir):
 
             if "load" in bench["name"].lower() and "get_" not in bench["name"].lower():
                 data[dataset][tool]["load"] = {
-                    "time": bench["stats"]["mean"] * 1000,
+                    "time": bench["stats"]["mean"],
                     "memory": float(extra.get("memory_mb", 0)),
                     "lines": int(extra.get("lines", 0)),
                     "generators": int(extra.get("generators", 0)),
@@ -58,11 +66,11 @@ def plot_dataset(dataset_name, tools_data, output_dir):
 
     load_times = [tools_data[t]["load"]["time"] for t in tools]
     ax1.bar(tools, load_times, color=colors)
-    ax1.set_ylabel('Load Time (ms)', fontsize=11)
+    ax1.set_ylabel('Load Time (seconds)', fontsize=11)
     ax1.set_title(f'{dataset_name} - Loading Performance', fontsize=12, fontweight='bold')
     ax1.grid(axis='y', alpha=0.3)
     for i, v in enumerate(load_times):
-        ax1.text(i, v, f'{v:.1f} ms', ha='center', va='bottom', fontsize=9)
+        ax1.text(i, v, f'{v:.3f}s', ha='center', va='bottom', fontsize=9)
 
     memory = [tools_data[t]["load"]["memory"] for t in tools]
     ax2.bar(tools, memory, color=colors)
@@ -90,11 +98,11 @@ def plot_dataset(dataset_name, tools_data, output_dir):
     fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(14, 10))
 
     ax1.bar(tools, load_times, color=colors)
-    ax1.set_ylabel('Load Time (ms)', fontsize=11)
+    ax1.set_ylabel('Load Time (seconds)', fontsize=11)
     ax1.set_title('Loading Performance', fontsize=12, fontweight='bold')
     ax1.grid(axis='y', alpha=0.3)
     for i, v in enumerate(load_times):
-        ax1.text(i, v, f'{v:.1f}', ha='center', va='bottom', fontsize=9)
+        ax1.text(i, v, f'{v:.3f}', ha='center', va='bottom', fontsize=9)
 
     ax2.bar(tools, memory, color=colors)
     ax2.set_ylabel('Memory (MB)', fontsize=11)
@@ -165,7 +173,7 @@ def plot_cross_dataset(data, output_dir):
         bar_colors = [e[2] for e in entries]
 
         bars = ax.barh(labels, values, color=bar_colors)
-        ax.set_xlabel('Import Time (ms)', fontsize=12)
+        ax.set_xlabel('Import Time (seconds)', fontsize=12)
         ax.set_title(ds_label, fontsize=12, fontweight='bold')
 
         # Auto-scale x-axis independently per dataset
@@ -176,7 +184,7 @@ def plot_cross_dataset(data, output_dir):
         ax.grid(axis='x', alpha=0.3)
 
         for i, (bar, val) in enumerate(zip(bars, values)):
-            ax.text(val, i, f' {val:.1f} ms', va='center', fontsize=10)
+            ax.text(val, i, f' {val:.3f}s', va='center', fontsize=10)
 
     fig.suptitle('Import Performance Comparison', fontsize=14, fontweight='bold', y=0.995)
     plt.tight_layout()

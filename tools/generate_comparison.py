@@ -62,10 +62,17 @@ def generate_comparison_report(json_files):
     # Load all benchmark data
     benchmark_data = []
     for json_file in json_files:
-        with open(json_file) as f:
-            data = json.load(f)
-            lib_name = get_library_name(data, json_file)
-            benchmark_data.append((lib_name, data))
+        try:
+            with open(json_file) as f:
+                data = json.load(f)
+                if not data or "benchmarks" not in data or not data["benchmarks"]:
+                    print(f"⚠️  Skipping {json_file}: empty or missing benchmarks")
+                    continue
+                lib_name = get_library_name(data, json_file)
+                benchmark_data.append((lib_name, data))
+        except (json.JSONDecodeError, KeyError, FileNotFoundError) as e:
+            print(f"⚠️  Skipping {json_file}: {e}")
+            continue
 
     # Environment (use first one)
     machine = benchmark_data[0][1]["machine_info"]
