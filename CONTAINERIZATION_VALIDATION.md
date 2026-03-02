@@ -60,21 +60,31 @@ This validates the decision to standardize on Python 3.14 for containerized benc
 
 ## Container Image Sizes
 
-| Image | Size | Notes |
-|-------|------|-------|
-| **cim-bench/base** | 239 MB | Debian bookworm-slim + uv + source files |
-| **cim-bench/triplets** | 616 MB | Base + Python 3.14 + triplets + pandas |
-| **cim-bench/rdflib** | 405 MB | Base + Python 3.14 + rdflib + oxrdflib |
-| **cim-bench/cimgraph** | 727 MB | Base + Python 3.14 + cim-graph + rdflib + oxrdflib |
-| **cim-bench/pypowsybl** | 1.05 GB | Base + Python 3.13 + pypowsybl (GraalVM native libs, **no Java needed**) |
-| **cim-bench/veragrid** | 3.85 GB | Base + Python 3.14 + VeraGrid + GridCal dependencies |
+| Image | Size | Python | Runtime | Key Dependencies | Notes |
+|-------|------|--------|---------|------------------|-------|
+| **cim-bench/base** | 239 MB | - | - | uv, source files | Shared base: Debian bookworm-slim |
+| **cim-bench/rdflib** | 405 MB | 3.14 | Python | rdflib, oxrdflib | Smallest Python tool |
+| **cim-bench/opencgmes** | 574 MB | 3.13 | Java 17 | OpenCGMES, Jena | Custom CIM XML parser |
+| **cim-bench/powsybl-cgmes** | 605 MB | 3.13 | Java 17 | PowSyBL CGMES, RDF4J | CGMES triplestore |
+| **cim-bench/triplets** | 616 MB | 3.14 | Python | triplets, pandas | Fast DataFrame-based |
+| **cim-bench/jena** | 636 MB | 3.13 | Java 17 | Apache Jena | Pure Jena RDF |
+| **cim-bench/cimgraph** | 727 MB | 3.14 | Python | cim-graph, rdflib, oxrdflib | Typed CIM objects |
+| **cim-bench/pypowsybl** | 1.05 GB | 3.13 | Python | pypowsybl (GraalVM native libs) | **No Java runtime needed** |
+| **cim-bench/veragrid** | 3.85 GB | 3.14 | Python | VeraGrid, GridCal | Largest: extensive sci deps |
 
-**Total disk space**: ~7.28 GB (base shared across all tools)
+**Total disk space**: ~8.7 GB (239 MB base shared across all 8 tools)
+
+**Image breakdown by type:**
+- **Python-only (4)**: rdflib, triplets, cimgraph, veragrid - 405 MB to 3.85 GB
+- **Python + Java (3)**: jena, opencgmes, powsybl-cgmes - 574 MB to 636 MB
+- **Python + Native (1)**: pypowsybl - 1.05 GB (GraalVM libs, no JVM)
 
 **Key observations:**
-- pypowsybl does not require Java runtime (uses GraalVM native libraries)
-- veragrid is largest due to GridCal's extensive scientific computing dependencies
-- Base image is shared, reducing incremental per-tool cost
+- Base image (239 MB) is shared, reducing incremental cost per tool
+- Java-based tools are mid-sized (574-636 MB) - JDK 17 adds ~400 MB
+- pypowsybl uses GraalVM native libraries (no Java runtime required)
+- veragrid is largest due to GridCal's extensive scientific computing stack
+- Python 3.14 tools benefit from performance improvements (see rdflib results)
 
 ## Validation Criteria
 
@@ -122,6 +132,6 @@ The containerization implementation successfully meets all goals while demonstra
 ---
 
 *Generated: 2026-02-27*
-*Updated: 2026-02-27 (added all 5 tools, pypowsybl Java removal)*
-*Tools: triplets, rdflib, pypowsybl, cimgraph, veragrid*
+*Updated: 2026-03-02 (added all 8 tools + Java tools)*
+*Tools: triplets, rdflib, pypowsybl, cimgraph, veragrid, jena, opencgmes, powsybl-cgmes*
 *Platform: Podman 5.7.1 on Fedora 43*

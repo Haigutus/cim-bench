@@ -13,18 +13,18 @@
 
 ### Rdflib Load Realgrid
 
-- **Mean time**: 17.23 s
-- **Min time**: 16.80 s
-- **Max time**: 17.82 s
-- **Std dev**: 430.8 ms
+- **Mean time**: 19.13 s
+- **Min time**: 18.71 s
+- **Max time**: 19.64 s
+- **Std dev**: 397.5 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 854.3
-- Triples: 892139
+- Memory Mb: 1095.7
+- Triples: 1146183
 - Lines: 7561
-- Generators: 1347
-- Loads: 6687
+- Generators: 2694
+- Loads: 13374
 - Substations: 4875
 - Dataset Size Mb: 86.5
 - Library: rdflib
@@ -34,11 +34,11 @@
 
 ### Rdflib Get Lines
 
-- **Mean time**: 1.7 ms
-- **Min time**: 1.3 ms
-- **Max time**: 8.4 ms
-- **Std dev**: 1.1 ms
-- **Rounds**: 210
+- **Mean time**: 1.1 ms
+- **Min time**: 1.1 ms
+- **Max time**: 2.6 ms
+- **Std dev**: 126.1 μs
+- **Rounds**: 412
 
 **Metrics**:
 - Line Count: 7561
@@ -50,14 +50,14 @@
 
 ### Rdflib Get Generators
 
-- **Mean time**: 285.6 μs
-- **Min time**: 264.1 μs
-- **Max time**: 555.2 μs
-- **Std dev**: 14.5 μs
-- **Rounds**: 1349
+- **Mean time**: 416.8 μs
+- **Min time**: 404.1 μs
+- **Max time**: 597.7 μs
+- **Std dev**: 20.3 μs
+- **Rounds**: 921
 
 **Metrics**:
-- Generator Count: 1347
+- Generator Count: 2694
 - Query Type: get_generators
 - Library: rdflib
 - Dataset: realgrid
@@ -66,14 +66,14 @@
 
 ### Rdflib Get Loads
 
-- **Mean time**: 1.4 ms
-- **Min time**: 1.2 ms
-- **Max time**: 2.2 ms
-- **Std dev**: 168.2 μs
-- **Rounds**: 339
+- **Mean time**: 2.0 ms
+- **Min time**: 1.9 ms
+- **Max time**: 3.1 ms
+- **Std dev**: 174.1 μs
+- **Rounds**: 294
 
 **Metrics**:
-- Load Count: 6687
+- Load Count: 13374
 - Query Type: get_loads
 - Library: rdflib
 - Dataset: realgrid
@@ -82,11 +82,11 @@
 
 ### Rdflib Get Substations
 
-- **Mean time**: 928.3 μs
-- **Min time**: 836.2 μs
-- **Max time**: 3.5 ms
-- **Std dev**: 193.8 μs
-- **Rounds**: 631
+- **Mean time**: 748.8 μs
+- **Min time**: 683.8 μs
+- **Max time**: 1.8 ms
+- **Std dev**: 143.2 μs
+- **Rounds**: 891
 
 **Metrics**:
 - Substation Count: 4875

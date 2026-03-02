@@ -13,14 +13,14 @@
 
 ### Veragrid Load Svedala
 
-- **Mean time**: 840.0 ms
-- **Min time**: 571.1 ms
-- **Max time**: 1.53 s
-- **Std dev**: 397.9 ms
+- **Mean time**: 921.0 ms
+- **Min time**: 646.6 ms
+- **Max time**: 1.15 s
+- **Std dev**: 247.5 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 656.9
+- Memory Mb: 664.7
 - Lines: 97
 - Generators: 39
 - Loads: 73
@@ -34,11 +34,11 @@
 
 ### Veragrid Get Lines
 
-- **Mean time**: 0.1 μs
+- **Mean time**: 0.0 μs
 - **Min time**: 0.0 μs
-- **Max time**: 1.1 μs
+- **Max time**: 0.8 μs
 - **Std dev**: 0.0 μs
-- **Rounds**: 196118
+- **Rounds**: 112778
 
 **Metrics**:
 - Line Count: 97
@@ -51,10 +51,10 @@
 ### Veragrid Get Generators
 
 - **Mean time**: 0.1 μs
-- **Min time**: 0.1 μs
-- **Max time**: 0.4 μs
+- **Min time**: 0.0 μs
+- **Max time**: 0.6 μs
 - **Std dev**: 0.0 μs
-- **Rounds**: 84876
+- **Rounds**: 90417
 
 **Metrics**:
 - Generator Count: 39
@@ -68,9 +68,9 @@
 
 - **Mean time**: 0.1 μs
 - **Min time**: 0.1 μs
-- **Max time**: 10.0 μs
+- **Max time**: 9.1 μs
 - **Std dev**: 0.1 μs
-- **Rounds**: 164420
+- **Rounds**: 199602
 
 **Metrics**:
 - Load Count: 73
@@ -83,10 +83,10 @@
 ### Veragrid Get Substations
 
 - **Mean time**: 0.1 μs
-- **Min time**: 0.1 μs
-- **Max time**: 1.0 μs
+- **Min time**: 0.0 μs
+- **Max time**: 0.8 μs
 - **Std dev**: 0.0 μs
-- **Rounds**: 84732
+- **Rounds**: 198021
 
 **Metrics**:
 - Substation Count: 56

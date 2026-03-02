@@ -13,18 +13,18 @@
 
 ### Cimgraph Load Svedala
 
-- **Mean time**: 514.3 ms
-- **Min time**: 453.3 ms
-- **Max time**: 552.8 ms
-- **Std dev**: 42.1 ms
+- **Mean time**: 1.34 s
+- **Min time**: 1.21 s
+- **Max time**: 1.58 s
+- **Std dev**: 151.3 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 94.7
-- Triples: 51893
+- Memory Mb: 249.3
+- Triples: 66724
 - Lines: 97
 - Generators: 39
-- Loads: 0
+- Loads: 73
 - Substations: 56
 - Total Size Mb: 7.3
 - Library: cimgraph
@@ -36,9 +36,9 @@
 
 - **Mean time**: 0.1 μs
 - **Min time**: 0.1 μs
-- **Max time**: 0.7 μs
+- **Max time**: 0.4 μs
 - **Std dev**: 0.0 μs
-- **Rounds**: 84589
+- **Rounds**: 87627
 
 **Metrics**:
 - Line Count: 97
@@ -52,9 +52,9 @@
 
 - **Mean time**: 0.1 μs
 - **Min time**: 0.1 μs
-- **Max time**: 7.5 μs
+- **Max time**: 0.5 μs
 - **Std dev**: 0.0 μs
-- **Rounds**: 170039
+- **Rounds**: 85529
 
 **Metrics**:
 - Generator Count: 39
@@ -67,10 +67,10 @@
 ### Cimgraph Get Loads
 
 - **Mean time**: 0.2 μs
-- **Min time**: 0.1 μs
-- **Max time**: 8.5 μs
+- **Min time**: 0.2 μs
+- **Max time**: 20.1 μs
 - **Std dev**: 0.1 μs
-- **Rounds**: 81613
+- **Rounds**: 156691
 
 **Metrics**:
 - Load Count: 73
@@ -84,9 +84,9 @@
 
 - **Mean time**: 0.1 μs
 - **Min time**: 0.1 μs
-- **Max time**: 3.5 μs
+- **Max time**: 0.6 μs
 - **Std dev**: 0.0 μs
-- **Rounds**: 87093
+- **Rounds**: 83383
 
 **Metrics**:
 - Substation Count: 56

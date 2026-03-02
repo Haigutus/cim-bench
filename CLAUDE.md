@@ -165,6 +165,10 @@ tool-configs/
 # Run all benchmarks in parallel
 ./docker/run_benchmark.sh --parallel
 
+# Run single tool-dataset combination (for debugging or testing new adapters)
+./docker/run_single.sh triplets svedala
+./docker/run_single.sh jena realgrid
+
 # Using podman-compose directly
 podman-compose -f docker/docker-compose.yml up         # Parallel
 podman-compose -f docker/docker-compose.yml run --rm triplets-svedala  # Single
@@ -186,8 +190,10 @@ podman build -f docker/tools/triplets.dockerfile -t cim-bench/triplets:latest .
 2. Create `tool-configs/{tool}/pyproject.toml` with dependencies
 3. Create `docker/tools/{tool}.dockerfile`
 4. Add service to `docker/docker-compose.yml`
-5. Run `./docker/setup.sh` (automatically discovers and builds new tool)
-6. Run `./docker/run_benchmark.sh`
+5. Test with single tool: `./docker/run_single.sh {tool} svedala` (faster iteration)
+6. Once working, run all benchmarks: `./docker/run_benchmark.sh`
+
+**For debugging:** Use `./docker/run_single.sh {tool} {dataset}` to quickly test a specific tool-dataset combination without running the entire benchmark suite.
 
 ### Container Image Sizes
 
@@ -252,6 +258,87 @@ class CimpyAdapter(ParserAdapter):
 
     # Implement other required methods...
 ```
+
+#### Adapter Implementation Guidelines
+
+**CRITICAL: Always load ALL dataset files**
+- Load every file in the dataset, not just selected profiles
+- Benchmarks measure real-world loading performance, which includes all CGMES profiles
+- If the tool doesn't support merging multiple files into a single graph:
+  - Load each file into separate graphs/models
+  - Store all loaded graphs (e.g., in a dict: `self.models = {}`)
+  - Select the largest profile (usually EQ - Equipment) for queries
+
+**Clean file loading pattern:**
+```python
+from pathlib import Path
+import zipfile
+import tempfile
+
+def load(self, dataset_key: str):
+    """Load CIM dataset."""
+    dataset = DATASETS[dataset_key]
+
+    # Determine files to load
+    files = (v for k, v in dataset.items() if "_metadata" not in k.lower())
+
+    # Extract ZIP if needed (only for setting up files variable)
+    if "ZIP" in dataset:
+        temp_dir = tempfile.TemporaryDirectory()
+        tmp = temp_dir.name
+        zipfile.ZipFile(dataset["ZIP"]).extractall(tmp)
+        files = Path(tmp).rglob("*.xml")
+
+    # Load all files (same logic for ZIP and non-ZIP)
+    for f in files:
+        self.graph.parse(f, format="xml")
+
+    # Cleanup if ZIP was used
+    if "ZIP" in dataset:
+        temp_dir.cleanup()
+
+    return self
+```
+
+**For tools that can't merge files into single graph:**
+```python
+def load(self, dataset_key: str):
+    """Load CIM dataset - separate graph per file."""
+    dataset = DATASETS[dataset_key]
+    self.models = {}
+
+    # Determine files to load (keep profile names)
+    files = [(k, Path(v)) for k, v in dataset.items() if "_metadata" not in k.lower()]
+
+    # Extract ZIP if needed
+    if "ZIP" in dataset:
+        temp_dir = tempfile.TemporaryDirectory()
+        tmp = temp_dir.name
+        zipfile.ZipFile(dataset["ZIP"]).extractall(tmp)
+        files = [(f.stem, f) for f in Path(tmp).rglob("*.xml")]
+
+    # Load all files into separate models
+    for profile, path in files:
+        self.models[profile] = self.parse_file(path)
+
+    # Select EQ profile for queries (largest, most complete)
+    eq_key = next((k for k in self.models.keys() if "EQ" in k), None)
+    self.model = self.models[eq_key] if eq_key else list(self.models.values())[0]
+
+    # Cleanup if ZIP was used
+    if "ZIP" in dataset:
+        temp_dir.cleanup()
+
+    return self
+```
+
+**Key patterns:**
+- Use `pathlib.Path` for all file operations
+- Use generator expressions `(x for x in ...)` for memory efficiency
+- Use `.rglob("*.xml")` to recursively find XML files
+- Use `if "ZIP" in dataset:` ONLY for: (1) extracting files, (2) cleanup
+- Keep loading logic outside if/else - same code path for both cases
+- Manual cleanup with `temp_dir.cleanup()` (not context manager `with`)
 
 ### 2. Create benchmark files in `benchmarks/`
 
