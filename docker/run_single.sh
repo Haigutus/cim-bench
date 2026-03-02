@@ -9,7 +9,9 @@ if [ $# -ne 2 ]; then
     echo "Usage: $0 <tool> <dataset>"
     echo "Example: $0 triplets svedala"
     echo ""
-    echo "Available tools: triplets, pypowsybl, veragrid, cimgraph, rdflib, jena, opencgmes, powsybl-cgmes"
+    echo "Available tools:"
+    ls docker/tools/*.dockerfile 2>/dev/null | sed 's|docker/tools/||' | sed 's|.dockerfile||' | sed 's/^/  - /'
+    echo ""
     echo "Available datasets: svedala, realgrid"
     exit 1
 fi
@@ -48,8 +50,27 @@ echo "Building $TOOL image..."
 podman build -f "$TOOL_DOCKERFILE" -t "cim-bench/${TOOL}:latest" .
 
 # Run benchmark
-BENCHMARK_FILE="${TOOL}_${DATASET}_benchmark.py"
-OUTPUT_FILE="results-docker/${TOOL}_${DATASET}_benchmark.json"
+# Replace hyphens with underscores in tool name for file paths
+TOOL_UNDERSCORE=$(echo "$TOOL" | tr '-' '_')
+
+# Auto-detect benchmark file naming convention
+# Some tools use docker_* prefix, others don't - check which exists
+BENCHMARK_FILE="${TOOL_UNDERSCORE}_${DATASET}_benchmark.py"
+DOCKER_BENCHMARK_FILE="docker_${TOOL_UNDERSCORE}_${DATASET}_benchmark.py"
+
+if [ -f "benchmarks/$DOCKER_BENCHMARK_FILE" ]; then
+    BENCHMARK_FILE="$DOCKER_BENCHMARK_FILE"
+elif [ -f "benchmarks/$BENCHMARK_FILE" ]; then
+    BENCHMARK_FILE="$BENCHMARK_FILE"
+else
+    echo "Error: No benchmark file found for $TOOL / $DATASET"
+    echo "Tried:"
+    echo "  - benchmarks/$BENCHMARK_FILE"
+    echo "  - benchmarks/$DOCKER_BENCHMARK_FILE"
+    exit 1
+fi
+
+OUTPUT_FILE="results-docker/${TOOL_UNDERSCORE}_${DATASET}_benchmark.json"
 
 echo ""
 echo "Running benchmark: $BENCHMARK_FILE"
