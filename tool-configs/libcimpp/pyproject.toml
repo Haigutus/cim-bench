@@ -1,0 +1,10 @@
+[project]
+name = "cim-bench-libcimpp"
+version = "0.1.0"
+requires-python = "==3.14.*"
+dependencies = [
+    "pybind11>=2.13.0",
+    "pytest>=7.0.0",
+    "pytest-benchmark>=4.0.0",
+    "psutil>=5.9.0"
+]
