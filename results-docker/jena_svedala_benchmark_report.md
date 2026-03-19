@@ -7,20 +7,20 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.13.12
-- **System**: Linux 6.18.10-200.fc43.x86_64
+- **System**: Linux 6.19.8-200.fc43.x86_64
 
 ## Results
 
 ### Jena Load Svedala
 
-- **Mean time**: 132.0 ms
-- **Min time**: 126.9 ms
-- **Max time**: 141.7 ms
-- **Std dev**: 5.7 ms
+- **Mean time**: 147.6 ms
+- **Min time**: 136.6 ms
+- **Max time**: 162.7 ms
+- **Std dev**: 12.1 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 721.1
+- Memory Mb: 768.4
 - Triples: 47710
 - Lines: 97
 - Generators: 39
@@ -34,11 +34,11 @@
 
 ### Jena Get Lines
 
-- **Mean time**: 339.6 μs
-- **Min time**: 175.6 μs
-- **Max time**: 1.5 ms
-- **Std dev**: 166.0 μs
-- **Rounds**: 553
+- **Mean time**: 306.6 μs
+- **Min time**: 144.3 μs
+- **Max time**: 3.4 ms
+- **Std dev**: 195.8 μs
+- **Rounds**: 740
 
 **Metrics**:
 - Line Count: 97
@@ -50,11 +50,11 @@
 
 ### Jena Get Generators
 
-- **Mean time**: 112.6 μs
-- **Min time**: 71.5 μs
-- **Max time**: 963.4 μs
-- **Std dev**: 55.9 μs
-- **Rounds**: 2783
+- **Mean time**: 94.7 μs
+- **Min time**: 64.2 μs
+- **Max time**: 18.6 ms
+- **Std dev**: 294.7 μs
+- **Rounds**: 4063
 
 **Metrics**:
 - Generator Count: 39
@@ -66,11 +66,11 @@
 
 ### Jena Get Loads
 
-- **Mean time**: 365.6 μs
-- **Min time**: 196.1 μs
-- **Max time**: 64.8 ms
-- **Std dev**: 2.0 ms
-- **Rounds**: 1643
+- **Mean time**: 264.0 μs
+- **Min time**: 151.3 μs
+- **Max time**: 73.8 ms
+- **Std dev**: 1.6 ms
+- **Rounds**: 2099
 
 **Metrics**:
 - Load Count: 73
@@ -82,11 +82,11 @@
 
 ### Jena Get Substations
 
-- **Mean time**: 138.5 μs
-- **Min time**: 49.8 μs
-- **Max time**: 155.1 ms
-- **Std dev**: 2.8 ms
-- **Rounds**: 3553
+- **Mean time**: 93.6 μs
+- **Min time**: 53.5 μs
+- **Max time**: 23.3 ms
+- **Std dev**: 363.9 μs
+- **Rounds**: 4558
 
 **Metrics**:
 - Substation Count: 56

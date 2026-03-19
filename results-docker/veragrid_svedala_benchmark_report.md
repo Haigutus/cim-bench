@@ -7,20 +7,20 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.14.3
-- **System**: Linux 6.18.10-200.fc43.x86_64
+- **System**: Linux 6.19.8-200.fc43.x86_64
 
 ## Results
 
 ### Veragrid Load Svedala
 
-- **Mean time**: 921.0 ms
-- **Min time**: 646.6 ms
-- **Max time**: 1.15 s
-- **Std dev**: 247.5 ms
+- **Mean time**: 480.7 ms
+- **Min time**: 432.1 ms
+- **Max time**: 539.9 ms
+- **Std dev**: 44.6 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 664.7
+- Memory Mb: 450.1
 - Lines: 97
 - Generators: 39
 - Loads: 73
@@ -34,11 +34,11 @@
 
 ### Veragrid Get Lines
 
-- **Mean time**: 0.0 μs
+- **Mean time**: 0.1 μs
 - **Min time**: 0.0 μs
-- **Max time**: 0.8 μs
+- **Max time**: 0.4 μs
 - **Std dev**: 0.0 μs
-- **Rounds**: 112778
+- **Rounds**: 101021
 
 **Metrics**:
 - Line Count: 97
@@ -51,10 +51,10 @@
 ### Veragrid Get Generators
 
 - **Mean time**: 0.1 μs
-- **Min time**: 0.0 μs
-- **Max time**: 0.6 μs
-- **Std dev**: 0.0 μs
-- **Rounds**: 90417
+- **Min time**: 0.1 μs
+- **Max time**: 10.5 μs
+- **Std dev**: 0.1 μs
+- **Rounds**: 87101
 
 **Metrics**:
 - Generator Count: 39
@@ -68,9 +68,9 @@
 
 - **Mean time**: 0.1 μs
 - **Min time**: 0.1 μs
-- **Max time**: 9.1 μs
-- **Std dev**: 0.1 μs
-- **Rounds**: 199602
+- **Max time**: 0.5 μs
+- **Std dev**: 0.0 μs
+- **Rounds**: 55082
 
 **Metrics**:
 - Load Count: 73
@@ -86,7 +86,7 @@
 - **Min time**: 0.0 μs
 - **Max time**: 0.8 μs
 - **Std dev**: 0.0 μs
-- **Rounds**: 198021
+- **Rounds**: 86498
 
 **Metrics**:
 - Substation Count: 56

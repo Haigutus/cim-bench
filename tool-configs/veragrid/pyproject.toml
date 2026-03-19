@@ -3,5 +3,5 @@ name = "cim-bench-veragrid"
 version = "0.1.0"
 requires-python = "==3.14.*"
 dependencies = [
-    "VeraGrid>=5.6.28"
+    "VeraGrid>=5.6.38"
 ]

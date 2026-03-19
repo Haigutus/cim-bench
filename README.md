@@ -14,28 +14,28 @@ Latest containerized results on AMD Ryzen AI 9 HX 370 (24 cores), 64GB RAM, Podm
 
 | Library | Version | Load Time | Memory | Query Speed | Elements |
 |---------|---------|-----------|--------|-------------|----------|
-| **OpenCGMES** | latest (Jan 2025) | 90 ms | 413 MB | 137-456 μs | 97 lines, 39 gen, 73 loads, 56 subs |
-| **Apache Jena** | 5.2.0 | 132 ms | 721 MB | 113-366 μs | 97 lines, 39 gen, 73 loads, 56 subs |
+| **OpenCGMES** | latest (Jan 2025) | 99.6 ms | 427 MB | 129-537 μs | 97 lines, 39 gen, 73 loads, 56 subs |
 | **triplets** | 0.0.17 | 132 ms | 43 MB | 25-55 ms | 97 lines, 39 gen, 73 loads, 57 subs |
-| **maplib** | 0.19.14 | 220 ms | 185 MB | 315-817 μs | 97 lines, 39 gen, 73 loads, 57 subs |
+| **Apache Jena** | 5.2.0 (jpype1 1.6.0) | 147.6 ms | 768 MB | 94-307 μs | 97 lines, 39 gen, 73 loads, 56 subs |
 | **PowSyBL CGMES** | 2025.3.1 | 270 ms | 679 MB | 62-159 μs | 97 lines, 39 gen, 73 loads, 57 subs |
+| **maplib** | 0.19.24 | 324.9 ms | 176 MB | 362 μs-1.1 ms | 97 lines, 39 gen, 73 loads, 57 subs |
 | **pypowsybl** | 1.14.0 | 476 ms | 1,160 MB | 133-300 μs | 97 lines, 39 gen, 73 loads, 57 subs |
+| **VeraGrid** | 5.6.38 | 480.7 ms | 450 MB | 0.05-0.1 μs | 97 lines, 39 gen, 73 loads, 56 subs |
 | **CIM-Graph** | 0.4.3a10 | 912 ms | 191 MB | 0.07-0.2 μs | 97 lines, 39 gen, 73 loads, 56 subs |
-| **VeraGrid** | 5.6.28+ | 921 ms | 665 MB | 0.05-0.1 μs | 97 lines, 39 gen, 73 loads, 56 subs |
 | **RDFlib** | 7.6.0 | 1.59 s | 285 MB | 48-138 μs | 97 lines, 78 gen, 146 loads, 57 subs |
 
 **Large Dataset (RealGrid - 86.5 MB, CGMES 2.4.15):**
 
 | Library | Version | Load Time | Memory | Query Speed | Elements |
 |---------|---------|-----------|--------|-------------|----------|
-| **OpenCGMES** | latest (Jan 2025) | 1.06 s | 4,921 MB | 325 μs-1.9 ms | 7561 lines, 1347 gen, 6687 loads, 4875 subs |
+| **OpenCGMES** | latest (Jan 2025) | 1.24 s | 5,527 MB | 249 μs-2.5 ms | 7561 lines, 1347 gen, 6687 loads, 4875 subs |
 | **triplets** | 0.0.17 | 1.45 s | 594 MB | 263-655 ms | 7561 lines, 1347 gen, 6687 loads, 4875 subs |
-| **Apache Jena** | 5.2.0 | 1.57 s | 3,928 MB | 382 μs-1.9 ms | 7561 lines, 1347 gen, 6687 loads, 4875 subs |
-| **maplib** | 0.19.14 | 1.84 s | 644 MB | 499 μs-1.3 ms | 7561 lines, 1347 gen, 6687 loads, 4875 subs |
+| **Apache Jena** | 5.2.0 (jpype1 1.6.0) | 1.77 s | 3,938 MB | 359 μs-1.7 ms | 7561 lines, 1347 gen, 6687 loads, 4875 subs |
 | **PowSyBL CGMES** | 2025.3.1 | 1.85 s | 4,224 MB | 221 μs-1.2 ms | 7561 lines, 1347 gen, 6687 loads, 4875 subs |
+| **maplib** | 0.19.24 | 2.43 s | 517 MB | 493 μs-1.3 ms | 7561 lines, 1347 gen, 6687 loads, 4875 subs |
 | **pypowsybl** | 1.14.0 | 4.61 s | 4,497 MB | 2.8-33 ms | 7561 lines, 1347 gen, 6687 loads, 4791* subs |
+| **VeraGrid** | 5.6.38 | 6.85 s | 1,315 MB | 0.05-0.2 μs | 7561 lines, 1347 gen, 6687 loads, 4875 subs |
 | **CIM-Graph** | 0.4.3a10 | 12.98 s | 3,254 MB | 0.08-0.2 μs | 7561 lines, 1347 gen, 6687 loads, 4875 subs |
-| **VeraGrid** | 5.6.28+ | 13.40 s | 2,914 MB | 0.04-0.1 μs | 7561 lines, 1347 gen, 6687 loads, 4875 subs |
 | **RDFlib** | 7.6.0 | 19.13 s | 1,520 MB | 420 μs-2.1 ms | 7561 lines, 2694 gen, 13374 loads, 4875 subs |
 | **libcimpp** | 2.2.0 | 23.41 s | 135 MB | 9.4-21.3 ms | 7561 lines, 1347 gen, 6687 loads, 4875 subs |
 
@@ -55,20 +55,20 @@ Latest containerized results on AMD Ryzen AI 9 HX 370 (24 cores), 64GB RAM, Podm
 ### Detailed Results: Svedala IGM Dataset (7.3 MB, CGMES 3.0)
 
 #### OpenCGMES - Java CGMES Parser
-- **Load Time**: 90 ms
-- **Memory**: 413 MB
-- **Backend**: Apache Jena with CGMES optimizations
+- **Load Time**: 99.6 ms
+- **Memory**: 427 MB
+- **Backend**: Apache Jena with CGMES optimizations (jpype1 1.6.0)
 - **Network Elements**: 97 lines, 39 generators, 73 loads, 56 substations
-- **Query Performance**: 137-456 μs (SPARQL on Jena)
-- **Strengths**: Fastest loading, CGMES-specific optimizations, UUID normalization
+- **Query Performance**: 129-537 μs (SPARQL on Jena)
+- **Strengths**: Fast loading, CGMES-specific optimizations, UUID normalization
 - **Use Case**: Large file parsing, CGMES validation, production systems
 
 #### Apache Jena - Pure RDF Framework
-- **Load Time**: 132 ms
-- **Memory**: 721 MB
-- **Backend**: In-memory RDF triples
+- **Load Time**: 147.6 ms
+- **Memory**: 768 MB
+- **Backend**: In-memory RDF triples (jpype1 1.6.0)
 - **Network Elements**: 97 lines, 39 generators, 73 loads, 56 subs
-- **Query Performance**: 113-366 μs (SPARQL queries)
+- **Query Performance**: 94-307 μs (SPARQL queries)
 - **Strengths**: Generic RDF, flexible SPARQL, lenient UUID handling
 - **Use Case**: RDF processing, semantic web applications, generic CIM/RDF
 
@@ -108,10 +108,19 @@ Latest containerized results on AMD Ryzen AI 9 HX 370 (24 cores), 64GB RAM, Podm
 - **Strengths**: Sub-microsecond queries, modern typed API, CIM object model
 - **Use Case**: Research, development, CIM data exploration
 
+#### maplib - Rust-backed RDF Library
+- **Load Time**: 324.9 ms
+- **Memory**: 176 MB
+- **Backend**: Oxigraph (Rust) + Polars DataFrames (v0.19.24)
+- **Network Elements**: 97 lines, 39 generators, 73 loads, 57 substations
+- **Query Performance**: 362 μs-1.1 ms (SPARQL with Polars output)
+- **Strengths**: Rust performance, sub-millisecond queries, returns DataFrames
+- **Use Case**: High-performance RDF processing, data analysis pipelines
+
 #### VeraGrid - GridCal CGMES Parser
-- **Load Time**: 921 ms
-- **Memory**: 665 MB
-- **Backend**: Custom CGMES parser
+- **Load Time**: 480.7 ms
+- **Memory**: 450 MB
+- **Backend**: Custom CGMES parser (v5.6.38)
 - **Network Elements**: 97 lines, 39 generators, 73 loads, 56 substations
 - **Query Performance**: 0.05-0.1 μs (O(1) list access) (fastest queries!)
 - **Strengths**: Fastest queries, direct CGMES object access
@@ -126,28 +135,19 @@ Latest containerized results on AMD Ryzen AI 9 HX 370 (24 cores), 64GB RAM, Podm
 - **Strengths**: Standard RDF library, flexible SPARQL, Python 3.14 optimized
 - **Use Case**: RDF/SPARQL queries, semantic web applications
 
-#### maplib - Rust-backed RDF Library
-- **Load Time**: 220 ms
-- **Memory**: 185 MB
-- **Backend**: Oxigraph (Rust) + Polars DataFrames
-- **Network Elements**: 97 lines, 39 generators, 73 loads, 57 substations
-- **Query Performance**: 315-817 μs (SPARQL with Polars output)
-- **Strengths**: Rust performance, sub-millisecond queries, returns DataFrames
-- **Use Case**: High-performance RDF processing, data analysis pipelines
-
 ### Detailed Results: RealGrid Dataset (86.5 MB, CGMES 2.4.15)
 
 #### OpenCGMES - Java CGMES Parser
-- **Load Time**: 1.06 s (fastest!)
-- **Memory**: 4,921 MB
-- **Backend**: Apache Jena with CGMES optimizations
+- **Load Time**: 1.24 s
+- **Memory**: 5,527 MB
+- **Backend**: Apache Jena with CGMES optimizations (jpype1 1.6.0)
 - **Network Elements**: 7561 lines, 1347 generators, 6687 loads, 4875 substations
-- **Query Performance**: 325 μs-1.9 ms (SPARQL on Jena)
-- **Strengths**: Fastest large file loading, CGMES-specific, UUID normalization
+- **Query Performance**: 249 μs-2.5 ms (SPARQL on Jena)
+- **Strengths**: Fast large file loading, CGMES-specific, UUID normalization
 - **Use Case**: Production systems, large TSO networks, CGMES validation
 
 #### triplets - RDF/Pandas Parser
-- **Load Time**: 1.45 s
+- **Load Time**: 1.45 s (fastest!)
 - **Memory**: 594 MB (smallest!)
 - **Backend**: pandas DataFrames + lxml
 - **Network Elements**: 7561 lines, 1347 generators, 6687 loads, 4875 substations
@@ -156,11 +156,11 @@ Latest containerized results on AMD Ryzen AI 9 HX 370 (24 cores), 64GB RAM, Podm
 - **Use Case**: Large-scale data processing, European grid analysis
 
 #### Apache Jena - Pure RDF Framework
-- **Load Time**: 1.57 s
-- **Memory**: 3,928 MB
-- **Backend**: In-memory RDF triples
+- **Load Time**: 1.77 s
+- **Memory**: 3,938 MB
+- **Backend**: In-memory RDF triples (jpype1 1.6.0)
 - **Network Elements**: 7561 lines, 1347 generators, 6687 loads, 4875 substations
-- **Query Performance**: 382 μs-1.9 ms (SPARQL queries)
+- **Query Performance**: 359 μs-1.7 ms (SPARQL queries)
 - **Strengths**: Generic RDF, flexible, lenient UUID handling
 - **Use Case**: RDF processing, generic CIM/RDF applications
 
@@ -183,23 +183,32 @@ Latest containerized results on AMD Ryzen AI 9 HX 370 (24 cores), 64GB RAM, Podm
 - **Use Case**: Power flow analysis, large TSO networks
 - **Note**: *Converts some substations to voltage levels (84 fewer)
 
+#### maplib - Rust-backed RDF Library
+- **Load Time**: 2.43 s
+- **Memory**: 517 MB
+- **Backend**: Oxigraph (Rust) + Polars DataFrames (v0.19.24)
+- **Network Elements**: 7561 lines, 1347 generators, 6687 loads, 4875 substations
+- **Query Performance**: 493 μs-1.3 ms (SPARQL with Polars output)
+- **Strengths**: Excellent Rust-backed performance, DataFrames output
+- **Use Case**: Large-scale RDF processing, high-performance data pipelines
+
+#### VeraGrid - GridCal CGMES Parser
+- **Load Time**: 6.85 s
+- **Memory**: 1,315 MB
+- **Backend**: Custom CGMES parser (v5.6.38)
+- **Network Elements**: 7561 lines, 1347 generators, 6687 loads, 4875 substations
+- **Query Performance**: 0.05-0.2 μs (O(1) list access) (fastest queries!)
+- **Strengths**: Fastest queries, direct CGMES object access, improved load performance
+- **Use Case**: GridCal integration, query-intensive workflows
+
 #### CIM-Graph - Typed Knowledge Graph
 - **Load Time**: 12.98 s
 - **Memory**: 3,254 MB
 - **Backend**: Oxigraph + typed CIM objects
 - **Network Elements**: 7561 lines, 1347 generators, 6687 loads, 4875 substations
-- **Query Performance**: 0.08-0.2 μs (fastest queries!)
+- **Query Performance**: 0.08-0.2 μs
 - **Strengths**: Sub-microsecond queries, modern typed API
 - **Use Case**: Research, rapid queries on loaded data
-
-#### VeraGrid - GridCal CGMES Parser
-- **Load Time**: 13.40 s
-- **Memory**: 2,914 MB
-- **Backend**: Custom CGMES parser
-- **Network Elements**: 7561 lines, 1347 generators, 6687 loads, 4875 substations
-- **Query Performance**: 0.04-0.1 μs (O(1) list access)
-- **Strengths**: Fastest queries, direct CGMES object access
-- **Use Case**: GridCal integration, query-intensive workflows
 
 #### RDFlib - Generic RDF Parser
 - **Load Time**: 19.13 s
@@ -209,15 +218,6 @@ Latest containerized results on AMD Ryzen AI 9 HX 370 (24 cores), 64GB RAM, Podm
 - **Query Performance**: 420 μs-2.1 ms (SPARQL on Oxigraph)
 - **Strengths**: Standard RDF, flexible SPARQL, Python 3.14 optimized
 - **Use Case**: RDF/SPARQL queries, semantic web applications
-
-#### maplib - Rust-backed RDF Library
-- **Load Time**: 1.84 s
-- **Memory**: 644 MB
-- **Backend**: Oxigraph (Rust) + Polars DataFrames
-- **Network Elements**: 7561 lines, 1347 generators, 6687 loads, 4875 substations
-- **Query Performance**: 499 μs-1.3 ms (SPARQL with Polars output)
-- **Strengths**: Excellent Rust-backed performance, competitive load times, DataFrames
-- **Use Case**: Large-scale RDF processing, high-performance data pipelines
 
 #### libcimpp - C++ Object Model
 - **Load Time**: 23.41 s
@@ -240,13 +240,13 @@ See `tools/*/README.md` for detailed per-tool documentation and analysis.
 |--------|----------------|---------|----------|-------------------------|------------------------|---------------------|-----------------|-------|
 | ✅ | **triplets** | 0.0.17 | Python | Pandas-based RDF parser | pandas DataFrames + lxml | Version-agnostic CIM/CGMES | [triplets](https://github.com/Haigutus/triplets) | Fast loading, low memory, simple API |
 | ✅ | **pypowsybl** | 1.14.0 | Python | PowSyBl wrapper (network import/export) | Native network model (Java) | CGMES 2.4.15/3.0 CGMES import/export | [powsybl/pypowsybl](https://github.com/powsybl/pypowsybl) | Grid-analysis oriented; rich network model |
-| ✅ | **GridCal/VeraGrid** | 5.6.28+ | Python | Power systems analysis with UI | Custom CGMES parser | CGMES 2.4.15/3.0 import | [SanPen/GridCal](https://github.com/SanPen/GridCal) | Sub-microsecond queries, full circuit model |
+| ✅ | **GridCal/VeraGrid** | 5.6.38 | Python | Power systems analysis with UI | Custom CGMES parser | CGMES 2.4.15/3.0 import | [SanPen/GridCal](https://github.com/SanPen/GridCal) | Sub-microsecond queries, full circuit model, improved load performance |
 | ✅ | **RDFlib** | 7.6.0 | Python | Generic RDF parser/triple store | Oxigraph (via oxrdflib 0.5.0) | None (generic) | [RDFLib/rdflib](https://github.com/RDFLib/rdflib) | Baseline for speed/memory comparison with Oxigraph |
 | ✅ | **CIMantic Graphs** | 0.4.3a10 | Python | In-memory labeled property graph | Oxigraph + typed objects | CIM15–18, custom profiles | [PNNL-CIM-Tools/CIM-Graph](https://github.com/PNNL-CIM-Tools/CIM-Graph) | Modern API, uses RDFlib with typed CIM objects |
-| ✅ | **Apache Jena** | 5.2.0 | Java (JPype) | RDF framework + CIMXML parser | In-memory RDF triples | Generic RDF | [apache/jena](https://github.com/apache/jena) | Pure Jena with lenient UUID handling |
-| ✅ | **OpenCGMES** | latest | Java (JPype) | Suite for CGMES / CIM RDF parser | Apache Jena (optimized) | CGMES / IEC61970-552 | [SOPTIM/OpenCGMES](https://github.com/SOPTIM/OpenCGMES) | CGMES-specific optimizations, UUID normalization |
+| ✅ | **Apache Jena** | 5.2.0 (jpype1 1.6.0) | Java (JPype) | RDF framework + CIMXML parser | In-memory RDF triples | Generic RDF | [apache/jena](https://github.com/apache/jena) | Pure Jena with lenient UUID handling |
+| ✅ | **OpenCGMES** | latest (jpype1 1.6.0) | Java (JPype) | Suite for CGMES / CIM RDF parser | Apache Jena (optimized) | CGMES / IEC61970-552 | [SOPTIM/OpenCGMES](https://github.com/SOPTIM/OpenCGMES) | CGMES-specific optimizations, UUID normalization |
 | ✅ | **PowSyBL CGMES** | 2025.3.1 | Java (JPype) | CGMES model with triplestore | RDF4J triplestore | CGMES 2.4.15/3.0 | [powsybl/powsybl-core](https://github.com/powsybl/powsybl-core) | CGMES model with SPARQL queries |
-| ✅ | **maplib** | 0.19.14 | Python/Rust | High-performance RDF with SPARQL | Polars DataFrames + Oxigraph | Generic RDF (CGMES compatible) | [DataTreehouse/maplib](https://github.com/DataTreehouse/maplib) | Rust-backed performance, sub-millisecond queries |
+| ✅ | **maplib** | 0.19.24 | Python/Rust | High-performance RDF with SPARQL | Polars DataFrames + Oxigraph | Generic RDF (CGMES compatible) | [DataTreehouse/maplib](https://github.com/DataTreehouse/maplib) | Rust-backed performance, sub-millisecond queries |
 | ⚠️ | **libcimpp** | 2.2.0 | C++ (Python wrapper) | Fast C++ object model | Native C++ objects | CGMES 2.4.15 (3.0 partial) | [sogno-platform/libcimpp](https://github.com/sogno-platform/libcimpp) | Lowest memory usage (135 MB), CGMES 3.0 fails on Svedala (European extensions) |
 | ⚠️ | **cimpy** | 1.1.0 | Python | Import/export/modify CGMES XML/RDF | Object topology dict | CGMES 2.4.15 (partial) | [sogno-platform/cimpy](https://github.com/sogno-platform/cimpy) | Compatibility issues: v1.1.0 only has cgmes_v2_4_15 classes (no CGMES 3.0), parsing bugs with test datasets |
 | ❌ | **pycgmes** | latest | Python | Dataclasses + RDF schema + SHACL | Dataclass mapping | CGMES 3.0+ | [alliander-opensource/pycgmes](https://github.com/alliander-opensource/pycgmes) | No file import capability - dataclass definitions only |
