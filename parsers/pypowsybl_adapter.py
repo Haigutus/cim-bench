@@ -84,3 +84,19 @@ class PypowsyblAdapter(ParserAdapter):
 
     def get_substations_count(self, loaded_obj):
         return len(loaded_obj.network.get_substations())
+
+    def export(self, loaded_obj, output_path):
+        """Export pypowsybl network to CGMES ZIP format."""
+        from pathlib import Path
+
+        if loaded_obj.network is None:
+            raise ValueError("No network loaded")
+
+        # Ensure output path is a Path object
+        output_path = Path(output_path)
+
+        # Export to CGMES format as ZIP
+        # PyPowSyBl exports CGMES as a ZIP file containing multiple XML files
+        loaded_obj.network.dump(output_path, format="CGMES")
+
+        return output_path

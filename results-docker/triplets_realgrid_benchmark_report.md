@@ -7,20 +7,20 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.14.3
-- **System**: Linux 6.18.10-200.fc43.x86_64
+- **System**: Linux 6.19.9-200.fc43.x86_64
 
 ## Results
 
 ### Triplets Load Realgrid
 
-- **Mean time**: 1.45 s
-- **Min time**: 1.31 s
-- **Max time**: 1.53 s
-- **Std dev**: 86.2 ms
+- **Mean time**: 1.35 s
+- **Min time**: 1.22 s
+- **Max time**: 1.42 s
+- **Std dev**: 85.0 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 593.6
+- Memory Mb: 594.6
 - Triplets Count: 1146215
 - Unique Objects: 149174
 - Instances: 4
@@ -36,10 +36,10 @@
 
 ### Triplets Get Lines
 
-- **Mean time**: 339.3 ms
-- **Min time**: 326.6 ms
-- **Max time**: 354.8 ms
-- **Std dev**: 13.9 ms
+- **Mean time**: 325.0 ms
+- **Min time**: 304.5 ms
+- **Max time**: 357.4 ms
+- **Std dev**: 20.6 ms
 - **Rounds**: 5
 
 **Metrics**:
@@ -52,10 +52,10 @@
 
 ### Triplets Get Generators
 
-- **Mean time**: 278.2 ms
-- **Min time**: 276.4 ms
-- **Max time**: 280.5 ms
-- **Std dev**: 1.6 ms
+- **Mean time**: 274.7 ms
+- **Min time**: 261.8 ms
+- **Max time**: 291.5 ms
+- **Std dev**: 12.6 ms
 - **Rounds**: 5
 
 **Metrics**:
@@ -68,10 +68,10 @@
 
 ### Triplets Get Loads
 
-- **Mean time**: 655.3 ms
-- **Min time**: 647.8 ms
-- **Max time**: 668.3 ms
-- **Std dev**: 7.7 ms
+- **Mean time**: 645.5 ms
+- **Min time**: 614.6 ms
+- **Max time**: 715.3 ms
+- **Std dev**: 42.8 ms
 - **Rounds**: 5
 
 **Metrics**:
@@ -84,10 +84,10 @@
 
 ### Triplets Get Substations
 
-- **Mean time**: 263.9 ms
-- **Min time**: 258.7 ms
-- **Max time**: 271.3 ms
-- **Std dev**: 5.1 ms
+- **Mean time**: 246.3 ms
+- **Min time**: 240.7 ms
+- **Max time**: 255.6 ms
+- **Std dev**: 5.6 ms
 - **Rounds**: 5
 
 **Metrics**:

@@ -89,3 +89,25 @@ class TripletsAdapter(ParserAdapter):
             raise ValueError("No data loaded")
         table = loaded_obj.df.type_tableview("Substation", string_to_number=False)
         return len(table) if table is not None else 0
+
+    def export(self, loaded_obj, output_path):
+        """Export triplets dataframe to RDF/XML."""
+        from pathlib import Path
+        from triplets.export_schema import schemas
+        from triplets.rdf_parser import ExportType
+
+        if loaded_obj.df is None:
+            raise ValueError("No data loaded")
+
+        output_path = Path(output_path)
+        output_dir = output_path.parent
+
+        # Export per instance (creates separate ZIP files in output_dir)
+        loaded_obj.df.export_to_cimxml(
+            rdf_map=schemas.ENTSOE_CGMES_3_0_0_552_ED1,
+            export_type=ExportType.XML_PER_INSTANCE_ZIP_PER_XML,
+            export_base_path=str(output_dir),
+            max_workers=4
+        )
+
+        return output_dir

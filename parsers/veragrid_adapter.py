@@ -26,7 +26,7 @@ class VeragridAdapter(ParserAdapter):
 
     def load(self, dataset_key: str):
         """Load using VeraGrid's low-level CGMES API."""
-        import VeraGridEngine as gce
+        import VeraGridEngine as vg
 
         dataset = DATASETS[dataset_key]
 
@@ -36,11 +36,11 @@ class VeragridAdapter(ParserAdapter):
             files = [dataset["ZIP"]]
 
         # Parse using low-level CGMES API
-        logger = gce.Logger()
-        data_parser = gce.CgmesDataParser()
+        logger = vg.Logger()
+        data_parser = vg.CgmesDataParser()
         data_parser.load_files(files=files)
 
-        self.cgmes_circuit = gce.CgmesCircuit(
+        self.cgmes_circuit = vg.CgmesCircuit(
             cgmes_version=data_parser.cgmes_version,
             cgmes_map_areas_like_raw=False,
             logger=logger
@@ -83,3 +83,29 @@ class VeragridAdapter(ParserAdapter):
     def get_substations_count(self, loaded_obj):
         """Count Substations."""
         return len(loaded_obj.cgmes_circuit.cgmes_assets.Substation_list)
+
+    def export(self, loaded_obj, output_path):
+        """Export VeraGrid circuit to CGMES ZIP format using CimExporter."""
+        from VeraGridEngine.IO.cim.cgmes.cgmes_export import CimExporter
+        import VeraGridEngine as vg
+
+        # Get the cgmes_circuit from loaded object
+        cgmes_circuit = loaded_obj.cgmes_circuit
+
+        # Define profiles to export (exclude OP/SC for v2.4.15)
+        profiles_to_export = [
+            vg.CgmesProfileType.EQ,
+            vg.CgmesProfileType.SSH,
+            vg.CgmesProfileType.TP,
+            vg.CgmesProfileType.SV,
+        ]
+
+        # Create exporter and export to file
+        exporter = CimExporter(
+            cgmes_circuit=cgmes_circuit,
+            profiles_to_export=profiles_to_export,
+            one_file_per_profile=False
+        )
+        exporter.export(str(output_path))
+
+        return output_path

@@ -197,6 +197,27 @@ class JenaAdapter(ParserAdapter):
             raise ValueError("No data loaded")
         return loaded_obj._count_instances("Substation")
 
+    def export(self, loaded_obj, output_path):
+        """Export all loaded RDF models to RDF/XML format."""
+        from java.io import FileOutputStream
+        from org.apache.jena.rdf.model import ModelFactory
+
+        if not loaded_obj.models:
+            raise ValueError("No data loaded")
+
+        output_path = Path(output_path)
+
+        # Merge all profiles into a single model and write
+        merged = ModelFactory.createDefaultModel()
+        for model in loaded_obj.models.values():
+            merged.add(model)
+
+        fos = FileOutputStream(str(output_path))
+        merged.write(fos, "RDF/XML")
+        fos.close()
+
+        return output_path
+
     def cleanup(self):
         """Cleanup resources (shutdown JVM if needed)."""
         # Note: JVM shutdown is optional and typically not done

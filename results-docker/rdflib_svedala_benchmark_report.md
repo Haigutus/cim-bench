@@ -7,20 +7,20 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.14.3
-- **System**: Linux 6.18.10-200.fc43.x86_64
+- **System**: Linux 6.19.9-200.fc43.x86_64
 
 ## Results
 
 ### Rdflib Load Svedala
 
-- **Mean time**: 1.59 s
-- **Min time**: 1.58 s
-- **Max time**: 1.61 s
-- **Std dev**: 13.1 ms
+- **Mean time**: 1.56 s
+- **Min time**: 1.54 s
+- **Max time**: 1.58 s
+- **Std dev**: 16.5 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 285.3
+- Memory Mb: 285.7
 - Triples: 95499
 - Lines: 97
 - Generators: 78
@@ -34,11 +34,11 @@
 
 ### Rdflib Get Lines
 
-- **Mean time**: 52.5 μs
-- **Min time**: 49.8 μs
-- **Max time**: 135.2 μs
-- **Std dev**: 4.6 μs
-- **Rounds**: 5221
+- **Mean time**: 51.9 μs
+- **Min time**: 49.4 μs
+- **Max time**: 135.4 μs
+- **Std dev**: 4.4 μs
+- **Rounds**: 5009
 
 **Metrics**:
 - Line Count: 97
@@ -50,11 +50,11 @@
 
 ### Rdflib Get Generators
 
-- **Mean time**: 50.7 μs
-- **Min time**: 47.4 μs
-- **Max time**: 215.3 μs
-- **Std dev**: 7.8 μs
-- **Rounds**: 8388
+- **Mean time**: 49.4 μs
+- **Min time**: 47.2 μs
+- **Max time**: 136.9 μs
+- **Std dev**: 4.2 μs
+- **Rounds**: 7547
 
 **Metrics**:
 - Generator Count: 78
@@ -66,11 +66,11 @@
 
 ### Rdflib Get Loads
 
-- **Mean time**: 138.1 μs
-- **Min time**: 130.5 μs
-- **Max time**: 343.5 μs
-- **Std dev**: 15.8 μs
-- **Rounds**: 4503
+- **Mean time**: 134.6 μs
+- **Min time**: 129.8 μs
+- **Max time**: 313.6 μs
+- **Std dev**: 9.3 μs
+- **Rounds**: 4333
 
 **Metrics**:
 - Load Count: 146
@@ -82,11 +82,11 @@
 
 ### Rdflib Get Substations
 
-- **Mean time**: 47.8 μs
+- **Mean time**: 46.6 μs
 - **Min time**: 44.4 μs
-- **Max time**: 398.3 μs
-- **Std dev**: 9.2 μs
-- **Rounds**: 7615
+- **Max time**: 133.7 μs
+- **Std dev**: 3.8 μs
+- **Rounds**: 9314
 
 **Metrics**:
 - Substation Count: 57

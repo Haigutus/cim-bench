@@ -7,20 +7,20 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.13.12
-- **System**: Linux 6.18.10-200.fc43.x86_64
+- **System**: Linux 6.19.9-200.fc43.x86_64
 
 ## Results
 
 ### Pypowsybl Load Svedala
 
-- **Mean time**: 475.8 ms
-- **Min time**: 439.5 ms
-- **Max time**: 503.4 ms
-- **Std dev**: 28.3 ms
+- **Mean time**: 413.2 ms
+- **Min time**: 382.2 ms
+- **Max time**: 445.8 ms
+- **Std dev**: 26.7 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 1160.2
+- Memory Mb: 951.9
 - Buses: 105
 - Lines: 97
 - Ac Lines: 90
@@ -36,11 +36,11 @@
 
 ### Pypowsybl Get Lines
 
-- **Mean time**: 299.3 μs
-- **Min time**: 277.7 μs
-- **Max time**: 640.9 μs
-- **Std dev**: 24.5 μs
-- **Rounds**: 1020
+- **Mean time**: 302.4 μs
+- **Min time**: 277.9 μs
+- **Max time**: 1.5 ms
+- **Std dev**: 66.5 μs
+- **Rounds**: 1126
 
 **Metrics**:
 - Line Count: 90
@@ -52,11 +52,11 @@
 
 ### Pypowsybl Get Generators
 
-- **Mean time**: 285.9 μs
-- **Min time**: 262.3 μs
-- **Max time**: 736.7 μs
-- **Std dev**: 32.3 μs
-- **Rounds**: 1778
+- **Mean time**: 284.5 μs
+- **Min time**: 262.8 μs
+- **Max time**: 1.2 ms
+- **Std dev**: 41.4 μs
+- **Rounds**: 1713
 
 **Metrics**:
 - Generator Count: 39
@@ -68,11 +68,11 @@
 
 ### Pypowsybl Get Loads
 
-- **Mean time**: 215.8 μs
-- **Min time**: 184.9 μs
-- **Max time**: 24.6 ms
-- **Std dev**: 507.9 μs
-- **Rounds**: 2315
+- **Mean time**: 211.5 μs
+- **Min time**: 187.4 μs
+- **Max time**: 25.4 ms
+- **Std dev**: 515.1 μs
+- **Rounds**: 2397
 
 **Metrics**:
 - Load Count: 73
@@ -84,11 +84,11 @@
 
 ### Pypowsybl Get Substations
 
-- **Mean time**: 132.0 μs
-- **Min time**: 118.0 μs
-- **Max time**: 780.5 μs
-- **Std dev**: 27.8 μs
-- **Rounds**: 3192
+- **Mean time**: 119.8 μs
+- **Min time**: 111.6 μs
+- **Max time**: 714.9 μs
+- **Std dev**: 16.2 μs
+- **Rounds**: 3318
 
 **Metrics**:
 - Substation Count: 57

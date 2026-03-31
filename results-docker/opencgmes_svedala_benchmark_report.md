@@ -7,20 +7,20 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.13.12
-- **System**: Linux 6.19.8-200.fc43.x86_64
+- **System**: Linux 6.19.9-200.fc43.x86_64
 
 ## Results
 
 ### Opencgmes Load Svedala
 
-- **Mean time**: 99.6 ms
-- **Min time**: 79.1 ms
-- **Max time**: 128.3 ms
-- **Std dev**: 19.1 ms
+- **Mean time**: 80.1 ms
+- **Min time**: 73.7 ms
+- **Max time**: 97.4 ms
+- **Std dev**: 9.8 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 426.7
+- Memory Mb: 532.9
 - Triples: 47700
 - Lines: 97
 - Generators: 39
@@ -34,11 +34,11 @@
 
 ### Opencgmes Get Lines
 
-- **Mean time**: 536.8 μs
-- **Min time**: 149.3 μs
-- **Max time**: 3.6 ms
-- **Std dev**: 402.1 μs
-- **Rounds**: 573
+- **Mean time**: 329.5 μs
+- **Min time**: 103.5 μs
+- **Max time**: 2.5 ms
+- **Std dev**: 247.2 μs
+- **Rounds**: 665
 
 **Metrics**:
 - Line Count: 97
@@ -50,11 +50,11 @@
 
 ### Opencgmes Get Generators
 
-- **Mean time**: 200.6 μs
-- **Min time**: 65.2 μs
-- **Max time**: 103.6 ms
-- **Std dev**: 2.4 ms
-- **Rounds**: 2770
+- **Mean time**: 154.7 μs
+- **Min time**: 74.1 μs
+- **Max time**: 91.4 ms
+- **Std dev**: 1.7 ms
+- **Rounds**: 3962
 
 **Metrics**:
 - Generator Count: 39
@@ -66,11 +66,11 @@
 
 ### Opencgmes Get Loads
 
-- **Mean time**: 306.8 μs
-- **Min time**: 171.7 μs
-- **Max time**: 16.8 ms
-- **Std dev**: 784.2 μs
-- **Rounds**: 983
+- **Mean time**: 301.6 μs
+- **Min time**: 184.1 μs
+- **Max time**: 63.8 ms
+- **Std dev**: 1.6 ms
+- **Rounds**: 2103
 
 **Metrics**:
 - Load Count: 73
@@ -82,11 +82,11 @@
 
 ### Opencgmes Get Substations
 
-- **Mean time**: 129.1 μs
-- **Min time**: 50.3 μs
-- **Max time**: 153.4 ms
-- **Std dev**: 2.2 ms
-- **Rounds**: 5052
+- **Mean time**: 62.1 μs
+- **Min time**: 42.9 μs
+- **Max time**: 12.9 ms
+- **Std dev**: 309.7 μs
+- **Rounds**: 2444
 
 **Metrics**:
 - Substation Count: 56

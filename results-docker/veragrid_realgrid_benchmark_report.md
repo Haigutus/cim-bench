@@ -7,20 +7,20 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.14.3
-- **System**: Linux 6.19.8-200.fc43.x86_64
+- **System**: Linux 6.19.9-200.fc43.x86_64
 
 ## Results
 
 ### Veragrid Load Realgrid
 
-- **Mean time**: 6.85 s
-- **Min time**: 6.12 s
-- **Max time**: 7.51 s
-- **Std dev**: 664.9 ms
+- **Mean time**: 6.23 s
+- **Min time**: 5.53 s
+- **Max time**: 6.85 s
+- **Std dev**: 582.9 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 1314.8
+- Memory Mb: 1293.3
 - Lines: 7561
 - Generators: 1347
 - Loads: 6687
@@ -36,9 +36,9 @@
 
 - **Mean time**: 0.1 μs
 - **Min time**: 0.0 μs
-- **Max time**: 0.6 μs
+- **Max time**: 0.2 μs
 - **Std dev**: 0.0 μs
-- **Rounds**: 99612
+- **Rounds**: 108614
 
 **Metrics**:
 - Line Count: 7561
@@ -52,9 +52,9 @@
 
 - **Mean time**: 0.1 μs
 - **Min time**: 0.1 μs
-- **Max time**: 0.6 μs
+- **Max time**: 0.3 μs
 - **Std dev**: 0.0 μs
-- **Rounds**: 82224
+- **Rounds**: 87018
 
 **Metrics**:
 - Generator Count: 1347
@@ -66,11 +66,11 @@
 
 ### Veragrid Get Loads
 
-- **Mean time**: 0.2 μs
+- **Mean time**: 0.1 μs
 - **Min time**: 0.1 μs
-- **Max time**: 46.8 μs
-- **Std dev**: 0.2 μs
-- **Rounds**: 180473
+- **Max time**: 7.4 μs
+- **Std dev**: 0.0 μs
+- **Rounds**: 183824
 
 **Metrics**:
 - Load Count: 6687
@@ -84,9 +84,9 @@
 
 - **Mean time**: 0.1 μs
 - **Min time**: 0.1 μs
-- **Max time**: 1.3 μs
+- **Max time**: 1.2 μs
 - **Std dev**: 0.0 μs
-- **Rounds**: 89840
+- **Rounds**: 90082
 
 **Metrics**:
 - Substation Count: 4875

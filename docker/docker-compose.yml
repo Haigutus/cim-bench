@@ -7,6 +7,13 @@ x-common: &common
     - ../results-docker:/output:z
   network_mode: none
 
+x-common-export: &common-export
+  volumes:
+    - ../data:/benchmarks/data:ro,z
+    - ../results-docker:/output:z
+    - ../temp:/benchmarks/temp:z
+  network_mode: none
+
 services:
   triplets-svedala:
     <<: *common
@@ -109,3 +116,84 @@ services:
     <<: *common
     image: cim-bench/powsybl-cgmes:latest
     command: pytest docker_powsybl_cgmes_realgrid_benchmark.py --benchmark-only --benchmark-json=/output/powsybl_cgmes_realgrid_benchmark.json
+
+  # Export benchmarks
+  triplets-svedala-export:
+    <<: *common-export
+    image: cim-bench/triplets:latest
+    command: pytest triplets_svedala_export_benchmark.py --benchmark-only --benchmark-json=/output/triplets_svedala_export_benchmark.json
+
+  triplets-realgrid-export:
+    <<: *common-export
+    image: cim-bench/triplets:latest
+    command: pytest triplets_realgrid_export_benchmark.py --benchmark-only --benchmark-json=/output/triplets_realgrid_export_benchmark.json
+
+  pypowsybl-svedala-export:
+    <<: *common-export
+    image: cim-bench/pypowsybl:latest
+    command: pytest pypowsybl_svedala_export_benchmark.py --benchmark-only --benchmark-json=/output/pypowsybl_svedala_export_benchmark.json
+
+  pypowsybl-realgrid-export:
+    <<: *common-export
+    image: cim-bench/pypowsybl:latest
+    command: pytest pypowsybl_realgrid_export_benchmark.py --benchmark-only --benchmark-json=/output/pypowsybl_realgrid_export_benchmark.json
+
+  veragrid-svedala-export:
+    <<: *common-export
+    image: cim-bench/veragrid:latest
+    command: pytest veragrid_svedala_export_benchmark.py --benchmark-only --benchmark-json=/output/veragrid_svedala_export_benchmark.json
+
+  veragrid-realgrid-export:
+    <<: *common-export
+    image: cim-bench/veragrid:latest
+    command: pytest veragrid_realgrid_export_benchmark.py --benchmark-only --benchmark-json=/output/veragrid_realgrid_export_benchmark.json
+
+  rdflib-svedala-export:
+    <<: *common-export
+    image: cim-bench/rdflib:latest
+    command: pytest rdflib_svedala_export_benchmark.py --benchmark-only --benchmark-json=/output/rdflib_svedala_export_benchmark.json
+
+  rdflib-realgrid-export:
+    <<: *common-export
+    image: cim-bench/rdflib:latest
+    command: pytest rdflib_realgrid_export_benchmark.py --benchmark-only --benchmark-json=/output/rdflib_realgrid_export_benchmark.json
+
+  maplib-svedala-export:
+    <<: *common-export
+    image: cim-bench/maplib:latest
+    command: pytest maplib_svedala_export_benchmark.py --benchmark-only --benchmark-json=/output/maplib_svedala_export_benchmark.json
+
+  maplib-realgrid-export:
+    <<: *common-export
+    image: cim-bench/maplib:latest
+    command: pytest maplib_realgrid_export_benchmark.py --benchmark-only --benchmark-json=/output/maplib_realgrid_export_benchmark.json
+
+  jena-svedala-export:
+    <<: *common-export
+    image: cim-bench/jena:latest
+    command: pytest jena_svedala_export_benchmark.py --benchmark-only --benchmark-json=/output/jena_svedala_export_benchmark.json
+
+  jena-realgrid-export:
+    <<: *common-export
+    image: cim-bench/jena:latest
+    command: pytest jena_realgrid_export_benchmark.py --benchmark-only --benchmark-json=/output/jena_realgrid_export_benchmark.json
+
+  opencgmes-svedala-export:
+    <<: *common-export
+    image: cim-bench/opencgmes:latest
+    command: pytest opencgmes_svedala_export_benchmark.py --benchmark-only --benchmark-json=/output/opencgmes_svedala_export_benchmark.json
+
+  opencgmes-realgrid-export:
+    <<: *common-export
+    image: cim-bench/opencgmes:latest
+    command: pytest opencgmes_realgrid_export_benchmark.py --benchmark-only --benchmark-json=/output/opencgmes_realgrid_export_benchmark.json
+
+  powsybl-cgmes-svedala-export:
+    <<: *common-export
+    image: cim-bench/powsybl-cgmes:latest
+    command: pytest powsybl_cgmes_svedala_export_benchmark.py --benchmark-only --benchmark-json=/output/powsybl_cgmes_svedala_export_benchmark.json
+
+  powsybl-cgmes-realgrid-export:
+    <<: *common-export
+    image: cim-bench/powsybl-cgmes:latest
+    command: pytest powsybl_cgmes_realgrid_export_benchmark.py --benchmark-only --benchmark-json=/output/powsybl_cgmes_realgrid_export_benchmark.json

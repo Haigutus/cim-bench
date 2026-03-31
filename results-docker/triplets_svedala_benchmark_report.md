@@ -7,20 +7,20 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.14.3
-- **System**: Linux 6.18.10-200.fc43.x86_64
+- **System**: Linux 6.19.9-200.fc43.x86_64
 
 ## Results
 
 ### Triplets Load Svedala
 
-- **Mean time**: 131.5 ms
-- **Min time**: 117.5 ms
-- **Max time**: 138.6 ms
-- **Std dev**: 8.0 ms
-- **Rounds**: 9
+- **Mean time**: 116.1 ms
+- **Min time**: 101.8 ms
+- **Max time**: 121.3 ms
+- **Std dev**: 6.1 ms
+- **Rounds**: 11
 
 **Metrics**:
-- Memory Mb: 43.3
+- Memory Mb: 43.2
 - Triplets Count: 95539
 - Unique Objects: 14540
 - Instances: 5
@@ -36,11 +36,11 @@
 
 ### Triplets Get Lines
 
-- **Mean time**: 24.8 ms
-- **Min time**: 21.7 ms
-- **Max time**: 28.3 ms
-- **Std dev**: 1.6 ms
-- **Rounds**: 33
+- **Mean time**: 21.1 ms
+- **Min time**: 20.2 ms
+- **Max time**: 29.2 ms
+- **Std dev**: 1.3 ms
+- **Rounds**: 46
 
 **Metrics**:
 - Line Count: 97
@@ -52,11 +52,11 @@
 
 ### Triplets Get Generators
 
-- **Mean time**: 25.9 ms
-- **Min time**: 22.8 ms
-- **Max time**: 32.5 ms
-- **Std dev**: 2.1 ms
-- **Rounds**: 35
+- **Mean time**: 21.1 ms
+- **Min time**: 20.4 ms
+- **Max time**: 22.1 ms
+- **Std dev**: 423.7 μs
+- **Rounds**: 45
 
 **Metrics**:
 - Generator Count: 39
@@ -68,11 +68,11 @@
 
 ### Triplets Get Loads
 
-- **Mean time**: 54.9 ms
-- **Min time**: 47.1 ms
-- **Max time**: 65.3 ms
-- **Std dev**: 5.2 ms
-- **Rounds**: 17
+- **Mean time**: 41.3 ms
+- **Min time**: 39.8 ms
+- **Max time**: 44.1 ms
+- **Std dev**: 1.0 ms
+- **Rounds**: 22
 
 **Metrics**:
 - Load Count: 73
@@ -84,11 +84,11 @@
 
 ### Triplets Get Substations
 
-- **Mean time**: 24.2 ms
-- **Min time**: 20.9 ms
-- **Max time**: 28.0 ms
-- **Std dev**: 2.0 ms
-- **Rounds**: 38
+- **Mean time**: 20.7 ms
+- **Min time**: 19.8 ms
+- **Max time**: 22.0 ms
+- **Std dev**: 488.3 μs
+- **Rounds**: 44
 
 **Metrics**:
 - Substation Count: 57

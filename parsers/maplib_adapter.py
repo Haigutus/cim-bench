@@ -145,3 +145,18 @@ class MaplibAdapter(ParserAdapter):
         if loaded_obj.model is None:
             raise ValueError("No data loaded")
         return loaded_obj._count_instances("Substation")
+
+    def export(self, loaded_obj, output_path):
+        """Export maplib model to RDF/XML format."""
+        from pathlib import Path
+
+        if loaded_obj.model is None:
+            raise ValueError("No data loaded")
+
+        # Ensure output path is a Path object
+        output_path = Path(output_path)
+
+        # Export to RDF/XML format
+        loaded_obj.model.write(str(output_path))
+
+        return output_path

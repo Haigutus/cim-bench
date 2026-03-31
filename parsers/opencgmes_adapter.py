@@ -184,6 +184,28 @@ class OpenCGMESAdapter(ParserAdapter):
             raise ValueError("No data loaded")
         return loaded_obj._count_instances("Substation")
 
+    def export(self, loaded_obj, output_path):
+        """Export all loaded RDF datasets to per-profile RDF/XML files."""
+        from java.io import FileOutputStream
+        from org.apache.jena.rdf.model import ModelFactory
+
+        if not loaded_obj.all_profiles:
+            raise ValueError("No data loaded")
+
+        output_path = Path(output_path)
+        output_dir = output_path.parent
+
+        # Write each profile to a separate XML file
+        for profile_name, dataset in loaded_obj.all_profiles.items():
+            profile_path = output_dir / f"{profile_name}.xml"
+            graph = dataset.getDefaultGraph()
+            model = ModelFactory.createModelForGraph(graph)
+            fos = FileOutputStream(str(profile_path))
+            model.write(fos, "RDF/XML")
+            fos.close()
+
+        return output_path
+
     def cleanup(self):
         """Cleanup resources (shutdown JVM if needed)."""
         # Note: JVM shutdown is optional and typically not done

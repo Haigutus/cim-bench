@@ -135,3 +135,12 @@ class RDFlibAdapter(ParserAdapter):
         if loaded_obj.libgraph is None:
             raise ValueError("No data loaded")
         return loaded_obj._count_instances("Substation")
+
+    def export(self, loaded_obj, output_path):
+        """Export RDF graph to RDF/XML format."""
+        if loaded_obj.libgraph is None:
+            raise ValueError("No data loaded")
+
+        output_path = Path(output_path)
+        loaded_obj.libgraph.serialize(destination=str(output_path), format="xml")
+        return output_path

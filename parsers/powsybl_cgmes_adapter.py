@@ -185,6 +185,24 @@ class PowsyblCgmesAdapter(ParserAdapter):
             raise ValueError("No data loaded")
         return loaded_obj._count_instances("Substation")
 
+    def export(self, loaded_obj, output_path):
+        """Export CgmesModel to RDF/XML files via DirectoryDataSource."""
+        from com.powsybl.commons.datasource import DirectoryDataSource
+        from java.nio.file import Paths
+
+        if not loaded_obj.model:
+            raise ValueError("No data loaded")
+
+        output_path = Path(output_path)
+        output_dir = output_path.parent
+
+        # Write all profiles to directory
+        java_dir = Paths.get(str(output_dir))
+        datasource = DirectoryDataSource(java_dir, "export_output")
+        loaded_obj.model.write(datasource)
+
+        return output_path
+
     def cleanup(self):
         """Cleanup resources (shutdown JVM if needed)."""
         # Note: JVM shutdown is optional and typically not done

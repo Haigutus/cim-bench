@@ -19,11 +19,15 @@ def load_benchmarks(results_dir):
     for json_file in Path(results_dir).glob("*_benchmark.json"):
         try:
             with open(json_file) as f:
-                content = json.load(f)
-                if not content or "benchmarks" not in content:
-                    print(f"⚠️  Skipping {json_file.name}: empty or missing benchmarks")
-                    continue
-                benchmarks = content["benchmarks"]
+                content = f.read()
+            if not content.strip():
+                print(f"⚠️  Skipping {json_file.name}: empty file")
+                continue
+            parsed = json.loads(content)
+            if not parsed or "benchmarks" not in parsed:
+                print(f"⚠️  Skipping {json_file.name}: missing benchmarks")
+                continue
+            benchmarks = parsed["benchmarks"]
         except (json.JSONDecodeError, KeyError) as e:
             print(f"⚠️  Skipping {json_file.name}: {e}")
             continue
@@ -36,7 +40,12 @@ def load_benchmarks(results_dir):
             dataset = extra["dataset"]
             tool = extra["display_name"]
 
-            if "load" in bench["name"].lower() and "get_" not in bench["name"].lower():
+            if extra.get("operation") == "export":
+                data[dataset][tool]["export"] = {
+                    "time": bench["stats"]["mean"],
+                    "color": extra.get("color", "#999999")
+                }
+            elif "load" in bench["name"].lower() and "get_" not in bench["name"].lower():
                 data[dataset][tool]["load"] = {
                     "time": bench["stats"]["mean"],
                     "memory": float(extra.get("memory_mb", 0)),
@@ -268,6 +277,68 @@ def plot_cross_dataset(data, output_dir):
     plt.close()
 
 
+def plot_cross_dataset_export(data, output_dir):
+    """Generate export performance comparison chart with separate subplots per dataset."""
+    dataset_sizes = {'svedala': 7.3, 'realgrid': 86.5}
+    datasets = sorted(data.keys(), key=lambda ds: dataset_sizes.get(ds, 0))
+
+    # Only include tools that have export data
+    tools_with_export = set()
+    for ds in datasets:
+        for tool, tool_data in data[ds].items():
+            if "export" in tool_data:
+                tools_with_export.add(tool)
+
+    if not tools_with_export:
+        return
+
+    # Get colors
+    colors = {}
+    for t in tools_with_export:
+        for ds in datasets:
+            if t in data[ds] and "export" in data[ds][t]:
+                colors[t] = data[ds][t]["export"].get("color", "#999999")
+                break
+
+    fig, axes = plt.subplots(len(datasets), 1, figsize=(12, 5 * len(datasets)), sharex=False)
+    if len(datasets) == 1:
+        axes = [axes]
+
+    for idx, ds in enumerate(datasets):
+        ax = axes[idx]
+        ds_label = f"{ds.capitalize()} (7.3 MB)" if ds == 'svedala' else f"{ds.capitalize()} (86.5 MB)"
+
+        entries = []
+        for tool in tools_with_export:
+            time = data[ds].get(tool, {}).get("export", {}).get("time", 0)
+            if time > 0:
+                entries.append((tool, time, colors.get(tool, "#999999")))
+
+        entries.sort(key=lambda x: x[1])
+        labels = [e[0] for e in entries]
+        values = [e[1] for e in entries]
+        bar_colors = [e[2] for e in entries]
+
+        bars = ax.barh(labels, values, color=bar_colors)
+        ax.set_xlabel('Export Time (seconds)', fontsize=12)
+        ax.set_title(ds_label, fontsize=12, fontweight='bold')
+
+        if values:
+            ax.set_xlim(0, max(values) * 1.15)
+
+        ax.grid(axis='x', alpha=0.3)
+
+        for i, (bar, val) in enumerate(zip(bars, values)):
+            label = f' {val*1000:.1f} ms' if val < 1 else f' {val:.3f}s'
+            ax.text(val, i, label, va='center', fontsize=10)
+
+    fig.suptitle('Export Performance Comparison', fontsize=14, fontweight='bold', y=0.995)
+    plt.tight_layout()
+    plt.savefig(output_dir / "export_comparison.svg", format='svg', bbox_inches='tight')
+    print("   → export_comparison.svg")
+    plt.close()
+
+
 def main(results_dir=None):
     if results_dir is None:
         results_dir = Path("results")
@@ -288,6 +359,12 @@ def main(results_dir=None):
     if len(data) >= 2:
         print("   Cross-dataset comparisons:")
         plot_cross_dataset(data, graphs_dir)
+
+    # Generate export comparison if any export data exists
+    has_export = any("export" in td for ds in data.values() for td in ds.values())
+    if has_export:
+        print("   Export comparisons:")
+        plot_cross_dataset_export(data, graphs_dir)
 
     print(f"\n✅ Graph generation complete!\n   Location: {graphs_dir}/")
 

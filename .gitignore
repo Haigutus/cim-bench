@@ -39,10 +39,11 @@ ENV/
 htmlcov/
 .tox/
 
-# Benchmark results
+# Benchmark internals (pytest-benchmark cache)
 .benchmarks/
-results/*.json
-results-docker/*.json
+
+# Export outputs
+temp/
 
 # OS
 .DS_Store

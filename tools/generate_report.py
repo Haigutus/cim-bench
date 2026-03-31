@@ -24,7 +24,10 @@ def format_time(seconds):
 def generate_markdown_report(json_file):
     """Generate markdown report from benchmark JSON."""
     with open(json_file) as f:
-        data = json.load(f)
+        content = f.read()
+    if not content.strip():
+        return None
+    data = json.loads(content)
 
     report = []
     report.append("# Benchmark Report\n")
@@ -75,6 +78,9 @@ def main():
         sys.exit(1)
 
     report = generate_markdown_report(json_file)
+    if report is None:
+        print(f"Skipping empty JSON file: {json_file}")
+        sys.exit(0)
     print(report)
 
     # Optionally save to file

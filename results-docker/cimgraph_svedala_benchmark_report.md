@@ -7,20 +7,20 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.14.3
-- **System**: Linux 6.18.10-200.fc43.x86_64
+- **System**: Linux 6.19.9-200.fc43.x86_64
 
 ## Results
 
 ### Cimgraph Load Svedala
 
-- **Mean time**: 912.0 ms
-- **Min time**: 847.0 ms
+- **Mean time**: 909.0 ms
+- **Min time**: 830.0 ms
 - **Max time**: 1.03 s
-- **Std dev**: 70.5 ms
+- **Std dev**: 82.9 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 191.3
+- Memory Mb: 204.8
 - Triples: 66724
 - Lines: 97
 - Generators: 39
@@ -36,9 +36,9 @@
 
 - **Mean time**: 0.1 μs
 - **Min time**: 0.1 μs
-- **Max time**: 14.5 μs
+- **Max time**: 0.2 μs
 - **Std dev**: 0.0 μs
-- **Rounds**: 191571
+- **Rounds**: 74544
 
 **Metrics**:
 - Line Count: 97
@@ -52,9 +52,9 @@
 
 - **Mean time**: 0.1 μs
 - **Min time**: 0.1 μs
-- **Max time**: 0.7 μs
+- **Max time**: 0.5 μs
 - **Std dev**: 0.0 μs
-- **Rounds**: 74544
+- **Rounds**: 73769
 
 **Metrics**:
 - Generator Count: 39
@@ -68,9 +68,9 @@
 
 - **Mean time**: 0.2 μs
 - **Min time**: 0.2 μs
-- **Max time**: 105.8 μs
-- **Std dev**: 0.5 μs
-- **Rounds**: 104069
+- **Max time**: 26.4 μs
+- **Std dev**: 0.1 μs
+- **Rounds**: 137476
 
 **Metrics**:
 - Load Count: 73
@@ -84,9 +84,9 @@
 
 - **Mean time**: 0.1 μs
 - **Min time**: 0.1 μs
-- **Max time**: 0.6 μs
+- **Max time**: 2.3 μs
 - **Std dev**: 0.0 μs
-- **Rounds**: 69701
+- **Rounds**: 67944
 
 **Metrics**:
 - Substation Count: 56
