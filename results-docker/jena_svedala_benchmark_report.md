@@ -13,32 +13,36 @@
 
 ### Jena Load Svedala
 
-- **Mean time**: 136.8 ms
-- **Min time**: 102.8 ms
-- **Max time**: 157.0 ms
-- **Std dev**: 20.5 ms
+- **Mean time**: 124.1 ms
+- **Min time**: 107.2 ms
+- **Max time**: 162.6 ms
+- **Std dev**: 22.1 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 692.0
+- Memory Mb: 427.9
 - Triples: 47710
 - Lines: 97
 - Generators: 39
 - Loads: 73
 - Substations: 56
-- Total Size Mb: 7.3
+- Dataset Size Mb: 7.3
+- Cgmes Version: 3.0
 - Library: jena
+- Library Version: 6.0.0
+- Library Dependencies: {'jpype1': '1.6.0', 'java': '21.0.10'}
+- Java Version: 21.0.10
 - Dataset: svedala
 - Display Name: Apache Jena
 - Color: #d62728
 
 ### Jena Get Lines
 
-- **Mean time**: 350.6 μs
-- **Min time**: 123.6 μs
-- **Max time**: 17.2 ms
-- **Std dev**: 660.9 μs
-- **Rounds**: 746
+- **Mean time**: 380.6 μs
+- **Min time**: 139.2 μs
+- **Max time**: 20.9 ms
+- **Std dev**: 865.5 μs
+- **Rounds**: 595
 
 **Metrics**:
 - Line Count: 97
@@ -50,11 +54,11 @@
 
 ### Jena Get Generators
 
-- **Mean time**: 89.0 μs
-- **Min time**: 65.2 μs
-- **Max time**: 1.4 ms
-- **Std dev**: 47.5 μs
-- **Rounds**: 3806
+- **Mean time**: 104.2 μs
+- **Min time**: 65.6 μs
+- **Max time**: 1.8 ms
+- **Std dev**: 58.3 μs
+- **Rounds**: 2673
 
 **Metrics**:
 - Generator Count: 39
@@ -66,11 +70,11 @@
 
 ### Jena Get Loads
 
-- **Mean time**: 239.6 μs
-- **Min time**: 150.9 μs
-- **Max time**: 24.4 ms
-- **Std dev**: 623.8 μs
-- **Rounds**: 2069
+- **Mean time**: 205.3 μs
+- **Min time**: 169.8 μs
+- **Max time**: 13.7 ms
+- **Std dev**: 359.6 μs
+- **Rounds**: 1420
 
 **Metrics**:
 - Load Count: 73
@@ -82,16 +86,31 @@
 
 ### Jena Get Substations
 
-- **Mean time**: 56.5 μs
-- **Min time**: 42.7 μs
-- **Max time**: 20.7 ms
-- **Std dev**: 274.9 μs
-- **Rounds**: 5708
+- **Mean time**: 109.8 μs
+- **Min time**: 48.2 μs
+- **Max time**: 73.9 ms
+- **Std dev**: 1.2 ms
+- **Rounds**: 3993
 
 **Metrics**:
 - Substation Count: 56
 - Query Type: get_substations
 - Library: jena
 - Dataset: svedala
+- Display Name: Apache Jena
+- Color: #d62728
+
+### Jena Export Svedala
+
+- **Mean time**: 434.9 ms
+- **Min time**: 410.2 ms
+- **Max time**: 522.2 ms
+- **Std dev**: 48.9 ms
+- **Rounds**: 5
+
+**Metrics**:
+- Library: jena
+- Dataset: svedala
+- Operation: export
 - Display Name: Apache Jena
 - Color: #d62728

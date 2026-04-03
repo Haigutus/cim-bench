@@ -2,6 +2,12 @@
 
 Performance benchmarking suite for CIM (Common Information Model) parsers and serializers.
 
+### Performance Comparison Graphs
+
+![Import Performance](results-docker/graphs/import_comparison.svg)
+![Export Performance](results-docker/graphs/export_comparison.svg)
+![Memory Usage](results-docker/graphs/memory_comparison.svg)
+
 ## Benchmark Results
 
 Latest containerized results on AMD Ryzen AI 9 HX 370 (24 cores), 64GB RAM, Podman 5.7.1 / Fedora 43:
@@ -14,28 +20,28 @@ Latest containerized results on AMD Ryzen AI 9 HX 370 (24 cores), 64GB RAM, Podm
 
 | Library | Version | Load Time | Memory | Query Speed | Elements |
 |---------|---------|-----------|--------|-------------|----------|
-| **OpenCGMES** | latest (Jan 2025) | 99.6 ms | 427 MB | 129-537 μs | 97 lines, 39 gen, 73 loads, 56 subs |
+| **OpenCGMES** | 1.0.0-SNAPSHOT | 99.6 ms | 427 MB | 129-537 μs | 97 lines, 39 gen, 73 loads, 56 subs |
 | **triplets** | 0.0.17 | 132 ms | 43 MB | 25-55 ms | 97 lines, 39 gen, 73 loads, 57 subs |
-| **Apache Jena** | 5.2.0 (jpype1 1.6.0) | 147.6 ms | 768 MB | 94-307 μs | 97 lines, 39 gen, 73 loads, 56 subs |
+| **Apache Jena** | 6.0.0 | 147.6 ms | 768 MB | 94-307 μs | 97 lines, 39 gen, 73 loads, 56 subs |
 | **PowSyBL CGMES** | 2025.3.1 | 270 ms | 679 MB | 62-159 μs | 97 lines, 39 gen, 73 loads, 57 subs |
-| **maplib** | 0.19.24 | 324.9 ms | 176 MB | 362 μs-1.1 ms | 97 lines, 39 gen, 73 loads, 57 subs |
+| **maplib** | 0.20.0 | 324.9 ms | 176 MB | 362 μs-1.1 ms | 97 lines, 39 gen, 73 loads, 57 subs |
 | **pypowsybl** | 1.14.0 | 476 ms | 1,160 MB | 133-300 μs | 97 lines, 39 gen, 73 loads, 57 subs |
 | **VeraGrid** | 5.6.38 | 480.7 ms | 450 MB | 0.05-0.1 μs | 97 lines, 39 gen, 73 loads, 56 subs |
-| **CIM-Graph** | 0.4.3a10 | 912 ms | 191 MB | 0.07-0.2 μs | 97 lines, 39 gen, 73 loads, 56 subs |
+| **CIM-Graph** | 0.4.3a12 | 912 ms | 191 MB | 0.07-0.2 μs | 97 lines, 39 gen, 73 loads, 56 subs |
 | **RDFlib** | 7.6.0 | 1.59 s | 285 MB | 48-138 μs | 97 lines, 78 gen, 146 loads, 57 subs |
 
 **Large Dataset (RealGrid - 86.5 MB, CGMES 2.4.15):**
 
 | Library | Version | Load Time | Memory | Query Speed | Elements |
 |---------|---------|-----------|--------|-------------|----------|
-| **OpenCGMES** | latest (Jan 2025) | 1.24 s | 5,527 MB | 249 μs-2.5 ms | 7561 lines, 1347 gen, 6687 loads, 4875 subs |
+| **OpenCGMES** | 1.0.0-SNAPSHOT | 1.24 s | 5,527 MB | 249 μs-2.5 ms | 7561 lines, 1347 gen, 6687 loads, 4875 subs |
 | **triplets** | 0.0.17 | 1.45 s | 594 MB | 263-655 ms | 7561 lines, 1347 gen, 6687 loads, 4875 subs |
-| **Apache Jena** | 5.2.0 (jpype1 1.6.0) | 1.77 s | 3,938 MB | 359 μs-1.7 ms | 7561 lines, 1347 gen, 6687 loads, 4875 subs |
+| **Apache Jena** | 6.0.0 | 1.77 s | 3,938 MB | 359 μs-1.7 ms | 7561 lines, 1347 gen, 6687 loads, 4875 subs |
 | **PowSyBL CGMES** | 2025.3.1 | 1.85 s | 4,224 MB | 221 μs-1.2 ms | 7561 lines, 1347 gen, 6687 loads, 4875 subs |
-| **maplib** | 0.19.24 | 2.43 s | 517 MB | 493 μs-1.3 ms | 7561 lines, 1347 gen, 6687 loads, 4875 subs |
+| **maplib** | 0.20.0 | 2.43 s | 517 MB | 493 μs-1.3 ms | 7561 lines, 1347 gen, 6687 loads, 4875 subs |
 | **pypowsybl** | 1.14.0 | 4.61 s | 4,497 MB | 2.8-33 ms | 7561 lines, 1347 gen, 6687 loads, 4791* subs |
 | **VeraGrid** | 5.6.38 | 6.85 s | 1,315 MB | 0.05-0.2 μs | 7561 lines, 1347 gen, 6687 loads, 4875 subs |
-| **CIM-Graph** | 0.4.3a10 | 12.98 s | 3,254 MB | 0.08-0.2 μs | 7561 lines, 1347 gen, 6687 loads, 4875 subs |
+| **CIM-Graph** | 0.4.3a12 | 12.98 s | 3,254 MB | 0.08-0.2 μs | 7561 lines, 1347 gen, 6687 loads, 4875 subs |
 | **RDFlib** | 7.6.0 | 19.13 s | 1,520 MB | 420 μs-2.1 ms | 7561 lines, 2694 gen, 13374 loads, 4875 subs |
 | **libcimpp** | 2.2.0 | 23.41 s | 135 MB | 9.4-21.3 ms | 7561 lines, 1347 gen, 6687 loads, 4875 subs |
 
@@ -45,10 +51,52 @@ Latest containerized results on AMD Ryzen AI 9 HX 370 (24 cores), 64GB RAM, Podm
 
 > **⚠️ Query Performance Note**: Query times are not directly comparable across parsers. Some parsers (triplets) use `type_tableview()` which retrieves **all element data with parameters**, while others (RDFlib, Jena, OpenCGMES, PowSyBL CGMES) use SPARQL `COUNT()` queries that only return **element counts**. Retrieving full data is 10-100x slower but provides complete element information. Future work will standardize all parsers to retrieve full element data for fair comparison.
 
-### Import Performance Comparison
+### Export Performance
 
-![Import Performance](results-docker/graphs/import_comparison.svg)
-![Memory Usage](results-docker/graphs/memory_comparison.svg)
+Export benchmarks measure serialization of loaded CIM data back to RDF/XML. Not all tools support export — CIM-Graph and libcimpp lack serialization APIs.
+
+**Small Dataset (Svedala - 7.3 MB, CGMES 3.0):**
+
+| Library | Export Time | Output Format | Notes |
+|---------|-----------|---------------|-------|
+| **PyPowSyBl** | 139 ms | CGMES ZIP | Fastest exporter, native network dump |
+| **PowSyBL CGMES** | 188 ms | RDF/XML (per-profile) | Writes via DirectoryDataSource |
+| **OpenCGMES** | 366 ms | RDF/XML (per-profile) | Jena Model.write per profile |
+| **Apache Jena** | 435 ms | RDF/XML (per-profile) | Model.write per loaded profile |
+| **triplets** | 607 ms | ZIP per profile | CIM XML export with schema mapping |
+| **VeraGrid** | 1.08 s | CGMES ZIP | CimExporter with 4 profiles |
+| **maplib** | 1.41 s | RDF/XML (single file) | 58 ms with N-Quads (24x faster), RDF/XML serialization is the bottleneck |
+| **RDFlib** | 1.60 s | RDF/XML (single file) | Oxigraph graph.serialize() |
+
+**Large Dataset (RealGrid - 86.5 MB, CGMES 2.4.15):**
+
+| Library | Export Time | Output Format | Notes |
+|---------|-----------|---------------|-------|
+| **PyPowSyBl** | 1.59 s | CGMES ZIP | Fastest, good scaling |
+| **PowSyBL CGMES** | 2.11 s | RDF/XML (per-profile) | Scales well |
+| **OpenCGMES** | 3.91 s | RDF/XML (per-profile) | Jena-based, consistent performance |
+| **Apache Jena** | 4.38 s | RDF/XML (per-profile) | Model.write per loaded profile |
+| **triplets** | 5.78 s | ZIP per profile | Parallel export with 4 workers |
+| **VeraGrid** | 12.55 s | CGMES ZIP | Slower scaling on large datasets |
+| **maplib** | 16.79 s | RDF/XML (single file) | 309 ms with N-Quads (54x faster), RDF/XML serialization is the bottleneck |
+| **RDFlib** | 18.69 s | RDF/XML (single file) | Slowest for RDF/XML serialization |
+
+**maplib RDF/XML vs N-Quads**: maplib's default N-Quads export is extremely fast (309 ms for RealGrid) but RDF/XML takes 16.79 s — a 54x slowdown. The benchmark uses RDF/XML for consistency with other tools.
+
+**Import vs Export Speed (RealGrid - 86.5 MB):**
+
+| Library | Import | Export | Ratio |
+|---------|--------|--------|-------|
+| **PyPowSyBl** | 4.32 s | 1.59 s | 0.37x |
+| **RDFlib** | 19.42 s | 18.69 s | 0.96x |
+| **PowSyBL CGMES** | 1.75 s | 2.11 s | 1.20x |
+| **VeraGrid** | 6.90 s | 12.55 s | 1.82x |
+| **Apache Jena** | 1.59 s | 4.38 s | 2.75x |
+| **OpenCGMES** | 1.04 s | 3.91 s | 3.77x |
+| **triplets** | 1.36 s | 5.78 s | 4.26x |
+| **maplib** | 2.18 s | 16.79 s | 7.70x |
+
+
 
 *Cross-dataset comparison showing how all ten tools scale from small (7.3 MB) to large (86.5 MB) datasets*
 
@@ -111,7 +159,7 @@ Latest containerized results on AMD Ryzen AI 9 HX 370 (24 cores), 64GB RAM, Podm
 #### maplib - Rust-backed RDF Library
 - **Load Time**: 324.9 ms
 - **Memory**: 176 MB
-- **Backend**: Oxigraph (Rust) + Polars DataFrames (v0.19.24)
+- **Backend**: Oxigraph (Rust) + Polars DataFrames (v0.20.0)
 - **Network Elements**: 97 lines, 39 generators, 73 loads, 57 substations
 - **Query Performance**: 362 μs-1.1 ms (SPARQL with Polars output)
 - **Strengths**: Rust performance, sub-millisecond queries, returns DataFrames
@@ -186,7 +234,7 @@ Latest containerized results on AMD Ryzen AI 9 HX 370 (24 cores), 64GB RAM, Podm
 #### maplib - Rust-backed RDF Library
 - **Load Time**: 2.43 s
 - **Memory**: 517 MB
-- **Backend**: Oxigraph (Rust) + Polars DataFrames (v0.19.24)
+- **Backend**: Oxigraph (Rust) + Polars DataFrames (v0.20.0)
 - **Network Elements**: 7561 lines, 1347 generators, 6687 loads, 4875 substations
 - **Query Performance**: 493 μs-1.3 ms (SPARQL with Polars output)
 - **Strengths**: Excellent Rust-backed performance, DataFrames output
@@ -242,11 +290,11 @@ See `tools/*/README.md` for detailed per-tool documentation and analysis.
 | ✅ | **pypowsybl** | 1.14.0 | Python | PowSyBl wrapper (network import/export) | Native network model (Java) | CGMES 2.4.15/3.0 CGMES import/export | [powsybl/pypowsybl](https://github.com/powsybl/pypowsybl) | Grid-analysis oriented; rich network model |
 | ✅ | **GridCal/VeraGrid** | 5.6.38 | Python | Power systems analysis with UI | Custom CGMES parser | CGMES 2.4.15/3.0 import | [SanPen/GridCal](https://github.com/SanPen/GridCal) | Sub-microsecond queries, full circuit model, improved load performance |
 | ✅ | **RDFlib** | 7.6.0 | Python | Generic RDF parser/triple store | Oxigraph (via oxrdflib 0.5.0) | None (generic) | [RDFLib/rdflib](https://github.com/RDFLib/rdflib) | Baseline for speed/memory comparison with Oxigraph |
-| ✅ | **CIMantic Graphs** | 0.4.3a10 | Python | In-memory labeled property graph | Oxigraph + typed objects | CIM15–18, custom profiles | [PNNL-CIM-Tools/CIM-Graph](https://github.com/PNNL-CIM-Tools/CIM-Graph) | Modern API, uses RDFlib with typed CIM objects |
-| ✅ | **Apache Jena** | 5.2.0 (jpype1 1.6.0) | Java (JPype) | RDF framework + CIMXML parser | In-memory RDF triples | Generic RDF | [apache/jena](https://github.com/apache/jena) | Pure Jena with lenient UUID handling |
+| ✅ | **CIMantic Graphs** | 0.4.3a12 | Python | In-memory labeled property graph | Oxigraph + typed objects | CIM15–18, custom profiles | [PNNL-CIM-Tools/CIM-Graph](https://github.com/PNNL-CIM-Tools/CIM-Graph) | Modern API, uses RDFlib with typed CIM objects |
+| ✅ | **Apache Jena** | 6.0.0 (jpype1 1.6.0) | Java (JPype) | RDF framework + CIMXML parser | In-memory RDF triples | Generic RDF | [apache/jena](https://github.com/apache/jena) | Pure Jena with lenient UUID handling |
 | ✅ | **OpenCGMES** | latest (jpype1 1.6.0) | Java (JPype) | Suite for CGMES / CIM RDF parser | Apache Jena (optimized) | CGMES / IEC61970-552 | [SOPTIM/OpenCGMES](https://github.com/SOPTIM/OpenCGMES) | CGMES-specific optimizations, UUID normalization |
 | ✅ | **PowSyBL CGMES** | 2025.3.1 | Java (JPype) | CGMES model with triplestore | RDF4J triplestore | CGMES 2.4.15/3.0 | [powsybl/powsybl-core](https://github.com/powsybl/powsybl-core) | CGMES model with SPARQL queries |
-| ✅ | **maplib** | 0.19.24 | Python/Rust | High-performance RDF with SPARQL | Polars DataFrames + Oxigraph | Generic RDF (CGMES compatible) | [DataTreehouse/maplib](https://github.com/DataTreehouse/maplib) | Rust-backed performance, sub-millisecond queries |
+| ✅ | **maplib** | 0.20.0 | Python/Rust | High-performance RDF with SPARQL | Polars DataFrames + Oxigraph | Generic RDF (CGMES compatible) | [DataTreehouse/maplib](https://github.com/DataTreehouse/maplib) | Rust-backed performance, sub-millisecond queries |
 | ⚠️ | **libcimpp** | 2.2.0 | C++ (Python wrapper) | Fast C++ object model | Native C++ objects | CGMES 2.4.15 (3.0 partial) | [sogno-platform/libcimpp](https://github.com/sogno-platform/libcimpp) | Lowest memory usage (135 MB), CGMES 3.0 fails on Svedala (European extensions) |
 | ⚠️ | **cimpy** | 1.1.0 | Python | Import/export/modify CGMES XML/RDF | Object topology dict | CGMES 2.4.15 (partial) | [sogno-platform/cimpy](https://github.com/sogno-platform/cimpy) | Compatibility issues: v1.1.0 only has cgmes_v2_4_15 classes (no CGMES 3.0), parsing bugs with test datasets |
 | ❌ | **pycgmes** | latest | Python | Dataclasses + RDF schema + SHACL | Dataclass mapping | CGMES 3.0+ | [alliander-opensource/pycgmes](https://github.com/alliander-opensource/pycgmes) | No file import capability - dataclass definitions only |

@@ -35,6 +35,35 @@ class OpenCGMESAdapter(ParserAdapter):
             OpenCGMESAdapter._jvm_started = True
 
     @classmethod
+    def get_version(cls) -> str:
+        if not jpype.isJVMStarted():
+            return "unknown"
+        from de.soptim.opencgmes.cimxml.parser import CimXmlParser
+        v = CimXmlParser.class_.getPackage().getImplementationVersion()
+        if v:
+            return str(v)
+        # Fallback: parse version from JAR filename (SNAPSHOT builds lack manifest version)
+        import re
+        from java.lang import Thread
+        url = str(Thread.currentThread().getContextClassLoader()
+                  .getResource("de/soptim/opencgmes/cimxml/parser/CimXmlParser.class"))
+        if (m := re.search(r"cimxml-([\d.]+[^/]*?)\.jar", url)):
+            return m.group(1)
+        return "unknown"
+
+    @classmethod
+    def get_dependencies(cls) -> dict:
+        from importlib.metadata import version
+        deps = {"jpype1": version("jpype1")}
+        if jpype.isJVMStarted():
+            deps["java"] = str(jpype.java.lang.System.getProperty("java.version"))
+            from org.apache.jena.rdf.model import ModelFactory
+            v = ModelFactory.class_.getPackage().getImplementationVersion()
+            if v:
+                deps["jena"] = str(v)
+        return deps
+
+    @classmethod
     def get_display_name(cls) -> str:
         """Get the display name for this parser."""
         return "OpenCGMES"

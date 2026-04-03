@@ -37,6 +37,22 @@ class JenaAdapter(ParserAdapter):
             JenaAdapter._jvm_started = True
 
     @classmethod
+    def get_version(cls) -> str:
+        if not jpype.isJVMStarted():
+            return "unknown"
+        from org.apache.jena.rdf.model import ModelFactory
+        v = ModelFactory.class_.getPackage().getImplementationVersion()
+        return str(v) if v else "unknown"
+
+    @classmethod
+    def get_dependencies(cls) -> dict:
+        from importlib.metadata import version
+        deps = {"jpype1": version("jpype1")}
+        if jpype.isJVMStarted():
+            deps["java"] = str(jpype.java.lang.System.getProperty("java.version"))
+        return deps
+
+    @classmethod
     def get_display_name(cls) -> str:
         """Get the display name for this parser."""
         return "Apache Jena"
@@ -198,23 +214,21 @@ class JenaAdapter(ParserAdapter):
         return loaded_obj._count_instances("Substation")
 
     def export(self, loaded_obj, output_path):
-        """Export all loaded RDF models to RDF/XML format."""
+        """Export all loaded RDF models to per-profile RDF/XML files."""
         from java.io import FileOutputStream
-        from org.apache.jena.rdf.model import ModelFactory
 
         if not loaded_obj.models:
             raise ValueError("No data loaded")
 
         output_path = Path(output_path)
+        output_dir = output_path.parent
 
-        # Merge all profiles into a single model and write
-        merged = ModelFactory.createDefaultModel()
-        for model in loaded_obj.models.values():
-            merged.add(model)
-
-        fos = FileOutputStream(str(output_path))
-        merged.write(fos, "RDF/XML")
-        fos.close()
+        # Write each profile to a separate XML file
+        for profile_name, model in loaded_obj.models.items():
+            profile_path = output_dir / f"{profile_name}.xml"
+            fos = FileOutputStream(str(profile_path))
+            model.write(fos, "RDF/XML")
+            fos.close()
 
         return output_path
 

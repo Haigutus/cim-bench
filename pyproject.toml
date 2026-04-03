@@ -13,6 +13,9 @@ dependencies = [
     "cim-graph>=0.4.3a10",
 ]
 
+[tool.uv]
+exclude-newer = "P7D"
+
 [project.optional-dependencies]
 visualization = [
     "matplotlib>=3.8.0",

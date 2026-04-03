@@ -13,32 +13,36 @@
 
 ### Powsybl Cgmes Load Svedala
 
-- **Mean time**: 251.1 ms
-- **Min time**: 221.7 ms
-- **Max time**: 293.6 ms
-- **Std dev**: 30.7 ms
+- **Mean time**: 245.4 ms
+- **Min time**: 224.4 ms
+- **Max time**: 285.9 ms
+- **Std dev**: 25.1 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 610.3
+- Memory Mb: 449.3
 - Triples: 95499
 - Lines: 97
 - Generators: 39
 - Loads: 73
 - Substations: 57
-- Total Size Mb: 7.3
+- Dataset Size Mb: 7.3
+- Cgmes Version: 3.0
 - Library: powsybl_cgmes
+- Library Version: 7.1.1
+- Library Dependencies: {'jpype1': '1.6.0', 'java': '21.0.10'}
+- Java Version: 21.0.10
 - Dataset: svedala
 - Display Name: PowSyBL CGMES
 - Color: #17a2b8
 
 ### Powsybl Cgmes Get Lines
 
-- **Mean time**: 110.3 μs
-- **Min time**: 50.1 μs
-- **Max time**: 1.2 ms
-- **Std dev**: 99.5 μs
-- **Rounds**: 1874
+- **Mean time**: 142.0 μs
+- **Min time**: 56.2 μs
+- **Max time**: 1.6 ms
+- **Std dev**: 130.4 μs
+- **Rounds**: 1491
 
 **Metrics**:
 - Line Count: 97
@@ -50,11 +54,11 @@
 
 ### Powsybl Cgmes Get Generators
 
-- **Mean time**: 55.1 μs
-- **Min time**: 38.9 μs
-- **Max time**: 321.3 μs
-- **Std dev**: 18.4 μs
-- **Rounds**: 1856
+- **Mean time**: 53.2 μs
+- **Min time**: 39.7 μs
+- **Max time**: 447.1 μs
+- **Std dev**: 17.2 μs
+- **Rounds**: 4434
 
 **Metrics**:
 - Generator Count: 39
@@ -66,11 +70,11 @@
 
 ### Powsybl Cgmes Get Loads
 
-- **Mean time**: 187.9 μs
-- **Min time**: 101.8 μs
-- **Max time**: 77.2 ms
-- **Std dev**: 1.8 ms
-- **Rounds**: 1851
+- **Mean time**: 149.0 μs
+- **Min time**: 119.4 μs
+- **Max time**: 350.5 μs
+- **Std dev**: 27.1 μs
+- **Rounds**: 854
 
 **Metrics**:
 - Load Count: 73
@@ -82,16 +86,31 @@
 
 ### Powsybl Cgmes Get Substations
 
-- **Mean time**: 56.8 μs
-- **Min time**: 34.0 μs
-- **Max time**: 13.7 ms
-- **Std dev**: 286.3 μs
-- **Rounds**: 2296
+- **Mean time**: 50.6 μs
+- **Min time**: 39.9 μs
+- **Max time**: 336.7 μs
+- **Std dev**: 16.1 μs
+- **Rounds**: 2878
 
 **Metrics**:
 - Substation Count: 57
 - Query Type: get_substations
 - Library: powsybl_cgmes
 - Dataset: svedala
+- Display Name: PowSyBL CGMES
+- Color: #17a2b8
+
+### Powsybl Cgmes Export Svedala
+
+- **Mean time**: 188.4 ms
+- **Min time**: 165.7 ms
+- **Max time**: 251.7 ms
+- **Std dev**: 35.9 ms
+- **Rounds**: 5
+
+**Metrics**:
+- Library: powsybl_cgmes
+- Dataset: svedala
+- Operation: export
 - Display Name: PowSyBL CGMES
 - Color: #17a2b8

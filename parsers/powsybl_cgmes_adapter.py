@@ -36,6 +36,31 @@ class PowsyblCgmesAdapter(ParserAdapter):
             PowsyblCgmesAdapter._jvm_started = True
 
     @classmethod
+    def get_version(cls) -> str:
+        if not jpype.isJVMStarted():
+            return "unknown"
+        from com.powsybl.cgmes.model import CgmesModel
+        v = CgmesModel.class_.getPackage().getImplementationVersion()
+        if v:
+            return str(v)
+        # Fallback: parse version from JAR filename
+        import re
+        from java.lang import Thread
+        url = str(Thread.currentThread().getContextClassLoader()
+                  .getResource("com/powsybl/cgmes/model/CgmesModel.class"))
+        if (m := re.search(r"powsybl-cgmes-model-([\d.]+[^/]*?)\.jar", url)):
+            return m.group(1)
+        return "unknown"
+
+    @classmethod
+    def get_dependencies(cls) -> dict:
+        from importlib.metadata import version
+        deps = {"jpype1": version("jpype1")}
+        if jpype.isJVMStarted():
+            deps["java"] = str(jpype.java.lang.System.getProperty("java.version"))
+        return deps
+
+    @classmethod
     def get_display_name(cls) -> str:
         """Get the display name for this parser."""
         return "PowSyBL CGMES"

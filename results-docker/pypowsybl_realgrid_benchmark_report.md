@@ -13,14 +13,14 @@
 
 ### Pypowsybl Load Realgrid
 
-- **Mean time**: 4.57 s
-- **Min time**: 4.41 s
-- **Max time**: 4.74 s
-- **Std dev**: 152.3 ms
+- **Mean time**: 4.32 s
+- **Min time**: 4.22 s
+- **Max time**: 4.44 s
+- **Std dev**: 80.7 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 4801.7
+- Memory Mb: 1640.2
 - Buses: 6051
 - Lines: 7561
 - Ac Lines: 7561
@@ -29,18 +29,21 @@
 - Loads: 6687
 - Substations: 4791
 - Dataset Size Mb: 86.5
+- Cgmes Version: 2.4.15
 - Library: pypowsybl
+- Library Version: 1.14.0
+- Library Dependencies: {'prettytable': '3.17.0', 'pandas': '3.0.2', 'networkx': '3.6.1'}
 - Dataset: realgrid
 - Display Name: PyPowSyBl
 - Color: #ff7f0e
 
 ### Pypowsybl Get Lines
 
-- **Mean time**: 35.8 ms
-- **Min time**: 34.6 ms
-- **Max time**: 38.2 ms
-- **Std dev**: 858.1 μs
-- **Rounds**: 29
+- **Mean time**: 36.4 ms
+- **Min time**: 33.0 ms
+- **Max time**: 44.5 ms
+- **Std dev**: 3.5 ms
+- **Rounds**: 31
 
 **Metrics**:
 - Line Count: 7561
@@ -53,10 +56,10 @@
 ### Pypowsybl Get Generators
 
 - **Mean time**: 2.7 ms
-- **Min time**: 2.4 ms
-- **Max time**: 6.4 ms
-- **Std dev**: 774.4 μs
-- **Rounds**: 171
+- **Min time**: 2.2 ms
+- **Max time**: 17.2 ms
+- **Std dev**: 1.2 ms
+- **Rounds**: 223
 
 **Metrics**:
 - Generator Count: 1347
@@ -68,11 +71,11 @@
 
 ### Pypowsybl Get Loads
 
-- **Mean time**: 20.5 ms
-- **Min time**: 16.8 ms
-- **Max time**: 70.3 ms
-- **Std dev**: 8.3 ms
-- **Rounds**: 42
+- **Mean time**: 21.3 ms
+- **Min time**: 17.7 ms
+- **Max time**: 33.8 ms
+- **Std dev**: 4.4 ms
+- **Rounds**: 53
 
 **Metrics**:
 - Load Count: 6687
@@ -84,16 +87,31 @@
 
 ### Pypowsybl Get Substations
 
-- **Mean time**: 4.0 ms
-- **Min time**: 3.4 ms
-- **Max time**: 9.9 ms
-- **Std dev**: 1.0 ms
-- **Rounds**: 153
+- **Mean time**: 4.5 ms
+- **Min time**: 3.3 ms
+- **Max time**: 11.6 ms
+- **Std dev**: 1.6 ms
+- **Rounds**: 122
 
 **Metrics**:
 - Substation Count: 4791
 - Query Type: get_substations
 - Library: pypowsybl
 - Dataset: realgrid
+- Display Name: PyPowSyBl
+- Color: #ff7f0e
+
+### Pypowsybl Export Realgrid
+
+- **Mean time**: 1.59 s
+- **Min time**: 1.57 s
+- **Max time**: 1.62 s
+- **Std dev**: 19.2 ms
+- **Rounds**: 5
+
+**Metrics**:
+- Library: pypowsybl
+- Dataset: realgrid
+- Operation: export
 - Display Name: PyPowSyBl
 - Color: #ff7f0e

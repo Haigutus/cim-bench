@@ -13,31 +13,34 @@
 
 ### Maplib Load Realgrid
 
-- **Mean time**: 2.14 s
-- **Min time**: 2.09 s
-- **Max time**: 2.17 s
-- **Std dev**: 35.2 ms
+- **Mean time**: 2.18 s
+- **Min time**: 2.15 s
+- **Max time**: 2.22 s
+- **Std dev**: 26.6 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 551.5
+- Memory Mb: 576.3
 - Lines: 7561
 - Generators: 1347
 - Loads: 6687
 - Substations: 4875
 - Dataset Size Mb: 86.5
+- Cgmes Version: 2.4.15
 - Library: maplib
+- Library Version: 0.20.0
+- Library Dependencies: {'polars': '1.39.3', 'pyarrow': '23.0.1', 'fastapi': '0.135.3'}
 - Dataset: realgrid
 - Display Name: maplib
 - Color: #8b4513
 
 ### Maplib Get Lines
 
-- **Mean time**: 548.2 μs
-- **Min time**: 400.5 μs
-- **Max time**: 1.2 ms
-- **Std dev**: 58.5 μs
-- **Rounds**: 1522
+- **Mean time**: 609.0 μs
+- **Min time**: 434.9 μs
+- **Max time**: 3.1 ms
+- **Std dev**: 125.3 μs
+- **Rounds**: 958
 
 **Metrics**:
 - Line Count: 7561
@@ -49,11 +52,11 @@
 
 ### Maplib Get Generators
 
-- **Mean time**: 411.2 μs
-- **Min time**: 308.2 μs
-- **Max time**: 3.0 ms
-- **Std dev**: 86.9 μs
-- **Rounds**: 1891
+- **Mean time**: 452.2 μs
+- **Min time**: 327.0 μs
+- **Max time**: 3.2 ms
+- **Std dev**: 138.2 μs
+- **Rounds**: 1590
 
 **Metrics**:
 - Generator Count: 1347
@@ -65,11 +68,11 @@
 
 ### Maplib Get Loads
 
-- **Mean time**: 1.1 ms
-- **Min time**: 826.3 μs
-- **Max time**: 2.3 ms
-- **Std dev**: 122.5 μs
-- **Rounds**: 878
+- **Mean time**: 1.2 ms
+- **Min time**: 864.5 μs
+- **Max time**: 4.1 ms
+- **Std dev**: 193.4 μs
+- **Rounds**: 766
 
 **Metrics**:
 - Load Count: 6687
@@ -81,16 +84,31 @@
 
 ### Maplib Get Substations
 
-- **Mean time**: 481.1 μs
-- **Min time**: 351.3 μs
-- **Max time**: 1.3 ms
-- **Std dev**: 59.0 μs
-- **Rounds**: 1797
+- **Mean time**: 517.6 μs
+- **Min time**: 383.0 μs
+- **Max time**: 2.2 ms
+- **Std dev**: 81.8 μs
+- **Rounds**: 1964
 
 **Metrics**:
 - Substation Count: 4875
 - Query Type: get_substations
 - Library: maplib
 - Dataset: realgrid
+- Display Name: maplib
+- Color: #8b4513
+
+### Maplib Export Realgrid
+
+- **Mean time**: 16.79 s
+- **Min time**: 16.71 s
+- **Max time**: 16.96 s
+- **Std dev**: 101.7 ms
+- **Rounds**: 5
+
+**Metrics**:
+- Library: maplib
+- Dataset: realgrid
+- Operation: export
 - Display Name: maplib
 - Color: #8b4513

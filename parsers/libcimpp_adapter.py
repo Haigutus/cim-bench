@@ -13,6 +13,10 @@ class LibCIMppAdapter(ParserAdapter):
         self.benchmark = None
 
     @classmethod
+    def get_version(cls):
+        return "2.2.0"  # C++ lib, no Python package metadata
+
+    @classmethod
     def get_display_name(cls):
         return "libcimpp"
 

@@ -22,6 +22,15 @@ class RDFlibAdapter(ParserAdapter):
         self.cim_namespace = None  # Will be detected from loaded data
 
     @classmethod
+    def get_version(cls) -> str:
+        from importlib.metadata import version
+        return version("rdflib")
+
+    @classmethod
+    def get_dependencies(cls) -> dict:
+        return cls._get_package_dependencies("rdflib")
+
+    @classmethod
     def get_display_name(cls) -> str:
         """Get the display name for this parser."""
         return "RDFlib"

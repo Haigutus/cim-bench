@@ -22,6 +22,15 @@ class PypowsyblAdapter(ParserAdapter):
         self.network = None
 
     @classmethod
+    def get_version(cls) -> str:
+        from importlib.metadata import version
+        return version("pypowsybl")
+
+    @classmethod
+    def get_dependencies(cls) -> dict:
+        return cls._get_package_dependencies("pypowsybl")
+
+    @classmethod
     def get_display_name(cls) -> str:
         """Get the display name for this parser."""
         return "PyPowSyBl"

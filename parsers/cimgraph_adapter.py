@@ -28,6 +28,15 @@ class CIMGraphAdapter(ParserAdapter):
         self.cim_profile = None
 
     @classmethod
+    def get_version(cls) -> str:
+        from importlib.metadata import version
+        return version("cim-graph")
+
+    @classmethod
+    def get_dependencies(cls) -> dict:
+        return cls._get_package_dependencies("cim-graph")
+
+    @classmethod
     def get_display_name(cls) -> str:
         """Get the display name for this parser."""
         return "CIM-Graph"

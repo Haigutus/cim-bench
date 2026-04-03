@@ -6,41 +6,27 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.cimbench</groupId>
-    <artifactId>opencgmes-benchmark</artifactId>
+    <artifactId>jena-benchmark</artifactId>
     <version>0.1.0</version>
     <packaging>jar</packaging>
 
-    <name>OpenCGMES Benchmark Dependencies</name>
-    <description>Maven dependencies for OpenCGMES benchmarking</description>
+    <name>Jena Benchmark Dependencies</name>
+    <description>Maven dependencies for Apache Jena benchmarking</description>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jena.version>5.2.0</jena.version>
+        <jena.version>6.0.0</jena.version>
     </properties>
 
     <dependencies>
-        <!-- Apache Jena for RDF/SPARQL processing -->
+        <!-- Apache Jena (includes jena-core, jena-arq, and all transitive deps) -->
         <dependency>
             <groupId>org.apache.jena</groupId>
             <artifactId>apache-jena-libs</artifactId>
             <version>${jena.version}</version>
             <type>pom</type>
-        </dependency>
-
-        <!-- Jena ARQ for SPARQL queries -->
-        <dependency>
-            <groupId>org.apache.jena</groupId>
-            <artifactId>jena-arq</artifactId>
-            <version>${jena.version}</version>
-        </dependency>
-
-        <!-- Jena Core -->
-        <dependency>
-            <groupId>org.apache.jena</groupId>
-            <artifactId>jena-core</artifactId>
-            <version>${jena.version}</version>
         </dependency>
 
         <!-- SLF4J for logging (required by Jena) -->

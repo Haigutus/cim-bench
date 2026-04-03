@@ -15,6 +15,15 @@ class VeragridAdapter(ParserAdapter):
         self.cgmes_circuit = None
 
     @classmethod
+    def get_version(cls) -> str:
+        from importlib.metadata import version
+        return version("VeraGrid")
+
+    @classmethod
+    def get_dependencies(cls) -> dict:
+        return cls._get_package_dependencies("VeraGrid")
+
+    @classmethod
     def get_display_name(cls) -> str:
         """Get the display name for this parser."""
         return "VeraGrid"

@@ -13,31 +13,34 @@
 
 ### Maplib Load Svedala
 
-- **Mean time**: 251.2 ms
-- **Min time**: 243.4 ms
-- **Max time**: 260.0 ms
-- **Std dev**: 6.0 ms
+- **Mean time**: 254.0 ms
+- **Min time**: 243.3 ms
+- **Max time**: 270.9 ms
+- **Std dev**: 10.8 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 175.9
+- Memory Mb: 179.5
 - Lines: 97
 - Generators: 39
 - Loads: 73
 - Substations: 57
-- Total Size Mb: 7.3
+- Dataset Size Mb: 7.3
+- Cgmes Version: 3.0
 - Library: maplib
+- Library Version: 0.20.0
+- Library Dependencies: {'polars': '1.39.3', 'pyarrow': '23.0.1', 'fastapi': '0.135.3'}
 - Dataset: svedala
 - Display Name: maplib
 - Color: #8b4513
 
 ### Maplib Get Lines
 
-- **Mean time**: 331.6 μs
-- **Min time**: 235.8 μs
-- **Max time**: 3.1 ms
-- **Std dev**: 89.2 μs
-- **Rounds**: 1467
+- **Mean time**: 366.4 μs
+- **Min time**: 251.3 μs
+- **Max time**: 2.0 ms
+- **Std dev**: 88.5 μs
+- **Rounds**: 1438
 
 **Metrics**:
 - Line Count: 97
@@ -49,11 +52,11 @@
 
 ### Maplib Get Generators
 
-- **Mean time**: 324.0 μs
-- **Min time**: 238.0 μs
-- **Max time**: 836.7 μs
-- **Std dev**: 51.0 μs
-- **Rounds**: 2264
+- **Mean time**: 341.4 μs
+- **Min time**: 246.0 μs
+- **Max time**: 3.1 ms
+- **Std dev**: 100.3 μs
+- **Rounds**: 1767
 
 **Metrics**:
 - Generator Count: 39
@@ -65,11 +68,11 @@
 
 ### Maplib Get Loads
 
-- **Mean time**: 910.3 μs
-- **Min time**: 718.5 μs
-- **Max time**: 2.1 ms
-- **Std dev**: 134.0 μs
-- **Rounds**: 960
+- **Mean time**: 948.0 μs
+- **Min time**: 742.2 μs
+- **Max time**: 3.8 ms
+- **Std dev**: 153.4 μs
+- **Rounds**: 799
 
 **Metrics**:
 - Load Count: 73
@@ -81,16 +84,31 @@
 
 ### Maplib Get Substations
 
-- **Mean time**: 342.4 μs
-- **Min time**: 256.0 μs
-- **Max time**: 2.5 ms
-- **Std dev**: 68.1 μs
-- **Rounds**: 1913
+- **Mean time**: 380.7 μs
+- **Min time**: 255.7 μs
+- **Max time**: 1.5 ms
+- **Std dev**: 77.6 μs
+- **Rounds**: 2565
 
 **Metrics**:
 - Substation Count: 57
 - Query Type: get_substations
 - Library: maplib
 - Dataset: svedala
+- Display Name: maplib
+- Color: #8b4513
+
+### Maplib Export Svedala
+
+- **Mean time**: 1.41 s
+- **Min time**: 1.38 s
+- **Max time**: 1.42 s
+- **Std dev**: 16.1 ms
+- **Rounds**: 5
+
+**Metrics**:
+- Library: maplib
+- Dataset: svedala
+- Operation: export
 - Display Name: maplib
 - Color: #8b4513

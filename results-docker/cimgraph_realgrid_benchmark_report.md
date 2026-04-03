@@ -13,21 +13,24 @@
 
 ### Cimgraph Load Realgrid
 
-- **Mean time**: 12.87 s
-- **Min time**: 11.86 s
-- **Max time**: 14.03 s
-- **Std dev**: 951.2 ms
+- **Mean time**: 13.42 s
+- **Min time**: 12.18 s
+- **Max time**: 14.78 s
+- **Std dev**: 1.10 s
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 3258.8
+- Memory Mb: 3259.2
 - Triples: 1233106
 - Lines: 7561
 - Generators: 1347
 - Loads: 6687
 - Substations: 4875
 - Dataset Size Mb: 86.5
+- Cgmes Version: 2.4.15
 - Library: cimgraph
+- Library Version: 0.4.3a12
+- Library Dependencies: {'defusedxml': '0.8.0rc2', 'gridappsd-python': '2026.2.1', 'mermaid-python': '0.1', 'mysql-connector-python': '9.6.0', 'neo4j': '6.1.0', 'nest-asyncio': '1.6.0', 'oxrdflib': '0.5.0', 'pint': '0.25.3', 'rdflib': '7.6.0', 'sparqlwrapper': '2.0.0'}
 - Dataset: realgrid
 - Display Name: CIM-Graph
 - Color: #9467bd
@@ -36,9 +39,9 @@
 
 - **Mean time**: 0.1 μs
 - **Min time**: 0.1 μs
-- **Max time**: 4.0 μs
-- **Std dev**: 0.0 μs
-- **Rounds**: 145922
+- **Max time**: 30.6 μs
+- **Std dev**: 0.1 μs
+- **Rounds**: 158932
 
 **Metrics**:
 - Line Count: 7561
@@ -52,9 +55,9 @@
 
 - **Mean time**: 0.1 μs
 - **Min time**: 0.1 μs
-- **Max time**: 24.3 μs
-- **Std dev**: 0.1 μs
-- **Rounds**: 189036
+- **Max time**: 0.4 μs
+- **Std dev**: 0.0 μs
+- **Rounds**: 70842
 
 **Metrics**:
 - Generator Count: 1347
@@ -68,9 +71,9 @@
 
 - **Mean time**: 0.2 μs
 - **Min time**: 0.2 μs
-- **Max time**: 14.4 μs
-- **Std dev**: 0.1 μs
-- **Rounds**: 179534
+- **Max time**: 5.3 μs
+- **Std dev**: 0.0 μs
+- **Rounds**: 101431
 
 **Metrics**:
 - Load Count: 6687
@@ -84,9 +87,9 @@
 
 - **Mean time**: 0.1 μs
 - **Min time**: 0.1 μs
-- **Max time**: 0.6 μs
+- **Max time**: 0.7 μs
 - **Std dev**: 0.0 μs
-- **Rounds**: 68555
+- **Rounds**: 68134
 
 **Metrics**:
 - Substation Count: 4875

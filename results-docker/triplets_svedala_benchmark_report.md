@@ -13,14 +13,14 @@
 
 ### Triplets Load Svedala
 
-- **Mean time**: 116.1 ms
-- **Min time**: 101.8 ms
-- **Max time**: 121.3 ms
-- **Std dev**: 6.1 ms
+- **Mean time**: 118.0 ms
+- **Min time**: 102.1 ms
+- **Max time**: 124.3 ms
+- **Std dev**: 6.7 ms
 - **Rounds**: 11
 
 **Metrics**:
-- Memory Mb: 43.2
+- Memory Mb: 43.3
 - Triplets Count: 95539
 - Unique Objects: 14540
 - Instances: 5
@@ -28,19 +28,22 @@
 - Generators: 39
 - Loads: 73
 - Substations: 57
-- Total Size Mb: 7.3
+- Dataset Size Mb: 7.3
+- Cgmes Version: 3.0
 - Library: triplets
+- Library Version: 0.0.17
+- Library Dependencies: {'pandas': '3.0.2', 'lxml': '6.0.2', 'aniso8601': '10.0.1'}
 - Dataset: svedala
 - Display Name: triplets
 - Color: #1f77b4
 
 ### Triplets Get Lines
 
-- **Mean time**: 21.1 ms
-- **Min time**: 20.2 ms
-- **Max time**: 29.2 ms
-- **Std dev**: 1.3 ms
-- **Rounds**: 46
+- **Mean time**: 21.2 ms
+- **Min time**: 20.3 ms
+- **Max time**: 25.7 ms
+- **Std dev**: 835.8 μs
+- **Rounds**: 47
 
 **Metrics**:
 - Line Count: 97
@@ -52,11 +55,11 @@
 
 ### Triplets Get Generators
 
-- **Mean time**: 21.1 ms
-- **Min time**: 20.4 ms
-- **Max time**: 22.1 ms
-- **Std dev**: 423.7 μs
-- **Rounds**: 45
+- **Mean time**: 21.4 ms
+- **Min time**: 20.8 ms
+- **Max time**: 23.2 ms
+- **Std dev**: 449.7 μs
+- **Rounds**: 41
 
 **Metrics**:
 - Generator Count: 39
@@ -68,10 +71,10 @@
 
 ### Triplets Get Loads
 
-- **Mean time**: 41.3 ms
-- **Min time**: 39.8 ms
-- **Max time**: 44.1 ms
-- **Std dev**: 1.0 ms
+- **Mean time**: 42.7 ms
+- **Min time**: 40.7 ms
+- **Max time**: 46.8 ms
+- **Std dev**: 1.7 ms
 - **Rounds**: 22
 
 **Metrics**:
@@ -84,16 +87,31 @@
 
 ### Triplets Get Substations
 
-- **Mean time**: 20.7 ms
+- **Mean time**: 21.0 ms
 - **Min time**: 19.8 ms
-- **Max time**: 22.0 ms
-- **Std dev**: 488.3 μs
-- **Rounds**: 44
+- **Max time**: 25.5 ms
+- **Std dev**: 955.7 μs
+- **Rounds**: 46
 
 **Metrics**:
 - Substation Count: 57
 - Query Type: get_substations
 - Library: triplets
 - Dataset: svedala
+- Display Name: triplets
+- Color: #1f77b4
+
+### Triplets Export Svedala
+
+- **Mean time**: 607.4 ms
+- **Min time**: 580.8 ms
+- **Max time**: 623.8 ms
+- **Std dev**: 16.2 ms
+- **Rounds**: 5
+
+**Metrics**:
+- Library: triplets
+- Dataset: svedala
+- Operation: export
 - Display Name: triplets
 - Color: #1f77b4

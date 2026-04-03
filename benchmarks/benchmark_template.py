@@ -68,17 +68,22 @@ def create_benchmarks(adapter, dataset_key, parser_name, dataset_name):
         memory_delta = get_memory_mb() - memory_baseline
         metrics = adapter.get_load_metrics(loaded_obj, memory_delta)
 
-        # Add dataset size
+        # Add dataset metadata
         dataset = DATASETS[dataset_key]
-        if "ZIP" in dataset:
-            size_mb = dataset["_metadata"]["size_mb"]
-            metrics["dataset_size_mb"] = f"{size_mb:.1f}"
-        else:
-            files = [v for k, v in dataset.items() if k != "_metadata"]
-            metrics["total_size_mb"] = f"{get_size_mb(files):.1f}"
+        metadata = dataset["_metadata"]
+        metrics["dataset_size_mb"] = metadata["size_mb"]
+        metrics["cgmes_version"] = metadata["cgmes_version"]
 
         # Add library and dataset metadata
         metrics["library"] = parser_name
+        metrics["library_version"] = adapter.__class__.get_version()
+        metrics["library_dependencies"] = adapter.__class__.get_dependencies()
+
+        # Add Java version if available (separate top-level key)
+        deps = adapter.__class__.get_dependencies()
+        if "java" in deps:
+            metrics["java_version"] = deps["java"]
+
         metrics["dataset"] = dataset_name
         metrics["display_name"] = adapter.__class__.get_display_name()
         metrics["color"] = adapter.__class__.get_color()
@@ -138,6 +143,44 @@ def create_benchmarks(adapter, dataset_key, parser_name, dataset_name):
         benchmark.extra_info["color"] = adapter.__class__.get_color()
         assert count > 0
 
+    # Export test (only if adapter supports it)
+    def _has_export():
+        try:
+            adapter.export(None, None)
+        except NotImplementedError:
+            return False
+        except Exception:
+            return True
+        return True
+
+    has_export = _has_export()
+
+    if has_export:
+        REPO_ROOT = Path(__file__).parent.parent
+
+        @pytest.fixture
+        def export_output():
+            """Create output directory for exports."""
+            output_dir = REPO_ROOT / "temp" / "export" / parser_name
+            output_dir.mkdir(parents=True, exist_ok=True)
+            yield output_dir / "export_output.xml"
+
+        def test_export(benchmark, loaded_object, export_output):
+            """Benchmark exporting dataset."""
+            result_path = benchmark(adapter.export, loaded_object, export_output)
+
+            benchmark.extra_info["library"] = parser_name
+            benchmark.extra_info["dataset"] = dataset_name
+            benchmark.extra_info["operation"] = "export"
+            benchmark.extra_info["display_name"] = adapter.__class__.get_display_name()
+            benchmark.extra_info["color"] = adapter.__class__.get_color()
+
+            # Verify export produced output
+            output_dir = export_output.parent
+            exported_files = list(output_dir.iterdir())
+            assert len(exported_files) > 0
+            assert any(f.stat().st_size > 0 for f in exported_files if f.is_file())
+
     # Set proper test names for pytest discovery
     test_load.__name__ = f"test_{parser_name}_load_{dataset_name}"
     test_get_lines.__name__ = f"test_{parser_name}_get_lines"
@@ -153,3 +196,8 @@ def create_benchmarks(adapter, dataset_key, parser_name, dataset_name):
     caller_globals[test_get_generators.__name__] = test_get_generators
     caller_globals[test_get_loads.__name__] = test_get_loads
     caller_globals[test_get_substations.__name__] = test_get_substations
+
+    if has_export:
+        test_export.__name__ = f"test_{parser_name}_export_{dataset_name}"
+        caller_globals['export_output'] = export_output
+        caller_globals[test_export.__name__] = test_export

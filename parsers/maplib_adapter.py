@@ -26,6 +26,15 @@ class MaplibAdapter(ParserAdapter):
         self.cim_namespace = None  # Will be detected from loaded data
 
     @classmethod
+    def get_version(cls) -> str:
+        from importlib.metadata import version
+        return version("maplib")
+
+    @classmethod
+    def get_dependencies(cls) -> dict:
+        return cls._get_package_dependencies("maplib")
+
+    @classmethod
     def get_display_name(cls) -> str:
         """Get the display name for this parser."""
         return "maplib"
@@ -156,7 +165,7 @@ class MaplibAdapter(ParserAdapter):
         # Ensure output path is a Path object
         output_path = Path(output_path)
 
-        # Export to RDF/XML format
-        loaded_obj.model.write(str(output_path))
+        # Export to RDF/XML format (default is nquads without format param)
+        loaded_obj.model.write(str(output_path), format="rdf/xml")
 
         return output_path

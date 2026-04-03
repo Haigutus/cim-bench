@@ -14,6 +14,40 @@ class ParserAdapter(ABC):
     """
 
     @classmethod
+    def get_version(cls) -> str:
+        """Get the library version string."""
+        return "unknown"
+
+    @classmethod
+    def get_dependencies(cls) -> dict:
+        """Get versions of library dependencies (excluding benchmark framework).
+
+        Returns:
+            Dict of dependency name → version string.
+        """
+        return {}
+
+    @staticmethod
+    def _get_package_dependencies(package_name: str) -> dict:
+        """Get installed versions of a package's dependencies."""
+        from importlib.metadata import requires, version
+        EXCLUDE = {"pytest", "pytest-benchmark", "psutil"}
+        reqs = requires(package_name) or []
+        deps = {}
+        for req in reqs:
+            # Skip extras/conditional deps
+            if "; extra ==" in req:
+                continue
+            name = req.split(";")[0].split("[")[0].split(">")[0].split("<")[0].split("=")[0].split("!")[0].split("~")[0].strip()
+            if name in EXCLUDE:
+                continue
+            try:
+                deps[name] = version(name)
+            except Exception:
+                pass
+        return deps
+
+    @classmethod
     @abstractmethod
     def get_display_name(cls) -> str:
         """Get the display name for this parser (e.g., 'PyPowSyBl', 'Triplets')."""
