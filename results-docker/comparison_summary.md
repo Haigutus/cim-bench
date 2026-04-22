@@ -5,7 +5,7 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.14.3
-- **System**: Linux 6.19.9-200.fc43.x86_64
+- **System**: Linux 6.19.11-200.fc43.x86_64
 
 ## Performance Comparison
 
@@ -13,8 +13,8 @@
 
 | Library | Load Time (mean) | Memory (MB) | Elements | Notes |
 |---------|------------------|-------------|----------|-------|
-| cimgraph (Realgrid) | 13.42 s | 3259.2 MB | 7561 lines, 1347 gen, 6687 loads, 4875 subs | Dataset: 86.5 MB |
-| cimgraph (Svedala) | 902.6 ms | 203.9 MB | 97 lines, 39 gen, 73 loads, 56 subs | Dataset: 7.3 MB |
+| cimgraph (Realgrid) | 25.86 s | 3175.6 MB | 7561 lines, 1347 gen, 6687 loads, 4875 subs | Dataset: 86.5 MB |
+| cimgraph (Svedala) | 905.6 ms | 211.6 MB | 97 lines, 39 gen, 73 loads, 56 subs | Dataset: 7.3 MB |
 | jena (Realgrid) | 1.59 s | 2525.7 MB | 7561 lines, 1347 gen, 6687 loads, 4875 subs | Dataset: 86.5 MB |
 | jena (Svedala) | 124.1 ms | 427.9 MB | 97 lines, 39 gen, 73 loads, 56 subs | Dataset: 7.3 MB |
 | libcimpp (Realgrid) | 20.11 s | 134.7 MB | 7561 lines, 1347 gen, 6687 loads, 4875 subs | Dataset: 86.5 MB |
@@ -48,75 +48,82 @@
 
 #### Cimgraph Load Realgrid
 
-- **Mean**: 13.42 s
-- **Min**: 12.18 s
-- **Max**: 14.78 s
+- **Mean**: 25.86 s
+- **Min**: 13.57 s
+- **Max**: 59.81 s
 - **Rounds**: 5
 
 #### Cimgraph Get Lines
 
 - **Mean**: 0.1 μs
 - **Min**: 0.1 μs
-- **Max**: 30.6 μs
-- **Rounds**: 158932
+- **Max**: 35.0 μs
+- **Rounds**: 143823
+
+#### Cimgraph Get Generators
+
+- **Mean**: 0.1 μs
+- **Min**: 0.1 μs
+- **Max**: 28.9 μs
+- **Rounds**: 162023
+
+#### Cimgraph Get Loads
+
+- **Mean**: 0.2 μs
+- **Min**: 0.2 μs
+- **Max**: 17.8 μs
+- **Rounds**: 164420
+
+#### Cimgraph Get Substations
+
+- **Mean**: 0.1 μs
+- **Min**: 0.1 μs
+- **Max**: 1.0 μs
+- **Rounds**: 59731
+
+### cimgraph (Svedala)
+
+#### Cimgraph Load Svedala
+
+- **Mean**: 905.6 ms
+- **Min**: 831.7 ms
+- **Max**: 1.01 s
+- **Rounds**: 5
+
+#### Cimgraph Get Lines
+
+- **Mean**: 0.1 μs
+- **Min**: 0.1 μs
+- **Max**: 11.1 μs
+- **Rounds**: 114326
 
 #### Cimgraph Get Generators
 
 - **Mean**: 0.1 μs
 - **Min**: 0.1 μs
 - **Max**: 0.4 μs
-- **Rounds**: 70842
+- **Rounds**: 74322
 
 #### Cimgraph Get Loads
 
 - **Mean**: 0.2 μs
 - **Min**: 0.2 μs
-- **Max**: 5.3 μs
-- **Rounds**: 101431
+- **Max**: 29.3 μs
+- **Rounds**: 108015
 
 #### Cimgraph Get Substations
 
 - **Mean**: 0.1 μs
 - **Min**: 0.1 μs
 - **Max**: 0.7 μs
-- **Rounds**: 68134
+- **Rounds**: 59200
 
-### cimgraph (Svedala)
+#### Cimgraph Export Svedala
 
-#### Cimgraph Load Svedala
-
-- **Mean**: 902.6 ms
-- **Min**: 842.6 ms
-- **Max**: 1.02 s
+- **Mean**: 541.2 ms
+- **Min**: 523.5 ms
+- **Max**: 561.7 ms
 - **Rounds**: 5
-
-#### Cimgraph Get Lines
-
-- **Mean**: 0.1 μs
-- **Min**: 0.1 μs
-- **Max**: 5.6 μs
-- **Rounds**: 184502
-
-#### Cimgraph Get Generators
-
-- **Mean**: 0.1 μs
-- **Min**: 0.1 μs
-- **Max**: 5.7 μs
-- **Rounds**: 197239
-
-#### Cimgraph Get Loads
-
-- **Mean**: 0.2 μs
-- **Min**: 0.2 μs
-- **Max**: 24.1 μs
-- **Rounds**: 150762
-
-#### Cimgraph Get Substations
-
-- **Mean**: 0.1 μs
-- **Min**: 0.1 μs
-- **Max**: 0.7 μs
-- **Rounds**: 69028
 
 ### jena (Realgrid)
 

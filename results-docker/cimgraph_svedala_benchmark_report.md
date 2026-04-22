@@ -7,20 +7,20 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.14.3
-- **System**: Linux 6.19.9-200.fc43.x86_64
+- **System**: Linux 6.19.11-200.fc43.x86_64
 
 ## Results
 
 ### Cimgraph Load Svedala
 
-- **Mean time**: 902.6 ms
-- **Min time**: 842.6 ms
-- **Max time**: 1.02 s
-- **Std dev**: 72.5 ms
+- **Mean time**: 905.6 ms
+- **Min time**: 831.7 ms
+- **Max time**: 1.01 s
+- **Std dev**: 70.8 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 203.9
+- Memory Mb: 211.6
 - Triples: 66724
 - Lines: 97
 - Generators: 39
@@ -39,9 +39,9 @@
 
 - **Mean time**: 0.1 μs
 - **Min time**: 0.1 μs
-- **Max time**: 5.6 μs
-- **Std dev**: 0.0 μs
-- **Rounds**: 184502
+- **Max time**: 11.1 μs
+- **Std dev**: 0.1 μs
+- **Rounds**: 114326
 
 **Metrics**:
 - Line Count: 97
@@ -55,9 +55,9 @@
 
 - **Mean time**: 0.1 μs
 - **Min time**: 0.1 μs
-- **Max time**: 5.7 μs
+- **Max time**: 0.4 μs
 - **Std dev**: 0.0 μs
-- **Rounds**: 197239
+- **Rounds**: 74322
 
 **Metrics**:
 - Generator Count: 39
@@ -71,9 +71,9 @@
 
 - **Mean time**: 0.2 μs
 - **Min time**: 0.2 μs
-- **Max time**: 24.1 μs
+- **Max time**: 29.3 μs
 - **Std dev**: 0.1 μs
-- **Rounds**: 150762
+- **Rounds**: 108015
 
 **Metrics**:
 - Load Count: 73
@@ -89,12 +89,27 @@
 - **Min time**: 0.1 μs
 - **Max time**: 0.7 μs
 - **Std dev**: 0.0 μs
-- **Rounds**: 69028
+- **Rounds**: 59200
 
 **Metrics**:
 - Substation Count: 56
 - Query Type: get_substations
 - Library: cimgraph
 - Dataset: svedala
+- Display Name: CIM-Graph
+- Color: #9467bd
+
+### Cimgraph Export Svedala
+
+- **Mean time**: 541.2 ms
+- **Min time**: 523.5 ms
+- **Max time**: 561.7 ms
+- **Std dev**: 15.3 ms
+- **Rounds**: 5
+
+**Metrics**:
+- Library: cimgraph
+- Dataset: svedala
+- Operation: export
 - Display Name: CIM-Graph
 - Color: #9467bd

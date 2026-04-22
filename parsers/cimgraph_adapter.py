@@ -175,6 +175,14 @@ class CIMGraphAdapter(ParserAdapter):
         return len(loaded_obj.network.graph.get(loaded_obj.cim.Substation, {}))
     
 
+    def export(self, loaded_obj, output_path):
+        """Export CIM-Graph network to XML."""
+        from cimgraph.utils import write_xml
+
+        output_path = Path(output_path)
+        write_xml(loaded_obj.network, str(output_path))
+        return output_path
+
     def count_triples(self):
         """Count triples across all loaded models."""
         thing_count = 0

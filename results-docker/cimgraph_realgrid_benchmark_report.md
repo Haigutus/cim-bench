@@ -7,20 +7,20 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.14.3
-- **System**: Linux 6.19.9-200.fc43.x86_64
+- **System**: Linux 6.19.11-200.fc43.x86_64
 
 ## Results
 
 ### Cimgraph Load Realgrid
 
-- **Mean time**: 13.42 s
-- **Min time**: 12.18 s
-- **Max time**: 14.78 s
-- **Std dev**: 1.10 s
+- **Mean time**: 25.86 s
+- **Min time**: 13.57 s
+- **Max time**: 59.81 s
+- **Std dev**: 19.34 s
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 3259.2
+- Memory Mb: 3175.6
 - Triples: 1233106
 - Lines: 7561
 - Generators: 1347
@@ -39,9 +39,9 @@
 
 - **Mean time**: 0.1 μs
 - **Min time**: 0.1 μs
-- **Max time**: 30.6 μs
+- **Max time**: 35.0 μs
 - **Std dev**: 0.1 μs
-- **Rounds**: 158932
+- **Rounds**: 143823
 
 **Metrics**:
 - Line Count: 7561
@@ -55,9 +55,9 @@
 
 - **Mean time**: 0.1 μs
 - **Min time**: 0.1 μs
-- **Max time**: 0.4 μs
-- **Std dev**: 0.0 μs
-- **Rounds**: 70842
+- **Max time**: 28.9 μs
+- **Std dev**: 0.1 μs
+- **Rounds**: 162023
 
 **Metrics**:
 - Generator Count: 1347
@@ -71,9 +71,9 @@
 
 - **Mean time**: 0.2 μs
 - **Min time**: 0.2 μs
-- **Max time**: 5.3 μs
-- **Std dev**: 0.0 μs
-- **Rounds**: 101431
+- **Max time**: 17.8 μs
+- **Std dev**: 0.1 μs
+- **Rounds**: 164420
 
 **Metrics**:
 - Load Count: 6687
@@ -87,9 +87,9 @@
 
 - **Mean time**: 0.1 μs
 - **Min time**: 0.1 μs
-- **Max time**: 0.7 μs
-- **Std dev**: 0.0 μs
-- **Rounds**: 68134
+- **Max time**: 1.0 μs
+- **Std dev**: 0.1 μs
+- **Rounds**: 59731
 
 **Metrics**:
 - Substation Count: 4875
