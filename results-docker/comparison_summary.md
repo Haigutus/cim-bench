@@ -2,10 +2,10 @@
 
 ## Environment
 
-- **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
-- **Cores**: 24
-- **Python**: 3.14.3
-- **System**: Linux 6.19.11-200.fc43.x86_64
+- **CPU**: -
+- **Cores**: 7
+- **Python**: 3.14.5
+- **System**: Linux 6.18.10-200.fc43.aarch64
 
 ## Performance Comparison
 
@@ -13,6 +13,8 @@
 
 | Library | Load Time (mean) | Memory (MB) | Elements | Notes |
 |---------|------------------|-------------|----------|-------|
+| cimd (Realgrid) | 190.3 ms | 162.7 MB | N/A |  |
+| cimd (Svedala) | 17.6 ms | 10.5 MB | N/A |  |
 | cimgraph (Realgrid) | 25.86 s | 3175.6 MB | 7561 lines, 1347 gen, 6687 loads, 4875 subs | Dataset: 86.5 MB |
 | cimgraph (Svedala) | 905.6 ms | 211.6 MB | 97 lines, 39 gen, 73 loads, 56 subs | Dataset: 7.3 MB |
 | jena (Realgrid) | 1.59 s | 2525.7 MB | 7561 lines, 1347 gen, 6687 loads, 4875 subs | Dataset: 86.5 MB |
@@ -43,6 +45,24 @@
 | get_substations | 0.1 μs | 0.1 μs | 894.9 μs | 109.8 μs | 7.2 ms | 517.6 μs | 380.7 μs | 382.5 μs | 70.5 μs | 335.3 μs | 50.6 μs | 4.5 ms | 121.9 μs | 770.4 μs | 49.3 μs | 254.6 ms | 21.0 ms | 0.1 μs | 0.1 μs |
 
 ## Detailed Results
+
+### cimd (Realgrid)
+
+#### Cimd Load Realgrid
+
+- **Mean**: 190.3 ms
+- **Min**: 188.5 ms
+- **Max**: 192.0 ms
+- **Rounds**: 6
+
+### cimd (Svedala)
+
+#### Cimd Load Svedala
+
+- **Mean**: 17.6 ms
+- **Min**: 16.7 ms
+- **Max**: 19.1 ms
+- **Rounds**: 50
 
 ### cimgraph (Realgrid)
 
