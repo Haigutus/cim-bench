@@ -297,6 +297,7 @@ See `tools/*/README.md` for detailed per-tool documentation and analysis.
 | ✅ | **maplib** | 0.20.0 | Python/Rust | High-performance RDF with SPARQL | Polars DataFrames + Oxigraph | Generic RDF (CGMES compatible) | [DataTreehouse/maplib](https://github.com/DataTreehouse/maplib) | Rust-backed performance, sub-millisecond queries |
 | ⚠️ | **libcimpp** | 2.2.0 | C++ (Python wrapper) | Fast C++ object model | Native C++ objects | CGMES 2.4.15 (3.0 partial) | [sogno-platform/libcimpp](https://github.com/sogno-platform/libcimpp) | Lowest memory usage (135 MB), CGMES 3.0 fails on Svedala (European extensions) |
 | ⚠️ | **cimpy** | 1.1.0 | Python | Import/export/modify CGMES XML/RDF | Object topology dict | CGMES 2.4.15 (partial) | [sogno-platform/cimpy](https://github.com/sogno-platform/cimpy) | Compatibility issues: v1.1.0 only has cgmes_v2_4_15 classes (no CGMES 3.0), parsing bugs with test datasets |
+| 📋 | **cimgo** | 0.0.5 | Go (CLI) | CGMES validator + converter | CLI (validate/convert) | CGMES 2.4.15/3.0 | [m-mirz/cimgo](https://github.com/m-mirz/cimgo) | Go binary, 4000+ SHACL checks, XML/JSON/Protobuf conversion |
 | ❌ | **pycgmes** | latest | Python | Dataclasses + RDF schema + SHACL | Dataclass mapping | CGMES 3.0+ | [alliander-opensource/pycgmes](https://github.com/alliander-opensource/pycgmes) | No file import capability - dataclass definitions only |
 | 📋 | **CIMverter** | Java/C++ | Convert CIM RDF to Modelica | Partial | CGMES compatible | [cim-iec/cimverter](https://github.com/cim-iec/cimverter) | Round-trip fidelity testing |
 | 📋 | **CIMDraw** | Web/JS | View/edit CGMES node-breaker models | Indirect | ENTSO-E CGMES profile | [danielePala/CIMDraw](https://github.com/danielePala/CIMDraw) | Visual completeness check |
@@ -405,7 +406,8 @@ docker/
 │   ├── opencgmes.dockerfile     # Install deps + Java (Python 3.13)
 │   ├── powsybl-cgmes.dockerfile # Install deps + Java (Python 3.13)
 │   ├── libcimpp-cgmes24.dockerfile  # C++ build for CGMES 2.4.15
-│   └── libcimpp-cgmes3.dockerfile   # C++ build for CGMES 3.0
+│   ├── libcimpp-cgmes3.dockerfile   # C++ build for CGMES 3.0
+│   └── cimgo.dockerfile             # Go binary download
 ├── docker-compose.yml           # Single source of truth for benchmarks
 ├── setup.sh                     # Build all images (reads docker-compose.yml)
 └── run_benchmark.sh             # Run benchmarks + generate reports/graphs
@@ -420,7 +422,8 @@ tool-configs/
 ├── jena/pyproject.toml          # Python ==3.13.* + dependencies
 ├── opencgmes/pyproject.toml     # Python ==3.13.* + dependencies
 ├── powsybl-cgmes/pyproject.toml # Python ==3.13.* + dependencies
-└── libcimpp/pyproject.toml      # Python ==3.14.* + CMake/C++ build
+├── libcimpp/pyproject.toml      # Python ==3.14.* + CMake/C++ build
+└── cimgo/pyproject.toml         # Python ==3.14.* (test deps only)
 ```
 
 **Key Design:**

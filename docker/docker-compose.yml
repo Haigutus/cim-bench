@@ -111,3 +111,13 @@ services:
     image: cim-bench/powsybl-cgmes:latest
     command: pytest docker_powsybl_cgmes_realgrid_benchmark.py --benchmark-only --benchmark-json=/output/powsybl_cgmes_realgrid_benchmark.json
 
+  cimgo-svedala:
+    <<: *common
+    image: cim-bench/cimgo:latest
+    command: pytest docker_cimgo_svedala_benchmark.py --benchmark-only --benchmark-json=/output/cimgo_svedala_benchmark.json
+
+  cimgo-realgrid:
+    <<: *common
+    image: cim-bench/cimgo:latest
+    command: pytest docker_cimgo_realgrid_benchmark.py --benchmark-only --benchmark-json=/output/cimgo_realgrid_benchmark.json
+
