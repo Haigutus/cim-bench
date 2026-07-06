@@ -297,7 +297,11 @@ See `tools/*/README.md` for detailed per-tool documentation and analysis.
 | ✅ | **maplib** | 0.20.0 | Python/Rust | High-performance RDF with SPARQL | Polars DataFrames + Oxigraph | Generic RDF (CGMES compatible) | [DataTreehouse/maplib](https://github.com/DataTreehouse/maplib) | Rust-backed performance, sub-millisecond queries |
 | ⚠️ | **libcimpp** | 2.2.0 | C++ (Python wrapper) | Fast C++ object model | Native C++ objects | CGMES 2.4.15 (3.0 partial) | [sogno-platform/libcimpp](https://github.com/sogno-platform/libcimpp) | Lowest memory usage (135 MB), CGMES 3.0 fails on Svedala (European extensions) |
 | ⚠️ | **cimpy** | 1.1.0 | Python | Import/export/modify CGMES XML/RDF | Object topology dict | CGMES 2.4.15 (partial) | [sogno-platform/cimpy](https://github.com/sogno-platform/cimpy) | Compatibility issues: v1.1.0 only has cgmes_v2_4_15 classes (no CGMES 3.0), parsing bugs with test datasets |
-| 📋 | **cimgo** | 0.0.5 | Go (CLI) | CGMES validator + converter | CLI (validate/convert) | CGMES 2.4.15/3.0 | [m-mirz/cimgo](https://github.com/m-mirz/cimgo) | Go binary, 4000+ SHACL checks, XML/JSON/Protobuf conversion |
+| ✅ | 🖥️ **cimgo** | 0.0.6 | Go (CLI) | CGMES validator + converter | CLI only (validate/convert) | CGMES 2.4.15/3.0 | [m-mirz/cimgo](https://github.com/m-mirz/cimgo) | **CLI-only** Go binary — benchmarked as a subprocess on the `cimgo` branch; SHACL & SPARQL validation, JSON/CGMES/Protobuf conversion |
+| 📋 | 🖥️ **cimd** | 0.4.0 (beta) | Zig (CLI) | Fast CGMES parser — validate, convert, query, browse, diff, topology | CLI only (get/refs/types/browse) | CGMES (SHACL + QoCDC validation, EQ→JIIDM, TopologicalNode gen) | [cimd.eu](https://cimd.eu) · [source](https://codeberg.org/caspereijkens/cimd) | **CLI-only**, Apache 2.0; proposed in open [PR #3](https://github.com/Haigutus/cim-bench/pull/3) (benchmarked v0.2.3) — ~500 MB/s parsing |
+| 📋 | **cimoxide** | 0.0.4 | Rust | CGMES struct generation, SHACL validation, decoding, protobuf | Typed Rust structs (`cimstructs`) | ENTSO-E RDF/SHACL (version n/a) | [m-mirz/cimoxide](https://github.com/m-mirz/cimoxide) | Early-stage; usable as Rust library crates **or** CLI |
+| 📋 | 🖥️ **pocket-rdf** | 0.3.0 | Python (CLI) | RDF load/serialize/query/validate toolkit | CLI only (SPARQL/SHACL) | Generic RDF (ships CGMES examples) | [EHegyi-Sphericity/pocket-rdf](https://github.com/EHegyi-Sphericity/pocket-rdf) | **CLI-only** (Typer); no documented importable library API |
+| 📋 | **GridLab GMSS CIM** | 10.1.1 | C# / .NET | Strongly-typed CIM models + code generator | Typed .NET objects | CGMES 2.4.15/3.0.0 | [gms-squared/gridlab.gmss.cim](https://gitlab.com/gms-squared/modules/gridlab.gmss.cim) | .NET library + CLI/code-gen; IEC 61970-552/501 compliant |
 | ❌ | **pycgmes** | latest | Python | Dataclasses + RDF schema + SHACL | Dataclass mapping | CGMES 3.0+ | [alliander-opensource/pycgmes](https://github.com/alliander-opensource/pycgmes) | No file import capability - dataclass definitions only |
 | 📋 | **CIMverter** | Java/C++ | Convert CIM RDF to Modelica | Partial | CGMES compatible | [cim-iec/cimverter](https://github.com/cim-iec/cimverter) | Round-trip fidelity testing |
 | 📋 | **CIMDraw** | Web/JS | View/edit CGMES node-breaker models | Indirect | ENTSO-E CGMES profile | [danielePala/CIMDraw](https://github.com/danielePala/CIMDraw) | Visual completeness check |
@@ -310,6 +314,7 @@ See `tools/*/README.md` for detailed per-tool documentation and analysis.
 - ⚠️ Compatibility issues found
 - ❌ Not suitable for import benchmarking
 - 📋 Planned
+- 🖥️ **CLI-only tool** — no library/programmatic API; can only be run as a command-line binary (cannot be embedded/interfaced in-process, so it is benchmarked via subprocess)
 
 ### 📊 Additional Benchmarks
 
