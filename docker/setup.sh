@@ -22,8 +22,8 @@ echo "========================================"
 echo "Building cim-bench Docker images"
 echo "========================================"
 
-# Build base image (always when building everything, otherwise only if missing)
-if [ "$REBUILD" = true ] || [ ${#TOOL_ARGS[@]} -eq 0 ] || ! podman image exists cim-bench/base:latest; then
+# Build base image only if missing (it contains no source; --rebuild to force)
+if [ "$REBUILD" = true ] || ! podman image exists cim-bench/base:latest; then
     echo ""
     echo "[1/N] Building base image..."
     podman build -f docker/base.dockerfile -t cim-bench/base:latest .

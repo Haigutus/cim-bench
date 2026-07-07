@@ -43,3 +43,8 @@ else
     echo "   Install with: uv sync --extra visualization"
 fi
 echo ""
+
+# Generate the results site (published via GitHub Pages from docs/)
+echo "🌐 Generating results site..."
+uv run python tools/generate_site.py "$RESULTS_DIR" docs
+echo ""

@@ -46,6 +46,10 @@ class CIMGraphAdapter(ParserAdapter):
         """Get the color hex code for graph visualization."""
         return "#9467bd"  # Purple
 
+    @classmethod
+    def get_tags(cls):
+        return ["parser", "query", "typed-model", "triplestore", "python"]
+
     def load(self, dataset_key: str):
         """Load using CIM-Graph's NodeBreakerModel.
 

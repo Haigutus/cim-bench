@@ -1,10 +1,20 @@
+# Keep the build context minimal: images only need parsers/, benchmarks/
+# and tool-configs/ - datasets, results and source are volume-mounted at runtime.
 .git/
+**/.git/
 .venv/
 **/.venv/
 results/
+results-docker/
+temp/
+data/
+docker/
+docs/
 __pycache__/
+**/__pycache__/
 *.pyc
 .pytest_cache/
 .claude/
 *.md
-CLAUDE.md
+requirements.txt
+uv.lock

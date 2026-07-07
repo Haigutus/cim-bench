@@ -40,6 +40,10 @@ class RDFlibAdapter(ParserAdapter):
         """Get the color hex code for graph visualization."""
         return "#f1c40f"  # Yellow
 
+    @classmethod
+    def get_tags(cls):
+        return ["parser", "serializer", "query", "triplestore", "python"]
+
     def load(self, dataset_key: str):
         """Load using RDFlib with Oxigraph store."""
         dataset = DATASETS[dataset_key]

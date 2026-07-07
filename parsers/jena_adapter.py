@@ -62,6 +62,10 @@ class JenaAdapter(ParserAdapter):
         """Get the color hex code for graph visualization."""
         return "#d62728"  # Red
 
+    @classmethod
+    def get_tags(cls):
+        return ["parser", "serializer", "query", "triplestore", "java"]
+
     def load(self, dataset_key: str):
         """Load using Apache Jena via JPype."""
         dataset = DATASETS[dataset_key]

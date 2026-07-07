@@ -72,7 +72,7 @@ def run_command(cmd):
     subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 
-def create_cli_benchmarks(tool_name, display_name, color, binary, operations, dataset_key, dataset_name):
+def create_cli_benchmarks(tool_name, display_name, color, binary, operations, dataset_key, dataset_name, tags=None):
     """
     Create one benchmark test per CLI operation and inject them into the
     caller's module namespace (mirrors benchmark_template.create_benchmarks).
@@ -85,12 +85,14 @@ def create_cli_benchmarks(tool_name, display_name, color, binary, operations, da
         operations: dict of {operation_name: build_cmd(binary, files, tmp_dir) -> list[str]}
         dataset_key: Key in DATASETS dict
         dataset_name: Short name for dataset (e.g. "svedala")
+        tags: Capability/language tags for site filtering ("cli" always included)
     """
     import inspect
     caller_globals = inspect.currentframe().f_back.f_globals
 
     metadata = DATASETS[dataset_key]["_metadata"]
     version = get_binary_version(binary) if binary else None
+    tags = list(dict.fromkeys(["cli"] + (tags or [])))
 
     @pytest.fixture(scope="module")
     def dataset_files():
@@ -111,6 +113,7 @@ def create_cli_benchmarks(tool_name, display_name, color, binary, operations, da
                 benchmark(run_command, cmd)
 
             benchmark.extra_info["tool_type"] = "cli"
+            benchmark.extra_info["tags"] = tags
             benchmark.extra_info["library"] = tool_name
             benchmark.extra_info["operation"] = operation
             benchmark.extra_info["dataset"] = dataset_name

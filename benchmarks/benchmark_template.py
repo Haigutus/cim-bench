@@ -87,6 +87,7 @@ def create_benchmarks(adapter, dataset_key, parser_name, dataset_name):
         metrics["dataset"] = dataset_name
         metrics["display_name"] = adapter.__class__.get_display_name()
         metrics["color"] = adapter.__class__.get_color()
+        metrics["tags"] = adapter.__class__.get_tags()
 
         for key, value in metrics.items():
             benchmark.extra_info[key] = value

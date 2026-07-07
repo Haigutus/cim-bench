@@ -40,6 +40,10 @@ class PypowsyblAdapter(ParserAdapter):
         """Get the color hex code for graph visualization."""
         return "#ff7f0e"  # Tab10 orange
 
+    @classmethod
+    def get_tags(cls):
+        return ["parser", "serializer", "query", "powerflow-tool", "python", "java"]
+
     def load(self, dataset_key: str):
         """Load using pypowsybl."""
         dataset = DATASETS[dataset_key]

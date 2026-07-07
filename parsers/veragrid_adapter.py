@@ -33,6 +33,10 @@ class VeragridAdapter(ParserAdapter):
         """Get the color hex code for graph visualization."""
         return "#2ca02c"  # Tab10 green
 
+    @classmethod
+    def get_tags(cls):
+        return ["parser", "serializer", "query", "powerflow-tool", "python"]
+
     def load(self, dataset_key: str):
         """Load using VeraGrid's low-level CGMES API."""
         import VeraGridEngine as vg

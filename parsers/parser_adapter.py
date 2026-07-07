@@ -48,6 +48,15 @@ class ParserAdapter(ABC):
         return deps
 
     @classmethod
+    def get_tags(cls) -> list:
+        """Get capability/language tags for this tool (drives site filtering).
+
+        Vocabulary: parser, serializer, validator, query, powerflow-tool,
+        triplestore, typed-model, cli + language (python, java, c++, rust, go, c#).
+        """
+        return ["parser"]
+
+    @classmethod
     @abstractmethod
     def get_display_name(cls) -> str:
         """Get the display name for this parser (e.g., 'PyPowSyBl', 'Triplets')."""

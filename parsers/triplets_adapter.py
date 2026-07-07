@@ -36,6 +36,10 @@ class TripletsAdapter(ParserAdapter):
         """Get the color hex code for graph visualization."""
         return "#1f77b4"  # Tab10 blue
 
+    @classmethod
+    def get_tags(cls):
+        return ["parser", "serializer", "query", "python"]
+
     def load(self, dataset_key: str):
         """Load using triplets library directly."""
         dataset = DATASETS[dataset_key]

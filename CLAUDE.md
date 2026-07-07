@@ -42,18 +42,22 @@ The codebase uses an adapter pattern to standardize benchmarking across differen
 ### Data Flow
 
 ```
-Adapter (display_name, color)
+Adapter (display_name, color, tags)
     ↓
 Benchmark template (embeds in extra_info)
     ↓
 pytest-benchmark JSON results
     ↓
-generate_graphs.py (reads from JSON, no imports)
-    ↓
-SVG visualizations
+benchmark_data.py (shared loader, reads JSON only)
+    ↓                          ↓
+generate_graphs.py      generate_site.py
+(SVG visualizations)    (docs/index.html - GitHub Pages,
+                         sortable/filterable, tag chips)
 ```
 
-**Key insight**: Display names and colors are embedded in JSON reports, so the graph generator never imports adapters—it just reads JSON files.
+**Key insight**: Display names, colors and tags are embedded in JSON reports, so the graph/site generators never import adapters—they just read JSON files (`tools/benchmark_data.py` is the shared loader).
+
+**Tool tags**: each adapter declares `get_tags()` (capability + language, e.g. `["parser", "serializer", "query", "python"]`; CLI template always adds `"cli"`). Vocabulary: `parser`, `serializer`, `validator`, `query`, `powerflow-tool`, `triplestore`, `typed-model`, `cli` + language tags (`python`, `java`, `c++`, `rust`, `go`, `c#`). Tags drive the filter chips on the results site.
 
 ### Dataset Configuration
 
@@ -92,6 +96,9 @@ uv run python tools/generate_comparison.py results/file1.json results/file2.json
 
 # Generate all graphs (reads all JSONs in results/)
 uv run python tools/generate_graphs.py
+
+# Generate the results site for GitHub Pages (reads all JSONs, writes docs/)
+uv run python tools/generate_site.py results-docker docs
 ```
 
 ### Environment Setup
@@ -181,8 +188,10 @@ Benchmarks always run **sequentially** - parallel execution is not supported bec
 # Using podman-compose directly
 podman-compose -f docker/docker-compose.yml run --rm triplets-svedala  # Single
 
-# Run specific tool via Podman
+# Run specific tool via Podman (source mounts REQUIRED - images bake no source)
 podman run --rm \
+  -v $(pwd)/benchmarks:/benchmarks:ro,z \
+  -v $(pwd)/parsers:/benchmarks/parsers:ro,z \
   -v $(pwd)/data:/benchmarks/data:ro,z \
   -v $(pwd)/results-docker:/output:z \
   cim-bench/triplets:latest
@@ -257,6 +266,10 @@ class CimpyAdapter(ParserAdapter):
     @classmethod
     def get_color(cls):
         return "#9b59b6"  # Purple
+
+    @classmethod
+    def get_tags(cls):
+        return ["parser", "typed-model", "python"]
 
     def load(self, dataset_key):
         # Load using cimpy

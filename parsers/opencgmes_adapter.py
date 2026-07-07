@@ -73,6 +73,10 @@ class OpenCGMESAdapter(ParserAdapter):
         """Get the color hex code for graph visualization."""
         return "#e91e63"  # Pink
 
+    @classmethod
+    def get_tags(cls):
+        return ["parser", "serializer", "query", "triplestore", "java"]
+
     def load(self, dataset_key: str):
         """Load using OpenCGMES Java library via JPype."""
         dataset = DATASETS[dataset_key]
