@@ -115,3 +115,16 @@ services:
     image: cim-bench/powsybl-cgmes:latest
     command: pytest docker_powsybl_cgmes_realgrid_benchmark.py --benchmark-only --benchmark-json=/output/powsybl_cgmes_realgrid_benchmark.json
 
+  gmss-svedala:
+    <<: *common
+    image: cim-bench/gmss:latest
+    command: pytest docker_gmss_svedala_benchmark.py --benchmark-only --benchmark-json=/output/gmss_svedala_benchmark.json
+
+  # gmss-realgrid:
+  #   <<: *common
+  #   image: cim-bench/gmss:latest
+  #   command: pytest docker_gmss_realgrid_benchmark.py --benchmark-only --benchmark-json=/output/gmss_realgrid_benchmark.json
+  #
+  # NOTE: GMSS strictly validates model URIs per IEC 61970-552 and rejects
+  # RealGrid's non-RFC-compliant "urn:uuid:_..." model IDs (UriFormatException).
+
