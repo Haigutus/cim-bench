@@ -70,6 +70,10 @@ class PowsyblCgmesAdapter(ParserAdapter):
         """Get the color hex code for graph visualization."""
         return "#17a2b8"  # Teal (distinct from PyPowSyBl orange)
 
+    @classmethod
+    def get_tags(cls):
+        return ["parser", "serializer", "query", "triplestore", "java"]
+
     def load(self, dataset_key: str):
         """Load using PowSyBL CGMES Model library via JPype."""
         dataset = DATASETS[dataset_key]

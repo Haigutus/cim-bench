@@ -6,21 +6,21 @@
 
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
-- **Python**: 3.13.12
-- **System**: Linux 6.19.9-200.fc43.x86_64
+- **Python**: 3.13.14
+- **System**: Linux 7.0.12-101.fc43.x86_64
 
 ## Results
 
 ### Jena Load Svedala
 
-- **Mean time**: 124.1 ms
-- **Min time**: 107.2 ms
-- **Max time**: 162.6 ms
-- **Std dev**: 22.1 ms
+- **Mean time**: 368.1 ms
+- **Min time**: 257.0 ms
+- **Max time**: 498.1 ms
+- **Std dev**: 87.4 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 427.9
+- Memory Mb: 391.9
 - Triples: 47710
 - Lines: 97
 - Generators: 39
@@ -30,19 +30,20 @@
 - Cgmes Version: 3.0
 - Library: jena
 - Library Version: 6.0.0
-- Library Dependencies: {'jpype1': '1.6.0', 'java': '21.0.10'}
-- Java Version: 21.0.10
+- Library Dependencies: {'jpype1': '1.7.1', 'java': '21.0.11'}
+- Java Version: 21.0.11
 - Dataset: svedala
 - Display Name: Apache Jena
 - Color: #d62728
+- Tags: ['parser', 'serializer', 'query', 'triplestore', 'java']
 
 ### Jena Get Lines
 
-- **Mean time**: 380.6 μs
-- **Min time**: 139.2 μs
-- **Max time**: 20.9 ms
-- **Std dev**: 865.5 μs
-- **Rounds**: 595
+- **Mean time**: 1.2 ms
+- **Min time**: 556.4 μs
+- **Max time**: 6.6 ms
+- **Std dev**: 727.6 μs
+- **Rounds**: 234
 
 **Metrics**:
 - Line Count: 97
@@ -54,11 +55,11 @@
 
 ### Jena Get Generators
 
-- **Mean time**: 104.2 μs
-- **Min time**: 65.6 μs
-- **Max time**: 1.8 ms
-- **Std dev**: 58.3 μs
-- **Rounds**: 2673
+- **Mean time**: 474.1 μs
+- **Min time**: 183.0 μs
+- **Max time**: 6.2 ms
+- **Std dev**: 388.0 μs
+- **Rounds**: 1245
 
 **Metrics**:
 - Generator Count: 39
@@ -70,11 +71,11 @@
 
 ### Jena Get Loads
 
-- **Mean time**: 205.3 μs
-- **Min time**: 169.8 μs
-- **Max time**: 13.7 ms
-- **Std dev**: 359.6 μs
-- **Rounds**: 1420
+- **Mean time**: 927.0 μs
+- **Min time**: 445.1 μs
+- **Max time**: 2.8 ms
+- **Std dev**: 307.5 μs
+- **Rounds**: 526
 
 **Metrics**:
 - Load Count: 73
@@ -86,11 +87,11 @@
 
 ### Jena Get Substations
 
-- **Mean time**: 109.8 μs
-- **Min time**: 48.2 μs
-- **Max time**: 73.9 ms
-- **Std dev**: 1.2 ms
-- **Rounds**: 3993
+- **Mean time**: 261.5 μs
+- **Min time**: 143.7 μs
+- **Max time**: 3.6 ms
+- **Std dev**: 136.2 μs
+- **Rounds**: 1387
 
 **Metrics**:
 - Substation Count: 56
@@ -102,10 +103,10 @@
 
 ### Jena Export Svedala
 
-- **Mean time**: 434.9 ms
-- **Min time**: 410.2 ms
-- **Max time**: 522.2 ms
-- **Std dev**: 48.9 ms
+- **Mean time**: 1.07 s
+- **Min time**: 990.8 ms
+- **Max time**: 1.18 s
+- **Std dev**: 87.1 ms
 - **Rounds**: 5
 
 **Metrics**:

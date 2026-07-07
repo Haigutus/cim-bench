@@ -44,6 +44,10 @@ class MaplibAdapter(ParserAdapter):
         """Get the color hex code for graph visualization."""
         return "#8b4513"  # Saddle brown (Rust color)
 
+    @classmethod
+    def get_tags(cls):
+        return ["parser", "serializer", "query", "triplestore", "python", "rust"]
+
     def load(self, dataset_key: str):
         """Load CIM dataset into maplib Model."""
         dataset = DATASETS[dataset_key]

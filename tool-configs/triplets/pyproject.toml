@@ -1,7 +1,10 @@
 [project]
 name = "cim-bench-triplets"
 version = "0.1.0"
-requires-python = "==3.14.*"
+requires-python = "==3.13.*"  # triplets >=0.1.0 ships compiled wheels only up to cp313
 dependencies = [
-    "triplets>=0.0.17"
+    "triplets>=0.0.17",
+    "pytest>=9.0.2",
+    "pytest-benchmark>=5.2.3",
+    "psutil>=7.2.2"
 ]

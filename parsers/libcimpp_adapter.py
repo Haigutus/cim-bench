@@ -24,6 +24,10 @@ class LibCIMppAdapter(ParserAdapter):
     def get_color(cls):
         return "#000000"  # Black
 
+    @classmethod
+    def get_tags(cls):
+        return ["parser", "query", "typed-model", "c++"]
+
     def load(self, dataset_key: str):
         """Load CIM dataset."""
         dataset = DATASETS[dataset_key]
