@@ -2,11 +2,12 @@
 
 set -e
 
-# Usage: ./docker/run_single.sh <tool> <dataset>
+# Usage: ./docker/run_single.sh <tool> <dataset> [--rebuild]
 # Example: ./docker/run_single.sh triplets svedala
+#   --rebuild  Force rebuild of the base image (otherwise built only if missing)
 
-if [ $# -ne 2 ]; then
-    echo "Usage: $0 <tool> <dataset>"
+if [ $# -lt 2 ]; then
+    echo "Usage: $0 <tool> <dataset> [--rebuild]"
     echo "Example: $0 triplets svedala"
     echo ""
     echo "Available tools:"
@@ -18,6 +19,8 @@ fi
 
 TOOL=$1
 DATASET=$2
+REBUILD=false
+[ "$3" = "--rebuild" ] && REBUILD=true
 
 # Validate tool
 TOOL_DOCKERFILE="docker/tools/${TOOL}.dockerfile"
@@ -39,12 +42,17 @@ echo "================================"
 echo "Building and running: $TOOL / $DATASET"
 echo "================================"
 
-# Build base image
-echo ""
-echo "Building base image..."
-podman build -f docker/base.dockerfile -t cim-bench/base:latest .
+# Build base image (only if missing, unless --rebuild)
+if [ "$REBUILD" = true ] || ! podman image exists cim-bench/base:latest; then
+    echo ""
+    echo "Building base image..."
+    podman build -f docker/base.dockerfile -t cim-bench/base:latest .
+else
+    echo ""
+    echo "Base image exists - skipping build (use --rebuild to force)"
+fi
 
-# Build tool image
+# Build tool image (fast when layer cache is warm)
 echo ""
 echo "Building $TOOL image..."
 podman build -f "$TOOL_DOCKERFILE" -t "cim-bench/${TOOL}:latest" .
@@ -77,14 +85,22 @@ echo "Running benchmark: $BENCHMARK_FILE"
 echo "Output: $OUTPUT_FILE"
 echo ""
 
+# Source dirs mounted over the copies baked into the images, so code
+# changes don't require image rebuilds (granular iteration)
 podman run --rm \
+    -v "$(pwd)/benchmarks:/benchmarks:ro,z" \
+    -v "$(pwd)/parsers:/benchmarks/parsers:ro,z" \
     -v "$(pwd)/data:/benchmarks/data:ro,z" \
+    -v "$(pwd)/temp:/benchmarks/temp:z" \
     -v "$(pwd)/results-docker:/output:z" \
     "cim-bench/${TOOL}:latest" \
-    pytest "$BENCHMARK_FILE" --benchmark-only --benchmark-json="/output/${TOOL}_${DATASET}_benchmark.json"
+    pytest "$BENCHMARK_FILE" --benchmark-only --benchmark-json="/output/${TOOL_UNDERSCORE}_${DATASET}_benchmark.json"
 
 echo ""
 echo "================================"
 echo "Benchmark complete!"
 echo "Results saved to: $OUTPUT_FILE"
 echo "================================"
+
+# Refresh reports, comparison and graphs with all existing results included
+./docker/generate_outputs.sh results-docker

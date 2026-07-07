@@ -133,8 +133,10 @@ docker/
 │   ├── cimgraph.dockerfile      # Install deps (Python 3.14)
 │   └── rdflib.dockerfile        # Install deps (Python 3.14)
 ├── docker-compose.yml           # Single source of truth for benchmarks
-├── setup.sh                     # Build all images (reads docker-compose.yml)
-└── run_benchmark.sh             # Run benchmarks + generate reports/graphs
+├── setup.sh                     # Build images (all, or named tools as args)
+├── run_benchmark.sh             # Run benchmarks (--tools, --skip-existing) + outputs
+├── run_single.sh                # Run one tool+dataset, then regenerate outputs
+└── generate_outputs.sh          # Reports + comparison + graphs from existing JSONs
 
 tool-configs/
 ├── triplets/pyproject.toml      # Python ==3.14.* + dependencies
@@ -149,28 +151,34 @@ tool-configs/
 - `tool-configs/*/pyproject.toml` is the single source of truth for Python versions and dependencies
 - `setup.sh` dynamically discovers tools from docker-compose.yml
 - `run_benchmark.sh` orchestrates podman-compose execution and generates reports/graphs
-- Source files in base image, tool images only install dependencies
+- Source files in base image are overridden at runtime: `benchmarks/` and `parsers/` are volume-mounted read-only into containers, so code changes never require image rebuilds
 - `uv sync` reads Python version from `requires-python` in pyproject.toml (no --python flag needed)
 - Results saved to `results-docker/` for easy comparison with native execution
 
 ### Containerization Commands
 
+Benchmarks always run **sequentially** - parallel execution is not supported because concurrent tools would skew each other's measurements.
+
 ```bash
-# Build all Podman images
+# Build all Podman images, or just the named ones
 ./docker/setup.sh
+./docker/setup.sh gmss cimgo    # base built only if missing (--rebuild to force)
 
 # Run all benchmarks in containers (sequential, includes report/graph generation)
 ./docker/run_benchmark.sh
 
-# Run all benchmarks in parallel
-./docker/run_benchmark.sh --parallel
+# Granular runs: subset of tools and/or skip already-benchmarked ones
+./docker/run_benchmark.sh --tools triplets,rdflib --skip-existing
 
-# Run single tool-dataset combination (for debugging or testing new adapters)
+# Run single tool-dataset combination (for adding/debugging a tool);
+# also regenerates reports/comparison/graphs with ALL existing results included
 ./docker/run_single.sh triplets svedala
 ./docker/run_single.sh jena realgrid
 
+# Regenerate reports/comparison/graphs from existing JSONs without running anything
+./docker/generate_outputs.sh    # default: results-docker
+
 # Using podman-compose directly
-podman-compose -f docker/docker-compose.yml up         # Parallel
 podman-compose -f docker/docker-compose.yml run --rm triplets-svedala  # Single
 
 # Run specific tool via Podman
@@ -186,14 +194,23 @@ podman build -f docker/tools/triplets.dockerfile -t cim-bench/triplets:latest .
 **Note**: The `:z` flag in volume mounts enables SELinux relabeling (required on Fedora/RHEL).
 
 **To add a new benchmark:**
-1. Create the tool adapter and benchmark files (see "Adding a New Parser")
-2. Create `tool-configs/{tool}/pyproject.toml` with dependencies
-3. Create `docker/tools/{tool}.dockerfile`
-4. Add service to `docker/docker-compose.yml`
-5. Test with single tool: `./docker/run_single.sh {tool} svedala` (faster iteration)
-6. Once working, run all benchmarks: `./docker/run_benchmark.sh`
+1. Create a git branch named after the tool (convention: one branch per tool integration, e.g. `cimgo`, `gmss`); merge to master when validated
+2. Create the tool adapter and benchmark files (see "Adding a New Parser")
+3. Create `tool-configs/{tool}/pyproject.toml` with dependencies
+4. Create `docker/tools/{tool}.dockerfile`
+5. Add services to `docker/docker-compose.yml`
+6. Build and iterate with a single tool: `./docker/setup.sh {tool}` + `./docker/run_single.sh {tool} svedala` - each run refreshes reports/comparison/graphs with all previously saved results, so there is NO need to rerun the other tools
+7. A full `./docker/run_benchmark.sh` rerun is only needed when the *environment* changes (new hardware, OS upgrade), not when adding a tool
 
-**For debugging:** Use `./docker/run_single.sh {tool} {dataset}` to quickly test a specific tool-dataset combination without running the entire benchmark suite.
+**For debugging:** Use `./docker/run_single.sh {tool} {dataset}` to quickly test a specific tool-dataset combination without running the entire benchmark suite. Source is volume-mounted, so code edits take effect without rebuilding images.
+
+**Language bridges** - how non-Python tools are integrated in-process (preferred, enables the full load+query benchmark suite):
+- **Java**: JPype/JVM in the tool image (jena, opencgmes, powsybl-cgmes)
+- **C++**: pybind11 wrapper compiled in the dockerfile (libcimpp)
+- **C#/.NET**: pythonnet hosting CoreCLR + published NuGet DLLs (gmss)
+- **Rust**: PyO3/maturin wrapper crate compiled in the dockerfile (the way pyoxigraph wraps Oxigraph; planned for cimoxide)
+
+**CLI-only tools** (no library API, e.g. cimgo, cimd, pocket-rdf) use `benchmarks/cli_benchmark_template.py` instead of the adapter interface: each CLI operation becomes one timed subprocess test with peak-RSS measurement (`parsers/subprocess_memory.py`). Their results are tagged `extra_info["tool_type"] = "cli"` and form a **separate benchmark family**: separate `cli_*.svg` graphs and a separate comparison section, never mixed with in-process library numbers (a subprocess includes full process lifecycle and cannot be compared fairly).
 
 ### Container Image Sizes
 

@@ -13,8 +13,22 @@ matplotlib.use('Agg')
 
 
 def load_benchmarks(results_dir):
-    """Load all benchmark JSONs and organize by dataset."""
+    """
+    Load all benchmark JSONs and organize by dataset.
+
+    Library and CLI tools are separate families (extra_info["tool_type"] ==
+    "cli" marks CLI records; absence means library) - their measurements are
+    not comparable, so they get separate data structures and graphs.
+
+    Returns:
+        (data, cli_data, dataset_sizes):
+            data[dataset][tool] = {"load": {...}, "queries": [...], "export": {...}}
+            cli_data[dataset][tool][operation] = {"time", "memory", "color"}
+            dataset_sizes[dataset] = size in MB (from extra_info dataset_size_mb)
+    """
     data = defaultdict(lambda: defaultdict(dict))
+    cli_data = defaultdict(lambda: defaultdict(dict))
+    dataset_sizes = {}
 
     for json_file in Path(results_dir).glob("*_benchmark.json"):
         try:
@@ -40,7 +54,16 @@ def load_benchmarks(results_dir):
             dataset = extra["dataset"]
             tool = extra["display_name"]
 
-            if extra.get("operation") == "export":
+            if "dataset_size_mb" in extra:
+                dataset_sizes[dataset] = float(extra["dataset_size_mb"])
+
+            if extra.get("tool_type") == "cli":
+                cli_data[dataset][tool][extra.get("operation", bench["name"])] = {
+                    "time": bench["stats"]["mean"],
+                    "memory": float(extra.get("memory_mb", 0)),
+                    "color": extra.get("color", "#999999")
+                }
+            elif extra.get("operation") == "export":
                 data[dataset][tool]["export"] = {
                     "time": bench["stats"]["mean"],
                     "color": extra.get("color", "#999999")
@@ -59,15 +82,25 @@ def load_benchmarks(results_dir):
                 data[dataset][tool]["queries"].append(bench["stats"]["mean"] * 1000)
                 data[dataset][tool]["color"] = extra.get("color", "#999999")
 
-    return data
+    return data, cli_data, dataset_sizes
+
+
+def dataset_label(dataset, dataset_sizes):
+    """Human label for a dataset, with size when known."""
+    if dataset in dataset_sizes:
+        return f"{dataset.capitalize()} ({dataset_sizes[dataset]:g} MB)"
+    return dataset.capitalize()
 
 
 def plot_dataset(dataset_name, tools_data, output_dir):
     """Generate comparison and detailed charts for a dataset."""
-    if len(tools_data) < 2:
-        return
+    for tool in sorted(tools_data):
+        if "load" not in tools_data[tool]:
+            print(f"   ⚠️  {tool}: no load benchmark - skipped in {dataset_name} charts")
 
-    tools = sorted(tools_data.keys())
+    tools = sorted(t for t in tools_data if "load" in tools_data[t])
+    if len(tools) < 2:
+        return
     colors = [tools_data[t].get("color", "#999999") for t in tools]
 
     # Comparison chart
@@ -142,10 +175,9 @@ def plot_dataset(dataset_name, tools_data, output_dir):
     print(f"   → {dataset_name.lower()}_detailed.svg")
 
 
-def plot_cross_dataset(data, output_dir):
+def plot_cross_dataset(data, dataset_sizes, output_dir):
     """Generate cross-dataset comparison charts with separate subplots per dataset."""
     # Sort datasets by size (smaller first)
-    dataset_sizes = {'svedala': 7.3, 'realgrid': 86.5}
     datasets = sorted(data.keys(), key=lambda ds: dataset_sizes.get(ds, 0))
 
     if len(datasets) < 2:
@@ -168,7 +200,7 @@ def plot_cross_dataset(data, output_dir):
 
     for idx, ds in enumerate(datasets):
         ax = axes[idx]
-        ds_label = f"{ds.capitalize()} (7.3 MB)" if ds == 'svedala' else f"{ds.capitalize()} (86.5 MB)"
+        ds_label = dataset_label(ds, dataset_sizes)
 
         entries = []
         for tool in tools:
@@ -208,7 +240,7 @@ def plot_cross_dataset(data, output_dir):
 
     for idx, ds in enumerate(datasets):
         ax = axes[idx]
-        ds_label = f"{ds.capitalize()} (7.3 MB)" if ds == 'svedala' else f"{ds.capitalize()} (86.5 MB)"
+        ds_label = dataset_label(ds, dataset_sizes)
 
         entries = []
         for tool in tools:
@@ -248,7 +280,7 @@ def plot_cross_dataset(data, output_dir):
 
     for idx, ds in enumerate(datasets):
         ax = axes[idx]
-        ds_label = f"{ds.capitalize()} (7.3 MB)" if ds == 'svedala' else f"{ds.capitalize()} (86.5 MB)"
+        ds_label = dataset_label(ds, dataset_sizes)
 
         entries = []
         for tool in tools:
@@ -277,9 +309,8 @@ def plot_cross_dataset(data, output_dir):
     plt.close()
 
 
-def plot_cross_dataset_export(data, output_dir):
+def plot_cross_dataset_export(data, dataset_sizes, output_dir):
     """Generate export performance comparison chart with separate subplots per dataset."""
-    dataset_sizes = {'svedala': 7.3, 'realgrid': 86.5}
     datasets = sorted(data.keys(), key=lambda ds: dataset_sizes.get(ds, 0))
 
     # Only include tools that have export data
@@ -306,7 +337,7 @@ def plot_cross_dataset_export(data, output_dir):
 
     for idx, ds in enumerate(datasets):
         ax = axes[idx]
-        ds_label = f"{ds.capitalize()} (7.3 MB)" if ds == 'svedala' else f"{ds.capitalize()} (86.5 MB)"
+        ds_label = dataset_label(ds, dataset_sizes)
 
         entries = []
         for tool in tools_with_export:
@@ -339,6 +370,56 @@ def plot_cross_dataset_export(data, output_dir):
     plt.close()
 
 
+def plot_cli(cli_data, dataset_sizes, output_dir):
+    """
+    Generate charts for CLI tools (separate family - subprocess measurements
+    are not comparable with in-process libraries). One bar per tool+operation,
+    one subplot per dataset; plots even with a single tool.
+    """
+    datasets = sorted(cli_data.keys(), key=lambda ds: dataset_sizes.get(ds, 0))
+
+    charts = [
+        ("time", "Time (seconds)", "cli_time_comparison.svg", "CLI Tools - Execution Time"),
+        ("memory", "Peak RSS (MB)", "cli_memory_comparison.svg", "CLI Tools - Peak Memory"),
+    ]
+
+    for metric, xlabel, filename, title in charts:
+        fig, axes = plt.subplots(len(datasets), 1, figsize=(12, 4 * len(datasets)), sharex=False)
+        if len(datasets) == 1:
+            axes = [axes]
+
+        for idx, ds in enumerate(datasets):
+            ax = axes[idx]
+
+            entries = []
+            for tool in sorted(cli_data[ds]):
+                for operation, values in sorted(cli_data[ds][tool].items()):
+                    if values[metric] > 0:
+                        entries.append((f"{tool} ({operation})", values[metric], values["color"]))
+
+            entries.sort(key=lambda x: x[1])
+            labels = [e[0] for e in entries]
+            values = [e[1] for e in entries]
+            bar_colors = [e[2] for e in entries]
+
+            ax.barh(labels, values, color=bar_colors)
+            ax.set_xlabel(xlabel, fontsize=12)
+            ax.set_title(dataset_label(ds, dataset_sizes), fontsize=12, fontweight='bold')
+            if values:
+                ax.set_xlim(0, max(values) * 1.15)
+            ax.grid(axis='x', alpha=0.3)
+
+            for i, val in enumerate(values):
+                text = f' {val:.3f}s' if metric == "time" else f' {val:.1f} MB'
+                ax.text(val, i, text, va='center', fontsize=10)
+
+        fig.suptitle(title, fontsize=14, fontweight='bold', y=0.995)
+        plt.tight_layout()
+        plt.savefig(output_dir / filename, format='svg', bbox_inches='tight')
+        print(f"   → {filename}")
+        plt.close()
+
+
 def main(results_dir=None):
     if results_dir is None:
         results_dir = Path("results")
@@ -350,7 +431,7 @@ def main(results_dir=None):
 
     print("📊 Generating performance graphs...")
 
-    data = load_benchmarks(results_dir)
+    data, cli_data, dataset_sizes = load_benchmarks(results_dir)
 
     for dataset, tools_data in sorted(data.items()):
         print(f"   {dataset.capitalize()} dataset:")
@@ -358,13 +439,17 @@ def main(results_dir=None):
 
     if len(data) >= 2:
         print("   Cross-dataset comparisons:")
-        plot_cross_dataset(data, graphs_dir)
+        plot_cross_dataset(data, dataset_sizes, graphs_dir)
 
     # Generate export comparison if any export data exists
     has_export = any("export" in td for ds in data.values() for td in ds.values())
     if has_export:
         print("   Export comparisons:")
-        plot_cross_dataset_export(data, graphs_dir)
+        plot_cross_dataset_export(data, dataset_sizes, graphs_dir)
+
+    if cli_data:
+        print("   CLI tools (separate family):")
+        plot_cli(cli_data, dataset_sizes, graphs_dir)
 
     print(f"\n✅ Graph generation complete!\n   Location: {graphs_dir}/")
 

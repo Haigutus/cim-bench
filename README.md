@@ -432,18 +432,25 @@ tool-configs/
 
 #### Quick Start
 ```bash
-# Build all Podman images
+# Build all Podman images (or just some: ./docker/setup.sh gmss cimgo)
 ./docker/setup.sh
 
-# Run all benchmarks in containers (includes report/graph generation)
+# Run all benchmarks in containers (sequential, includes report/graph generation)
 ./docker/run_benchmark.sh
 
-# Parallel execution
-./docker/run_benchmark.sh --parallel
+# Run a subset of tools, skip already-benchmarked ones
+./docker/run_benchmark.sh --tools triplets,rdflib --skip-existing
 
-# Using podman-compose directly
-podman-compose -f docker/docker-compose.yml up
+# Run a single tool+dataset (also refreshes reports/graphs with all prior results)
+./docker/run_single.sh triplets svedala
+
+# Regenerate reports/comparison/graphs without running anything
+./docker/generate_outputs.sh
 ```
+
+Benchmarks always run **sequentially** - parallel execution would let tools
+skew each other's measurements. Source directories are volume-mounted into
+the containers, so code changes don't require image rebuilds.
 
 #### Container Image Sizes
 - **Base**: ~100MB (Debian + uv + system tools)

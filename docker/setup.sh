@@ -1,32 +1,56 @@
 #!/usr/bin/env bash
 set -e
 
+# Build benchmark images.
+# Usage: ./docker/setup.sh [--rebuild] [tool ...]
+#   No args: build base + all tools discovered from docker-compose.yml
+#   tool ...: build base (only if missing) + just the named tools
+#   --rebuild: force base image rebuild
+
 cd "$(dirname "$0")/.."
+
+REBUILD=false
+TOOL_ARGS=()
+for arg in "$@"; do
+    case "$arg" in
+        --rebuild) REBUILD=true ;;
+        *) TOOL_ARGS+=("$arg") ;;
+    esac
+done
 
 echo "========================================"
 echo "Building cim-bench Docker images"
 echo "========================================"
 
-# Build base image (hardcoded)
-echo ""
-echo "[1/N] Building base image..."
-podman build -f docker/base.dockerfile -t cim-bench/base:latest .
+# Build base image (always when building everything, otherwise only if missing)
+if [ "$REBUILD" = true ] || [ ${#TOOL_ARGS[@]} -eq 0 ] || ! podman image exists cim-bench/base:latest; then
+    echo ""
+    echo "[1/N] Building base image..."
+    podman build -f docker/base.dockerfile -t cim-bench/base:latest .
+else
+    echo ""
+    echo "Base image exists - skipping build (use --rebuild to force)"
+fi
 
-# Extract unique tool names from docker-compose.yml
-echo ""
-echo "Discovering tools from docker-compose.yml..."
-TOOL_NAMES=$(podman-compose -f docker/docker-compose.yml config | \
-    grep 'image:' | \
-    awk '{print $2}' | \
-    grep 'cim-bench/' | \
-    grep -v 'cim-bench/base' | \
-    sed 's|cim-bench/||' | \
-    sed 's|:.*||' | \
-    sort -u)
+if [ ${#TOOL_ARGS[@]} -gt 0 ]; then
+    TOOL_NAMES="${TOOL_ARGS[*]}"
+else
+    # Extract unique tool names from docker-compose.yml
+    echo ""
+    echo "Discovering tools from docker-compose.yml..."
+    TOOL_NAMES=$(podman-compose -f docker/docker-compose.yml config | \
+        grep 'image:' | \
+        awk '{print $2}' | \
+        grep 'cim-bench/' | \
+        grep -v 'cim-bench/base' | \
+        sed 's|cim-bench/||' | \
+        sed 's|:.*||' | \
+        sort -u)
+fi
 
 # Count unique tools
-TOTAL_TOOLS=$(echo "$TOOL_NAMES" | wc -l)
-echo "Found $TOTAL_TOOLS unique tools: $(echo $TOOL_NAMES | tr '\n' ' ')"
+TOTAL_TOOLS=$(echo "$TOOL_NAMES" | wc -w)
+echo "Building $TOTAL_TOOLS tool image(s): $(echo $TOOL_NAMES | tr '\n' ' ')"
 
 CURRENT=1
 

@@ -74,8 +74,16 @@ def generate_comparison_report(json_files):
             print(f"⚠️  Skipping {json_file}: {e}")
             continue
 
+    # CLI tools are a separate family - subprocess measurements are not
+    # comparable with in-process libraries (extra_info tool_type == "cli")
+    def is_cli(data):
+        return any(b.get("extra_info", {}).get("tool_type") == "cli" for b in data["benchmarks"])
+
+    cli_data = [(name, data) for name, data in benchmark_data if is_cli(data)]
+    benchmark_data = [(name, data) for name, data in benchmark_data if not is_cli(data)]
+
     # Environment (use first one)
-    machine = benchmark_data[0][1]["machine_info"]
+    machine = (benchmark_data or cli_data)[0][1]["machine_info"]
     report.append("## Environment\n")
     report.append(f"- **CPU**: {machine['cpu'].get('brand_raw', 'Unknown')}")
     report.append(f"- **Cores**: {machine['cpu']['count']}")
@@ -153,10 +161,28 @@ def generate_comparison_report(json_files):
 
         report.append("")
 
+    # CLI tools - separate family, not comparable with in-process libraries
+    if cli_data:
+        report.append("## CLI Tools\n")
+        report.append("Benchmarked as subprocesses (full process lifecycle per run) - ")
+        report.append("**not comparable** with the in-process library numbers above.\n")
+        report.append("| Tool | Operation | Time (mean) | Peak RSS (MB) | Version |")
+        report.append("|------|-----------|-------------|---------------|---------|")
+
+        for tool_name, data in cli_data:
+            for bench in data["benchmarks"]:
+                extra = bench.get("extra_info", {})
+                mean_time = format_time(bench["stats"]["mean"])
+                memory = extra.get("memory_mb", "N/A")
+                version = extra.get("library_version", "N/A")
+                report.append(f"| {tool_name} | {extra.get('operation', bench['name'])} | {mean_time} | {memory} | {version} |")
+
+        report.append("")
+
     # Detailed results
     report.append("## Detailed Results\n")
 
-    for lib_name, data in benchmark_data:
+    for lib_name, data in benchmark_data + cli_data:
         report.append(f"### {lib_name}\n")
 
         for bench in data["benchmarks"]:

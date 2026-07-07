@@ -1,33 +1,40 @@
 #!/usr/bin/env bash
 set -e
 
+# Run containerized benchmarks sequentially (parallel execution is not
+# supported - concurrent tools would skew each other's measurements).
+#
+# Usage: ./docker/run_benchmark.sh [--tools t1,t2] [--skip-existing] [--quick]
+#   --tools t1,t2     Run only the listed tools (compose service prefixes,
+#                     e.g. triplets,powsybl-cgmes)
+#   --skip-existing   Skip benchmarks whose JSON already exists in results-docker/
+
 cd "$(dirname "$0")/.."
 
 RESULTS_DIR="results-docker"
 QUICK_MODE=false
-PARALLEL=false
+SKIP_EXISTING=false
+TOOLS=""
 
-for arg in "$@"; do
-    case "$arg" in
+while [ $# -gt 0 ]; do
+    case "$1" in
         --quick) QUICK_MODE=true ;;
-        --parallel) PARALLEL=true ;;
+        --skip-existing) SKIP_EXISTING=true ;;
+        --tools) TOOLS="$2"; shift ;;
+        --tools=*) TOOLS="${1#--tools=}" ;;
+        *) echo "Unknown option: $1"; exit 1 ;;
     esac
+    shift
 done
 
 mkdir -p "$RESULTS_DIR"
 
 echo "========================================"
 echo "cim-bench Containerized Benchmarks"
-echo "Quick mode: $QUICK_MODE"
-echo "Parallel: $PARALLEL"
+echo "Tools: ${TOOLS:-all}"
+echo "Skip existing: $SKIP_EXISTING"
 echo "========================================"
 echo ""
-
-if [ "$QUICK_MODE" = true ]; then
-    echo "⚠️  Quick mode not yet supported via docker-compose"
-    echo "    Use native execution: ./run_benchmarks.sh --quick"
-    echo ""
-fi
 
 if [ "$QUICK_MODE" = true ]; then
     echo "⚠️  Quick mode not yet supported via podman-compose"
@@ -35,61 +42,34 @@ if [ "$QUICK_MODE" = true ]; then
     echo ""
 fi
 
-if [ "$PARALLEL" = true ]; then
-    echo "Running all benchmarks in parallel using podman-compose..."
-    echo ""
-    podman-compose -f docker/docker-compose.yml up
-else
-    echo "Running benchmarks sequentially using podman-compose..."
-    echo ""
-    # Get all service names from docker-compose.yml
-    services=$(podman-compose -f docker/docker-compose.yml config --services)
-
-    for service in $services; do
-        echo "Running $service..."
-        podman-compose -f docker/docker-compose.yml run --rm "$service"
-        echo "✓ $service complete"
-        echo ""
-    done
-fi
-
-echo ""
-echo "========================================"
-echo "Generating reports and visualizations..."
-echo "========================================"
+echo "Running benchmarks sequentially using podman-compose..."
 echo ""
 
-# Generate markdown reports from all JSON files
-echo "📝 Generating markdown reports..."
-for json_file in "$RESULTS_DIR"/*_benchmark.json; do
-    [[ -f "$json_file" ]] || continue
+# Get all service names from docker-compose.yml (named {tool}-{dataset})
+services=$(podman-compose -f docker/docker-compose.yml config --services)
 
-    report_file="${json_file%.json}_report.md"
-    uv run python tools/generate_report.py "$json_file" "$report_file"
-    echo "   → $(basename "$report_file")"
+for service in $services; do
+    tool="${service%-svedala}"
+    tool="${tool%-realgrid}"
+    dataset="${service##*-}"
+
+    if [ -n "$TOOLS" ] && ! echo ",$TOOLS," | grep -q ",$tool,"; then
+        continue
+    fi
+
+    json_file="$RESULTS_DIR/$(echo "$tool" | tr '-' '_')_${dataset}_benchmark.json"
+    if [ "$SKIP_EXISTING" = true ] && [ -f "$json_file" ]; then
+        echo "⏭  Skipping $service (found $(basename "$json_file"))"
+        continue
+    fi
+
+    echo "Running $service..."
+    podman-compose -f docker/docker-compose.yml run --rm "$service"
+    echo "✓ $service complete"
+    echo ""
 done
-echo ""
 
-# Generate comparison summary
-BENCHMARK_JSONS=("$RESULTS_DIR"/*_benchmark.json)
-if [ ${#BENCHMARK_JSONS[@]} -gt 1 ]; then
-    echo "📊 Generating comparison summary..."
-    uv run python tools/generate_comparison.py "${BENCHMARK_JSONS[@]}" "$RESULTS_DIR/comparison_summary.md"
-    echo "   → comparison_summary.md"
-    echo ""
-fi
-
-# Generate visualizations (if matplotlib available)
-echo "📈 Generating graphs..."
-if uv run python -c "import matplotlib" 2>/dev/null; then
-    # Pass results directory to generate_graphs.py
-    uv run python tools/generate_graphs.py "$RESULTS_DIR"
-    echo "   → Graphs saved to $RESULTS_DIR/graphs/"
-else
-    echo "⚠️  Matplotlib not installed - skipping graph generation"
-    echo "   Install with: uv sync --extra visualization"
-fi
-echo ""
+./docker/generate_outputs.sh "$RESULTS_DIR"
 
 echo "========================================"
 echo "✓ All benchmarks complete!"

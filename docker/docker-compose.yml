@@ -3,6 +3,10 @@
 
 x-common: &common
   volumes:
+    # Mount current source over the copies baked into the images, so code
+    # changes don't require image rebuilds (granular iteration)
+    - ../benchmarks:/benchmarks:ro,z
+    - ../parsers:/benchmarks/parsers:ro,z
     - ../data:/benchmarks/data:ro,z
     - ../results-docker:/output:z
     - ../temp:/benchmarks/temp:z
