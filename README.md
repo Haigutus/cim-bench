@@ -301,7 +301,7 @@ See `tools/*/README.md` for detailed per-tool documentation and analysis.
 | 📋 | 🖥️ **cimd** | 0.4.0 (beta) | Zig (CLI) | Fast CGMES parser — validate, convert, query, browse, diff, topology | CLI only (get/refs/types/browse) | CGMES (SHACL + QoCDC validation, EQ→JIIDM, TopologicalNode gen) | [cimd.eu](https://cimd.eu) · [source](https://codeberg.org/caspereijkens/cimd) | **CLI-only**, Apache 2.0; proposed in open [PR #3](https://github.com/Haigutus/cim-bench/pull/3) (benchmarked v0.2.3) — ~500 MB/s parsing |
 | 📋 | **cimoxide** | 0.0.4 | Rust | CGMES struct generation, SHACL validation, decoding, protobuf | Typed Rust structs (`cimstructs`) | ENTSO-E RDF/SHACL (version n/a) | [m-mirz/cimoxide](https://github.com/m-mirz/cimoxide) | Early-stage; usable as Rust library crates **or** CLI |
 | 📋 | 🖥️ **pocket-rdf** | 0.3.0 | Python (CLI) | RDF load/serialize/query/validate toolkit | CLI only (SPARQL/SHACL) | Generic RDF (ships CGMES examples) | [EHegyi-Sphericity/pocket-rdf](https://github.com/EHegyi-Sphericity/pocket-rdf) | **CLI-only** (Typer); no documented importable library API |
-| 📋 | **GridLab GMSS CIM** | 10.1.1 | C# / .NET | Strongly-typed CIM models + code generator | Typed .NET objects | CGMES 2.4.15/3.0.0 | [gms-squared/gridlab.gmss.cim](https://gitlab.com/gms-squared/modules/gridlab.gmss.cim) | .NET library + CLI/code-gen; IEC 61970-552/501 compliant |
+| ⚠️ | **GridLab GMSS CIM** | 10.1.1 | C# / .NET | Strongly-typed CIM models + code generator | Typed .NET objects | CGMES 2.4.15/3.0.0 | [gms-squared/gridlab.gmss.cim](https://gitlab.com/gms-squared/modules/gridlab.gmss.cim) | Benchmarked in-process via pythonnet (CoreCLR), NuGet packages from nuget.org. Svedala (CGMES 3.0) works; RealGrid rejected — strict IEC 61970-552 validation refuses its non-RFC `urn:uuid:_...` model IDs |
 | ❌ | **pycgmes** | latest | Python | Dataclasses + RDF schema + SHACL | Dataclass mapping | CGMES 3.0+ | [alliander-opensource/pycgmes](https://github.com/alliander-opensource/pycgmes) | No file import capability - dataclass definitions only |
 | 📋 | **CIMverter** | Java/C++ | Convert CIM RDF to Modelica | Partial | CGMES compatible | [cim-iec/cimverter](https://github.com/cim-iec/cimverter) | Round-trip fidelity testing |
 | 📋 | **CIMDraw** | Web/JS | View/edit CGMES node-breaker models | Indirect | ENTSO-E CGMES profile | [danielePala/CIMDraw](https://github.com/danielePala/CIMDraw) | Visual completeness check |
@@ -440,18 +440,25 @@ tool-configs/
 
 #### Quick Start
 ```bash
-# Build all Podman images
+# Build all Podman images (or just some: ./docker/setup.sh gmss cimgo)
 ./docker/setup.sh
 
-# Run all benchmarks in containers (includes report/graph generation)
+# Run all benchmarks in containers (sequential, includes report/graph generation)
 ./docker/run_benchmark.sh
 
-# Parallel execution
-./docker/run_benchmark.sh --parallel
+# Run a subset of tools, skip already-benchmarked ones
+./docker/run_benchmark.sh --tools triplets,rdflib --skip-existing
 
-# Using podman-compose directly
-podman-compose -f docker/docker-compose.yml up
+# Run a single tool+dataset (also refreshes reports/graphs with all prior results)
+./docker/run_single.sh triplets svedala
+
+# Regenerate reports/comparison/graphs without running anything
+./docker/generate_outputs.sh
 ```
+
+Benchmarks always run **sequentially** - parallel execution would let tools
+skew each other's measurements. Source directories are volume-mounted into
+the containers, so code changes don't require image rebuilds.
 
 #### Container Image Sizes
 - **Base**: ~100MB (Debian + uv + system tools)

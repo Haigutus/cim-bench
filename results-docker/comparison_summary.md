@@ -15,6 +15,7 @@
 |---------|------------------|-------------|----------|-------|
 | cimgraph (Realgrid) | 25.86 s | 3175.6 MB | 7561 lines, 1347 gen, 6687 loads, 4875 subs | Dataset: 86.5 MB |
 | cimgraph (Svedala) | 905.6 ms | 211.6 MB | 97 lines, 39 gen, 73 loads, 56 subs | Dataset: 7.3 MB |
+| gmss (Svedala) | 1.59 s | 290.1 MB | 97 lines, 78 gen, 146 loads, 57 subs | Dataset: 7.3 MB |
 | jena (Realgrid) | 1.59 s | 2525.7 MB | 7561 lines, 1347 gen, 6687 loads, 4875 subs | Dataset: 86.5 MB |
 | jena (Svedala) | 124.1 ms | 427.9 MB | 97 lines, 39 gen, 73 loads, 56 subs | Dataset: 7.3 MB |
 | libcimpp (Realgrid) | 20.11 s | 134.7 MB | 7561 lines, 1347 gen, 6687 loads, 4875 subs | Dataset: 86.5 MB |
@@ -35,12 +36,24 @@
 
 ### Query Performance
 
-| Query Type | cimgraph (Realgrid) | cimgraph (Svedala) | jena (Realgrid) | jena (Svedala) | libcimpp (Realgrid) | maplib (Realgrid) | maplib (Svedala) | opencgmes (Realgrid) | opencgmes (Svedala) | powsybl_cgmes (Realgrid) | powsybl_cgmes (Svedala) | pypowsybl (Realgrid) | pypowsybl (Svedala) | rdflib (Realgrid) | rdflib (Svedala) | triplets (Realgrid) | triplets (Svedala) | veragrid (Realgrid) | veragrid (Svedala) |
-|------------|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| get_generators | 0.1 μs | 0.1 μs | 565.1 μs | 104.2 μs | 6.8 ms | 452.2 μs | 341.4 μs | 236.1 μs | 172.2 μs | 248.5 μs | 53.2 μs | 2.7 ms | 266.9 μs | 442.2 μs | 51.3 μs | 268.8 ms | 21.4 ms | 0.1 μs | 0.1 μs |
-| get_lines | 0.1 μs | 0.1 μs | 3.0 ms | 380.6 μs | 6.8 ms | 609.0 μs | 366.4 μs | 1.9 ms | 438.4 μs | 1.2 ms | 142.0 μs | 36.4 ms | 284.8 μs | 1.2 ms | 57.3 μs | 306.5 ms | 21.2 ms | 0.1 μs | 0.0 μs |
-| get_loads | 0.2 μs | 0.2 μs | 2.4 ms | 205.3 μs | 16.3 ms | 1.2 ms | 948.0 μs | 947.6 μs | 295.7 μs | 1.0 ms | 149.0 μs | 21.3 ms | 189.8 μs | 2.3 ms | 140.9 μs | 625.7 ms | 42.7 ms | 0.1 μs | 0.1 μs |
-| get_substations | 0.1 μs | 0.1 μs | 894.9 μs | 109.8 μs | 7.2 ms | 517.6 μs | 380.7 μs | 382.5 μs | 70.5 μs | 335.3 μs | 50.6 μs | 4.5 ms | 121.9 μs | 770.4 μs | 49.3 μs | 254.6 ms | 21.0 ms | 0.1 μs | 0.1 μs |
+| Query Type | cimgraph (Realgrid) | cimgraph (Svedala) | gmss (Svedala) | jena (Realgrid) | jena (Svedala) | libcimpp (Realgrid) | maplib (Realgrid) | maplib (Svedala) | opencgmes (Realgrid) | opencgmes (Svedala) | powsybl_cgmes (Realgrid) | powsybl_cgmes (Svedala) | pypowsybl (Realgrid) | pypowsybl (Svedala) | rdflib (Realgrid) | rdflib (Svedala) | triplets (Realgrid) | triplets (Svedala) | veragrid (Realgrid) | veragrid (Svedala) |
+|------------|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| get_generators | 0.1 μs | 0.1 μs | 122.6 μs | 565.1 μs | 104.2 μs | 6.8 ms | 452.2 μs | 341.4 μs | 236.1 μs | 172.2 μs | 248.5 μs | 53.2 μs | 2.7 ms | 266.9 μs | 442.2 μs | 51.3 μs | 268.8 ms | 21.4 ms | 0.1 μs | 0.1 μs |
+| get_lines | 0.1 μs | 0.1 μs | 152.7 μs | 3.0 ms | 380.6 μs | 6.8 ms | 609.0 μs | 366.4 μs | 1.9 ms | 438.4 μs | 1.2 ms | 142.0 μs | 36.4 ms | 284.8 μs | 1.2 ms | 57.3 μs | 306.5 ms | 21.2 ms | 0.1 μs | 0.0 μs |
+| get_loads | 0.2 μs | 0.2 μs | 340.7 μs | 2.4 ms | 205.3 μs | 16.3 ms | 1.2 ms | 948.0 μs | 947.6 μs | 295.7 μs | 1.0 ms | 149.0 μs | 21.3 ms | 189.8 μs | 2.3 ms | 140.9 μs | 625.7 ms | 42.7 ms | 0.1 μs | 0.1 μs |
+| get_substations | 0.1 μs | 0.1 μs | 111.2 μs | 894.9 μs | 109.8 μs | 7.2 ms | 517.6 μs | 380.7 μs | 382.5 μs | 70.5 μs | 335.3 μs | 50.6 μs | 4.5 ms | 121.9 μs | 770.4 μs | 49.3 μs | 254.6 ms | 21.0 ms | 0.1 μs | 0.1 μs |
+
+## CLI Tools
+
+Benchmarked as subprocesses (full process lifecycle per run) - 
+**not comparable** with the in-process library numbers above.
+
+| Tool | Operation | Time (mean) | Peak RSS (MB) | Version |
+|------|-----------|-------------|---------------|---------|
+| cimgo (Realgrid) | validate | 9.95 s | 844.8 | N/A |
+| cimgo (Realgrid) | convert | 8.07 s | 631.1 | N/A |
+| cimgo (Svedala) | validate | 531.4 ms | 43.1 | N/A |
+| cimgo (Svedala) | convert | 770.3 ms | 75.9 | N/A |
 
 ## Detailed Results
 
@@ -124,6 +137,43 @@
 - **Min**: 523.5 ms
 - **Max**: 561.7 ms
 - **Rounds**: 5
+
+### gmss (Svedala)
+
+#### Gmss Load Svedala
+
+- **Mean**: 1.59 s
+- **Min**: 1.34 s
+- **Max**: 1.83 s
+- **Rounds**: 5
+
+#### Gmss Get Lines
+
+- **Mean**: 152.7 μs
+- **Min**: 117.7 μs
+- **Max**: 5.3 ms
+- **Rounds**: 5363
+
+#### Gmss Get Generators
+
+- **Mean**: 122.6 μs
+- **Min**: 102.5 μs
+- **Max**: 1.5 ms
+- **Rounds**: 4545
+
+#### Gmss Get Loads
+
+- **Mean**: 340.7 μs
+- **Min**: 274.9 μs
+- **Max**: 2.8 ms
+- **Rounds**: 2844
+
+#### Gmss Get Substations
+
+- **Mean**: 111.2 μs
+- **Min**: 93.8 μs
+- **Max**: 1.9 ms
+- **Rounds**: 6792
 
 ### jena (Realgrid)
 
@@ -864,4 +914,36 @@
 - **Mean**: 1.08 s
 - **Min**: 918.0 ms
 - **Max**: 1.24 s
+- **Rounds**: 5
+
+### cimgo (Realgrid)
+
+#### Cimgo Validate Realgrid
+
+- **Mean**: 9.95 s
+- **Min**: 9.73 s
+- **Max**: 10.08 s
+- **Rounds**: 5
+
+#### Cimgo Convert Realgrid
+
+- **Mean**: 8.07 s
+- **Min**: 7.57 s
+- **Max**: 8.42 s
+- **Rounds**: 5
+
+### cimgo (Svedala)
+
+#### Cimgo Validate Svedala
+
+- **Mean**: 531.4 ms
+- **Min**: 503.2 ms
+- **Max**: 552.2 ms
+- **Rounds**: 5
+
+#### Cimgo Convert Svedala
+
+- **Mean**: 770.3 ms
+- **Min**: 732.3 ms
+- **Max**: 823.6 ms
 - **Rounds**: 5

@@ -1,6 +1,6 @@
 {
     "machine_info": {
-        "node": "fcd96706664d",
+        "node": "777338e48519",
         "processor": "",
         "machine": "x86_64",
         "python_compiler": "Clang 22.1.1 ",
@@ -11,7 +11,7 @@
             "main",
             "Mar 24 2026 22:50:36"
         ],
-        "release": "6.19.14-200.fc43.x86_64",
+        "release": "7.0.12-101.fc43.x86_64",
         "system": "Linux",
         "cpu": {
             "python_version": "3.14.3.final.0 (64 bit)",
@@ -27,14 +27,14 @@
             "arch_string_raw": "x86_64",
             "vendor_id_raw": "AuthenticAMD",
             "brand_raw": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
-            "hz_advertised_friendly": "1.7924 GHz",
-            "hz_actual_friendly": "1.7924 GHz",
+            "hz_advertised_friendly": "2.2454 GHz",
+            "hz_actual_friendly": "2.2454 GHz",
             "hz_advertised": [
-                1792350000,
+                2245358000,
                 0
             ],
             "hz_actual": [
-                1792350000,
+                2245358000,
                 0
             ],
             "model": 36,
@@ -237,18 +237,21 @@
     "benchmarks": [
         {
             "group": null,
-            "name": "test_cimgo_load_svedala",
-            "fullname": "docker_cimgo_svedala_benchmark.py::test_cimgo_load_svedala",
+            "name": "test_cimgo_validate_svedala",
+            "fullname": "docker_cimgo_svedala_benchmark.py::test_cimgo_validate_svedala",
             "params": null,
             "param": null,
             "extra_info": {
+                "tool_type": "cli",
                 "library": "cimgo",
+                "operation": "validate",
                 "dataset": "svedala",
+                "dataset_size_mb": 7.3,
+                "cgmes_version": "3.0",
                 "display_name": "cimgo",
                 "color": "#2ecc71",
-                "operation": "validate",
                 "binary": "/usr/local/bin/cimcli-linux-amd64",
-                "memory_mb": "44.1"
+                "memory_mb": "43.1"
             },
             "options": {
                 "disable_gc": false,
@@ -259,28 +262,28 @@
                 "warmup": false
             },
             "stats": {
-                "min": 0.6233474219916388,
-                "max": 0.9279030710458755,
-                "mean": 0.765419507632032,
-                "stddev": 0.12544448034442904,
+                "min": 0.5031751120113768,
+                "max": 0.5521923870546743,
+                "mean": 0.5314260500017554,
+                "stddev": 0.018792649185845892,
                 "rounds": 5,
-                "median": 0.730849893996492,
-                "iqr": 0.20632214896613732,
-                "q1": 0.6701191688189283,
-                "q3": 0.8764413177850656,
+                "median": 0.5374404729809612,
+                "iqr": 0.025072273245314136,
+                "q1": 0.518505654996261,
+                "q3": 0.5435779282415751,
                 "iqr_outliers": 0,
                 "stddev_outliers": 2,
                 "outliers": "2;0",
-                "ld15iqr": 0.6233474219916388,
-                "hd15iqr": 0.9279030710458755,
-                "ops": 1.3064731040023874,
-                "total": 3.82709753816016,
+                "ld15iqr": 0.5031751120113768,
+                "hd15iqr": 0.5521923870546743,
+                "ops": 1.8817293581989383,
+                "total": 2.657130250008777,
                 "data": [
-                    0.6857097510946915,
-                    0.6233474219916388,
-                    0.730849893996492,
-                    0.8592874000314623,
-                    0.9279030710458755
+                    0.5031751120113768,
+                    0.5236158359912224,
+                    0.5374404729809612,
+                    0.5521923870546743,
+                    0.5407064419705421
                 ],
                 "iterations": 1
             }
@@ -292,13 +295,16 @@
             "params": null,
             "param": null,
             "extra_info": {
+                "tool_type": "cli",
                 "library": "cimgo",
+                "operation": "convert",
                 "dataset": "svedala",
+                "dataset_size_mb": 7.3,
+                "cgmes_version": "3.0",
                 "display_name": "cimgo",
                 "color": "#2ecc71",
-                "operation": "convert",
                 "binary": "/usr/local/bin/cimcli-linux-amd64",
-                "memory_mb": "75.7"
+                "memory_mb": "75.9"
             },
             "options": {
                 "disable_gc": false,
@@ -309,33 +315,33 @@
                 "warmup": false
             },
             "stats": {
-                "min": 0.8713718570070341,
-                "max": 1.0045124919852242,
-                "mean": 0.9221736208070069,
-                "stddev": 0.05188877951985788,
+                "min": 0.732284213998355,
+                "max": 0.823554567003157,
+                "mean": 0.7702852758113294,
+                "stddev": 0.034626196246446146,
                 "rounds": 5,
-                "median": 0.9151366690639406,
-                "iqr": 0.0678116487688385,
-                "q1": 0.8830223764816765,
-                "q3": 0.950834025250515,
+                "median": 0.7735778269707225,
+                "iqr": 0.04211762848717626,
+                "q1": 0.7441746975382557,
+                "q3": 0.786292326025432,
                 "iqr_outliers": 0,
-                "stddev_outliers": 1,
-                "outliers": "1;0",
-                "ld15iqr": 0.8713718570070341,
-                "hd15iqr": 1.0045124919852242,
-                "ops": 1.0843944973451811,
-                "total": 4.610868104035035,
+                "stddev_outliers": 2,
+                "outliers": "2;0",
+                "ld15iqr": 0.732284213998355,
+                "hd15iqr": 0.823554567003157,
+                "ops": 1.2982203235635208,
+                "total": 3.8514263790566474,
                 "data": [
-                    0.8713718570070341,
-                    0.8869058829732239,
-                    0.9329412030056119,
-                    1.0045124919852242,
-                    0.9151366690639406
+                    0.748138192051556,
+                    0.7735778269707225,
+                    0.773871579032857,
+                    0.823554567003157,
+                    0.732284213998355
                 ],
                 "iterations": 1
             }
         }
     ],
-    "datetime": "2026-05-24T13:33:40.349630+00:00",
+    "datetime": "2026-07-06T19:23:26.224314+00:00",
     "version": "5.2.3"
 }
