@@ -51,8 +51,8 @@ Benchmarked as subprocesses (full process lifecycle per run) -
 |------|-----------|-------------|---------------|---------|
 | cimgo (Realgrid) | validate | 9.95 s | 844.8 | N/A |
 | cimgo (Realgrid) | convert | 8.07 s | 631.1 | N/A |
-| cimgo (Svedala) | validate | 531.4 ms | 43.1 | N/A |
-| cimgo (Svedala) | convert | 770.3 ms | 75.9 | N/A |
+| cimgo (Svedala) | validate | 541.3 ms | 42.9 | N/A |
+| cimgo (Svedala) | convert | 735.1 ms | 76.0 | N/A |
 
 ## Detailed Results
 
@@ -898,14 +898,14 @@ Benchmarked as subprocesses (full process lifecycle per run) -
 
 #### Cimgo Validate Svedala
 
-- **Mean**: 531.4 ms
-- **Min**: 503.2 ms
-- **Max**: 552.2 ms
+- **Mean**: 541.3 ms
+- **Min**: 519.8 ms
+- **Max**: 560.1 ms
 - **Rounds**: 5
 
 #### Cimgo Convert Svedala
 
-- **Mean**: 770.3 ms
-- **Min**: 732.3 ms
-- **Max**: 823.6 ms
+- **Mean**: 735.1 ms
+- **Min**: 677.1 ms
+- **Max**: 762.0 ms
 - **Rounds**: 5

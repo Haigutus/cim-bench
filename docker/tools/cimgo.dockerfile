@@ -10,13 +10,10 @@ RUN curl -fsSL \
     -o /usr/local/bin/cimcli-linux-amd64 \
     && chmod +x /usr/local/bin/cimcli-linux-amd64
 
-# Install Python test dependencies via uv
+# Install test dependencies (wheel cache persists across builds via cache mount)
 WORKDIR /app
 COPY tool-configs/cimgo/pyproject.toml .
-RUN uv sync
-
-COPY tool-configs/common/requirements.txt ./requirements.txt
-RUN uv pip install -r requirements.txt
+RUN --mount=type=cache,target=/root/.cache/uv uv sync
 
 ENV PATH="/app/.venv/bin:${PATH}"
 WORKDIR /benchmarks

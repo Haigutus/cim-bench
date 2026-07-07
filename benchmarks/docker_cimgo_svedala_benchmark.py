@@ -16,4 +16,5 @@ create_cli_benchmarks(
     operations={"validate": validate_cmd, "convert": convert_cmd},
     dataset_key="svedala_igm_cgmes_3",
     dataset_name="svedala",
+    tags=["validator", "serializer", "go"],
 )

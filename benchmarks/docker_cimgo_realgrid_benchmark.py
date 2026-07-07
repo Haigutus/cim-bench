@@ -16,4 +16,5 @@ create_cli_benchmarks(
     operations={"validate": validate_cmd, "convert": convert_cmd},
     dataset_key="realgrid_cgmes_2_4",
     dataset_name="realgrid",
+    tags=["validator", "serializer", "go"],
 )
