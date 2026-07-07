@@ -85,6 +85,10 @@ class GmssAdapter(ParserAdapter):
     def get_color(cls) -> str:
         return "#512bd4"  # .NET purple
 
+    @classmethod
+    def get_tags(cls):
+        return ["parser", "query", "typed-model", "c#"]
+
     def _init_services(self):
         """Bootstrap the ABP module and resolve the GMSS services."""
         self.cleanup()  # dispose previous app (load() runs once per benchmark round)

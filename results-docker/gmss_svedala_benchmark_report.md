@@ -6,21 +6,21 @@
 
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
-- **Python**: 3.13.12
+- **Python**: 3.13.14
 - **System**: Linux 7.0.12-101.fc43.x86_64
 
 ## Results
 
 ### Gmss Load Svedala
 
-- **Mean time**: 1.59 s
-- **Min time**: 1.34 s
-- **Max time**: 1.83 s
-- **Std dev**: 193.3 ms
+- **Mean time**: 2.01 s
+- **Min time**: 1.87 s
+- **Max time**: 2.15 s
+- **Std dev**: 126.9 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 290.1
+- Memory Mb: 369.6
 - Triples: 95499
 - Lines: 97
 - Generators: 78
@@ -34,14 +34,15 @@
 - Dataset: svedala
 - Display Name: GMSS CIM
 - Color: #512bd4
+- Tags: ['parser', 'query', 'typed-model', 'c#']
 
 ### Gmss Get Lines
 
-- **Mean time**: 152.7 μs
-- **Min time**: 117.7 μs
-- **Max time**: 5.3 ms
-- **Std dev**: 152.9 μs
-- **Rounds**: 5363
+- **Mean time**: 280.7 μs
+- **Min time**: 210.5 μs
+- **Max time**: 9.7 ms
+- **Std dev**: 364.4 μs
+- **Rounds**: 1302
 
 **Metrics**:
 - Line Count: 97
@@ -53,11 +54,11 @@
 
 ### Gmss Get Generators
 
-- **Mean time**: 122.6 μs
-- **Min time**: 102.5 μs
-- **Max time**: 1.5 ms
-- **Std dev**: 101.3 μs
-- **Rounds**: 4545
+- **Mean time**: 277.0 μs
+- **Min time**: 198.1 μs
+- **Max time**: 4.9 ms
+- **Std dev**: 274.2 μs
+- **Rounds**: 2796
 
 **Metrics**:
 - Generator Count: 78
@@ -69,11 +70,11 @@
 
 ### Gmss Get Loads
 
-- **Mean time**: 340.7 μs
-- **Min time**: 274.9 μs
-- **Max time**: 2.8 ms
-- **Std dev**: 202.6 μs
-- **Rounds**: 2844
+- **Mean time**: 717.8 μs
+- **Min time**: 506.6 μs
+- **Max time**: 7.9 ms
+- **Std dev**: 495.8 μs
+- **Rounds**: 1366
 
 **Metrics**:
 - Load Count: 146
@@ -85,11 +86,11 @@
 
 ### Gmss Get Substations
 
-- **Mean time**: 111.2 μs
-- **Min time**: 93.8 μs
-- **Max time**: 1.9 ms
-- **Std dev**: 101.4 μs
-- **Rounds**: 6792
+- **Mean time**: 340.4 μs
+- **Min time**: 183.7 μs
+- **Max time**: 6.9 ms
+- **Std dev**: 345.9 μs
+- **Rounds**: 2615
 
 **Metrics**:
 - Substation Count: 57

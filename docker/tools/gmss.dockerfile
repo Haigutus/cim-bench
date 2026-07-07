@@ -3,7 +3,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS dotnet-build
 WORKDIR /build
 COPY tool-configs/gmss/gmss.csproj .
-RUN dotnet publish -c Release -o /build/publish
+RUN --mount=type=cache,target=/root/.nuget/packages dotnet publish -c Release -o /build/publish
 
 FROM localhost/cim-bench/base:latest
 
@@ -20,7 +20,7 @@ WORKDIR /app
 
 # Install tool-specific dependencies first (establishes Python version)
 COPY tool-configs/gmss/pyproject.toml .
-RUN uv sync
+RUN --mount=type=cache,target=/root/.cache/uv uv sync
 
 ENV PATH="/app/.venv/bin:${PATH}"
 ENV PYTHONNET_RUNTIME=coreclr
