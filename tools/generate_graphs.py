@@ -1,95 +1,15 @@
 #!/usr/bin/env python
 """Generate performance comparison graphs from benchmark results."""
 
-import json
 import sys
 import matplotlib.pyplot as plt
 import matplotlib
 import numpy as np
 from pathlib import Path
-from collections import defaultdict
+
+from benchmark_data import load_benchmarks, dataset_label
 
 matplotlib.use('Agg')
-
-
-def load_benchmarks(results_dir):
-    """
-    Load all benchmark JSONs and organize by dataset.
-
-    Library and CLI tools are separate families (extra_info["tool_type"] ==
-    "cli" marks CLI records; absence means library) - their measurements are
-    not comparable, so they get separate data structures and graphs.
-
-    Returns:
-        (data, cli_data, dataset_sizes):
-            data[dataset][tool] = {"load": {...}, "queries": [...], "export": {...}}
-            cli_data[dataset][tool][operation] = {"time", "memory", "color"}
-            dataset_sizes[dataset] = size in MB (from extra_info dataset_size_mb)
-    """
-    data = defaultdict(lambda: defaultdict(dict))
-    cli_data = defaultdict(lambda: defaultdict(dict))
-    dataset_sizes = {}
-
-    for json_file in Path(results_dir).glob("*_benchmark.json"):
-        try:
-            with open(json_file) as f:
-                content = f.read()
-            if not content.strip():
-                print(f"⚠️  Skipping {json_file.name}: empty file")
-                continue
-            parsed = json.loads(content)
-            if not parsed or "benchmarks" not in parsed:
-                print(f"⚠️  Skipping {json_file.name}: missing benchmarks")
-                continue
-            benchmarks = parsed["benchmarks"]
-        except (json.JSONDecodeError, KeyError) as e:
-            print(f"⚠️  Skipping {json_file.name}: {e}")
-            continue
-
-        for bench in benchmarks:
-            extra = bench.get("extra_info", {})
-            if "dataset" not in extra or "display_name" not in extra:
-                continue
-
-            dataset = extra["dataset"]
-            tool = extra["display_name"]
-
-            if "dataset_size_mb" in extra:
-                dataset_sizes[dataset] = float(extra["dataset_size_mb"])
-
-            if extra.get("tool_type") == "cli":
-                cli_data[dataset][tool][extra.get("operation", bench["name"])] = {
-                    "time": bench["stats"]["mean"],
-                    "memory": float(extra.get("memory_mb", 0)),
-                    "color": extra.get("color", "#999999")
-                }
-            elif extra.get("operation") == "export":
-                data[dataset][tool]["export"] = {
-                    "time": bench["stats"]["mean"],
-                    "color": extra.get("color", "#999999")
-                }
-            elif "load" in bench["name"].lower() and "get_" not in bench["name"].lower():
-                data[dataset][tool]["load"] = {
-                    "time": bench["stats"]["mean"],
-                    "memory": float(extra.get("memory_mb", 0)),
-                    "lines": int(extra.get("lines", 0)),
-                    "generators": int(extra.get("generators", 0)),
-                    "color": extra.get("color", "#999999")
-                }
-            elif "get_" in bench["name"].lower():
-                if "queries" not in data[dataset][tool]:
-                    data[dataset][tool]["queries"] = []
-                data[dataset][tool]["queries"].append(bench["stats"]["mean"] * 1000)
-                data[dataset][tool]["color"] = extra.get("color", "#999999")
-
-    return data, cli_data, dataset_sizes
-
-
-def dataset_label(dataset, dataset_sizes):
-    """Human label for a dataset, with size when known."""
-    if dataset in dataset_sizes:
-        return f"{dataset.capitalize()} ({dataset_sizes[dataset]:g} MB)"
-    return dataset.capitalize()
 
 
 def plot_dataset(dataset_name, tools_data, output_dir):
@@ -122,7 +42,7 @@ def plot_dataset(dataset_name, tools_data, output_dir):
     for i, v in enumerate(memory):
         ax2.text(i, v, f'{v:.1f} MB', ha='center', va='bottom', fontsize=9)
 
-    query_times = [np.mean(tools_data[t].get("queries", [0])) for t in tools]
+    query_times = [np.mean(list(tools_data[t].get("queries", {}).values()) or [0]) for t in tools]
     ax3.bar(tools, query_times, color=colors)
     ax3.set_ylabel('Average Query Time (ms, log scale)', fontsize=11)
     ax3.set_title(f'{dataset_name} - Query Performance', fontsize=12, fontweight='bold')
@@ -284,7 +204,7 @@ def plot_cross_dataset(data, dataset_sizes, output_dir):
 
         entries = []
         for tool in tools:
-            query_time = np.mean(data[ds].get(tool, {}).get("queries", [0]))
+            query_time = np.mean(list(data[ds].get(tool, {}).get("queries", {}).values()) or [0])
             if query_time > 0:
                 entries.append((tool, query_time, colors.get(tool, "#999999")))
 
@@ -328,7 +248,7 @@ def plot_cross_dataset_export(data, dataset_sizes, output_dir):
     for t in tools_with_export:
         for ds in datasets:
             if t in data[ds] and "export" in data[ds][t]:
-                colors[t] = data[ds][t]["export"].get("color", "#999999")
+                colors[t] = data[ds][t].get("color", "#999999")
                 break
 
     fig, axes = plt.subplots(len(datasets), 1, figsize=(12, 5 * len(datasets)), sharex=False)
@@ -393,9 +313,10 @@ def plot_cli(cli_data, dataset_sizes, output_dir):
 
             entries = []
             for tool in sorted(cli_data[ds]):
-                for operation, values in sorted(cli_data[ds][tool].items()):
+                color = cli_data[ds][tool].get("color", "#999999")
+                for operation, values in sorted(cli_data[ds][tool].get("operations", {}).items()):
                     if values[metric] > 0:
-                        entries.append((f"{tool} ({operation})", values[metric], values["color"]))
+                        entries.append((f"{tool} ({operation})", values[metric], color))
 
             entries.sort(key=lambda x: x[1])
             labels = [e[0] for e in entries]
@@ -431,7 +352,7 @@ def main(results_dir=None):
 
     print("📊 Generating performance graphs...")
 
-    data, cli_data, dataset_sizes = load_benchmarks(results_dir)
+    data, cli_data, dataset_sizes, _meta = load_benchmarks(results_dir)
 
     for dataset, tools_data in sorted(data.items()):
         print(f"   {dataset.capitalize()} dataset:")
