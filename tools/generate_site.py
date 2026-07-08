@@ -192,7 +192,7 @@ def cli_section(cli_data, dataset_sizes, graphs_dir):
     headers = [("Tool", False), ("Tags", False), ("Version", False), ("Dataset", False),
                ("Operation", False), ("Time", True), ("Peak RSS (MB)", True)]
     rows = []
-    for dataset in sorted(cli_data, key=lambda ds: dataset_sizes.get(ds, 0)):
+    for dataset in sorted(cli_data, key=lambda ds: dataset_sizes.get(ds, 0), reverse=True):
         for name, t in sorted(cli_data[dataset].items()):
             for operation, values in sorted(t["operations"].items()):
                 cells = (tool_cell(name, t["color"])
@@ -225,7 +225,7 @@ def main(results_dir="results-docker", output_dir="docs"):
     generated = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
     sections = []
-    for dataset in sorted(data, key=lambda ds: dataset_sizes.get(ds, 0)):
+    for dataset in sorted(data, key=lambda ds: dataset_sizes.get(ds, 0), reverse=True):
         sections.append(f"<h2>{esc(dataset_label(dataset, dataset_sizes))}</h2>")
         sections.append(load_table(data[dataset]))
         sections.append(query_table(data[dataset]))

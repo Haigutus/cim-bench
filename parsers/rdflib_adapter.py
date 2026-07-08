@@ -42,7 +42,7 @@ class RDFlibAdapter(ParserAdapter):
 
     @classmethod
     def get_tags(cls):
-        return ["parser", "serializer", "query", "triplestore", "python"]
+        return ["parser", "serializer", "query", "sparql", "triplestore", "python"]
 
     def load(self, dataset_key: str):
         """Load using RDFlib with Oxigraph store."""

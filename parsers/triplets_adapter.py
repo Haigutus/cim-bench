@@ -44,10 +44,11 @@ class TripletsAdapter(ParserAdapter):
         """Load using triplets library directly."""
         dataset = DATASETS[dataset_key]
 
-        # Determine files to load
-        files_to_load = [v for k, v in dataset.items() if k != "_metadata"]
+        # Determine files to load (str paths - the pyarrow-backed reader
+        # from triplets[arrow] does not accept pathlib.Path objects)
+        files_to_load = [str(v) for k, v in dataset.items() if k != "_metadata"]
         if "ZIP" in dataset:
-            files_to_load = dataset["ZIP"]
+            files_to_load = str(dataset["ZIP"])
 
         # Load all files (single call regardless of format)
         self.df = pandas.read_RDF(files_to_load)
@@ -115,12 +116,18 @@ class TripletsAdapter(ParserAdapter):
         output_path = Path(output_path)
         output_dir = output_path.parent
 
-        # Export per instance (creates separate ZIP files in output_dir)
-        loaded_obj.df.export_to_cimxml(
+        # Export to memory and write ourselves: triplets 0.1.0 names exported
+        # files with absolute source-derived paths, so export_base_path is
+        # discarded by os.path.join and it would write next to the (read-only)
+        # source data
+        exported = loaded_obj.df.export_to_cimxml(
             rdf_map=schemas.ENTSOE_CGMES_3_0_0_552_ED1,
             export_type=ExportType.XML_PER_INSTANCE_ZIP_PER_XML,
-            export_base_path=str(output_dir),
+            export_to_memory=True,
             max_workers=4
         )
+        for file_object in exported:
+            file_object.seek(0)
+            (output_dir / Path(file_object.name).name).write_bytes(file_object.read())
 
         return output_dir

@@ -72,7 +72,7 @@ class PowsyblCgmesAdapter(ParserAdapter):
 
     @classmethod
     def get_tags(cls):
-        return ["parser", "serializer", "query", "triplestore", "java"]
+        return ["parser", "serializer", "query", "sparql", "triplestore", "java"]
 
     def load(self, dataset_key: str):
         """Load using PowSyBL CGMES Model library via JPype."""

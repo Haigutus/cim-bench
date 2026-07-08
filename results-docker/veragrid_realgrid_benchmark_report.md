@@ -6,21 +6,21 @@
 
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
-- **Python**: 3.14.3
-- **System**: Linux 6.19.9-200.fc43.x86_64
+- **Python**: 3.14.6
+- **System**: Linux 7.0.12-101.fc43.x86_64
 
 ## Results
 
 ### Veragrid Load Realgrid
 
-- **Mean time**: 6.90 s
-- **Min time**: 5.74 s
-- **Max time**: 7.29 s
-- **Std dev**: 656.6 ms
+- **Mean time**: 22.71 s
+- **Min time**: 18.13 s
+- **Max time**: 29.02 s
+- **Std dev**: 5.46 s
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 634.0
+- Memory Mb: 308.9
 - Lines: 7561
 - Generators: 1347
 - Loads: 6687
@@ -28,19 +28,20 @@
 - Cgmes Version: 2.4.15
 - Dataset Size Mb: 86.5
 - Library: veragrid
-- Library Version: 5.6.38
-- Library Dependencies: {'setuptools': '82.0.1', 'wheel': '0.46.3', 'PySide6': '6.11.0', 'websockets': '16.0', 'opencv-python': '4.13.0.92', 'packaging': '26.0', 'VeraGridEngine': '5.6.38'}
+- Library Version: 6.3.0
+- Library Dependencies: {'numpy': '2.4.6', 'PySide6': '6.11.1', 'requests': '2.34.2', 'urllib3': '2.7.0', 'websockets': '16.0', 'opencv-python': '5.0.0.93', 'packaging': '26.2', 'VeraGridEngine': '6.3.0'}
 - Dataset: realgrid
 - Display Name: VeraGrid
 - Color: #2ca02c
+- Tags: ['parser', 'serializer', 'query', 'powerflow-tool', 'python']
 
 ### Veragrid Get Lines
 
-- **Mean time**: 0.1 μs
-- **Min time**: 0.0 μs
-- **Max time**: 0.6 μs
-- **Std dev**: 0.0 μs
-- **Rounds**: 96628
+- **Mean time**: 0.2 μs
+- **Min time**: 0.2 μs
+- **Max time**: 8.1 μs
+- **Std dev**: 0.1 μs
+- **Rounds**: 157432
 
 **Metrics**:
 - Line Count: 7561
@@ -52,11 +53,11 @@
 
 ### Veragrid Get Generators
 
-- **Mean time**: 0.1 μs
-- **Min time**: 0.1 μs
-- **Max time**: 1.7 μs
-- **Std dev**: 0.0 μs
-- **Rounds**: 86274
+- **Mean time**: 0.2 μs
+- **Min time**: 0.2 μs
+- **Max time**: 57.1 μs
+- **Std dev**: 0.2 μs
+- **Rounds**: 155473
 
 **Metrics**:
 - Generator Count: 1347
@@ -68,11 +69,11 @@
 
 ### Veragrid Get Loads
 
-- **Mean time**: 0.1 μs
-- **Min time**: 0.1 μs
-- **Max time**: 8.2 μs
-- **Std dev**: 0.0 μs
-- **Rounds**: 167196
+- **Mean time**: 0.3 μs
+- **Min time**: 0.2 μs
+- **Max time**: 178.4 μs
+- **Std dev**: 0.6 μs
+- **Rounds**: 126503
 
 **Metrics**:
 - Load Count: 6687
@@ -84,11 +85,11 @@
 
 ### Veragrid Get Substations
 
-- **Mean time**: 0.1 μs
-- **Min time**: 0.1 μs
-- **Max time**: 5.2 μs
-- **Std dev**: 0.0 μs
-- **Rounds**: 176026
+- **Mean time**: 0.2 μs
+- **Min time**: 0.2 μs
+- **Max time**: 36.5 μs
+- **Std dev**: 0.2 μs
+- **Rounds**: 143823
 
 **Metrics**:
 - Substation Count: 4875
@@ -100,10 +101,10 @@
 
 ### Veragrid Export Realgrid
 
-- **Mean time**: 12.55 s
-- **Min time**: 8.96 s
-- **Max time**: 17.41 s
-- **Std dev**: 3.41 s
+- **Mean time**: 19.94 s
+- **Min time**: 18.61 s
+- **Max time**: 22.04 s
+- **Std dev**: 1.42 s
 - **Rounds**: 5
 
 **Metrics**:

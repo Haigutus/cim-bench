@@ -6,21 +6,21 @@
 
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
-- **Python**: 3.13.12
-- **System**: Linux 6.19.9-200.fc43.x86_64
+- **Python**: 3.13.14
+- **System**: Linux 7.0.12-101.fc43.x86_64
 
 ## Results
 
 ### Opencgmes Load Svedala
 
-- **Mean time**: 79.2 ms
-- **Min time**: 66.5 ms
-- **Max time**: 96.7 ms
-- **Std dev**: 10.9 ms
+- **Mean time**: 251.0 ms
+- **Min time**: 143.3 ms
+- **Max time**: 472.5 ms
+- **Std dev**: 137.0 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 351.4
+- Memory Mb: 275.1
 - Triples: 47700
 - Lines: 97
 - Generators: 39
@@ -29,20 +29,21 @@
 - Dataset Size Mb: 7.3
 - Cgmes Version: 3.0
 - Library: opencgmes
-- Library Version: 1.0.0-SNAPSHOT
-- Library Dependencies: {'jpype1': '1.6.0', 'java': '21.0.10', 'jena': '5.5.0'}
-- Java Version: 21.0.10
+- Library Version: 1.1.0-SNAPSHOT
+- Library Dependencies: {'jpype1': '1.7.1', 'java': '21.0.11', 'jena': '6.1.0'}
+- Java Version: 21.0.11
 - Dataset: svedala
 - Display Name: OpenCGMES
 - Color: #e91e63
+- Tags: ['parser', 'serializer', 'query', 'sparql', 'triplestore', 'java']
 
 ### Opencgmes Get Lines
 
-- **Mean time**: 438.4 μs
-- **Min time**: 155.5 μs
-- **Max time**: 65.6 ms
-- **Std dev**: 2.5 ms
-- **Rounds**: 666
+- **Mean time**: 1.2 ms
+- **Min time**: 538.3 μs
+- **Max time**: 4.5 ms
+- **Std dev**: 515.5 μs
+- **Rounds**: 213
 
 **Metrics**:
 - Line Count: 97
@@ -54,11 +55,11 @@
 
 ### Opencgmes Get Generators
 
-- **Mean time**: 172.2 μs
-- **Min time**: 70.5 μs
-- **Max time**: 80.8 ms
-- **Std dev**: 2.1 ms
-- **Rounds**: 1554
+- **Mean time**: 394.7 μs
+- **Min time**: 150.4 μs
+- **Max time**: 4.6 ms
+- **Std dev**: 305.1 μs
+- **Rounds**: 1444
 
 **Metrics**:
 - Generator Count: 39
@@ -70,11 +71,11 @@
 
 ### Opencgmes Get Loads
 
-- **Mean time**: 295.7 μs
-- **Min time**: 151.8 μs
-- **Max time**: 54.2 ms
-- **Std dev**: 1.3 ms
-- **Rounds**: 1899
+- **Mean time**: 854.4 μs
+- **Min time**: 512.8 μs
+- **Max time**: 3.6 ms
+- **Std dev**: 266.7 μs
+- **Rounds**: 643
 
 **Metrics**:
 - Load Count: 73
@@ -86,11 +87,11 @@
 
 ### Opencgmes Get Substations
 
-- **Mean time**: 70.5 μs
-- **Min time**: 41.9 μs
-- **Max time**: 23.7 ms
-- **Std dev**: 439.8 μs
-- **Rounds**: 6089
+- **Mean time**: 449.7 μs
+- **Min time**: 163.1 μs
+- **Max time**: 164.8 ms
+- **Std dev**: 4.0 ms
+- **Rounds**: 1768
 
 **Metrics**:
 - Substation Count: 56
@@ -102,10 +103,10 @@
 
 ### Opencgmes Export Svedala
 
-- **Mean time**: 365.6 ms
-- **Min time**: 329.1 ms
-- **Max time**: 419.1 ms
-- **Std dev**: 45.9 ms
+- **Mean time**: 842.3 ms
+- **Min time**: 690.2 ms
+- **Max time**: 1.01 s
+- **Std dev**: 121.4 ms
 - **Rounds**: 5
 
 **Metrics**:

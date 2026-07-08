@@ -3,8 +3,8 @@ name = "cim-bench-pypowsybl"
 version = "0.1.0"
 requires-python = "==3.13.*"
 dependencies = [
-    "pypowsybl>=1.14.0",
-    "pytest>=9.0.2",
+    "pypowsybl>=1.15.0",
+    "pytest>=9.1.1",
     "pytest-benchmark>=5.2.3",
     "psutil>=7.2.2"
 ]

@@ -6,21 +6,21 @@
 
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
-- **Python**: 3.14.3
-- **System**: Linux 6.19.9-200.fc43.x86_64
+- **Python**: 3.14.6
+- **System**: Linux 7.0.12-101.fc43.x86_64
 
 ## Results
 
 ### Rdflib Load Realgrid
 
-- **Mean time**: 19.42 s
-- **Min time**: 18.88 s
-- **Max time**: 20.08 s
-- **Std dev**: 447.0 ms
+- **Mean time**: 50.86 s
+- **Min time**: 46.09 s
+- **Max time**: 63.32 s
+- **Std dev**: 7.19 s
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 1522.6
+- Memory Mb: 1109.4
 - Triples: 1146183
 - Lines: 7561
 - Generators: 2694
@@ -34,14 +34,15 @@
 - Dataset: realgrid
 - Display Name: RDFlib
 - Color: #f1c40f
+- Tags: ['parser', 'serializer', 'query', 'sparql', 'triplestore', 'python']
 
 ### Rdflib Get Lines
 
-- **Mean time**: 1.2 ms
-- **Min time**: 1.2 ms
-- **Max time**: 1.9 ms
-- **Std dev**: 80.0 μs
-- **Rounds**: 381
+- **Mean time**: 2.8 ms
+- **Min time**: 2.3 ms
+- **Max time**: 6.0 ms
+- **Std dev**: 598.6 μs
+- **Rounds**: 257
 
 **Metrics**:
 - Line Count: 7561
@@ -53,11 +54,11 @@
 
 ### Rdflib Get Generators
 
-- **Mean time**: 442.2 μs
-- **Min time**: 422.6 μs
-- **Max time**: 525.6 μs
-- **Std dev**: 11.1 μs
-- **Rounds**: 1178
+- **Mean time**: 928.2 μs
+- **Min time**: 785.3 μs
+- **Max time**: 1.8 ms
+- **Std dev**: 134.5 μs
+- **Rounds**: 632
 
 **Metrics**:
 - Generator Count: 2694
@@ -69,11 +70,11 @@
 
 ### Rdflib Get Loads
 
-- **Mean time**: 2.3 ms
-- **Min time**: 2.1 ms
-- **Max time**: 3.6 ms
-- **Std dev**: 232.9 μs
-- **Rounds**: 279
+- **Mean time**: 5.5 ms
+- **Min time**: 4.3 ms
+- **Max time**: 8.6 ms
+- **Std dev**: 925.6 μs
+- **Rounds**: 135
 
 **Metrics**:
 - Load Count: 13374
@@ -85,11 +86,11 @@
 
 ### Rdflib Get Substations
 
-- **Mean time**: 770.4 μs
-- **Min time**: 734.0 μs
-- **Max time**: 1.5 ms
-- **Std dev**: 39.8 μs
-- **Rounds**: 775
+- **Mean time**: 1.7 ms
+- **Min time**: 1.4 ms
+- **Max time**: 3.5 ms
+- **Std dev**: 251.3 μs
+- **Rounds**: 475
 
 **Metrics**:
 - Substation Count: 4875
@@ -101,10 +102,10 @@
 
 ### Rdflib Export Realgrid
 
-- **Mean time**: 18.69 s
-- **Min time**: 18.55 s
-- **Max time**: 19.08 s
-- **Std dev**: 220.0 ms
+- **Mean time**: 41.10 s
+- **Min time**: 39.47 s
+- **Max time**: 42.56 s
+- **Std dev**: 1.37 s
 - **Rounds**: 5
 
 **Metrics**:

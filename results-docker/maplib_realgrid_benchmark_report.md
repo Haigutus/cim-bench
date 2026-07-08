@@ -6,21 +6,21 @@
 
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
-- **Python**: 3.14.3
-- **System**: Linux 6.19.9-200.fc43.x86_64
+- **Python**: 3.14.6
+- **System**: Linux 7.0.12-101.fc43.x86_64
 
 ## Results
 
 ### Maplib Load Realgrid
 
-- **Mean time**: 2.18 s
-- **Min time**: 2.15 s
-- **Max time**: 2.22 s
-- **Std dev**: 26.6 ms
+- **Mean time**: 4.86 s
+- **Min time**: 4.60 s
+- **Max time**: 5.47 s
+- **Std dev**: 348.0 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 576.3
+- Memory Mb: 360.1
 - Lines: 7561
 - Generators: 1347
 - Loads: 6687
@@ -28,19 +28,20 @@
 - Dataset Size Mb: 86.5
 - Cgmes Version: 2.4.15
 - Library: maplib
-- Library Version: 0.20.0
-- Library Dependencies: {'polars': '1.39.3', 'pyarrow': '23.0.1', 'fastapi': '0.135.3'}
+- Library Version: 0.20.19
+- Library Dependencies: {'polars': '1.42.1', 'pyarrow': '23.0.1', 'fastapi': '0.139.0'}
 - Dataset: realgrid
 - Display Name: maplib
 - Color: #8b4513
+- Tags: ['parser', 'serializer', 'query', 'sparql', 'triplestore', 'python', 'rust']
 
 ### Maplib Get Lines
 
-- **Mean time**: 609.0 μs
-- **Min time**: 434.9 μs
-- **Max time**: 3.1 ms
-- **Std dev**: 125.3 μs
-- **Rounds**: 958
+- **Mean time**: 2.0 ms
+- **Min time**: 1.3 ms
+- **Max time**: 4.1 ms
+- **Std dev**: 387.7 μs
+- **Rounds**: 352
 
 **Metrics**:
 - Line Count: 7561
@@ -52,11 +53,11 @@
 
 ### Maplib Get Generators
 
-- **Mean time**: 452.2 μs
-- **Min time**: 327.0 μs
-- **Max time**: 3.2 ms
-- **Std dev**: 138.2 μs
-- **Rounds**: 1590
+- **Mean time**: 1.4 ms
+- **Min time**: 946.6 μs
+- **Max time**: 4.2 ms
+- **Std dev**: 344.7 μs
+- **Rounds**: 616
 
 **Metrics**:
 - Generator Count: 1347
@@ -68,11 +69,11 @@
 
 ### Maplib Get Loads
 
-- **Mean time**: 1.2 ms
-- **Min time**: 864.5 μs
-- **Max time**: 4.1 ms
-- **Std dev**: 193.4 μs
-- **Rounds**: 766
+- **Mean time**: 3.8 ms
+- **Min time**: 2.3 ms
+- **Max time**: 14.6 ms
+- **Std dev**: 1.3 ms
+- **Rounds**: 188
 
 **Metrics**:
 - Load Count: 6687
@@ -84,11 +85,11 @@
 
 ### Maplib Get Substations
 
-- **Mean time**: 517.6 μs
-- **Min time**: 383.0 μs
-- **Max time**: 2.2 ms
-- **Std dev**: 81.8 μs
-- **Rounds**: 1964
+- **Mean time**: 1.9 ms
+- **Min time**: 1.1 ms
+- **Max time**: 5.6 ms
+- **Std dev**: 627.2 μs
+- **Rounds**: 300
 
 **Metrics**:
 - Substation Count: 4875
@@ -100,10 +101,10 @@
 
 ### Maplib Export Realgrid
 
-- **Mean time**: 16.79 s
-- **Min time**: 16.71 s
-- **Max time**: 16.96 s
-- **Std dev**: 101.7 ms
+- **Mean time**: 67.61 s
+- **Min time**: 55.60 s
+- **Max time**: 74.44 s
+- **Std dev**: 7.97 s
 - **Rounds**: 5
 
 **Metrics**:

@@ -46,7 +46,7 @@ class MaplibAdapter(ParserAdapter):
 
     @classmethod
     def get_tags(cls):
-        return ["parser", "serializer", "query", "triplestore", "python", "rust"]
+        return ["parser", "serializer", "query", "sparql", "triplestore", "python", "rust"]
 
     def load(self, dataset_key: str):
         """Load CIM dataset into maplib Model."""

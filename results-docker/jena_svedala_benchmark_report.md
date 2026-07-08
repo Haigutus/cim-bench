@@ -13,14 +13,14 @@
 
 ### Jena Load Svedala
 
-- **Mean time**: 368.1 ms
-- **Min time**: 257.0 ms
-- **Max time**: 498.1 ms
-- **Std dev**: 87.4 ms
+- **Mean time**: 343.5 ms
+- **Min time**: 313.3 ms
+- **Max time**: 432.1 ms
+- **Std dev**: 50.0 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 391.9
+- Memory Mb: 492.5
 - Triples: 47710
 - Lines: 97
 - Generators: 39
@@ -35,15 +35,15 @@
 - Dataset: svedala
 - Display Name: Apache Jena
 - Color: #d62728
-- Tags: ['parser', 'serializer', 'query', 'triplestore', 'java']
+- Tags: ['parser', 'serializer', 'query', 'sparql', 'triplestore', 'java']
 
 ### Jena Get Lines
 
-- **Mean time**: 1.2 ms
-- **Min time**: 556.4 μs
-- **Max time**: 6.6 ms
-- **Std dev**: 727.6 μs
-- **Rounds**: 234
+- **Mean time**: 1.1 ms
+- **Min time**: 497.0 μs
+- **Max time**: 3.9 ms
+- **Std dev**: 599.1 μs
+- **Rounds**: 265
 
 **Metrics**:
 - Line Count: 97
@@ -55,11 +55,11 @@
 
 ### Jena Get Generators
 
-- **Mean time**: 474.1 μs
-- **Min time**: 183.0 μs
-- **Max time**: 6.2 ms
-- **Std dev**: 388.0 μs
-- **Rounds**: 1245
+- **Mean time**: 467.3 μs
+- **Min time**: 186.7 μs
+- **Max time**: 5.1 ms
+- **Std dev**: 367.5 μs
+- **Rounds**: 1208
 
 **Metrics**:
 - Generator Count: 39
@@ -71,11 +71,11 @@
 
 ### Jena Get Loads
 
-- **Mean time**: 927.0 μs
-- **Min time**: 445.1 μs
-- **Max time**: 2.8 ms
-- **Std dev**: 307.5 μs
-- **Rounds**: 526
+- **Mean time**: 897.0 μs
+- **Min time**: 385.9 μs
+- **Max time**: 44.4 ms
+- **Std dev**: 1.5 ms
+- **Rounds**: 905
 
 **Metrics**:
 - Load Count: 73
@@ -87,11 +87,11 @@
 
 ### Jena Get Substations
 
-- **Mean time**: 261.5 μs
-- **Min time**: 143.7 μs
-- **Max time**: 3.6 ms
-- **Std dev**: 136.2 μs
-- **Rounds**: 1387
+- **Mean time**: 238.7 μs
+- **Min time**: 135.6 μs
+- **Max time**: 1.0 ms
+- **Std dev**: 93.8 μs
+- **Rounds**: 3000
 
 **Metrics**:
 - Substation Count: 56
@@ -103,10 +103,10 @@
 
 ### Jena Export Svedala
 
-- **Mean time**: 1.07 s
-- **Min time**: 990.8 ms
-- **Max time**: 1.18 s
-- **Std dev**: 87.1 ms
+- **Mean time**: 1.40 s
+- **Min time**: 1.17 s
+- **Max time**: 1.65 s
+- **Std dev**: 216.3 ms
 - **Rounds**: 5
 
 **Metrics**:
