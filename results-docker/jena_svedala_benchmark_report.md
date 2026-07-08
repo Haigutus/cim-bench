@@ -13,14 +13,14 @@
 
 ### Jena Load Svedala
 
-- **Mean time**: 343.5 ms
-- **Min time**: 313.3 ms
-- **Max time**: 432.1 ms
-- **Std dev**: 50.0 ms
+- **Mean time**: 259.7 ms
+- **Min time**: 213.2 ms
+- **Max time**: 303.0 ms
+- **Std dev**: 37.5 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 492.5
+- Memory Mb: 495.6
 - Triples: 47710
 - Lines: 97
 - Generators: 39
@@ -40,10 +40,10 @@
 ### Jena Get Lines
 
 - **Mean time**: 1.1 ms
-- **Min time**: 497.0 μs
-- **Max time**: 3.9 ms
-- **Std dev**: 599.1 μs
-- **Rounds**: 265
+- **Min time**: 445.3 μs
+- **Max time**: 3.6 ms
+- **Std dev**: 457.3 μs
+- **Rounds**: 317
 
 **Metrics**:
 - Line Count: 97
@@ -55,11 +55,11 @@
 
 ### Jena Get Generators
 
-- **Mean time**: 467.3 μs
-- **Min time**: 186.7 μs
-- **Max time**: 5.1 ms
-- **Std dev**: 367.5 μs
-- **Rounds**: 1208
+- **Mean time**: 452.2 μs
+- **Min time**: 159.0 μs
+- **Max time**: 3.1 ms
+- **Std dev**: 340.9 μs
+- **Rounds**: 846
 
 **Metrics**:
 - Generator Count: 39
@@ -71,11 +71,11 @@
 
 ### Jena Get Loads
 
-- **Mean time**: 897.0 μs
-- **Min time**: 385.9 μs
-- **Max time**: 44.4 ms
-- **Std dev**: 1.5 ms
-- **Rounds**: 905
+- **Mean time**: 792.3 μs
+- **Min time**: 376.2 μs
+- **Max time**: 24.4 ms
+- **Std dev**: 787.6 μs
+- **Rounds**: 1024
 
 **Metrics**:
 - Load Count: 73
@@ -87,11 +87,11 @@
 
 ### Jena Get Substations
 
-- **Mean time**: 238.7 μs
-- **Min time**: 135.6 μs
-- **Max time**: 1.0 ms
-- **Std dev**: 93.8 μs
-- **Rounds**: 3000
+- **Mean time**: 230.9 μs
+- **Min time**: 122.8 μs
+- **Max time**: 1.7 ms
+- **Std dev**: 95.6 μs
+- **Rounds**: 2753
 
 **Metrics**:
 - Substation Count: 56
@@ -103,10 +103,10 @@
 
 ### Jena Export Svedala
 
-- **Mean time**: 1.40 s
-- **Min time**: 1.17 s
-- **Max time**: 1.65 s
-- **Std dev**: 216.3 ms
+- **Mean time**: 832.2 ms
+- **Min time**: 749.2 ms
+- **Max time**: 940.5 ms
+- **Std dev**: 79.0 ms
 - **Rounds**: 5
 
 **Metrics**:

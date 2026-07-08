@@ -13,14 +13,14 @@
 
 ### Opencgmes Load Svedala
 
-- **Mean time**: 251.0 ms
-- **Min time**: 143.3 ms
-- **Max time**: 472.5 ms
-- **Std dev**: 137.0 ms
+- **Mean time**: 268.6 ms
+- **Min time**: 169.5 ms
+- **Max time**: 467.8 ms
+- **Std dev**: 120.0 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 275.1
+- Memory Mb: 255.8
 - Triples: 47700
 - Lines: 97
 - Generators: 39
@@ -39,11 +39,11 @@
 
 ### Opencgmes Get Lines
 
-- **Mean time**: 1.2 ms
-- **Min time**: 538.3 μs
-- **Max time**: 4.5 ms
-- **Std dev**: 515.5 μs
-- **Rounds**: 213
+- **Mean time**: 1.4 ms
+- **Min time**: 547.2 μs
+- **Max time**: 5.4 ms
+- **Std dev**: 668.7 μs
+- **Rounds**: 191
 
 **Metrics**:
 - Line Count: 97
@@ -55,11 +55,11 @@
 
 ### Opencgmes Get Generators
 
-- **Mean time**: 394.7 μs
-- **Min time**: 150.4 μs
-- **Max time**: 4.6 ms
-- **Std dev**: 305.1 μs
-- **Rounds**: 1444
+- **Mean time**: 644.0 μs
+- **Min time**: 192.4 μs
+- **Max time**: 4.4 ms
+- **Std dev**: 407.8 μs
+- **Rounds**: 706
 
 **Metrics**:
 - Generator Count: 39
@@ -71,11 +71,11 @@
 
 ### Opencgmes Get Loads
 
-- **Mean time**: 854.4 μs
-- **Min time**: 512.8 μs
-- **Max time**: 3.6 ms
-- **Std dev**: 266.7 μs
-- **Rounds**: 643
+- **Mean time**: 909.9 μs
+- **Min time**: 431.5 μs
+- **Max time**: 23.4 ms
+- **Std dev**: 824.0 μs
+- **Rounds**: 861
 
 **Metrics**:
 - Load Count: 73
@@ -87,11 +87,11 @@
 
 ### Opencgmes Get Substations
 
-- **Mean time**: 449.7 μs
-- **Min time**: 163.1 μs
-- **Max time**: 164.8 ms
-- **Std dev**: 4.0 ms
-- **Rounds**: 1768
+- **Mean time**: 247.7 μs
+- **Min time**: 168.3 μs
+- **Max time**: 3.0 ms
+- **Std dev**: 110.2 μs
+- **Rounds**: 1365
 
 **Metrics**:
 - Substation Count: 56
@@ -103,10 +103,10 @@
 
 ### Opencgmes Export Svedala
 
-- **Mean time**: 842.3 ms
-- **Min time**: 690.2 ms
-- **Max time**: 1.01 s
-- **Std dev**: 121.4 ms
+- **Mean time**: 801.6 ms
+- **Min time**: 717.9 ms
+- **Max time**: 920.1 ms
+- **Std dev**: 78.8 ms
 - **Rounds**: 5
 
 **Metrics**:

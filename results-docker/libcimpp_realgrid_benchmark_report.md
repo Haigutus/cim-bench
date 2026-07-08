@@ -13,14 +13,14 @@
 
 ### Libcimpp Load Realgrid
 
-- **Mean time**: 23.95 s
-- **Min time**: 21.18 s
-- **Max time**: 28.09 s
-- **Std dev**: 2.54 s
+- **Mean time**: 22.74 s
+- **Min time**: 22.57 s
+- **Max time**: 22.96 s
+- **Std dev**: 147.2 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 132.1
+- Memory Mb: 132.9
 - Lines: 7561
 - Generators: 1347
 - Loads: 6687
@@ -37,11 +37,11 @@
 
 ### Libcimpp Get Lines
 
-- **Mean time**: 8.2 ms
-- **Min time**: 4.4 ms
-- **Max time**: 13.4 ms
-- **Std dev**: 2.5 ms
-- **Rounds**: 71
+- **Mean time**: 8.1 ms
+- **Min time**: 6.5 ms
+- **Max time**: 12.0 ms
+- **Std dev**: 1.3 ms
+- **Rounds**: 78
 
 **Metrics**:
 - Line Count: 7561
@@ -53,11 +53,11 @@
 
 ### Libcimpp Get Generators
 
-- **Mean time**: 7.3 ms
-- **Min time**: 4.5 ms
-- **Max time**: 12.8 ms
-- **Std dev**: 1.7 ms
-- **Rounds**: 88
+- **Mean time**: 8.4 ms
+- **Min time**: 6.6 ms
+- **Max time**: 11.3 ms
+- **Std dev**: 1.0 ms
+- **Rounds**: 79
 
 **Metrics**:
 - Generator Count: 1347
@@ -69,11 +69,11 @@
 
 ### Libcimpp Get Loads
 
-- **Mean time**: 19.2 ms
-- **Min time**: 16.2 ms
-- **Max time**: 21.8 ms
-- **Std dev**: 1.5 ms
-- **Rounds**: 60
+- **Mean time**: 19.5 ms
+- **Min time**: 18.0 ms
+- **Max time**: 21.4 ms
+- **Std dev**: 882.6 μs
+- **Rounds**: 54
 
 **Metrics**:
 - Load Count: 6687
@@ -86,10 +86,10 @@
 ### Libcimpp Get Substations
 
 - **Mean time**: 8.3 ms
-- **Min time**: 4.8 ms
-- **Max time**: 13.5 ms
-- **Std dev**: 2.8 ms
-- **Rounds**: 91
+- **Min time**: 6.1 ms
+- **Max time**: 11.6 ms
+- **Std dev**: 1.2 ms
+- **Rounds**: 87
 
 **Metrics**:
 - Substation Count: 4875
