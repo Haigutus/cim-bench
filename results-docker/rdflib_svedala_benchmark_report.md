@@ -13,14 +13,14 @@
 
 ### Rdflib Load Svedala
 
-- **Mean time**: 4.42 s
-- **Min time**: 4.19 s
-- **Max time**: 4.71 s
-- **Std dev**: 188.7 ms
+- **Mean time**: 4.74 s
+- **Min time**: 4.35 s
+- **Max time**: 5.16 s
+- **Std dev**: 312.8 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 208.1
+- Memory Mb: 208.0
 - Triples: 95499
 - Lines: 97
 - Generators: 78
@@ -38,11 +38,11 @@
 
 ### Rdflib Get Lines
 
-- **Mean time**: 156.7 μs
-- **Min time**: 122.2 μs
-- **Max time**: 466.1 μs
-- **Std dev**: 39.6 μs
-- **Rounds**: 2259
+- **Mean time**: 186.2 μs
+- **Min time**: 131.6 μs
+- **Max time**: 935.8 μs
+- **Std dev**: 81.5 μs
+- **Rounds**: 2607
 
 **Metrics**:
 - Line Count: 97
@@ -54,11 +54,11 @@
 
 ### Rdflib Get Generators
 
-- **Mean time**: 147.4 μs
-- **Min time**: 115.1 μs
-- **Max time**: 635.5 μs
-- **Std dev**: 34.5 μs
-- **Rounds**: 4119
+- **Mean time**: 172.7 μs
+- **Min time**: 124.5 μs
+- **Max time**: 758.0 μs
+- **Std dev**: 68.2 μs
+- **Rounds**: 3472
 
 **Metrics**:
 - Generator Count: 78
@@ -70,11 +70,11 @@
 
 ### Rdflib Get Loads
 
-- **Mean time**: 401.1 μs
-- **Min time**: 326.1 μs
-- **Max time**: 1.6 ms
-- **Std dev**: 95.1 μs
-- **Rounds**: 1752
+- **Mean time**: 509.0 μs
+- **Min time**: 353.0 μs
+- **Max time**: 2.3 ms
+- **Std dev**: 222.6 μs
+- **Rounds**: 1793
 
 **Metrics**:
 - Load Count: 146
@@ -86,11 +86,11 @@
 
 ### Rdflib Get Substations
 
-- **Mean time**: 211.5 μs
-- **Min time**: 116.2 μs
-- **Max time**: 1.0 ms
-- **Std dev**: 81.4 μs
-- **Rounds**: 3844
+- **Mean time**: 170.5 μs
+- **Min time**: 120.9 μs
+- **Max time**: 970.0 μs
+- **Std dev**: 69.0 μs
+- **Rounds**: 2912
 
 **Metrics**:
 - Substation Count: 57
@@ -102,10 +102,10 @@
 
 ### Rdflib Export Svedala
 
-- **Mean time**: 4.18 s
-- **Min time**: 4.03 s
-- **Max time**: 4.31 s
-- **Std dev**: 100.0 ms
+- **Mean time**: 4.66 s
+- **Min time**: 4.50 s
+- **Max time**: 4.77 s
+- **Std dev**: 111.3 ms
 - **Rounds**: 5
 
 **Metrics**:

@@ -13,14 +13,14 @@
 
 ### Triplets Load Realgrid
 
-- **Mean time**: 448.1 ms
-- **Min time**: 404.4 ms
-- **Max time**: 474.4 ms
-- **Std dev**: 28.5 ms
+- **Mean time**: 178.3 ms
+- **Min time**: 171.4 ms
+- **Max time**: 187.7 ms
+- **Std dev**: 6.3 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 226.1
+- Memory Mb: 382.3
 - Triplets Count: 1146215
 - Unique Objects: 149174
 - Instances: 4
@@ -32,7 +32,7 @@
 - Cgmes Version: 2.4.15
 - Library: triplets
 - Library Version: 0.1.0
-- Library Dependencies: {'pandas': '3.0.3', 'lxml': '6.1.1'}
+- Library Dependencies: {'pandas': '3.0.3', 'lxml': '6.1.1', 'polars': '1.42.1', 'pyarrow': '24.0.0'}
 - Dataset: realgrid
 - Display Name: triplets
 - Color: #1f77b4
@@ -40,11 +40,11 @@
 
 ### Triplets Get Lines
 
-- **Mean time**: 174.5 ms
-- **Min time**: 132.1 ms
-- **Max time**: 220.8 ms
-- **Std dev**: 34.0 ms
-- **Rounds**: 6
+- **Mean time**: 36.2 ms
+- **Min time**: 26.1 ms
+- **Max time**: 42.4 ms
+- **Std dev**: 2.9 ms
+- **Rounds**: 45
 
 **Metrics**:
 - Line Count: 7561
@@ -56,11 +56,11 @@
 
 ### Triplets Get Generators
 
-- **Mean time**: 189.4 ms
-- **Min time**: 139.7 ms
-- **Max time**: 218.9 ms
-- **Std dev**: 24.7 ms
-- **Rounds**: 9
+- **Mean time**: 23.8 ms
+- **Min time**: 22.0 ms
+- **Max time**: 28.3 ms
+- **Std dev**: 1.3 ms
+- **Rounds**: 43
 
 **Metrics**:
 - Generator Count: 1347
@@ -72,11 +72,11 @@
 
 ### Triplets Get Loads
 
-- **Mean time**: 230.1 ms
-- **Min time**: 168.7 ms
-- **Max time**: 273.7 ms
-- **Std dev**: 45.7 ms
-- **Rounds**: 5
+- **Mean time**: 30.9 ms
+- **Min time**: 27.9 ms
+- **Max time**: 34.3 ms
+- **Std dev**: 1.5 ms
+- **Rounds**: 32
 
 **Metrics**:
 - Load Count: 6687
@@ -88,11 +88,11 @@
 
 ### Triplets Get Substations
 
-- **Mean time**: 157.9 ms
-- **Min time**: 136.8 ms
-- **Max time**: 172.6 ms
-- **Std dev**: 14.5 ms
-- **Rounds**: 7
+- **Mean time**: 19.0 ms
+- **Min time**: 16.6 ms
+- **Max time**: 23.4 ms
+- **Std dev**: 1.4 ms
+- **Rounds**: 53
 
 **Metrics**:
 - Substation Count: 4875
@@ -104,10 +104,10 @@
 
 ### Triplets Export Realgrid
 
-- **Mean time**: 2.94 s
-- **Min time**: 2.86 s
-- **Max time**: 3.01 s
-- **Std dev**: 57.2 ms
+- **Mean time**: 2.02 s
+- **Min time**: 1.96 s
+- **Max time**: 2.09 s
+- **Std dev**: 55.4 ms
 - **Rounds**: 5
 
 **Metrics**:

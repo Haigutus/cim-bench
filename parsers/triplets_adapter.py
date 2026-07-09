@@ -1,18 +1,19 @@
 """Triplets parser adapter for benchmarking.
 
-Triplets is a Python library for parsing CIM RDF/XML data to pandas DataFrames.
+Triplets is a Python library for parsing CIM RDF/XML data to DataFrames.
+Uses the polars engine (triplets[arrow,polars]) for loading and queries.
 Repository: https://github.com/Haigutus/triplets
 Documentation: https://haigutus.github.io/triplets/
 """
 
-import pandas
-import triplets  # noqa: F401 - Extends pandas with read_RDF
+import polars
+import triplets  # noqa: F401 - Extends polars/pandas with read_RDF and tableviews
 from parser_adapter import ParserAdapter
 from datasets import DATASETS, get_size_mb
 
 
 class TripletsAdapter(ParserAdapter):
-    """Adapter for triplets library."""
+    """Adapter for triplets library (polars engine)."""
 
     def __init__(self):
         self.df = None
@@ -24,7 +25,12 @@ class TripletsAdapter(ParserAdapter):
 
     @classmethod
     def get_dependencies(cls) -> dict:
-        return cls._get_package_dependencies("triplets")
+        from importlib.metadata import version
+        deps = cls._get_package_dependencies("triplets")
+        # the actually-used engine comes from the arrow/polars extras
+        deps["polars"] = version("polars")
+        deps["pyarrow"] = version("pyarrow")
+        return deps
 
     @classmethod
     def get_display_name(cls) -> str:
@@ -41,7 +47,7 @@ class TripletsAdapter(ParserAdapter):
         return ["parser", "serializer", "query", "python"]
 
     def load(self, dataset_key: str):
-        """Load using triplets library directly."""
+        """Load using the triplets polars engine."""
         dataset = DATASETS[dataset_key]
 
         # Determine files to load (str paths - the pyarrow-backed reader
@@ -51,7 +57,7 @@ class TripletsAdapter(ParserAdapter):
             files_to_load = str(dataset["ZIP"])
 
         # Load all files (single call regardless of format)
-        self.df = pandas.read_RDF(files_to_load)
+        self.df = polars.read_RDF(files_to_load)
 
         return self
 
@@ -60,8 +66,8 @@ class TripletsAdapter(ParserAdapter):
         return {
             "memory_mb": f"{memory_mb:.1f}",
             "triplets_count": len(loaded_obj.df),
-            "unique_objects": loaded_obj.df['ID'].nunique(),
-            "instances": loaded_obj.df['INSTANCE_ID'].nunique(),
+            "unique_objects": loaded_obj.df["ID"].n_unique(),
+            "instances": loaded_obj.df["INSTANCE_ID"].n_unique(),
             "lines": loaded_obj.get_lines_count(loaded_obj),
             "generators": loaded_obj.get_generators_count(loaded_obj),
             "loads": loaded_obj.get_loads_count(loaded_obj),
@@ -107,6 +113,7 @@ class TripletsAdapter(ParserAdapter):
     def export(self, loaded_obj, output_path):
         """Export triplets dataframe to RDF/XML."""
         from pathlib import Path
+        from triplets.export import export_to_cimxml
         from triplets.export_schema import schemas
         from triplets.rdf_parser import ExportType
 
@@ -120,7 +127,8 @@ class TripletsAdapter(ParserAdapter):
         # files with absolute source-derived paths, so export_base_path is
         # discarded by os.path.join and it would write next to the (read-only)
         # source data
-        exported = loaded_obj.df.export_to_cimxml(
+        exported = export_to_cimxml(
+            loaded_obj.df,
             rdf_map=schemas.ENTSOE_CGMES_3_0_0_552_ED1,
             export_type=ExportType.XML_PER_INSTANCE_ZIP_PER_XML,
             export_to_memory=True,

@@ -13,14 +13,14 @@
 
 ### Triplets Load Svedala
 
-- **Mean time**: 24.9 ms
-- **Min time**: 19.1 ms
-- **Max time**: 32.0 ms
-- **Std dev**: 4.5 ms
-- **Rounds**: 15
+- **Mean time**: 21.9 ms
+- **Min time**: 17.6 ms
+- **Max time**: 25.8 ms
+- **Std dev**: 2.4 ms
+- **Rounds**: 25
 
 **Metrics**:
-- Memory Mb: 36.4
+- Memory Mb: 90.4
 - Triplets Count: 95539
 - Unique Objects: 14540
 - Instances: 5
@@ -32,7 +32,7 @@
 - Cgmes Version: 3.0
 - Library: triplets
 - Library Version: 0.1.0
-- Library Dependencies: {'pandas': '3.0.3', 'lxml': '6.1.1'}
+- Library Dependencies: {'pandas': '3.0.3', 'lxml': '6.1.1', 'polars': '1.42.1', 'pyarrow': '24.0.0'}
 - Dataset: svedala
 - Display Name: triplets
 - Color: #1f77b4
@@ -40,11 +40,11 @@
 
 ### Triplets Get Lines
 
-- **Mean time**: 21.3 ms
-- **Min time**: 14.9 ms
-- **Max time**: 33.6 ms
-- **Std dev**: 4.9 ms
-- **Rounds**: 63
+- **Mean time**: 6.7 ms
+- **Min time**: 4.8 ms
+- **Max time**: 13.7 ms
+- **Std dev**: 1.3 ms
+- **Rounds**: 147
 
 **Metrics**:
 - Line Count: 97
@@ -56,11 +56,11 @@
 
 ### Triplets Get Generators
 
-- **Mean time**: 22.2 ms
-- **Min time**: 15.7 ms
-- **Max time**: 31.5 ms
-- **Std dev**: 4.4 ms
-- **Rounds**: 38
+- **Mean time**: 5.9 ms
+- **Min time**: 3.9 ms
+- **Max time**: 8.7 ms
+- **Std dev**: 822.0 μs
+- **Rounds**: 153
 
 **Metrics**:
 - Generator Count: 39
@@ -72,11 +72,11 @@
 
 ### Triplets Get Loads
 
-- **Mean time**: 29.8 ms
-- **Min time**: 20.4 ms
-- **Max time**: 41.0 ms
-- **Std dev**: 6.7 ms
-- **Rounds**: 29
+- **Mean time**: 6.7 ms
+- **Min time**: 4.2 ms
+- **Max time**: 10.8 ms
+- **Std dev**: 1.1 ms
+- **Rounds**: 149
 
 **Metrics**:
 - Load Count: 73
@@ -88,11 +88,11 @@
 
 ### Triplets Get Substations
 
-- **Mean time**: 20.9 ms
-- **Min time**: 15.5 ms
-- **Max time**: 32.6 ms
-- **Std dev**: 4.0 ms
-- **Rounds**: 37
+- **Mean time**: 5.1 ms
+- **Min time**: 3.6 ms
+- **Max time**: 10.5 ms
+- **Std dev**: 1.0 ms
+- **Rounds**: 200
 
 **Metrics**:
 - Substation Count: 57
@@ -104,10 +104,10 @@
 
 ### Triplets Export Svedala
 
-- **Mean time**: 392.7 ms
-- **Min time**: 346.9 ms
-- **Max time**: 434.4 ms
-- **Std dev**: 41.7 ms
+- **Mean time**: 330.4 ms
+- **Min time**: 301.3 ms
+- **Max time**: 352.5 ms
+- **Std dev**: 18.4 ms
 - **Rounds**: 5
 
 **Metrics**:

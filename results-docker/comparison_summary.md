@@ -27,9 +27,9 @@
 | pypowsybl (Realgrid) | 9.86 s | 6201.0 MB | 7561 lines, 1347 gen, 6687 loads, 4791 subs | Dataset: 86.5 MB |
 | pypowsybl (Svedala) | 1.34 s | 978.6 MB | 97 lines, 39 gen, 73 loads, 57 subs | Dataset: 7.3 MB |
 | rdflib (Realgrid) | 30.75 s | 1088.5 MB | 7561 lines, 2694 gen, 13374 loads, 4875 subs | Dataset: 86.5 MB |
-| rdflib (Svedala) | 4.42 s | 208.1 MB | 97 lines, 78 gen, 146 loads, 57 subs | Dataset: 7.3 MB |
-| triplets (Realgrid) | 448.1 ms | 226.1 MB | 7561 lines, 1347 gen, 6687 loads, 4875 subs | Dataset: 86.5 MB |
-| triplets (Svedala) | 24.9 ms | 36.4 MB | 97 lines, 39 gen, 73 loads, 57 subs | Dataset: 7.3 MB |
+| rdflib (Svedala) | 4.74 s | 208.0 MB | 97 lines, 78 gen, 146 loads, 57 subs | Dataset: 7.3 MB |
+| triplets (Realgrid) | 178.3 ms | 382.3 MB | 7561 lines, 1347 gen, 6687 loads, 4875 subs | Dataset: 86.5 MB |
+| triplets (Svedala) | 21.9 ms | 90.4 MB | 97 lines, 39 gen, 73 loads, 57 subs | Dataset: 7.3 MB |
 | veragrid (Realgrid) | 18.79 s | 319.9 MB | 7561 lines, 1347 gen, 6687 loads, 4875 subs | Dataset: 86.5 MB |
 | veragrid (Svedala) | 1.70 s | 74.8 MB | 97 lines, 39 gen, 73 loads, 56 subs | Dataset: 7.3 MB |
 
@@ -37,10 +37,10 @@
 
 | Query Type | cimgraph (Realgrid) | cimgraph (Svedala) | jena (Realgrid) | jena (Svedala) | libcimpp (Realgrid) | maplib (Realgrid) | maplib (Svedala) | opencgmes (Realgrid) | opencgmes (Svedala) | powsybl_cgmes (Realgrid) | powsybl_cgmes (Svedala) | pypowsybl (Realgrid) | pypowsybl (Svedala) | rdflib (Realgrid) | rdflib (Svedala) | triplets (Realgrid) | triplets (Svedala) | veragrid (Realgrid) | veragrid (Svedala) |
 |------------|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| get_generators | 0.2 μs | 0.4 μs | 1.7 ms | 452.2 μs | 8.4 ms | 1.3 ms | 1.0 ms | 2.8 ms | 644.0 μs | 903.6 μs | 241.9 μs | 6.8 ms | 1.4 ms | 483.3 μs | 147.4 μs | 189.4 ms | 22.2 ms | 0.3 μs | 0.1 μs |
-| get_lines | 0.2 μs | 0.3 μs | 7.9 ms | 1.1 ms | 8.1 ms | 1.8 ms | 919.2 μs | 13.2 ms | 1.4 ms | 3.4 ms | 520.4 μs | 51.9 ms | 1.5 ms | 1.4 ms | 156.7 μs | 174.5 ms | 21.3 ms | 0.2 μs | 0.1 μs |
-| get_loads | 0.5 μs | 0.6 μs | 12.2 ms | 792.3 μs | 19.5 ms | 3.2 ms | 2.4 ms | 7.5 ms | 909.9 μs | 2.8 ms | 562.0 μs | 31.6 ms | 1.0 ms | 2.1 ms | 401.1 μs | 230.1 ms | 29.8 ms | 0.3 μs | 0.3 μs |
-| get_substations | 0.3 μs | 0.2 μs | 2.9 ms | 230.9 μs | 8.3 ms | 1.5 ms | 975.5 μs | 4.6 ms | 247.7 μs | 909.5 μs | 223.6 μs | 10.4 ms | 625.6 μs | 710.8 μs | 211.5 μs | 157.9 ms | 20.9 ms | 0.3 μs | 0.2 μs |
+| get_generators | 0.2 μs | 0.4 μs | 1.7 ms | 452.2 μs | 8.4 ms | 1.3 ms | 1.0 ms | 2.8 ms | 644.0 μs | 903.6 μs | 241.9 μs | 6.8 ms | 1.4 ms | 483.3 μs | 172.7 μs | 23.8 ms | 5.9 ms | 0.3 μs | 0.1 μs |
+| get_lines | 0.2 μs | 0.3 μs | 7.9 ms | 1.1 ms | 8.1 ms | 1.8 ms | 919.2 μs | 13.2 ms | 1.4 ms | 3.4 ms | 520.4 μs | 51.9 ms | 1.5 ms | 1.4 ms | 186.2 μs | 36.2 ms | 6.7 ms | 0.2 μs | 0.1 μs |
+| get_loads | 0.5 μs | 0.6 μs | 12.2 ms | 792.3 μs | 19.5 ms | 3.2 ms | 2.4 ms | 7.5 ms | 909.9 μs | 2.8 ms | 562.0 μs | 31.6 ms | 1.0 ms | 2.1 ms | 509.0 μs | 30.9 ms | 6.7 ms | 0.3 μs | 0.3 μs |
+| get_substations | 0.3 μs | 0.2 μs | 2.9 ms | 230.9 μs | 8.3 ms | 1.5 ms | 975.5 μs | 4.6 ms | 247.7 μs | 909.5 μs | 223.6 μs | 10.4 ms | 625.6 μs | 710.8 μs | 170.5 μs | 19.0 ms | 5.1 ms | 0.3 μs | 0.2 μs |
 
 ## Detailed Results
 
@@ -650,132 +650,132 @@
 
 #### Rdflib Load Svedala
 
-- **Mean**: 4.42 s
-- **Min**: 4.19 s
-- **Max**: 4.71 s
+- **Mean**: 4.74 s
+- **Min**: 4.35 s
+- **Max**: 5.16 s
 - **Rounds**: 5
 
 #### Rdflib Get Lines
 
-- **Mean**: 156.7 μs
-- **Min**: 122.2 μs
-- **Max**: 466.1 μs
-- **Rounds**: 2259
+- **Mean**: 186.2 μs
+- **Min**: 131.6 μs
+- **Max**: 935.8 μs
+- **Rounds**: 2607
 
 #### Rdflib Get Generators
 
-- **Mean**: 147.4 μs
-- **Min**: 115.1 μs
-- **Max**: 635.5 μs
-- **Rounds**: 4119
+- **Mean**: 172.7 μs
+- **Min**: 124.5 μs
+- **Max**: 758.0 μs
+- **Rounds**: 3472
 
 #### Rdflib Get Loads
 
-- **Mean**: 401.1 μs
-- **Min**: 326.1 μs
-- **Max**: 1.6 ms
-- **Rounds**: 1752
+- **Mean**: 509.0 μs
+- **Min**: 353.0 μs
+- **Max**: 2.3 ms
+- **Rounds**: 1793
 
 #### Rdflib Get Substations
 
-- **Mean**: 211.5 μs
-- **Min**: 116.2 μs
-- **Max**: 1.0 ms
-- **Rounds**: 3844
+- **Mean**: 170.5 μs
+- **Min**: 120.9 μs
+- **Max**: 970.0 μs
+- **Rounds**: 2912
 
 #### Rdflib Export Svedala
 
-- **Mean**: 4.18 s
-- **Min**: 4.03 s
-- **Max**: 4.31 s
+- **Mean**: 4.66 s
+- **Min**: 4.50 s
+- **Max**: 4.77 s
 - **Rounds**: 5
 
 ### triplets (Realgrid)
 
 #### Triplets Load Realgrid
 
-- **Mean**: 448.1 ms
-- **Min**: 404.4 ms
-- **Max**: 474.4 ms
+- **Mean**: 178.3 ms
+- **Min**: 171.4 ms
+- **Max**: 187.7 ms
 - **Rounds**: 5
 
 #### Triplets Get Lines
 
-- **Mean**: 174.5 ms
-- **Min**: 132.1 ms
-- **Max**: 220.8 ms
-- **Rounds**: 6
+- **Mean**: 36.2 ms
+- **Min**: 26.1 ms
+- **Max**: 42.4 ms
+- **Rounds**: 45
 
 #### Triplets Get Generators
 
-- **Mean**: 189.4 ms
-- **Min**: 139.7 ms
-- **Max**: 218.9 ms
-- **Rounds**: 9
+- **Mean**: 23.8 ms
+- **Min**: 22.0 ms
+- **Max**: 28.3 ms
+- **Rounds**: 43
 
 #### Triplets Get Loads
 
-- **Mean**: 230.1 ms
-- **Min**: 168.7 ms
-- **Max**: 273.7 ms
-- **Rounds**: 5
+- **Mean**: 30.9 ms
+- **Min**: 27.9 ms
+- **Max**: 34.3 ms
+- **Rounds**: 32
 
 #### Triplets Get Substations
 
-- **Mean**: 157.9 ms
-- **Min**: 136.8 ms
-- **Max**: 172.6 ms
-- **Rounds**: 7
+- **Mean**: 19.0 ms
+- **Min**: 16.6 ms
+- **Max**: 23.4 ms
+- **Rounds**: 53
 
 #### Triplets Export Realgrid
 
-- **Mean**: 2.94 s
-- **Min**: 2.86 s
-- **Max**: 3.01 s
+- **Mean**: 2.02 s
+- **Min**: 1.96 s
+- **Max**: 2.09 s
 - **Rounds**: 5
 
 ### triplets (Svedala)
 
 #### Triplets Load Svedala
 
-- **Mean**: 24.9 ms
-- **Min**: 19.1 ms
-- **Max**: 32.0 ms
-- **Rounds**: 15
+- **Mean**: 21.9 ms
+- **Min**: 17.6 ms
+- **Max**: 25.8 ms
+- **Rounds**: 25
 
 #### Triplets Get Lines
 
-- **Mean**: 21.3 ms
-- **Min**: 14.9 ms
-- **Max**: 33.6 ms
-- **Rounds**: 63
+- **Mean**: 6.7 ms
+- **Min**: 4.8 ms
+- **Max**: 13.7 ms
+- **Rounds**: 147
 
 #### Triplets Get Generators
 
-- **Mean**: 22.2 ms
-- **Min**: 15.7 ms
-- **Max**: 31.5 ms
-- **Rounds**: 38
+- **Mean**: 5.9 ms
+- **Min**: 3.9 ms
+- **Max**: 8.7 ms
+- **Rounds**: 153
 
 #### Triplets Get Loads
 
-- **Mean**: 29.8 ms
-- **Min**: 20.4 ms
-- **Max**: 41.0 ms
-- **Rounds**: 29
+- **Mean**: 6.7 ms
+- **Min**: 4.2 ms
+- **Max**: 10.8 ms
+- **Rounds**: 149
 
 #### Triplets Get Substations
 
-- **Mean**: 20.9 ms
-- **Min**: 15.5 ms
-- **Max**: 32.6 ms
-- **Rounds**: 37
+- **Mean**: 5.1 ms
+- **Min**: 3.6 ms
+- **Max**: 10.5 ms
+- **Rounds**: 200
 
 #### Triplets Export Svedala
 
-- **Mean**: 392.7 ms
-- **Min**: 346.9 ms
-- **Max**: 434.4 ms
+- **Mean**: 330.4 ms
+- **Min**: 301.3 ms
+- **Max**: 352.5 ms
 - **Rounds**: 5
 
 ### veragrid (Realgrid)
