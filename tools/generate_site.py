@@ -52,7 +52,7 @@ th { color:var(--ink2); font-weight:600; cursor:pointer; white-space:nowrap; use
 th:hover { color:var(--ink); }
 th .dir { font-size:10px; }
 td.num, th.num { text-align:right; }
-.hidden { display:none; }
+.hidden { display:none !important; }
 .dot { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:7px; }
 .tool { white-space:nowrap; font-weight:600; }
 .chart { margin:6px 0 14px; }
@@ -164,6 +164,10 @@ def dataset_section(dataset, tools, dataset_sizes):
         [(t, d["load"]["time"], d["color"], d["tags"]) for t, d in loaded.items()],
         format_time))
     parts.append(bar_chart(
+        f"Export time - {label}",
+        [(t, d["export"]["time"], d["color"], d["tags"]) for t, d in tools.items() if "export" in d],
+        format_time))
+    parts.append(bar_chart(
         f"Memory - {label}",
         [(t, d["load"]["memory"], d["color"], d["tags"]) for t, d in loaded.items()],
         mem_fmt))
@@ -219,19 +223,6 @@ def query_table(tools):
     return "<h3>Query performance</h3>" + table_html(headers, rows)
 
 
-def export_section(data, dataset_sizes):
-    charts = []
-    for dataset in sorted(data, key=lambda ds: dataset_sizes.get(ds, 0), reverse=True):
-        entries = [(name, t["export"]["time"], t["color"], t["tags"])
-                   for name, t in sorted(data[dataset].items()) if "export" in t]
-        charts.append(bar_chart(f"Export time - {dataset_label(dataset, dataset_sizes)}", entries, format_time))
-    if not any(charts):
-        return ""
-    return ("<h2>Export performance</h2>"
-            '<p class="note">Serialization of loaded data back to RDF/XML (also in the Export time column above).</p>'
-            + "".join(charts))
-
-
 def cli_section(cli_data, dataset_sizes):
     if not cli_data:
         return ""
@@ -273,7 +264,6 @@ def main(results_dir="results-docker", output_dir="docs"):
 
     sections = [dataset_section(ds, data[ds], dataset_sizes)
                 for ds in sorted(data, key=lambda d: dataset_sizes.get(d, 0), reverse=True)]
-    sections.append(export_section(data, dataset_sizes))
     sections.append(cli_section(cli_data, dataset_sizes))
 
     chips = "".join(f'<span class="tag" data-tag="{esc(t)}">{esc(t)}</span>' for t in all_tags)
