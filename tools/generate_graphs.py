@@ -52,6 +52,10 @@ def plot_dataset(dataset_name, tools_data, output_dir):
         if v > 0:
             ax3.text(i, v, f'{v:.2f} ms', ha='center', va='bottom', fontsize=9)
 
+    # Tilt tool names so they don't overlap
+    for ax in fig.get_axes():
+        plt.setp(ax.get_xticklabels(), rotation=30, ha='right')
+
     plt.tight_layout()
     plt.savefig(output_dir / f"{dataset_name.lower()}_comparison.svg", format='svg', bbox_inches='tight')
     print(f"   → {dataset_name.lower()}_comparison.svg")
@@ -88,6 +92,10 @@ def plot_dataset(dataset_name, tools_data, output_dir):
     ax4.grid(axis='y', alpha=0.3)
     for i, v in enumerate(generators):
         ax4.text(i, v, f'{v:,}', ha='center', va='bottom', fontsize=9)
+
+    # Tilt tool names so they don't overlap
+    for ax in fig.get_axes():
+        plt.setp(ax.get_xticklabels(), rotation=30, ha='right')
 
     plt.suptitle(f'{dataset_name} Dataset - Detailed Comparison', fontsize=14, fontweight='bold', y=0.995)
     plt.tight_layout()
