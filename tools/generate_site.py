@@ -177,8 +177,8 @@ def dataset_section(dataset, tools, dataset_sizes):
 
 def load_table(tools):
     headers = [("Tool", False), ("Tags", False), ("Version", False), ("Load time", True),
-               ("Memory (MB)", True), ("Lines", True), ("Generators", True),
-               ("Loads", True), ("Substations", True)]
+               ("Export time", True), ("Memory (MB)", True), ("Lines", True),
+               ("Generators", True), ("Loads", True), ("Substations", True)]
     rows = []
     for name in sorted(tools, key=lambda t: tools[t].get("load", {}).get("time", 1e9)):
         t = tools[name]
@@ -187,10 +187,12 @@ def load_table(tools):
         load = t["load"]
         deps = ", ".join(f"{k} {v}" for k, v in t.get("dependencies", {}).items())
         version = esc(t.get("version") or "?") + (f' <span class="meta">({esc(deps)})</span>' if deps else "")
+        export = time_cell(t["export"]["time"]) if "export" in t else '<td class="num">–</td>'
         cells = (
             tool_cell(name, t["color"])
             + f"<td>{tag_chips(t['tags'])}</td><td>{version}</td>"
             + time_cell(load["time"])
+            + export
             + f'<td class="num" data-v="{load["memory"]}">{load["memory"]:.1f}</td>'
             + "".join(f'<td class="num">{load[k]:,}</td>' for k in ("lines", "generators", "loads", "substations"))
         )
@@ -218,27 +220,16 @@ def query_table(tools):
 
 
 def export_section(data, dataset_sizes):
-    rows, charts = [], []
+    charts = []
     for dataset in sorted(data, key=lambda ds: dataset_sizes.get(ds, 0), reverse=True):
-        entries = []
-        for name, t in sorted(data[dataset].items()):
-            if "export" not in t:
-                continue
-            export_time = t["export"]["time"]
-            load_time = t.get("load", {}).get("time")
-            ratio = f'<td class="num" data-v="{export_time / load_time:.2f}">{export_time / load_time:.2f}x</td>' \
-                if load_time else '<td class="num">–</td>'
-            cells = (tool_cell(name, t["color"]) + f"<td>{esc(dataset)}</td>"
-                     + time_cell(export_time) + ratio)
-            rows.append((t["tags"], cells))
-            entries.append((name, export_time, t["color"], t["tags"]))
+        entries = [(name, t["export"]["time"], t["color"], t["tags"])
+                   for name, t in sorted(data[dataset].items()) if "export" in t]
         charts.append(bar_chart(f"Export time - {dataset_label(dataset, dataset_sizes)}", entries, format_time))
-    if not rows:
+    if not any(charts):
         return ""
-    headers = [("Tool", False), ("Dataset", False), ("Export time", True), ("Export/Import ratio", True)]
     return ("<h2>Export performance</h2>"
-            '<p class="note">Serialization of loaded data back to RDF/XML. Ratio is export time over import time.</p>'
-            + table_html(headers, rows) + "".join(charts))
+            '<p class="note">Serialization of loaded data back to RDF/XML (also in the Export time column above).</p>'
+            + "".join(charts))
 
 
 def cli_section(cli_data, dataset_sizes):
