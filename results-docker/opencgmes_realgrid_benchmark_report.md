@@ -7,20 +7,20 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.13.14
-- **System**: Linux 7.0.12-101.fc43.x86_64
+- **System**: Linux 7.1.3-100.fc43.x86_64
 
 ## Results
 
 ### Opencgmes Load Realgrid
 
-- **Mean time**: 2.18 s
-- **Min time**: 1.93 s
-- **Max time**: 2.43 s
-- **Std dev**: 228.8 ms
+- **Mean time**: 1.09 s
+- **Min time**: 1.01 s
+- **Max time**: 1.18 s
+- **Std dev**: 69.7 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 4391.8
+- Memory Mb: 3133.8
 - Triples: 892131
 - Lines: 7561
 - Generators: 1347
@@ -39,11 +39,11 @@
 
 ### Opencgmes Get Lines
 
-- **Mean time**: 13.2 ms
-- **Min time**: 5.1 ms
-- **Max time**: 32.3 ms
-- **Std dev**: 6.9 ms
-- **Rounds**: 39
+- **Mean time**: 3.7 ms
+- **Min time**: 1.9 ms
+- **Max time**: 11.4 ms
+- **Std dev**: 2.1 ms
+- **Rounds**: 83
 
 **Metrics**:
 - Line Count: 7561
@@ -55,11 +55,11 @@
 
 ### Opencgmes Get Generators
 
-- **Mean time**: 2.8 ms
-- **Min time**: 1.1 ms
-- **Max time**: 9.5 ms
-- **Std dev**: 2.0 ms
-- **Rounds**: 85
+- **Mean time**: 775.6 μs
+- **Min time**: 340.2 μs
+- **Max time**: 4.9 ms
+- **Std dev**: 609.8 μs
+- **Rounds**: 247
 
 **Metrics**:
 - Generator Count: 1347
@@ -71,11 +71,11 @@
 
 ### Opencgmes Get Loads
 
-- **Mean time**: 7.5 ms
-- **Min time**: 4.0 ms
-- **Max time**: 15.0 ms
-- **Std dev**: 2.3 ms
-- **Rounds**: 61
+- **Mean time**: 2.2 ms
+- **Min time**: 1.2 ms
+- **Max time**: 8.0 ms
+- **Std dev**: 1.4 ms
+- **Rounds**: 153
 
 **Metrics**:
 - Load Count: 6687
@@ -87,11 +87,11 @@
 
 ### Opencgmes Get Substations
 
-- **Mean time**: 4.6 ms
-- **Min time**: 1.9 ms
-- **Max time**: 14.3 ms
-- **Std dev**: 2.5 ms
-- **Rounds**: 67
+- **Mean time**: 812.7 μs
+- **Min time**: 655.2 μs
+- **Max time**: 3.6 ms
+- **Std dev**: 411.7 μs
+- **Rounds**: 218
 
 **Metrics**:
 - Substation Count: 4875
@@ -103,10 +103,10 @@
 
 ### Opencgmes Export Realgrid
 
-- **Mean time**: 7.56 s
-- **Min time**: 6.87 s
-- **Max time**: 8.50 s
-- **Std dev**: 586.1 ms
+- **Mean time**: 4.15 s
+- **Min time**: 4.02 s
+- **Max time**: 4.38 s
+- **Std dev**: 133.9 ms
 - **Rounds**: 5
 
 **Metrics**:

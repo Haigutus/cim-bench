@@ -7,20 +7,20 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.13.14
-- **System**: Linux 7.0.12-101.fc43.x86_64
+- **System**: Linux 7.1.3-100.fc43.x86_64
 
 ## Results
 
 ### Pypowsybl Load Svedala
 
-- **Mean time**: 1.34 s
-- **Min time**: 1.18 s
-- **Max time**: 1.50 s
-- **Std dev**: 132.5 ms
+- **Mean time**: 428.4 ms
+- **Min time**: 401.3 ms
+- **Max time**: 450.5 ms
+- **Std dev**: 24.8 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 978.6
+- Memory Mb: 1566.6
 - Buses: 105
 - Lines: 97
 - Ac Lines: 90
@@ -40,11 +40,11 @@
 
 ### Pypowsybl Get Lines
 
-- **Mean time**: 1.5 ms
-- **Min time**: 900.6 μs
-- **Max time**: 3.2 ms
-- **Std dev**: 307.8 μs
-- **Rounds**: 440
+- **Mean time**: 292.9 μs
+- **Min time**: 280.3 μs
+- **Max time**: 449.3 μs
+- **Std dev**: 8.3 μs
+- **Rounds**: 1173
 
 **Metrics**:
 - Line Count: 90
@@ -56,11 +56,11 @@
 
 ### Pypowsybl Get Generators
 
-- **Mean time**: 1.4 ms
-- **Min time**: 1.1 ms
-- **Max time**: 2.4 ms
-- **Std dev**: 237.6 μs
-- **Rounds**: 420
+- **Mean time**: 265.9 μs
+- **Min time**: 254.3 μs
+- **Max time**: 380.5 μs
+- **Std dev**: 9.4 μs
+- **Rounds**: 1810
 
 **Metrics**:
 - Generator Count: 39
@@ -72,11 +72,11 @@
 
 ### Pypowsybl Get Loads
 
-- **Mean time**: 1.0 ms
-- **Min time**: 596.0 μs
-- **Max time**: 2.5 ms
-- **Std dev**: 248.9 μs
-- **Rounds**: 555
+- **Mean time**: 194.2 μs
+- **Min time**: 176.3 μs
+- **Max time**: 10.4 ms
+- **Std dev**: 241.3 μs
+- **Rounds**: 1791
 
 **Metrics**:
 - Load Count: 73
@@ -88,11 +88,11 @@
 
 ### Pypowsybl Get Substations
 
-- **Mean time**: 625.6 μs
-- **Min time**: 431.3 μs
-- **Max time**: 1.3 ms
-- **Std dev**: 154.8 μs
-- **Rounds**: 979
+- **Mean time**: 120.9 μs
+- **Min time**: 113.0 μs
+- **Max time**: 674.6 μs
+- **Std dev**: 12.8 μs
+- **Rounds**: 3644
 
 **Metrics**:
 - Substation Count: 57
@@ -104,11 +104,11 @@
 
 ### Pypowsybl Export Svedala
 
-- **Mean time**: 452.5 ms
-- **Min time**: 401.1 ms
-- **Max time**: 553.4 ms
-- **Std dev**: 60.4 ms
-- **Rounds**: 5
+- **Mean time**: 138.0 ms
+- **Min time**: 136.6 ms
+- **Max time**: 141.8 ms
+- **Std dev**: 1.7 ms
+- **Rounds**: 8
 
 **Metrics**:
 - Library: pypowsybl

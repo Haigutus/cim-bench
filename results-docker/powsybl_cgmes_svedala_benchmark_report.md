@@ -7,20 +7,20 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.13.14
-- **System**: Linux 7.0.12-101.fc43.x86_64
+- **System**: Linux 7.1.3-100.fc43.x86_64
 
 ## Results
 
 ### Powsybl Cgmes Load Svedala
 
-- **Mean time**: 563.9 ms
-- **Min time**: 495.5 ms
-- **Max time**: 720.6 ms
-- **Std dev**: 92.8 ms
+- **Mean time**: 240.6 ms
+- **Min time**: 222.3 ms
+- **Max time**: 274.8 ms
+- **Std dev**: 20.6 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 325.7
+- Memory Mb: 445.2
 - Triples: 95499
 - Lines: 97
 - Generators: 39
@@ -39,11 +39,11 @@
 
 ### Powsybl Cgmes Get Lines
 
-- **Mean time**: 520.4 μs
-- **Min time**: 140.1 μs
-- **Max time**: 2.7 ms
-- **Std dev**: 387.8 μs
-- **Rounds**: 921
+- **Mean time**: 149.1 μs
+- **Min time**: 59.0 μs
+- **Max time**: 1.5 ms
+- **Std dev**: 136.0 μs
+- **Rounds**: 1393
 
 **Metrics**:
 - Line Count: 97
@@ -55,11 +55,11 @@
 
 ### Powsybl Cgmes Get Generators
 
-- **Mean time**: 241.9 μs
-- **Min time**: 106.1 μs
-- **Max time**: 33.0 ms
-- **Std dev**: 665.1 μs
-- **Rounds**: 2490
+- **Mean time**: 60.2 μs
+- **Min time**: 42.1 μs
+- **Max time**: 571.8 μs
+- **Std dev**: 26.1 μs
+- **Rounds**: 3968
 
 **Metrics**:
 - Generator Count: 39
@@ -71,11 +71,11 @@
 
 ### Powsybl Cgmes Get Loads
 
-- **Mean time**: 562.0 μs
-- **Min time**: 380.4 μs
-- **Max time**: 1.6 ms
-- **Std dev**: 161.3 μs
-- **Rounds**: 554
+- **Mean time**: 173.7 μs
+- **Min time**: 141.4 μs
+- **Max time**: 1.3 ms
+- **Std dev**: 46.2 μs
+- **Rounds**: 1125
 
 **Metrics**:
 - Load Count: 73
@@ -87,11 +87,11 @@
 
 ### Powsybl Cgmes Get Substations
 
-- **Mean time**: 223.6 μs
-- **Min time**: 104.0 μs
-- **Max time**: 770.1 μs
-- **Std dev**: 58.9 μs
-- **Rounds**: 1715
+- **Mean time**: 45.7 μs
+- **Min time**: 28.3 μs
+- **Max time**: 148.5 μs
+- **Std dev**: 10.6 μs
+- **Rounds**: 2847
 
 **Metrics**:
 - Substation Count: 57
@@ -103,10 +103,10 @@
 
 ### Powsybl Cgmes Export Svedala
 
-- **Mean time**: 355.0 ms
-- **Min time**: 281.9 ms
-- **Max time**: 539.5 ms
-- **Std dev**: 105.6 ms
+- **Mean time**: 150.5 ms
+- **Min time**: 130.3 ms
+- **Max time**: 175.3 ms
+- **Std dev**: 17.6 ms
 - **Rounds**: 5
 
 **Metrics**:

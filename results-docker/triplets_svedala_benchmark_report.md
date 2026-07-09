@@ -7,20 +7,20 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.13.14
-- **System**: Linux 7.0.12-101.fc43.x86_64
+- **System**: Linux 7.1.3-100.fc43.x86_64
 
 ## Results
 
 ### Triplets Load Svedala
 
-- **Mean time**: 21.9 ms
-- **Min time**: 17.6 ms
-- **Max time**: 25.8 ms
-- **Std dev**: 2.4 ms
-- **Rounds**: 25
+- **Mean time**: 10.1 ms
+- **Min time**: 7.7 ms
+- **Max time**: 13.9 ms
+- **Std dev**: 1.9 ms
+- **Rounds**: 18
 
 **Metrics**:
-- Memory Mb: 90.4
+- Memory Mb: 82.9
 - Triplets Count: 95539
 - Unique Objects: 14540
 - Instances: 5
@@ -40,11 +40,11 @@
 
 ### Triplets Get Lines
 
-- **Mean time**: 6.7 ms
-- **Min time**: 4.8 ms
-- **Max time**: 13.7 ms
-- **Std dev**: 1.3 ms
-- **Rounds**: 147
+- **Mean time**: 1.7 ms
+- **Min time**: 1.1 ms
+- **Max time**: 3.1 ms
+- **Std dev**: 286.5 μs
+- **Rounds**: 367
 
 **Metrics**:
 - Line Count: 97
@@ -56,11 +56,11 @@
 
 ### Triplets Get Generators
 
-- **Mean time**: 5.9 ms
-- **Min time**: 3.9 ms
-- **Max time**: 8.7 ms
-- **Std dev**: 822.0 μs
-- **Rounds**: 153
+- **Mean time**: 1.5 ms
+- **Min time**: 1.1 ms
+- **Max time**: 2.9 ms
+- **Std dev**: 205.6 μs
+- **Rounds**: 577
 
 **Metrics**:
 - Generator Count: 39
@@ -72,11 +72,11 @@
 
 ### Triplets Get Loads
 
-- **Mean time**: 6.7 ms
-- **Min time**: 4.2 ms
-- **Max time**: 10.8 ms
-- **Std dev**: 1.1 ms
-- **Rounds**: 149
+- **Mean time**: 1.7 ms
+- **Min time**: 1.2 ms
+- **Max time**: 2.9 ms
+- **Std dev**: 323.2 μs
+- **Rounds**: 479
 
 **Metrics**:
 - Load Count: 73
@@ -88,11 +88,11 @@
 
 ### Triplets Get Substations
 
-- **Mean time**: 5.1 ms
-- **Min time**: 3.6 ms
-- **Max time**: 10.5 ms
-- **Std dev**: 1.0 ms
-- **Rounds**: 200
+- **Mean time**: 1.0 ms
+- **Min time**: 739.6 μs
+- **Max time**: 1.9 ms
+- **Std dev**: 178.1 μs
+- **Rounds**: 882
 
 **Metrics**:
 - Substation Count: 57
@@ -104,11 +104,11 @@
 
 ### Triplets Export Svedala
 
-- **Mean time**: 330.4 ms
-- **Min time**: 301.3 ms
-- **Max time**: 352.5 ms
-- **Std dev**: 18.4 ms
-- **Rounds**: 5
+- **Mean time**: 147.8 ms
+- **Min time**: 136.5 ms
+- **Max time**: 153.1 ms
+- **Std dev**: 5.4 ms
+- **Rounds**: 7
 
 **Metrics**:
 - Library: triplets

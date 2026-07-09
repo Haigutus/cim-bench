@@ -7,16 +7,16 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.14.6
-- **System**: Linux 7.0.12-101.fc43.x86_64
+- **System**: Linux 7.1.3-100.fc43.x86_64
 
 ## Results
 
 ### Cimgraph Load Svedala
 
-- **Mean time**: 1.54 s
-- **Min time**: 1.33 s
+- **Mean time**: 1.51 s
+- **Min time**: 1.31 s
 - **Max time**: 1.86 s
-- **Std dev**: 220.4 ms
+- **Std dev**: 228.2 ms
 - **Rounds**: 5
 
 **Metrics**:
@@ -38,11 +38,11 @@
 
 ### Cimgraph Get Lines
 
-- **Mean time**: 0.3 μs
-- **Min time**: 0.2 μs
-- **Max time**: 41.0 μs
-- **Std dev**: 0.3 μs
-- **Rounds**: 111895
+- **Mean time**: 0.1 μs
+- **Min time**: 0.1 μs
+- **Max time**: 3.3 μs
+- **Std dev**: 0.0 μs
+- **Rounds**: 193837
 
 **Metrics**:
 - Line Count: 97
@@ -54,11 +54,11 @@
 
 ### Cimgraph Get Generators
 
-- **Mean time**: 0.4 μs
-- **Min time**: 0.2 μs
-- **Max time**: 21.5 μs
-- **Std dev**: 0.3 μs
-- **Rounds**: 124611
+- **Mean time**: 0.1 μs
+- **Min time**: 0.1 μs
+- **Max time**: 0.4 μs
+- **Std dev**: 0.0 μs
+- **Rounds**: 75959
 
 **Metrics**:
 - Generator Count: 39
@@ -70,11 +70,11 @@
 
 ### Cimgraph Get Loads
 
-- **Mean time**: 0.6 μs
-- **Min time**: 0.4 μs
-- **Max time**: 88.2 μs
-- **Std dev**: 0.4 μs
-- **Rounds**: 111273
+- **Mean time**: 0.2 μs
+- **Min time**: 0.2 μs
+- **Max time**: 11.0 μs
+- **Std dev**: 0.1 μs
+- **Rounds**: 98146
 
 **Metrics**:
 - Load Count: 73
@@ -86,11 +86,11 @@
 
 ### Cimgraph Get Substations
 
-- **Mean time**: 0.2 μs
-- **Min time**: 0.2 μs
-- **Max time**: 19.2 μs
-- **Std dev**: 0.1 μs
-- **Rounds**: 199599
+- **Mean time**: 0.1 μs
+- **Min time**: 0.1 μs
+- **Max time**: 0.3 μs
+- **Std dev**: 0.0 μs
+- **Rounds**: 73497
 
 **Metrics**:
 - Substation Count: 56
@@ -102,10 +102,10 @@
 
 ### Cimgraph Export Svedala
 
-- **Mean time**: 1.72 s
-- **Min time**: 1.51 s
-- **Max time**: 1.91 s
-- **Std dev**: 150.9 ms
+- **Mean time**: 645.6 ms
+- **Min time**: 637.1 ms
+- **Max time**: 652.1 ms
+- **Std dev**: 6.2 ms
 - **Rounds**: 5
 
 **Metrics**:

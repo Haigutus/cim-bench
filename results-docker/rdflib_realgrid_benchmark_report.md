@@ -7,20 +7,20 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.14.6
-- **System**: Linux 7.0.12-101.fc43.x86_64
+- **System**: Linux 7.1.3-100.fc43.x86_64
 
 ## Results
 
 ### Rdflib Load Realgrid
 
-- **Mean time**: 30.75 s
-- **Min time**: 24.95 s
-- **Max time**: 39.25 s
-- **Std dev**: 5.62 s
+- **Mean time**: 19.74 s
+- **Min time**: 19.35 s
+- **Max time**: 20.19 s
+- **Std dev**: 392.1 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 1088.5
+- Memory Mb: 1092.7
 - Triples: 1146183
 - Lines: 7561
 - Generators: 2694
@@ -38,11 +38,11 @@
 
 ### Rdflib Get Lines
 
-- **Mean time**: 1.4 ms
-- **Min time**: 1.3 ms
-- **Max time**: 2.2 ms
-- **Std dev**: 141.0 μs
-- **Rounds**: 382
+- **Mean time**: 1.2 ms
+- **Min time**: 1.1 ms
+- **Max time**: 2.6 ms
+- **Std dev**: 172.5 μs
+- **Rounds**: 409
 
 **Metrics**:
 - Line Count: 7561
@@ -54,11 +54,11 @@
 
 ### Rdflib Get Generators
 
-- **Mean time**: 483.3 μs
-- **Min time**: 443.4 μs
-- **Max time**: 762.4 μs
-- **Std dev**: 39.2 μs
-- **Rounds**: 875
+- **Mean time**: 416.1 μs
+- **Min time**: 402.9 μs
+- **Max time**: 616.6 μs
+- **Std dev**: 24.4 μs
+- **Rounds**: 1062
 
 **Metrics**:
 - Generator Count: 2694
@@ -72,9 +72,9 @@
 
 - **Mean time**: 2.1 ms
 - **Min time**: 1.9 ms
-- **Max time**: 3.2 ms
-- **Std dev**: 197.8 μs
-- **Rounds**: 283
+- **Max time**: 3.8 ms
+- **Std dev**: 449.1 μs
+- **Rounds**: 202
 
 **Metrics**:
 - Load Count: 13374
@@ -86,11 +86,11 @@
 
 ### Rdflib Get Substations
 
-- **Mean time**: 710.8 μs
-- **Min time**: 670.1 μs
-- **Max time**: 1.4 ms
-- **Std dev**: 53.4 μs
-- **Rounds**: 844
+- **Mean time**: 707.5 μs
+- **Min time**: 697.2 μs
+- **Max time**: 1.3 ms
+- **Std dev**: 30.2 μs
+- **Rounds**: 572
 
 **Metrics**:
 - Substation Count: 4875
@@ -102,10 +102,10 @@
 
 ### Rdflib Export Realgrid
 
-- **Mean time**: 29.66 s
-- **Min time**: 24.04 s
-- **Max time**: 33.56 s
-- **Std dev**: 3.61 s
+- **Mean time**: 19.06 s
+- **Min time**: 18.96 s
+- **Max time**: 19.21 s
+- **Std dev**: 101.0 ms
 - **Rounds**: 5
 
 **Metrics**:

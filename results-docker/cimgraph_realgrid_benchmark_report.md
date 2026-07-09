@@ -7,20 +7,20 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.14.6
-- **System**: Linux 7.0.12-101.fc43.x86_64
+- **System**: Linux 7.1.3-100.fc43.x86_64
 
 ## Results
 
 ### Cimgraph Load Realgrid
 
-- **Mean time**: 25.15 s
-- **Min time**: 18.33 s
-- **Max time**: 34.41 s
-- **Std dev**: 6.10 s
+- **Mean time**: 19.56 s
+- **Min time**: 16.32 s
+- **Max time**: 21.40 s
+- **Std dev**: 1.99 s
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 2642.7
+- Memory Mb: 2615.6
 - Triples: 1233106
 - Lines: 7561
 - Generators: 1347
@@ -38,11 +38,11 @@
 
 ### Cimgraph Get Lines
 
-- **Mean time**: 0.2 μs
-- **Min time**: 0.2 μs
-- **Max time**: 55.9 μs
-- **Std dev**: 0.2 μs
-- **Rounds**: 104178
+- **Mean time**: 0.1 μs
+- **Min time**: 0.1 μs
+- **Max time**: 23.8 μs
+- **Std dev**: 0.1 μs
+- **Rounds**: 135245
 
 **Metrics**:
 - Line Count: 7561
@@ -54,11 +54,11 @@
 
 ### Cimgraph Get Generators
 
-- **Mean time**: 0.2 μs
-- **Min time**: 0.2 μs
-- **Max time**: 43.5 μs
-- **Std dev**: 0.2 μs
-- **Rounds**: 133262
+- **Mean time**: 0.1 μs
+- **Min time**: 0.1 μs
+- **Max time**: 30.4 μs
+- **Std dev**: 0.1 μs
+- **Rounds**: 165509
 
 **Metrics**:
 - Generator Count: 1347
@@ -70,11 +70,11 @@
 
 ### Cimgraph Get Loads
 
-- **Mean time**: 0.5 μs
-- **Min time**: 0.4 μs
-- **Max time**: 22.1 μs
-- **Std dev**: 0.2 μs
-- **Rounds**: 90245
+- **Mean time**: 0.2 μs
+- **Min time**: 0.2 μs
+- **Max time**: 20.5 μs
+- **Std dev**: 0.1 μs
+- **Rounds**: 181489
 
 **Metrics**:
 - Load Count: 6687
@@ -86,16 +86,31 @@
 
 ### Cimgraph Get Substations
 
-- **Mean time**: 0.3 μs
-- **Min time**: 0.2 μs
-- **Max time**: 18.5 μs
-- **Std dev**: 0.1 μs
-- **Rounds**: 182783
+- **Mean time**: 0.1 μs
+- **Min time**: 0.1 μs
+- **Max time**: 1.1 μs
+- **Std dev**: 0.0 μs
+- **Rounds**: 70938
 
 **Metrics**:
 - Substation Count: 4875
 - Query Type: get_substations
 - Library: cimgraph
 - Dataset: realgrid
+- Display Name: CIM-Graph
+- Color: #9467bd
+
+### Cimgraph Export Realgrid
+
+- **Mean time**: 4.98 s
+- **Min time**: 4.93 s
+- **Max time**: 5.06 s
+- **Std dev**: 49.8 ms
+- **Rounds**: 5
+
+**Metrics**:
+- Library: cimgraph
+- Dataset: realgrid
+- Operation: export
 - Display Name: CIM-Graph
 - Color: #9467bd

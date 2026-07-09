@@ -7,20 +7,20 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.13.14
-- **System**: Linux 7.0.12-101.fc43.x86_64
+- **System**: Linux 7.1.3-100.fc43.x86_64
 
 ## Results
 
 ### Pypowsybl Load Realgrid
 
-- **Mean time**: 9.86 s
-- **Min time**: 8.82 s
-- **Max time**: 10.83 s
-- **Std dev**: 840.1 ms
+- **Mean time**: 4.24 s
+- **Min time**: 4.18 s
+- **Max time**: 4.29 s
+- **Std dev**: 43.7 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 6201.0
+- Memory Mb: 2089.0
 - Buses: 6051
 - Lines: 7561
 - Ac Lines: 7561
@@ -40,11 +40,11 @@
 
 ### Pypowsybl Get Lines
 
-- **Mean time**: 51.9 ms
-- **Min time**: 43.5 ms
-- **Max time**: 63.4 ms
-- **Std dev**: 5.9 ms
-- **Rounds**: 16
+- **Mean time**: 33.2 ms
+- **Min time**: 29.6 ms
+- **Max time**: 52.3 ms
+- **Std dev**: 3.8 ms
+- **Rounds**: 30
 
 **Metrics**:
 - Line Count: 7561
@@ -56,11 +56,11 @@
 
 ### Pypowsybl Get Generators
 
-- **Mean time**: 6.8 ms
-- **Min time**: 4.4 ms
-- **Max time**: 11.3 ms
-- **Std dev**: 1.7 ms
-- **Rounds**: 129
+- **Mean time**: 2.2 ms
+- **Min time**: 2.1 ms
+- **Max time**: 3.5 ms
+- **Std dev**: 137.6 μs
+- **Rounds**: 232
 
 **Metrics**:
 - Generator Count: 1347
@@ -72,11 +72,11 @@
 
 ### Pypowsybl Get Loads
 
-- **Mean time**: 31.6 ms
-- **Min time**: 24.7 ms
-- **Max time**: 46.3 ms
-- **Std dev**: 5.7 ms
-- **Rounds**: 30
+- **Mean time**: 16.1 ms
+- **Min time**: 15.0 ms
+- **Max time**: 16.9 ms
+- **Std dev**: 330.5 μs
+- **Rounds**: 53
 
 **Metrics**:
 - Load Count: 6687
@@ -88,11 +88,11 @@
 
 ### Pypowsybl Get Substations
 
-- **Mean time**: 10.4 ms
-- **Min time**: 8.1 ms
-- **Max time**: 15.2 ms
-- **Std dev**: 1.6 ms
-- **Rounds**: 103
+- **Mean time**: 3.5 ms
+- **Min time**: 3.2 ms
+- **Max time**: 24.2 ms
+- **Std dev**: 1.7 ms
+- **Rounds**: 156
 
 **Metrics**:
 - Substation Count: 4791
@@ -104,10 +104,10 @@
 
 ### Pypowsybl Export Realgrid
 
-- **Mean time**: 3.88 s
-- **Min time**: 3.52 s
-- **Max time**: 4.20 s
-- **Std dev**: 286.3 ms
+- **Mean time**: 1.55 s
+- **Min time**: 1.53 s
+- **Max time**: 1.56 s
+- **Std dev**: 10.5 ms
 - **Rounds**: 5
 
 **Metrics**:

@@ -7,20 +7,20 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.14.6
-- **System**: Linux 7.0.12-101.fc43.x86_64
+- **System**: Linux 7.1.3-100.fc43.x86_64
 
 ## Results
 
 ### Veragrid Load Svedala
 
-- **Mean time**: 1.70 s
-- **Min time**: 1.56 s
-- **Max time**: 2.03 s
-- **Std dev**: 188.1 ms
+- **Mean time**: 701.7 ms
+- **Min time**: 645.6 ms
+- **Max time**: 918.3 ms
+- **Std dev**: 121.1 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 74.8
+- Memory Mb: 71.8
 - Lines: 97
 - Generators: 39
 - Loads: 73
@@ -37,11 +37,11 @@
 
 ### Veragrid Get Lines
 
-- **Mean time**: 0.1 μs
-- **Min time**: 0.1 μs
-- **Max time**: 2.6 μs
+- **Mean time**: 0.0 μs
+- **Min time**: 0.0 μs
+- **Max time**: 0.7 μs
 - **Std dev**: 0.0 μs
-- **Rounds**: 55948
+- **Rounds**: 107910
 
 **Metrics**:
 - Line Count: 97
@@ -54,10 +54,10 @@
 ### Veragrid Get Generators
 
 - **Mean time**: 0.1 μs
-- **Min time**: 0.1 μs
-- **Max time**: 3.4 μs
-- **Std dev**: 0.1 μs
-- **Rounds**: 198414
+- **Min time**: 0.0 μs
+- **Max time**: 1.1 μs
+- **Std dev**: 0.0 μs
+- **Rounds**: 91651
 
 **Metrics**:
 - Generator Count: 39
@@ -69,11 +69,11 @@
 
 ### Veragrid Get Loads
 
-- **Mean time**: 0.3 μs
-- **Min time**: 0.3 μs
-- **Max time**: 43.4 μs
-- **Std dev**: 0.2 μs
-- **Rounds**: 131493
+- **Mean time**: 0.1 μs
+- **Min time**: 0.1 μs
+- **Max time**: 12.0 μs
+- **Std dev**: 0.1 μs
+- **Rounds**: 134699
 
 **Metrics**:
 - Load Count: 73
@@ -85,11 +85,11 @@
 
 ### Veragrid Get Substations
 
-- **Mean time**: 0.2 μs
-- **Min time**: 0.2 μs
-- **Max time**: 30.0 μs
-- **Std dev**: 0.1 μs
-- **Rounds**: 158428
+- **Mean time**: 0.1 μs
+- **Min time**: 0.0 μs
+- **Max time**: 0.6 μs
+- **Std dev**: 0.0 μs
+- **Rounds**: 82899
 
 **Metrics**:
 - Substation Count: 56
@@ -101,10 +101,10 @@
 
 ### Veragrid Export Svedala
 
-- **Mean time**: 1.52 s
-- **Min time**: 1.28 s
-- **Max time**: 1.67 s
-- **Std dev**: 144.0 ms
+- **Mean time**: 1.54 s
+- **Min time**: 1.33 s
+- **Max time**: 1.64 s
+- **Std dev**: 119.3 ms
 - **Rounds**: 5
 
 **Metrics**:

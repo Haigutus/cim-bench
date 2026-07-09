@@ -183,8 +183,14 @@ class CIMGraphAdapter(ParserAdapter):
         """Export CIM-Graph network to XML."""
         from cimgraph.utils import write_xml
 
+        # write_xml defaults to CIM100 namespaces; override 'cim' with the
+        # namespace the loaded profile actually uses (e.g. cim16 for CGMES 2.4)
+        cim_ns = next(f.metadata["namespace"]
+                      for f in fields(loaded_obj.cim.IdentifiedObject)
+                      if f.metadata.get("namespace"))
+
         output_path = Path(output_path)
-        write_xml(loaded_obj.network, str(output_path))
+        write_xml(loaded_obj.network, str(output_path), namespaces={"cim": cim_ns})
         return output_path
 
     def count_triples(self):

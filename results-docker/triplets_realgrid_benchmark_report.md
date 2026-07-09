@@ -7,20 +7,20 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.13.14
-- **System**: Linux 7.0.12-101.fc43.x86_64
+- **System**: Linux 7.1.3-100.fc43.x86_64
 
 ## Results
 
 ### Triplets Load Realgrid
 
-- **Mean time**: 178.3 ms
-- **Min time**: 171.4 ms
-- **Max time**: 187.7 ms
-- **Std dev**: 6.3 ms
+- **Mean time**: 159.1 ms
+- **Min time**: 156.6 ms
+- **Max time**: 164.7 ms
+- **Std dev**: 3.3 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 382.3
+- Memory Mb: 370.5
 - Triplets Count: 1146215
 - Unique Objects: 149174
 - Instances: 4
@@ -40,11 +40,11 @@
 
 ### Triplets Get Lines
 
-- **Mean time**: 36.2 ms
-- **Min time**: 26.1 ms
-- **Max time**: 42.4 ms
-- **Std dev**: 2.9 ms
-- **Rounds**: 45
+- **Mean time**: 12.6 ms
+- **Min time**: 11.6 ms
+- **Max time**: 15.5 ms
+- **Std dev**: 786.2 μs
+- **Rounds**: 68
 
 **Metrics**:
 - Line Count: 7561
@@ -56,11 +56,11 @@
 
 ### Triplets Get Generators
 
-- **Mean time**: 23.8 ms
-- **Min time**: 22.0 ms
-- **Max time**: 28.3 ms
-- **Std dev**: 1.3 ms
-- **Rounds**: 43
+- **Mean time**: 7.4 ms
+- **Min time**: 6.4 ms
+- **Max time**: 9.2 ms
+- **Std dev**: 483.9 μs
+- **Rounds**: 106
 
 **Metrics**:
 - Generator Count: 1347
@@ -72,11 +72,11 @@
 
 ### Triplets Get Loads
 
-- **Mean time**: 30.9 ms
-- **Min time**: 27.9 ms
-- **Max time**: 34.3 ms
-- **Std dev**: 1.5 ms
-- **Rounds**: 32
+- **Mean time**: 11.2 ms
+- **Min time**: 9.8 ms
+- **Max time**: 13.7 ms
+- **Std dev**: 923.2 μs
+- **Rounds**: 95
 
 **Metrics**:
 - Load Count: 6687
@@ -88,11 +88,11 @@
 
 ### Triplets Get Substations
 
-- **Mean time**: 19.0 ms
-- **Min time**: 16.6 ms
-- **Max time**: 23.4 ms
-- **Std dev**: 1.4 ms
-- **Rounds**: 53
+- **Mean time**: 6.4 ms
+- **Min time**: 5.4 ms
+- **Max time**: 8.3 ms
+- **Std dev**: 444.4 μs
+- **Rounds**: 171
 
 **Metrics**:
 - Substation Count: 4875
@@ -104,10 +104,10 @@
 
 ### Triplets Export Realgrid
 
-- **Mean time**: 2.02 s
-- **Min time**: 1.96 s
-- **Max time**: 2.09 s
-- **Std dev**: 55.4 ms
+- **Mean time**: 946.1 ms
+- **Min time**: 938.4 ms
+- **Max time**: 963.4 ms
+- **Std dev**: 9.9 ms
 - **Rounds**: 5
 
 **Metrics**:

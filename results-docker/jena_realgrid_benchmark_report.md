@@ -7,20 +7,20 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.13.14
-- **System**: Linux 7.0.12-101.fc43.x86_64
+- **System**: Linux 7.1.3-100.fc43.x86_64
 
 ## Results
 
 ### Jena Load Realgrid
 
-- **Mean time**: 2.05 s
-- **Min time**: 1.77 s
-- **Max time**: 2.52 s
-- **Std dev**: 310.5 ms
+- **Mean time**: 1.60 s
+- **Min time**: 1.53 s
+- **Max time**: 1.63 s
+- **Std dev**: 38.3 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 3942.1
+- Memory Mb: 2208.8
 - Triples: 892139
 - Lines: 7561
 - Generators: 1347
@@ -39,11 +39,11 @@
 
 ### Jena Get Lines
 
-- **Mean time**: 7.9 ms
-- **Min time**: 3.9 ms
-- **Max time**: 31.7 ms
-- **Std dev**: 4.3 ms
-- **Rounds**: 94
+- **Mean time**: 3.5 ms
+- **Min time**: 1.3 ms
+- **Max time**: 73.6 ms
+- **Std dev**: 7.7 ms
+- **Rounds**: 91
 
 **Metrics**:
 - Line Count: 7561
@@ -55,11 +55,11 @@
 
 ### Jena Get Generators
 
-- **Mean time**: 1.7 ms
-- **Min time**: 917.4 μs
-- **Max time**: 3.9 ms
-- **Std dev**: 496.5 μs
-- **Rounds**: 189
+- **Mean time**: 506.0 μs
+- **Min time**: 353.2 μs
+- **Max time**: 1.4 ms
+- **Std dev**: 159.7 μs
+- **Rounds**: 336
 
 **Metrics**:
 - Generator Count: 1347
@@ -71,11 +71,11 @@
 
 ### Jena Get Loads
 
-- **Mean time**: 12.2 ms
-- **Min time**: 5.5 ms
-- **Max time**: 23.8 ms
-- **Std dev**: 4.8 ms
-- **Rounds**: 26
+- **Mean time**: 1.9 ms
+- **Min time**: 1.3 ms
+- **Max time**: 7.5 ms
+- **Std dev**: 937.9 μs
+- **Rounds**: 98
 
 **Metrics**:
 - Load Count: 6687
@@ -87,11 +87,11 @@
 
 ### Jena Get Substations
 
-- **Mean time**: 2.9 ms
-- **Min time**: 2.0 ms
-- **Max time**: 9.3 ms
-- **Std dev**: 1.1 ms
-- **Rounds**: 143
+- **Mean time**: 866.7 μs
+- **Min time**: 765.4 μs
+- **Max time**: 2.0 ms
+- **Std dev**: 158.9 μs
+- **Rounds**: 341
 
 **Metrics**:
 - Substation Count: 4875
@@ -103,10 +103,10 @@
 
 ### Jena Export Realgrid
 
-- **Mean time**: 5.88 s
-- **Min time**: 4.77 s
-- **Max time**: 7.79 s
-- **Std dev**: 1.24 s
+- **Mean time**: 4.35 s
+- **Min time**: 4.27 s
+- **Max time**: 4.47 s
+- **Std dev**: 89.0 ms
 - **Rounds**: 5
 
 **Metrics**:
