@@ -6,21 +6,21 @@
 
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
-- **Python**: 3.13.12
-- **System**: Linux 6.19.9-200.fc43.x86_64
+- **Python**: 3.13.14
+- **System**: Linux 7.1.3-100.fc43.x86_64
 
 ## Results
 
 ### Pypowsybl Load Realgrid
 
-- **Mean time**: 4.32 s
-- **Min time**: 4.22 s
-- **Max time**: 4.44 s
-- **Std dev**: 80.7 ms
+- **Mean time**: 4.24 s
+- **Min time**: 4.18 s
+- **Max time**: 4.29 s
+- **Std dev**: 43.7 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 1640.2
+- Memory Mb: 2089.0
 - Buses: 6051
 - Lines: 7561
 - Ac Lines: 7561
@@ -31,19 +31,20 @@
 - Dataset Size Mb: 86.5
 - Cgmes Version: 2.4.15
 - Library: pypowsybl
-- Library Version: 1.14.0
-- Library Dependencies: {'prettytable': '3.17.0', 'pandas': '3.0.2', 'networkx': '3.6.1'}
+- Library Version: 1.15.0
+- Library Dependencies: {'prettytable': '3.18.0', 'pandas': '3.0.3', 'networkx': '3.6.1'}
 - Dataset: realgrid
 - Display Name: PyPowSyBl
 - Color: #ff7f0e
+- Tags: ['parser', 'serializer', 'query', 'powerflow-tool', 'python', 'java']
 
 ### Pypowsybl Get Lines
 
-- **Mean time**: 36.4 ms
-- **Min time**: 33.0 ms
-- **Max time**: 44.5 ms
-- **Std dev**: 3.5 ms
-- **Rounds**: 31
+- **Mean time**: 33.2 ms
+- **Min time**: 29.6 ms
+- **Max time**: 52.3 ms
+- **Std dev**: 3.8 ms
+- **Rounds**: 30
 
 **Metrics**:
 - Line Count: 7561
@@ -55,11 +56,11 @@
 
 ### Pypowsybl Get Generators
 
-- **Mean time**: 2.7 ms
-- **Min time**: 2.2 ms
-- **Max time**: 17.2 ms
-- **Std dev**: 1.2 ms
-- **Rounds**: 223
+- **Mean time**: 2.2 ms
+- **Min time**: 2.1 ms
+- **Max time**: 3.5 ms
+- **Std dev**: 137.6 μs
+- **Rounds**: 232
 
 **Metrics**:
 - Generator Count: 1347
@@ -71,10 +72,10 @@
 
 ### Pypowsybl Get Loads
 
-- **Mean time**: 21.3 ms
-- **Min time**: 17.7 ms
-- **Max time**: 33.8 ms
-- **Std dev**: 4.4 ms
+- **Mean time**: 16.1 ms
+- **Min time**: 15.0 ms
+- **Max time**: 16.9 ms
+- **Std dev**: 330.5 μs
 - **Rounds**: 53
 
 **Metrics**:
@@ -87,11 +88,11 @@
 
 ### Pypowsybl Get Substations
 
-- **Mean time**: 4.5 ms
-- **Min time**: 3.3 ms
-- **Max time**: 11.6 ms
-- **Std dev**: 1.6 ms
-- **Rounds**: 122
+- **Mean time**: 3.5 ms
+- **Min time**: 3.2 ms
+- **Max time**: 24.2 ms
+- **Std dev**: 1.7 ms
+- **Rounds**: 156
 
 **Metrics**:
 - Substation Count: 4791
@@ -103,10 +104,10 @@
 
 ### Pypowsybl Export Realgrid
 
-- **Mean time**: 1.59 s
-- **Min time**: 1.57 s
-- **Max time**: 1.62 s
-- **Std dev**: 19.2 ms
+- **Mean time**: 1.55 s
+- **Min time**: 1.53 s
+- **Max time**: 1.56 s
+- **Std dev**: 10.5 ms
 - **Rounds**: 5
 
 **Metrics**:

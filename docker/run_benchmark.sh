@@ -15,6 +15,7 @@ RESULTS_DIR="results-docker"
 QUICK_MODE=false
 SKIP_EXISTING=false
 TOOLS=""
+FAILED_SERVICES=()
 
 while [ $# -gt 0 ]; do
     case "$1" in
@@ -64,10 +65,20 @@ for service in $services; do
     fi
 
     echo "Running $service..."
-    podman-compose -f docker/docker-compose.yml run --rm "$service"
-    echo "✓ $service complete"
+    # A failing tool must not abort the rest of the sequential suite
+    if podman-compose -f docker/docker-compose.yml run --rm "$service"; then
+        echo "✓ $service complete"
+    else
+        echo "✗ $service FAILED - continuing with remaining benchmarks"
+        FAILED_SERVICES+=("$service")
+    fi
     echo ""
 done
+
+if [ ${#FAILED_SERVICES[@]} -gt 0 ]; then
+    echo "⚠️  Failed benchmarks: ${FAILED_SERVICES[*]}"
+    echo ""
+fi
 
 ./docker/generate_outputs.sh "$RESULTS_DIR"
 

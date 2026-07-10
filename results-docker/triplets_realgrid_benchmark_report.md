@@ -6,21 +6,21 @@
 
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
-- **Python**: 3.14.3
-- **System**: Linux 6.19.9-200.fc43.x86_64
+- **Python**: 3.13.14
+- **System**: Linux 7.1.3-100.fc43.x86_64
 
 ## Results
 
 ### Triplets Load Realgrid
 
-- **Mean time**: 1.36 s
-- **Min time**: 1.22 s
-- **Max time**: 1.43 s
-- **Std dev**: 88.8 ms
+- **Mean time**: 159.1 ms
+- **Min time**: 156.6 ms
+- **Max time**: 164.7 ms
+- **Std dev**: 3.3 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 591.3
+- Memory Mb: 370.5
 - Triplets Count: 1146215
 - Unique Objects: 149174
 - Instances: 4
@@ -31,19 +31,20 @@
 - Dataset Size Mb: 86.5
 - Cgmes Version: 2.4.15
 - Library: triplets
-- Library Version: 0.0.17
-- Library Dependencies: {'pandas': '3.0.2', 'lxml': '6.0.2', 'aniso8601': '10.0.1'}
+- Library Version: 0.1.0
+- Library Dependencies: {'pandas': '3.0.3', 'lxml': '6.1.1', 'polars': '1.42.1', 'pyarrow': '24.0.0'}
 - Dataset: realgrid
 - Display Name: triplets
 - Color: #1f77b4
+- Tags: ['parser', 'serializer', 'query', 'python']
 
 ### Triplets Get Lines
 
-- **Mean time**: 306.5 ms
-- **Min time**: 304.2 ms
-- **Max time**: 308.9 ms
-- **Std dev**: 1.8 ms
-- **Rounds**: 5
+- **Mean time**: 12.6 ms
+- **Min time**: 11.6 ms
+- **Max time**: 15.5 ms
+- **Std dev**: 786.2 μs
+- **Rounds**: 68
 
 **Metrics**:
 - Line Count: 7561
@@ -55,11 +56,11 @@
 
 ### Triplets Get Generators
 
-- **Mean time**: 268.8 ms
-- **Min time**: 265.7 ms
-- **Max time**: 273.2 ms
-- **Std dev**: 3.3 ms
-- **Rounds**: 5
+- **Mean time**: 7.4 ms
+- **Min time**: 6.4 ms
+- **Max time**: 9.2 ms
+- **Std dev**: 483.9 μs
+- **Rounds**: 106
 
 **Metrics**:
 - Generator Count: 1347
@@ -71,11 +72,11 @@
 
 ### Triplets Get Loads
 
-- **Mean time**: 625.7 ms
-- **Min time**: 615.9 ms
-- **Max time**: 640.1 ms
-- **Std dev**: 9.9 ms
-- **Rounds**: 5
+- **Mean time**: 11.2 ms
+- **Min time**: 9.8 ms
+- **Max time**: 13.7 ms
+- **Std dev**: 923.2 μs
+- **Rounds**: 95
 
 **Metrics**:
 - Load Count: 6687
@@ -87,11 +88,11 @@
 
 ### Triplets Get Substations
 
-- **Mean time**: 254.6 ms
-- **Min time**: 250.6 ms
-- **Max time**: 263.8 ms
-- **Std dev**: 5.3 ms
-- **Rounds**: 5
+- **Mean time**: 6.4 ms
+- **Min time**: 5.4 ms
+- **Max time**: 8.3 ms
+- **Std dev**: 444.4 μs
+- **Rounds**: 171
 
 **Metrics**:
 - Substation Count: 4875
@@ -103,10 +104,10 @@
 
 ### Triplets Export Realgrid
 
-- **Mean time**: 5.78 s
-- **Min time**: 5.69 s
-- **Max time**: 5.91 s
-- **Std dev**: 82.4 ms
+- **Mean time**: 946.1 ms
+- **Min time**: 938.4 ms
+- **Max time**: 963.4 ms
+- **Std dev**: 9.9 ms
 - **Rounds**: 5
 
 **Metrics**:

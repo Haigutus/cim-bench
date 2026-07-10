@@ -7,20 +7,20 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.13.14
-- **System**: Linux 7.0.12-101.fc43.x86_64
+- **System**: Linux 7.1.3-100.fc43.x86_64
 
 ## Results
 
 ### Triplets Load Svedala
 
-- **Mean time**: 329.5 ms
-- **Min time**: 309.7 ms
-- **Max time**: 359.0 ms
-- **Std dev**: 18.4 ms
-- **Rounds**: 5
+- **Mean time**: 10.1 ms
+- **Min time**: 7.7 ms
+- **Max time**: 13.9 ms
+- **Std dev**: 1.9 ms
+- **Rounds**: 18
 
 **Metrics**:
-- Memory Mb: 27.6
+- Memory Mb: 82.9
 - Triplets Count: 95539
 - Unique Objects: 14540
 - Instances: 5
@@ -32,7 +32,7 @@
 - Cgmes Version: 3.0
 - Library: triplets
 - Library Version: 0.1.0
-- Library Dependencies: {'pandas': '3.0.3', 'lxml': '6.1.1'}
+- Library Dependencies: {'pandas': '3.0.3', 'lxml': '6.1.1', 'polars': '1.42.1', 'pyarrow': '24.0.0'}
 - Dataset: svedala
 - Display Name: triplets
 - Color: #1f77b4
@@ -40,11 +40,11 @@
 
 ### Triplets Get Lines
 
-- **Mean time**: 30.1 ms
-- **Min time**: 26.8 ms
-- **Max time**: 38.2 ms
-- **Std dev**: 2.5 ms
-- **Rounds**: 31
+- **Mean time**: 1.7 ms
+- **Min time**: 1.1 ms
+- **Max time**: 3.1 ms
+- **Std dev**: 286.5 μs
+- **Rounds**: 367
 
 **Metrics**:
 - Line Count: 97
@@ -56,11 +56,11 @@
 
 ### Triplets Get Generators
 
-- **Mean time**: 29.3 ms
-- **Min time**: 24.1 ms
-- **Max time**: 39.7 ms
-- **Std dev**: 3.5 ms
-- **Rounds**: 35
+- **Mean time**: 1.5 ms
+- **Min time**: 1.1 ms
+- **Max time**: 2.9 ms
+- **Std dev**: 205.6 μs
+- **Rounds**: 577
 
 **Metrics**:
 - Generator Count: 39
@@ -72,11 +72,11 @@
 
 ### Triplets Get Loads
 
-- **Mean time**: 44.3 ms
-- **Min time**: 38.0 ms
-- **Max time**: 54.6 ms
-- **Std dev**: 4.4 ms
-- **Rounds**: 22
+- **Mean time**: 1.7 ms
+- **Min time**: 1.2 ms
+- **Max time**: 2.9 ms
+- **Std dev**: 323.2 μs
+- **Rounds**: 479
 
 **Metrics**:
 - Load Count: 73
@@ -88,11 +88,11 @@
 
 ### Triplets Get Substations
 
-- **Mean time**: 28.5 ms
-- **Min time**: 24.2 ms
-- **Max time**: 34.1 ms
-- **Std dev**: 2.5 ms
-- **Rounds**: 36
+- **Mean time**: 1.0 ms
+- **Min time**: 739.6 μs
+- **Max time**: 1.9 ms
+- **Std dev**: 178.1 μs
+- **Rounds**: 882
 
 **Metrics**:
 - Substation Count: 57
@@ -104,11 +104,11 @@
 
 ### Triplets Export Svedala
 
-- **Mean time**: 930.9 ms
-- **Min time**: 889.2 ms
-- **Max time**: 1.01 s
-- **Std dev**: 48.8 ms
-- **Rounds**: 5
+- **Mean time**: 147.8 ms
+- **Min time**: 136.5 ms
+- **Max time**: 153.1 ms
+- **Std dev**: 5.4 ms
+- **Rounds**: 7
 
 **Metrics**:
 - Library: triplets

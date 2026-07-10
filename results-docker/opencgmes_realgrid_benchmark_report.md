@@ -6,21 +6,21 @@
 
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
-- **Python**: 3.13.12
-- **System**: Linux 6.19.9-200.fc43.x86_64
+- **Python**: 3.13.14
+- **System**: Linux 7.1.3-100.fc43.x86_64
 
 ## Results
 
 ### Opencgmes Load Realgrid
 
-- **Mean time**: 1.04 s
-- **Min time**: 959.9 ms
-- **Max time**: 1.20 s
-- **Std dev**: 108.1 ms
+- **Mean time**: 1.09 s
+- **Min time**: 1.01 s
+- **Max time**: 1.18 s
+- **Std dev**: 69.7 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 3625.2
+- Memory Mb: 3133.8
 - Triples: 892131
 - Lines: 7561
 - Generators: 1347
@@ -29,20 +29,21 @@
 - Dataset Size Mb: 86.5
 - Cgmes Version: 2.4.15
 - Library: opencgmes
-- Library Version: 1.0.0-SNAPSHOT
-- Library Dependencies: {'jpype1': '1.6.0', 'java': '21.0.10', 'jena': '5.5.0'}
-- Java Version: 21.0.10
+- Library Version: 1.1.0-SNAPSHOT
+- Library Dependencies: {'jpype1': '1.7.1', 'java': '21.0.11', 'jena': '6.1.0'}
+- Java Version: 21.0.11
 - Dataset: realgrid
 - Display Name: OpenCGMES
 - Color: #e91e63
+- Tags: ['parser', 'serializer', 'query', 'sparql', 'triplestore', 'java']
 
 ### Opencgmes Get Lines
 
-- **Mean time**: 1.9 ms
-- **Min time**: 855.1 μs
-- **Max time**: 4.8 ms
-- **Std dev**: 674.5 μs
-- **Rounds**: 178
+- **Mean time**: 3.7 ms
+- **Min time**: 1.9 ms
+- **Max time**: 11.4 ms
+- **Std dev**: 2.1 ms
+- **Rounds**: 83
 
 **Metrics**:
 - Line Count: 7561
@@ -54,11 +55,11 @@
 
 ### Opencgmes Get Generators
 
-- **Mean time**: 236.1 μs
-- **Min time**: 152.2 μs
-- **Max time**: 3.1 ms
-- **Std dev**: 166.4 μs
-- **Rounds**: 1595
+- **Mean time**: 775.6 μs
+- **Min time**: 340.2 μs
+- **Max time**: 4.9 ms
+- **Std dev**: 609.8 μs
+- **Rounds**: 247
 
 **Metrics**:
 - Generator Count: 1347
@@ -70,11 +71,11 @@
 
 ### Opencgmes Get Loads
 
-- **Mean time**: 947.6 μs
-- **Min time**: 659.2 μs
-- **Max time**: 3.4 ms
-- **Std dev**: 385.9 μs
-- **Rounds**: 446
+- **Mean time**: 2.2 ms
+- **Min time**: 1.2 ms
+- **Max time**: 8.0 ms
+- **Std dev**: 1.4 ms
+- **Rounds**: 153
 
 **Metrics**:
 - Load Count: 6687
@@ -86,11 +87,11 @@
 
 ### Opencgmes Get Substations
 
-- **Mean time**: 382.5 μs
-- **Min time**: 304.8 μs
-- **Max time**: 40.5 ms
-- **Std dev**: 1.1 ms
-- **Rounds**: 1335
+- **Mean time**: 812.7 μs
+- **Min time**: 655.2 μs
+- **Max time**: 3.6 ms
+- **Std dev**: 411.7 μs
+- **Rounds**: 218
 
 **Metrics**:
 - Substation Count: 4875
@@ -102,10 +103,10 @@
 
 ### Opencgmes Export Realgrid
 
-- **Mean time**: 3.91 s
-- **Min time**: 3.84 s
-- **Max time**: 4.15 s
-- **Std dev**: 133.0 ms
+- **Mean time**: 4.15 s
+- **Min time**: 4.02 s
+- **Max time**: 4.38 s
+- **Std dev**: 133.9 ms
 - **Rounds**: 5
 
 **Metrics**:

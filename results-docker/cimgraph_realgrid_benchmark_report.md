@@ -6,21 +6,21 @@
 
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
-- **Python**: 3.14.3
-- **System**: Linux 6.19.11-200.fc43.x86_64
+- **Python**: 3.14.6
+- **System**: Linux 7.1.3-100.fc43.x86_64
 
 ## Results
 
 ### Cimgraph Load Realgrid
 
-- **Mean time**: 25.86 s
-- **Min time**: 13.57 s
-- **Max time**: 59.81 s
-- **Std dev**: 19.34 s
+- **Mean time**: 19.56 s
+- **Min time**: 16.32 s
+- **Max time**: 21.40 s
+- **Std dev**: 1.99 s
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 3175.6
+- Memory Mb: 2615.6
 - Triples: 1233106
 - Lines: 7561
 - Generators: 1347
@@ -30,18 +30,19 @@
 - Cgmes Version: 2.4.15
 - Library: cimgraph
 - Library Version: 0.4.3a12
-- Library Dependencies: {'defusedxml': '0.8.0rc2', 'gridappsd-python': '2026.2.1', 'mermaid-python': '0.1', 'mysql-connector-python': '9.6.0', 'neo4j': '6.1.0', 'nest-asyncio': '1.6.0', 'oxrdflib': '0.5.0', 'pint': '0.25.3', 'rdflib': '7.6.0', 'sparqlwrapper': '2.0.0'}
+- Library Dependencies: {'defusedxml': '0.8.0rc2', 'gridappsd-python': '2026.2.1', 'mermaid-python': '0.1', 'mysql-connector-python': '9.7.0', 'neo4j': '6.2.0', 'nest-asyncio': '1.6.0', 'oxrdflib': '0.5.0', 'pint': '0.25.3', 'rdflib': '7.6.0', 'sparqlwrapper': '2.0.0'}
 - Dataset: realgrid
 - Display Name: CIM-Graph
 - Color: #9467bd
+- Tags: ['parser', 'query', 'typed-model', 'triplestore', 'python']
 
 ### Cimgraph Get Lines
 
 - **Mean time**: 0.1 μs
 - **Min time**: 0.1 μs
-- **Max time**: 35.0 μs
+- **Max time**: 23.8 μs
 - **Std dev**: 0.1 μs
-- **Rounds**: 143823
+- **Rounds**: 135245
 
 **Metrics**:
 - Line Count: 7561
@@ -55,9 +56,9 @@
 
 - **Mean time**: 0.1 μs
 - **Min time**: 0.1 μs
-- **Max time**: 28.9 μs
+- **Max time**: 30.4 μs
 - **Std dev**: 0.1 μs
-- **Rounds**: 162023
+- **Rounds**: 165509
 
 **Metrics**:
 - Generator Count: 1347
@@ -71,9 +72,9 @@
 
 - **Mean time**: 0.2 μs
 - **Min time**: 0.2 μs
-- **Max time**: 17.8 μs
+- **Max time**: 20.5 μs
 - **Std dev**: 0.1 μs
-- **Rounds**: 164420
+- **Rounds**: 181489
 
 **Metrics**:
 - Load Count: 6687
@@ -87,14 +88,29 @@
 
 - **Mean time**: 0.1 μs
 - **Min time**: 0.1 μs
-- **Max time**: 1.0 μs
-- **Std dev**: 0.1 μs
-- **Rounds**: 59731
+- **Max time**: 1.1 μs
+- **Std dev**: 0.0 μs
+- **Rounds**: 70938
 
 **Metrics**:
 - Substation Count: 4875
 - Query Type: get_substations
 - Library: cimgraph
 - Dataset: realgrid
+- Display Name: CIM-Graph
+- Color: #9467bd
+
+### Cimgraph Export Realgrid
+
+- **Mean time**: 4.98 s
+- **Min time**: 4.93 s
+- **Max time**: 5.06 s
+- **Std dev**: 49.8 ms
+- **Rounds**: 5
+
+**Metrics**:
+- Library: cimgraph
+- Dataset: realgrid
+- Operation: export
 - Display Name: CIM-Graph
 - Color: #9467bd
