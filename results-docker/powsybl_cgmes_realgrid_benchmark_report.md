@@ -6,21 +6,21 @@
 
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
-- **Python**: 3.13.12
-- **System**: Linux 6.19.9-200.fc43.x86_64
+- **Python**: 3.13.14
+- **System**: Linux 7.1.3-100.fc43.x86_64
 
 ## Results
 
 ### Powsybl Cgmes Load Realgrid
 
-- **Mean time**: 1.75 s
-- **Min time**: 1.65 s
-- **Max time**: 1.83 s
-- **Std dev**: 71.4 ms
+- **Mean time**: 1.81 s
+- **Min time**: 1.73 s
+- **Max time**: 1.89 s
+- **Std dev**: 67.8 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 3159.7
+- Memory Mb: 3739.9
 - Triples: 1146183
 - Lines: 7561
 - Generators: 1347
@@ -30,19 +30,20 @@
 - Cgmes Version: 2.4.15
 - Library: powsybl_cgmes
 - Library Version: 7.1.1
-- Library Dependencies: {'jpype1': '1.6.0', 'java': '21.0.10'}
-- Java Version: 21.0.10
+- Library Dependencies: {'jpype1': '1.7.1', 'java': '21.0.11'}
+- Java Version: 21.0.11
 - Dataset: realgrid
 - Display Name: PowSyBL CGMES
 - Color: #17a2b8
+- Tags: ['parser', 'serializer', 'query', 'sparql', 'triplestore', 'java']
 
 ### Powsybl Cgmes Get Lines
 
-- **Mean time**: 1.2 ms
-- **Min time**: 788.5 μs
-- **Max time**: 2.7 ms
-- **Std dev**: 292.5 μs
-- **Rounds**: 273
+- **Mean time**: 1.1 ms
+- **Min time**: 739.0 μs
+- **Max time**: 3.5 ms
+- **Std dev**: 399.7 μs
+- **Rounds**: 274
 
 **Metrics**:
 - Line Count: 7561
@@ -54,11 +55,11 @@
 
 ### Powsybl Cgmes Get Generators
 
-- **Mean time**: 248.5 μs
-- **Min time**: 199.1 μs
-- **Max time**: 1.5 ms
-- **Std dev**: 86.7 μs
-- **Rounds**: 1145
+- **Mean time**: 254.4 μs
+- **Min time**: 197.3 μs
+- **Max time**: 676.9 μs
+- **Std dev**: 67.6 μs
+- **Rounds**: 1109
 
 **Metrics**:
 - Generator Count: 1347
@@ -70,11 +71,11 @@
 
 ### Powsybl Cgmes Get Loads
 
-- **Mean time**: 1.0 ms
-- **Min time**: 868.6 μs
-- **Max time**: 3.1 ms
-- **Std dev**: 231.8 μs
-- **Rounds**: 233
+- **Mean time**: 1.1 ms
+- **Min time**: 775.3 μs
+- **Max time**: 2.6 ms
+- **Std dev**: 249.7 μs
+- **Rounds**: 238
 
 **Metrics**:
 - Load Count: 6687
@@ -86,11 +87,11 @@
 
 ### Powsybl Cgmes Get Substations
 
-- **Mean time**: 335.3 μs
-- **Min time**: 291.4 μs
-- **Max time**: 627.0 μs
-- **Std dev**: 46.2 μs
-- **Rounds**: 638
+- **Mean time**: 304.6 μs
+- **Min time**: 272.7 μs
+- **Max time**: 655.6 μs
+- **Std dev**: 53.0 μs
+- **Rounds**: 661
 
 **Metrics**:
 - Substation Count: 4875
@@ -102,10 +103,10 @@
 
 ### Powsybl Cgmes Export Realgrid
 
-- **Mean time**: 2.11 s
+- **Mean time**: 2.13 s
 - **Min time**: 2.04 s
-- **Max time**: 2.27 s
-- **Std dev**: 103.7 ms
+- **Max time**: 2.24 s
+- **Std dev**: 92.0 ms
 - **Rounds**: 5
 
 **Metrics**:

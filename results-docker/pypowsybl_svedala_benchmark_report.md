@@ -6,21 +6,21 @@
 
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
-- **Python**: 3.13.12
-- **System**: Linux 6.19.9-200.fc43.x86_64
+- **Python**: 3.13.14
+- **System**: Linux 7.1.3-100.fc43.x86_64
 
 ## Results
 
 ### Pypowsybl Load Svedala
 
-- **Mean time**: 419.7 ms
-- **Min time**: 401.7 ms
-- **Max time**: 437.0 ms
-- **Std dev**: 15.2 ms
+- **Mean time**: 428.4 ms
+- **Min time**: 401.3 ms
+- **Max time**: 450.5 ms
+- **Std dev**: 24.8 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 1047.8
+- Memory Mb: 1566.6
 - Buses: 105
 - Lines: 97
 - Ac Lines: 90
@@ -31,19 +31,20 @@
 - Dataset Size Mb: 7.3
 - Cgmes Version: 3.0
 - Library: pypowsybl
-- Library Version: 1.14.0
-- Library Dependencies: {'prettytable': '3.17.0', 'pandas': '3.0.2', 'networkx': '3.6.1'}
+- Library Version: 1.15.0
+- Library Dependencies: {'prettytable': '3.18.0', 'pandas': '3.0.3', 'networkx': '3.6.1'}
 - Dataset: svedala
 - Display Name: PyPowSyBl
 - Color: #ff7f0e
+- Tags: ['parser', 'serializer', 'query', 'powerflow-tool', 'python', 'java']
 
 ### Pypowsybl Get Lines
 
-- **Mean time**: 284.8 μs
-- **Min time**: 271.5 μs
-- **Max time**: 503.0 μs
-- **Std dev**: 15.4 μs
-- **Rounds**: 1162
+- **Mean time**: 292.9 μs
+- **Min time**: 280.3 μs
+- **Max time**: 449.3 μs
+- **Std dev**: 8.3 μs
+- **Rounds**: 1173
 
 **Metrics**:
 - Line Count: 90
@@ -55,11 +56,11 @@
 
 ### Pypowsybl Get Generators
 
-- **Mean time**: 266.9 μs
-- **Min time**: 247.7 μs
-- **Max time**: 1.5 ms
-- **Std dev**: 50.4 μs
-- **Rounds**: 1603
+- **Mean time**: 265.9 μs
+- **Min time**: 254.3 μs
+- **Max time**: 380.5 μs
+- **Std dev**: 9.4 μs
+- **Rounds**: 1810
 
 **Metrics**:
 - Generator Count: 39
@@ -71,11 +72,11 @@
 
 ### Pypowsybl Get Loads
 
-- **Mean time**: 189.8 μs
-- **Min time**: 178.4 μs
-- **Max time**: 558.3 μs
-- **Std dev**: 15.7 μs
-- **Rounds**: 1773
+- **Mean time**: 194.2 μs
+- **Min time**: 176.3 μs
+- **Max time**: 10.4 ms
+- **Std dev**: 241.3 μs
+- **Rounds**: 1791
 
 **Metrics**:
 - Load Count: 73
@@ -87,11 +88,11 @@
 
 ### Pypowsybl Get Substations
 
-- **Mean time**: 121.9 μs
-- **Min time**: 112.2 μs
-- **Max time**: 969.5 μs
-- **Std dev**: 26.5 μs
-- **Rounds**: 3562
+- **Mean time**: 120.9 μs
+- **Min time**: 113.0 μs
+- **Max time**: 674.6 μs
+- **Std dev**: 12.8 μs
+- **Rounds**: 3644
 
 **Metrics**:
 - Substation Count: 57
@@ -103,10 +104,10 @@
 
 ### Pypowsybl Export Svedala
 
-- **Mean time**: 139.0 ms
-- **Min time**: 136.1 ms
-- **Max time**: 143.2 ms
-- **Std dev**: 2.2 ms
+- **Mean time**: 138.0 ms
+- **Min time**: 136.6 ms
+- **Max time**: 141.8 ms
+- **Std dev**: 1.7 ms
 - **Rounds**: 8
 
 **Metrics**:

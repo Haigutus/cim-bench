@@ -179,21 +179,8 @@ def generate_comparison_report(json_files):
 
         report.append("")
 
-    # Detailed results
-    report.append("## Detailed Results\n")
-
-    for lib_name, data in benchmark_data + cli_data:
-        report.append(f"### {lib_name}\n")
-
-        for bench in data["benchmarks"]:
-            name = bench["name"].replace("test_", "").replace("_", " ").title()
-            stats = bench["stats"]
-
-            report.append(f"#### {name}\n")
-            report.append(f"- **Mean**: {format_time(stats['mean'])}")
-            report.append(f"- **Min**: {format_time(stats['min'])}")
-            report.append(f"- **Max**: {format_time(stats['max'])}")
-            report.append(f"- **Rounds**: {stats['rounds']}\n")
+    # Per-benchmark detail lives in the per-tool *_benchmark_report.md files
+    report.append("Per-tool details: see the `*_benchmark_report.md` files in this directory.\n")
 
     return "\n".join(report)
 

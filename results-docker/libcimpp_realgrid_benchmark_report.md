@@ -6,21 +6,21 @@
 
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
-- **Python**: 3.14.3
-- **System**: Linux 6.19.9-200.fc43.x86_64
+- **Python**: 3.14.6
+- **System**: Linux 7.1.3-100.fc43.x86_64
 
 ## Results
 
 ### Libcimpp Load Realgrid
 
-- **Mean time**: 20.11 s
-- **Min time**: 19.93 s
-- **Max time**: 20.23 s
-- **Std dev**: 122.2 ms
+- **Mean time**: 19.53 s
+- **Min time**: 19.41 s
+- **Max time**: 19.64 s
+- **Std dev**: 90.9 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 134.7
+- Memory Mb: 133.8
 - Lines: 7561
 - Generators: 1347
 - Loads: 6687
@@ -33,14 +33,15 @@
 - Dataset: realgrid
 - Display Name: libcimpp
 - Color: #000000
+- Tags: ['parser', 'query', 'typed-model', 'c++']
 
 ### Libcimpp Get Lines
 
-- **Mean time**: 6.8 ms
-- **Min time**: 3.6 ms
-- **Max time**: 13.4 ms
-- **Std dev**: 3.1 ms
-- **Rounds**: 78
+- **Mean time**: 5.4 ms
+- **Min time**: 3.5 ms
+- **Max time**: 13.6 ms
+- **Std dev**: 2.8 ms
+- **Rounds**: 79
 
 **Metrics**:
 - Line Count: 7561
@@ -52,11 +53,11 @@
 
 ### Libcimpp Get Generators
 
-- **Mean time**: 6.8 ms
+- **Mean time**: 5.4 ms
 - **Min time**: 3.7 ms
-- **Max time**: 14.0 ms
-- **Std dev**: 3.3 ms
-- **Rounds**: 72
+- **Max time**: 13.9 ms
+- **Std dev**: 2.7 ms
+- **Rounds**: 109
 
 **Metrics**:
 - Generator Count: 1347
@@ -68,10 +69,10 @@
 
 ### Libcimpp Get Loads
 
-- **Mean time**: 16.3 ms
-- **Min time**: 9.8 ms
-- **Max time**: 23.2 ms
-- **Std dev**: 3.6 ms
+- **Mean time**: 12.8 ms
+- **Min time**: 9.2 ms
+- **Max time**: 22.3 ms
+- **Std dev**: 4.5 ms
 - **Rounds**: 60
 
 **Metrics**:
@@ -84,11 +85,11 @@
 
 ### Libcimpp Get Substations
 
-- **Mean time**: 7.2 ms
-- **Min time**: 3.7 ms
-- **Max time**: 16.8 ms
-- **Std dev**: 3.9 ms
-- **Rounds**: 111
+- **Mean time**: 5.4 ms
+- **Min time**: 3.6 ms
+- **Max time**: 13.9 ms
+- **Std dev**: 2.7 ms
+- **Rounds**: 107
 
 **Metrics**:
 - Substation Count: 4875

@@ -75,7 +75,7 @@ class OpenCGMESAdapter(ParserAdapter):
 
     @classmethod
     def get_tags(cls):
-        return ["parser", "serializer", "query", "triplestore", "java"]
+        return ["parser", "serializer", "query", "sparql", "triplestore", "java"]
 
     def load(self, dataset_key: str):
         """Load using OpenCGMES Java library via JPype."""

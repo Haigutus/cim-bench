@@ -87,18 +87,23 @@ echo ""
 
 # Source dirs mounted over the copies baked into the images, so code
 # changes don't require image rebuilds (granular iteration)
-podman run --rm \
+# Failing tests must not skip output regeneration below
+if podman run --rm \
     -v "$(pwd)/benchmarks:/benchmarks:ro,z" \
     -v "$(pwd)/parsers:/benchmarks/parsers:ro,z" \
     -v "$(pwd)/data:/benchmarks/data:ro,z" \
     -v "$(pwd)/temp:/benchmarks/temp:z" \
     -v "$(pwd)/results-docker:/output:z" \
     "cim-bench/${TOOL}:latest" \
-    pytest "$BENCHMARK_FILE" --benchmark-only --benchmark-json="/output/${TOOL_UNDERSCORE}_${DATASET}_benchmark.json"
+    pytest "$BENCHMARK_FILE" --benchmark-only --benchmark-json="/output/${TOOL_UNDERSCORE}_${DATASET}_benchmark.json"; then
+    STATUS="Benchmark complete!"
+else
+    STATUS="⚠️  Benchmark had failing tests - see output above"
+fi
 
 echo ""
 echo "================================"
-echo "Benchmark complete!"
+echo "$STATUS"
 echo "Results saved to: $OUTPUT_FILE"
 echo "================================"
 

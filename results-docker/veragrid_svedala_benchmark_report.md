@@ -6,21 +6,21 @@
 
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
-- **Python**: 3.14.3
-- **System**: Linux 6.19.9-200.fc43.x86_64
+- **Python**: 3.14.6
+- **System**: Linux 7.1.3-100.fc43.x86_64
 
 ## Results
 
 ### Veragrid Load Svedala
 
-- **Mean time**: 470.4 ms
-- **Min time**: 416.8 ms
-- **Max time**: 525.7 ms
-- **Std dev**: 40.6 ms
+- **Mean time**: 701.7 ms
+- **Min time**: 645.6 ms
+- **Max time**: 918.3 ms
+- **Std dev**: 121.1 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 82.1
+- Memory Mb: 71.8
 - Lines: 97
 - Generators: 39
 - Loads: 73
@@ -28,11 +28,12 @@
 - Cgmes Version: 3.0
 - Dataset Size Mb: 7.3
 - Library: veragrid
-- Library Version: 5.6.38
-- Library Dependencies: {'setuptools': '82.0.1', 'wheel': '0.46.3', 'PySide6': '6.11.0', 'websockets': '16.0', 'opencv-python': '4.13.0.92', 'packaging': '26.0', 'VeraGridEngine': '5.6.38'}
+- Library Version: 6.3.0
+- Library Dependencies: {'numpy': '2.4.6', 'PySide6': '6.11.1', 'requests': '2.34.2', 'urllib3': '2.7.0', 'websockets': '16.0', 'opencv-python': '5.0.0.93', 'packaging': '26.2', 'VeraGridEngine': '6.3.0'}
 - Dataset: svedala
 - Display Name: VeraGrid
 - Color: #2ca02c
+- Tags: ['parser', 'serializer', 'query', 'powerflow-tool', 'python']
 
 ### Veragrid Get Lines
 
@@ -40,7 +41,7 @@
 - **Min time**: 0.0 μs
 - **Max time**: 0.7 μs
 - **Std dev**: 0.0 μs
-- **Rounds**: 105619
+- **Rounds**: 107910
 
 **Metrics**:
 - Line Count: 97
@@ -53,10 +54,10 @@
 ### Veragrid Get Generators
 
 - **Mean time**: 0.1 μs
-- **Min time**: 0.1 μs
-- **Max time**: 0.7 μs
+- **Min time**: 0.0 μs
+- **Max time**: 1.1 μs
 - **Std dev**: 0.0 μs
-- **Rounds**: 88567
+- **Rounds**: 91651
 
 **Metrics**:
 - Generator Count: 39
@@ -70,9 +71,9 @@
 
 - **Mean time**: 0.1 μs
 - **Min time**: 0.1 μs
-- **Max time**: 12.6 μs
-- **Std dev**: 0.0 μs
-- **Rounds**: 157679
+- **Max time**: 12.0 μs
+- **Std dev**: 0.1 μs
+- **Rounds**: 134699
 
 **Metrics**:
 - Load Count: 73
@@ -85,10 +86,10 @@
 ### Veragrid Get Substations
 
 - **Mean time**: 0.1 μs
-- **Min time**: 0.1 μs
-- **Max time**: 0.5 μs
+- **Min time**: 0.0 μs
+- **Max time**: 0.6 μs
 - **Std dev**: 0.0 μs
-- **Rounds**: 88410
+- **Rounds**: 82899
 
 **Metrics**:
 - Substation Count: 56
@@ -100,10 +101,10 @@
 
 ### Veragrid Export Svedala
 
-- **Mean time**: 1.08 s
-- **Min time**: 918.0 ms
-- **Max time**: 1.24 s
-- **Std dev**: 122.7 ms
+- **Mean time**: 1.54 s
+- **Min time**: 1.33 s
+- **Max time**: 1.64 s
+- **Std dev**: 119.3 ms
 - **Rounds**: 5
 
 **Metrics**:
