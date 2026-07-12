@@ -168,3 +168,12 @@ services:
   # NOTE: GMSS strictly validates model URIs per IEC 61970-552 and rejects
   # RealGrid's non-RFC-compliant "urn:uuid:_..." model IDs (UriFormatException).
 
+  cimd-svedala:
+    <<: *common
+    image: cim-bench/cimd:latest
+    command: pytest cimd_svedala_benchmark.py --benchmark-only --benchmark-json=/output/cimd_svedala_benchmark.json
+
+  cimd-realgrid:
+    <<: *common
+    image: cim-bench/cimd:latest
+    command: pytest cimd_realgrid_benchmark.py --benchmark-only --benchmark-json=/output/cimd_realgrid_benchmark.json
