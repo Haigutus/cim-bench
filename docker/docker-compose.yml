@@ -115,6 +115,16 @@ services:
     image: cim-bench/powsybl-cgmes:latest
     command: pytest docker_powsybl_cgmes_realgrid_benchmark.py --benchmark-only --benchmark-json=/output/powsybl_cgmes_realgrid_benchmark.json
 
+  cimoxide-svedala:
+    <<: *common
+    image: cim-bench/cimoxide:latest
+    command: pytest cimoxide_svedala_benchmark.py --benchmark-only --benchmark-json=/output/cimoxide_svedala_benchmark.json
+
+  cimoxide-realgrid:
+    <<: *common
+    image: cim-bench/cimoxide:latest
+    command: pytest cimoxide_realgrid_benchmark.py --benchmark-only --benchmark-json=/output/cimoxide_realgrid_benchmark.json
+
   pocket-rdf-svedala:
     <<: *common
     image: cim-bench/pocket-rdf:latest
