@@ -7,20 +7,20 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.13.14
-- **System**: Linux 7.0.12-101.fc43.x86_64
+- **System**: Linux 7.1.3-100.fc43.x86_64
 
 ## Results
 
 ### Gmss Load Svedala
 
-- **Mean time**: 2.01 s
-- **Min time**: 1.87 s
-- **Max time**: 2.15 s
-- **Std dev**: 126.9 ms
+- **Mean time**: 959.8 ms
+- **Min time**: 912.9 ms
+- **Max time**: 1.01 s
+- **Std dev**: 43.3 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 369.6
+- Memory Mb: 298.1
 - Triples: 95499
 - Lines: 97
 - Generators: 78
@@ -38,11 +38,11 @@
 
 ### Gmss Get Lines
 
-- **Mean time**: 280.7 μs
-- **Min time**: 210.5 μs
-- **Max time**: 9.7 ms
-- **Std dev**: 364.4 μs
-- **Rounds**: 1302
+- **Mean time**: 111.7 μs
+- **Min time**: 89.8 μs
+- **Max time**: 5.5 ms
+- **Std dev**: 122.4 μs
+- **Rounds**: 7173
 
 **Metrics**:
 - Line Count: 97
@@ -54,11 +54,11 @@
 
 ### Gmss Get Generators
 
-- **Mean time**: 277.0 μs
-- **Min time**: 198.1 μs
-- **Max time**: 4.9 ms
-- **Std dev**: 274.2 μs
-- **Rounds**: 2796
+- **Mean time**: 106.6 μs
+- **Min time**: 85.3 μs
+- **Max time**: 2.4 ms
+- **Std dev**: 98.6 μs
+- **Rounds**: 6177
 
 **Metrics**:
 - Generator Count: 78
@@ -70,11 +70,11 @@
 
 ### Gmss Get Loads
 
-- **Mean time**: 717.8 μs
-- **Min time**: 506.6 μs
-- **Max time**: 7.9 ms
-- **Std dev**: 495.8 μs
-- **Rounds**: 1366
+- **Mean time**: 299.6 μs
+- **Min time**: 236.4 μs
+- **Max time**: 2.6 ms
+- **Std dev**: 223.2 μs
+- **Rounds**: 3136
 
 **Metrics**:
 - Load Count: 146
@@ -86,11 +86,11 @@
 
 ### Gmss Get Substations
 
-- **Mean time**: 340.4 μs
-- **Min time**: 183.7 μs
-- **Max time**: 6.9 ms
-- **Std dev**: 345.9 μs
-- **Rounds**: 2615
+- **Mean time**: 100.5 μs
+- **Min time**: 82.0 μs
+- **Max time**: 2.1 ms
+- **Std dev**: 105.9 μs
+- **Rounds**: 7149
 
 **Metrics**:
 - Substation Count: 57

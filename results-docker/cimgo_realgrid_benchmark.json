@@ -1,20 +1,20 @@
 {
     "machine_info": {
-        "node": "29d1ac9ae9c3",
+        "node": "0c7d11334b0f",
         "processor": "",
         "machine": "x86_64",
-        "python_compiler": "Clang 22.1.1 ",
+        "python_compiler": "Clang 22.1.3 ",
         "python_implementation": "CPython",
-        "python_implementation_version": "3.14.3",
-        "python_version": "3.14.3",
+        "python_implementation_version": "3.14.6",
+        "python_version": "3.14.6",
         "python_build": [
             "main",
-            "Mar 24 2026 22:50:36"
+            "Jun 23 2026 15:18:23"
         ],
-        "release": "7.0.12-101.fc43.x86_64",
+        "release": "7.1.3-100.fc43.x86_64",
         "system": "Linux",
         "cpu": {
-            "python_version": "3.14.3.final.0 (64 bit)",
+            "python_version": "3.14.6.final.0 (64 bit)",
             "cpuinfo_version": [
                 9,
                 0,
@@ -27,14 +27,14 @@
             "arch_string_raw": "x86_64",
             "vendor_id_raw": "AuthenticAMD",
             "brand_raw": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
-            "hz_advertised_friendly": "2.0998 GHz",
-            "hz_actual_friendly": "2.0998 GHz",
+            "hz_advertised_friendly": "605.2640 MHz",
+            "hz_actual_friendly": "605.2640 MHz",
             "hz_advertised": [
-                2099774000,
+                605264000,
                 0
             ],
             "hz_actual": [
-                2099774000,
+                605264000,
                 0
             ],
             "model": 36,
@@ -243,6 +243,12 @@
             "param": null,
             "extra_info": {
                 "tool_type": "cli",
+                "tags": [
+                    "cli",
+                    "validator",
+                    "serializer",
+                    "go"
+                ],
                 "library": "cimgo",
                 "operation": "validate",
                 "dataset": "realgrid",
@@ -251,7 +257,7 @@
                 "display_name": "cimgo",
                 "color": "#2ecc71",
                 "binary": "/usr/local/bin/cimcli-linux-amd64",
-                "memory_mb": "844.8"
+                "memory_mb": "717.1"
             },
             "options": {
                 "disable_gc": false,
@@ -262,28 +268,28 @@
                 "warmup": false
             },
             "stats": {
-                "min": 9.728078074986115,
-                "max": 10.08476752002025,
-                "mean": 9.949436483206227,
-                "stddev": 0.13521079444229997,
+                "min": 4.065412725001806,
+                "max": 4.606732943007955,
+                "mean": 4.338984277803684,
+                "stddev": 0.22100324509852742,
                 "rounds": 5,
-                "median": 9.960750008001924,
-                "iqr": 0.14623869804199785,
-                "q1": 9.893581405238365,
-                "q3": 10.039820103280363,
+                "median": 4.27260510600172,
+                "iqr": 0.3522505722430651,
+                "q1": 4.189206903007289,
+                "q3": 4.541457475250354,
                 "iqr_outliers": 0,
                 "stddev_outliers": 2,
                 "outliers": "2;0",
-                "ld15iqr": 9.728078074986115,
-                "hd15iqr": 10.08476752002025,
-                "ops": 0.1005082048302848,
-                "total": 49.74718241603114,
+                "ld15iqr": 4.065412725001806,
+                "hd15iqr": 4.606732943007955,
+                "ops": 0.23046868482920205,
+                "total": 21.69492138901842,
                 "data": [
-                    9.960750008001924,
-                    10.024837631033733,
-                    9.948749181989115,
-                    10.08476752002025,
-                    9.728078074986115
+                    4.51969898599782,
+                    4.606732943007955,
+                    4.065412725001806,
+                    4.27260510600172,
+                    4.230471629009116
                 ],
                 "iterations": 1
             }
@@ -296,6 +302,12 @@
             "param": null,
             "extra_info": {
                 "tool_type": "cli",
+                "tags": [
+                    "cli",
+                    "validator",
+                    "serializer",
+                    "go"
+                ],
                 "library": "cimgo",
                 "operation": "convert",
                 "dataset": "realgrid",
@@ -304,7 +316,7 @@
                 "display_name": "cimgo",
                 "color": "#2ecc71",
                 "binary": "/usr/local/bin/cimcli-linux-amd64",
-                "memory_mb": "631.1"
+                "memory_mb": "621.7"
             },
             "options": {
                 "disable_gc": false,
@@ -315,33 +327,33 @@
                 "warmup": false
             },
             "stats": {
-                "min": 7.574689066037536,
-                "max": 8.419044113950804,
-                "mean": 8.074669089389499,
-                "stddev": 0.34592954964208156,
+                "min": 3.634422799019376,
+                "max": 3.758818797999993,
+                "mean": 3.6860497168032453,
+                "stddev": 0.04588050532602921,
                 "rounds": 5,
-                "median": 8.235184587945696,
-                "iqr": 0.5190777941897977,
-                "q1": 7.793838130033691,
-                "q3": 8.31291592422349,
+                "median": 3.676159064983949,
+                "iqr": 0.04941749473800883,
+                "q1": 3.6597644230132573,
+                "q3": 3.709181917751266,
                 "iqr_outliers": 0,
-                "stddev_outliers": 1,
-                "outliers": "1;0",
-                "ld15iqr": 7.574689066037536,
-                "hd15iqr": 8.419044113950804,
-                "ops": 0.12384408437418788,
-                "total": 40.373345446947496,
+                "stddev_outliers": 2,
+                "outliers": "2;0",
+                "ld15iqr": 3.634422799019376,
+                "hd15iqr": 3.758818797999993,
+                "ops": 0.2712931394933158,
+                "total": 18.430248584016226,
                 "data": [
-                    7.86688781803241,
-                    7.574689066037536,
-                    8.235184587945696,
-                    8.27753986098105,
-                    8.419044113950804
+                    3.634422799019376,
+                    3.676159064983949,
+                    3.668211631011218,
+                    3.758818797999993,
+                    3.6926362910016906
                 ],
                 "iterations": 1
             }
         }
     ],
-    "datetime": "2026-07-06T19:21:56.409882+00:00",
+    "datetime": "2026-07-12T07:16:30.637945+00:00",
     "version": "5.2.3"
 }

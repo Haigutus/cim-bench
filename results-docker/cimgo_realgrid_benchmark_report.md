@@ -6,21 +6,22 @@
 
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
-- **Python**: 3.14.3
-- **System**: Linux 7.0.12-101.fc43.x86_64
+- **Python**: 3.14.6
+- **System**: Linux 7.1.3-100.fc43.x86_64
 
 ## Results
 
 ### Cimgo Validate Realgrid
 
-- **Mean time**: 9.95 s
-- **Min time**: 9.73 s
-- **Max time**: 10.08 s
-- **Std dev**: 135.2 ms
+- **Mean time**: 4.34 s
+- **Min time**: 4.07 s
+- **Max time**: 4.61 s
+- **Std dev**: 221.0 ms
 - **Rounds**: 5
 
 **Metrics**:
 - Tool Type: cli
+- Tags: ['cli', 'validator', 'serializer', 'go']
 - Library: cimgo
 - Operation: validate
 - Dataset: realgrid
@@ -29,18 +30,19 @@
 - Display Name: cimgo
 - Color: #2ecc71
 - Binary: /usr/local/bin/cimcli-linux-amd64
-- Memory Mb: 844.8
+- Memory Mb: 717.1
 
 ### Cimgo Convert Realgrid
 
-- **Mean time**: 8.07 s
-- **Min time**: 7.57 s
-- **Max time**: 8.42 s
-- **Std dev**: 345.9 ms
+- **Mean time**: 3.69 s
+- **Min time**: 3.63 s
+- **Max time**: 3.76 s
+- **Std dev**: 45.9 ms
 - **Rounds**: 5
 
 **Metrics**:
 - Tool Type: cli
+- Tags: ['cli', 'validator', 'serializer', 'go']
 - Library: cimgo
 - Operation: convert
 - Dataset: realgrid
@@ -49,4 +51,4 @@
 - Display Name: cimgo
 - Color: #2ecc71
 - Binary: /usr/local/bin/cimcli-linux-amd64
-- Memory Mb: 631.1
+- Memory Mb: 621.7

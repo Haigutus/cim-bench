@@ -7,16 +7,16 @@
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
 - **Python**: 3.14.6
-- **System**: Linux 7.0.12-101.fc43.x86_64
+- **System**: Linux 7.1.3-100.fc43.x86_64
 
 ## Results
 
 ### Cimgo Validate Svedala
 
-- **Mean time**: 541.3 ms
-- **Min time**: 519.8 ms
-- **Max time**: 560.1 ms
-- **Std dev**: 15.8 ms
+- **Mean time**: 279.9 ms
+- **Min time**: 275.8 ms
+- **Max time**: 284.8 ms
+- **Std dev**: 3.3 ms
 - **Rounds**: 5
 
 **Metrics**:
@@ -30,14 +30,14 @@
 - Display Name: cimgo
 - Color: #2ecc71
 - Binary: /usr/local/bin/cimcli-linux-amd64
-- Memory Mb: 42.9
+- Memory Mb: 43.9
 
 ### Cimgo Convert Svedala
 
-- **Mean time**: 735.1 ms
-- **Min time**: 677.1 ms
-- **Max time**: 762.0 ms
-- **Std dev**: 35.7 ms
+- **Mean time**: 379.6 ms
+- **Min time**: 349.6 ms
+- **Max time**: 398.8 ms
+- **Std dev**: 21.7 ms
 - **Rounds**: 5
 
 **Metrics**:
@@ -51,4 +51,4 @@
 - Display Name: cimgo
 - Color: #2ecc71
 - Binary: /usr/local/bin/cimcli-linux-amd64
-- Memory Mb: 76.0
+- Memory Mb: 76.8
