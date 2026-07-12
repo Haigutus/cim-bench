@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    NOT CURRENTLY USED - OpenCGMES is built from source in the dockerfile.
+
+    GitHub Packages Maven registry requires authentication (personal access token
+    with read:packages scope) even for public packages. Until OpenCGMES publishes
+    versioned releases to Maven Central, building from source is simpler.
+
+    To use this pom.xml instead, configure ~/.m2/settings.xml with GitHub credentials
+    and update docker/tools/opencgmes.dockerfile to use maven dependency resolution
+    instead of git clone + mvn package.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.cimbench</groupId>
+    <artifactId>opencgmes-benchmark</artifactId>
+    <version>0.1.0</version>
+    <packaging>jar</packaging>
+
+    <name>OpenCGMES Benchmark Dependencies</name>
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>github-opencgmes</id>
+            <url>https://maven.pkg.github.com/SOPTIM/OpenCGMES</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>de.soptim.opencgmes</groupId>
+            <artifactId>cimxml</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.16</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.8.1</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
