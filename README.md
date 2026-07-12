@@ -28,6 +28,7 @@ CGMES (Common Grid Model Exchange Standard) XML/RDF files, each in its own conta
 - **maplib** exports N-Quads dramatically faster than RDF/XML; the benchmark uses RDF/XML for consistency with other tools.
 - **libcimpp** is only benchmarked on RealGrid (CGMES 2.4.15) — its CGMES 3.0 build fails on Svedala's European extensions.
 - **CLI-only tools** (🖥️) are benchmarked as subprocesses (full process lifecycle per run) and are reported as a **separate family**, never mixed into the library charts.
+- **All available profiles must load** (merged or as separate models) for a tool's benchmarks to count — partial loads are skipped (`IncompleteLoadError` → pytest skip), so every load number covers the same data.
 
 ## Parsers/Serializers
 
@@ -39,7 +40,7 @@ Tool versions and performance live in the [generated results](https://haigutus.g
 | ✅ | **pypowsybl** | Python | PowSyBl wrapper (network import/export) | Native network model (Java) | CGMES 2.4.15/3.0 import/export | [powsybl/pypowsybl](https://github.com/powsybl/pypowsybl) | Rich analysis-ready network model — power flow, TSO applications |
 | ✅ | **GridCal/VeraGrid** | Python | Power systems analysis with UI | Custom CGMES parser | CGMES 2.4.15/3.0 import | [SanPen/GridCal](https://github.com/SanPen/GridCal) | Fastest queries (O(1) object access), full circuit model — query-intensive workflows |
 | ✅ | **RDFlib** | Python | Generic RDF parser/triple store | Oxigraph (via oxrdflib) | None (generic) | [RDFLib/rdflib](https://github.com/RDFLib/rdflib) | Standard RDF library, flexible SPARQL — baseline for speed/memory comparison |
-| ✅ | **CIMantic Graphs** | Python | In-memory labeled property graph | Oxigraph + typed objects | CIM15–18, custom profiles | [PNNL-CIM-Tools/CIM-Graph](https://github.com/PNNL-CIM-Tools/CIM-Graph) | Sub-microsecond queries, modern typed API — research, CIM data exploration |
+| ⚠️ | **CIMantic Graphs** | Python | In-memory labeled property graph | Oxigraph + typed objects | CIM15–18, custom profiles | [PNNL-CIM-Tools/CIM-Graph](https://github.com/PNNL-CIM-Tools/CIM-Graph) | Sub-microsecond queries, modern typed API; **benchmarks currently skipped** — v0.4.3 fails to load the SSH/TP profiles of both test datasets (AttributeError on stubbed objects), so numbers would cover partial loads only |
 | ✅ | **Apache Jena** | Java (JPype) | RDF framework + CIMXML parser | In-memory RDF triples | Generic RDF | [apache/jena](https://github.com/apache/jena) | Generic RDF, lenient UUID handling — semantic web applications |
 | ✅ | **OpenCGMES** | Java (JPype) | Suite for CGMES / CIM RDF parser | Apache Jena (optimized) | CGMES / IEC61970-552 | [SOPTIM/OpenCGMES](https://github.com/SOPTIM/OpenCGMES) | Fast loading, CGMES optimizations, UUID normalization — production systems |
 | ✅ | **PowSyBL CGMES** | Java (JPype) | CGMES model with triplestore | RDF4J triplestore | CGMES 2.4.15/3.0 | [powsybl/powsybl-core](https://github.com/powsybl/powsybl-core) | Fast SPARQL queries, robust triplestore — CGMES analysis, PowSyBl integration |

@@ -21,6 +21,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "parsers"))
 
 from datasets import DATASETS, get_size_mb
+from parser_adapter import IncompleteLoadError
 
 
 def get_memory_mb():
@@ -54,7 +55,10 @@ def create_benchmarks(adapter, dataset_key, parser_name, dataset_name):
     # Loaded object fixture
     @pytest.fixture(scope="module")
     def loaded_object():
-        obj = adapter.load(dataset_key)
+        try:
+            obj = adapter.load(dataset_key)
+        except IncompleteLoadError as e:
+            pytest.skip(f"tool cannot load all profiles: {e}")
         yield obj
         # Cleanup if adapter has cleanup method
         if hasattr(adapter, 'cleanup'):
@@ -63,7 +67,10 @@ def create_benchmarks(adapter, dataset_key, parser_name, dataset_name):
     # Load test
     def test_load(benchmark, memory_baseline):
         """Benchmark loading dataset."""
-        loaded_obj = benchmark(adapter.load, dataset_key)
+        try:
+            loaded_obj = benchmark(adapter.load, dataset_key)
+        except IncompleteLoadError as e:
+            pytest.skip(f"tool cannot load all profiles: {e}")
 
         memory_delta = get_memory_mb() - memory_baseline
         metrics = adapter.get_load_metrics(loaded_obj, memory_delta)
