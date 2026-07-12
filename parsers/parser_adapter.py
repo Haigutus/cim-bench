@@ -5,6 +5,15 @@ from typing import Any, Dict
 from pathlib import Path
 
 
+class IncompleteLoadError(Exception):
+    """Raised when a tool cannot load every profile file of a dataset.
+
+    Benchmarks require all available CGMES profiles to be loaded (merged or
+    as separate models). The benchmark template turns this into a pytest
+    skip so partial loads never produce misleading numbers.
+    """
+
+
 class ParserAdapter(ABC):
     """
     Adapter interface that each parser must implement for benchmarking.

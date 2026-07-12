@@ -294,6 +294,7 @@ class CimpyAdapter(ParserAdapter):
 **CRITICAL: Always load ALL dataset files**
 - Load every file in the dataset, not just selected profiles
 - Benchmarks measure real-world loading performance, which includes all CGMES profiles
+- Never swallow per-file load errors: if the tool cannot load every profile (merged or as separate models), raise `IncompleteLoadError` (from `parser_adapter`) listing the failures — the benchmark template turns it into a pytest skip so partial loads never produce misleading numbers
 - If the tool doesn't support merging multiple files into a single graph:
   - Load each file into separate graphs/models
   - Store all loaded graphs (e.g., in a dict: `self.models = {}`)

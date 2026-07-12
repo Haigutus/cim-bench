@@ -14,7 +14,7 @@ from dataclasses import fields
 
 from cimgraph.databases import XMLFile
 from cimgraph.models import NodeBreakerModel
-from parser_adapter import ParserAdapter
+from parser_adapter import IncompleteLoadError, ParserAdapter
 from datasets import DATASETS
 
 
@@ -85,6 +85,7 @@ class CIMGraphAdapter(ParserAdapter):
 
         # Load all files, accumulating into a shared graph
         temp_graph = {}
+        failed = {}
         for profile_name, filename in sorted_files:
             try:
                 xml_file = XMLFile(filename)
@@ -92,17 +93,18 @@ class CIMGraphAdapter(ParserAdapter):
                 self.models[profile_name] = model
                 temp_graph = model.graph  # Accumulate for next file
             except Exception as e:
-                # Some profiles may fail if they reference missing equipment
-                # This is expected for datasets with incomplete profiles
-                pass
+                failed[profile_name] = f"{type(e).__name__}: {e}"
+
+        # Benchmarks require ALL profiles loaded - partial loads give misleading numbers
+        # (cim-graph 0.4.3 fails on SSH/TP updates of objects it stubbed as dicts)
+        if failed:
+            raise IncompleteLoadError(
+                f"CIM-Graph loaded {len(self.models)}/{len(sorted_files)} profiles; "
+                f"failed: {failed}")
 
         # Use the accumulated network (EQ profile with merged data)
-        if self.models:
-            # Prefer EQ model if available
-            eq_key = next((k for k in self.models.keys() if "EQ" in k.upper()), None)
-            self.network = self.models[eq_key] if eq_key else list(self.models.values())[0]
-        else:
-            raise ValueError("No models could be loaded")
+        eq_key = next((k for k in self.models.keys() if "EQ" in k.upper()), None)
+        self.network = self.models[eq_key] if eq_key else list(self.models.values())[0]
 
         # Cleanup if ZIP was used
         if temp_dir:
