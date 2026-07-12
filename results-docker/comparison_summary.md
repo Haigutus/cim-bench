@@ -4,7 +4,7 @@
 
 - **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
 - **Cores**: 24
-- **Python**: 3.14.6
+- **Python**: 3.13.14
 - **System**: Linux 7.1.3-100.fc43.x86_64
 
 ## Performance Comparison
@@ -13,8 +13,6 @@
 
 | Library | Load Time (mean) | Memory (MB) | Elements | Notes |
 |---------|------------------|-------------|----------|-------|
-| cimgraph (Realgrid) | 19.56 s | 2615.6 MB | 7561 lines, 1347 gen, 6687 loads, 4875 subs | Dataset: 86.5 MB |
-| cimgraph (Svedala) | 1.51 s | 179.1 MB | 97 lines, 39 gen, 73 loads, 56 subs | Dataset: 7.3 MB |
 | jena (Realgrid) | 1.60 s | 2208.8 MB | 7561 lines, 1347 gen, 6687 loads, 4875 subs | Dataset: 86.5 MB |
 | jena (Svedala) | 131.7 ms | 387.1 MB | 97 lines, 39 gen, 73 loads, 56 subs | Dataset: 7.3 MB |
 | libcimpp (Realgrid) | 19.53 s | 133.8 MB | 7561 lines, 1347 gen, 6687 loads, 4875 subs | Dataset: 86.5 MB |
@@ -35,11 +33,11 @@
 
 ### Query Performance
 
-| Query Type | cimgraph (Realgrid) | cimgraph (Svedala) | jena (Realgrid) | jena (Svedala) | libcimpp (Realgrid) | maplib (Realgrid) | maplib (Svedala) | opencgmes (Realgrid) | opencgmes (Svedala) | powsybl_cgmes (Realgrid) | powsybl_cgmes (Svedala) | pypowsybl (Realgrid) | pypowsybl (Svedala) | rdflib (Realgrid) | rdflib (Svedala) | triplets (Realgrid) | triplets (Svedala) | veragrid (Realgrid) | veragrid (Svedala) |
-|------------|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| get_generators | 0.1 μs | 0.1 μs | 506.0 μs | 100.3 μs | 5.4 ms | 485.6 μs | 351.1 μs | 775.6 μs | 96.9 μs | 254.4 μs | 60.2 μs | 2.2 ms | 265.9 μs | 416.1 μs | 57.4 μs | 7.4 ms | 1.5 ms | 0.1 μs | 0.1 μs |
-| get_lines | 0.1 μs | 0.1 μs | 3.5 ms | 280.0 μs | 5.4 ms | 618.4 μs | 363.6 μs | 3.7 ms | 290.5 μs | 1.1 ms | 149.1 μs | 33.2 ms | 292.9 μs | 1.2 ms | 61.2 μs | 12.6 ms | 1.7 ms | 0.1 μs | 0.0 μs |
-| get_loads | 0.2 μs | 0.2 μs | 1.9 ms | 268.9 μs | 12.8 ms | 1.2 ms | 897.6 μs | 2.2 ms | 217.8 μs | 1.1 ms | 173.7 μs | 16.1 ms | 194.2 μs | 2.1 ms | 156.3 μs | 11.2 ms | 1.7 ms | 0.1 μs | 0.1 μs |
-| get_substations | 0.1 μs | 0.1 μs | 866.7 μs | 57.6 μs | 5.4 ms | 524.3 μs | 385.3 μs | 812.7 μs | 84.9 μs | 304.6 μs | 45.7 μs | 3.5 ms | 120.9 μs | 707.5 μs | 54.1 μs | 6.4 ms | 1.0 ms | 0.1 μs | 0.1 μs |
+| Query Type | jena (Realgrid) | jena (Svedala) | libcimpp (Realgrid) | maplib (Realgrid) | maplib (Svedala) | opencgmes (Realgrid) | opencgmes (Svedala) | powsybl_cgmes (Realgrid) | powsybl_cgmes (Svedala) | pypowsybl (Realgrid) | pypowsybl (Svedala) | rdflib (Realgrid) | rdflib (Svedala) | triplets (Realgrid) | triplets (Svedala) | veragrid (Realgrid) | veragrid (Svedala) |
+|------------|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| get_generators | 506.0 μs | 100.3 μs | 5.4 ms | 485.6 μs | 351.1 μs | 775.6 μs | 96.9 μs | 254.4 μs | 60.2 μs | 2.2 ms | 265.9 μs | 416.1 μs | 57.4 μs | 7.4 ms | 1.5 ms | 0.1 μs | 0.1 μs |
+| get_lines | 3.5 ms | 280.0 μs | 5.4 ms | 618.4 μs | 363.6 μs | 3.7 ms | 290.5 μs | 1.1 ms | 149.1 μs | 33.2 ms | 292.9 μs | 1.2 ms | 61.2 μs | 12.6 ms | 1.7 ms | 0.1 μs | 0.0 μs |
+| get_loads | 1.9 ms | 268.9 μs | 12.8 ms | 1.2 ms | 897.6 μs | 2.2 ms | 217.8 μs | 1.1 ms | 173.7 μs | 16.1 ms | 194.2 μs | 2.1 ms | 156.3 μs | 11.2 ms | 1.7 ms | 0.1 μs | 0.1 μs |
+| get_substations | 866.7 μs | 57.6 μs | 5.4 ms | 524.3 μs | 385.3 μs | 812.7 μs | 84.9 μs | 304.6 μs | 45.7 μs | 3.5 ms | 120.9 μs | 707.5 μs | 54.1 μs | 6.4 ms | 1.0 ms | 0.1 μs | 0.1 μs |
 
 Per-tool details: see the `*_benchmark_report.md` files in this directory.
