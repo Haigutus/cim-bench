@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.cimbench</groupId>
+    <artifactId>graphdb-benchmark</artifactId>
+    <version>0.1.0</version>
+    <packaging>jar</packaging>
+
+    <name>GraphDB Benchmark Dependencies</name>
+    <description>Maven dependencies for embedded Ontotext GraphDB benchmarking</description>
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <graphdb.version>10.8.14</graphdb.version>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>ontotext-public</id>
+            <url>https://maven.ontotext.com/repository/owlim-releases</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!-- GraphDB runtime for embedded use (includes patched RDF4J) -->
+        <dependency>
+            <groupId>com.ontotext.graphdb</groupId>
+            <artifactId>graphdb-runtime</artifactId>
+            <version>${graphdb.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.8.1</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                            <includeScope>runtime</includeScope>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

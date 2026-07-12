@@ -54,7 +54,7 @@ Tool versions and performance live in the [generated results](https://haigutus.g
 | ❌ | **pycgmes** | Python | Dataclasses + RDF schema + SHACL | Dataclass mapping | CGMES 3.0+ | [alliander-opensource/pycgmes](https://github.com/alliander-opensource/pycgmes) | No file import capability - dataclass definitions only |
 | 📋 | **CIMverter** | Java/C++ | Convert CIM RDF to Modelica | Partial | CGMES compatible | [cim-iec/cimverter](https://github.com/cim-iec/cimverter) | Round-trip fidelity testing |
 | 📋 | **CIMDraw** | Web/JS | View/edit CGMES node-breaker models | Indirect | ENTSO-E CGMES profile | [danielePala/CIMDraw](https://github.com/danielePala/CIMDraw) | Visual completeness check |
-| 📋 | **GraphDB** | Java | Graph database with RDF support | Excellent | Generic RDF | [Ontotext GraphDB](https://www.ontotext.com/products/graphdb/) | Enterprise SPARQL database |
+| ⚠️ | **GraphDB** | Java (JPype) | Enterprise RDF database with SPARQL | Embedded via RDF4J API | Generic RDF | [Ontotext GraphDB](https://www.ontotext.com/products/graphdb/) | Benchmarked embedded (graphdb-runtime 10.8, bundled free Lite license, **1 CPU core**) on the `graphdb` branch; persistent store — load includes disk writes; 11.x requires a purchased license even for the server, so 10.8 is the last free-benchmarkable series |
 | 📋 | **CIMbion** | TBD | CIM/CGMES data management | TBD | CGMES | [Veracity Store](https://store.veracity.com/cimbion) | Closed source, commercial |
 | 📋 | **CIMdesk** | Various | CIM data management | TBD | CGMES | TBD | To be investigated |
 
