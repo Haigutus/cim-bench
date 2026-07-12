@@ -125,3 +125,13 @@ services:
     image: cim-bench/cimoxide:latest
     command: pytest cimoxide_realgrid_benchmark.py --benchmark-only --benchmark-json=/output/cimoxide_realgrid_benchmark.json
 
+  pocket-rdf-svedala:
+    <<: *common
+    image: cim-bench/pocket-rdf:latest
+    command: pytest pocket_rdf_svedala_benchmark.py --benchmark-only --benchmark-json=/output/pocket_rdf_svedala_benchmark.json
+
+  pocket-rdf-realgrid:
+    <<: *common
+    image: cim-bench/pocket-rdf:latest
+    command: pytest pocket_rdf_realgrid_benchmark.py --benchmark-only --benchmark-json=/output/pocket_rdf_realgrid_benchmark.json
+
