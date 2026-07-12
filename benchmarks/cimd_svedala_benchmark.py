@@ -3,6 +3,15 @@
 import sys
 from pathlib import Path
 
+import pytest
+
+# Benchmarks require ALL CGMES profiles to be loaded. cimd v0.4.0 takes a
+# single file per invocation (multiple args rejected; a multi-profile ZIP
+# reads only the EQ profile - verified via FullModel count) and `convert`
+# has no SV input, so no cimd operation can cover the full dataset.
+pytest.skip("cimd cannot load all CGMES profiles in one invocation",
+            allow_module_level=True)
+
 sys.path.insert(0, str(Path(__file__).parent.parent / "parsers"))
 
 from cimd_adapter import COLOR, DISPLAY_NAME, convert_cmd, get_cimd_bin, types_cmd
