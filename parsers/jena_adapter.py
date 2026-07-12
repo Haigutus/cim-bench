@@ -16,7 +16,7 @@ from pathlib import Path
 import jpype
 import jpype.imports
 from jpype.types import *
-from parser_adapter import ParserAdapter
+from parser_adapter import IncompleteLoadError, ParserAdapter
 from datasets import DATASETS
 
 
@@ -85,9 +85,9 @@ class JenaAdapter(ParserAdapter):
             zipfile.ZipFile(dataset["ZIP"]).extractall(tmp)
             files = Path(tmp).rglob("*.xml")
 
-        # Load all files into separate models
-        # Some datasets have data quality issues (invalid UUIDs, etc.)
-        # Continue loading even if some files fail, as long as EQ loads successfully
+        # Load all files into separate models (lax mode tolerates the datasets'
+        # invalid UUIDs); benchmarks require ALL profiles to load
+        failed = {}
         for xml_file in files:
             try:
                 model = ModelFactory.createDefaultModel()
@@ -101,13 +101,15 @@ class JenaAdapter(ParserAdapter):
 
                 self.models[xml_file.stem] = model
             except Exception as e:
-                # Some profiles may fail due to data quality issues (invalid UUIDs, etc.)
-                # This is expected for datasets like realgrid with non-EQ files containing invalid UUIDs
-                pass
+                failed[xml_file.stem] = f"{type(e).__name__}: {e}"
 
         # Cleanup if ZIP was used
         if temp_dir:
             temp_dir.cleanup()
+
+        if failed:
+            raise IncompleteLoadError(
+                f"Jena loaded {len(self.models)} profiles; failed: {failed}")
 
         # Select EQ model for queries
         eq_key = next((k for k in self.models.keys() if "EQ" in k), None)
