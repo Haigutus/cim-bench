@@ -188,10 +188,17 @@ class PowsyblCgmesAdapter(ParserAdapter):
         }
 
     def get_lines_count(self, loaded_obj):
-        """Get all lines (ACLineSegments) in the network."""
+        """Get all lines via PowSyBl's acLineSegments query (full row retrieval).
+
+        Raw template body: PowSyBl's triplestore injects its own prefix set
+        (including the version-correct cim:) at query time - adding our own
+        PREFIX raises MalformedQueryException (duplicate prefix).
+        """
+        from powsybl_queries import ACLINE_SEGMENTS
         if loaded_obj.triplestore is None:
             raise ValueError("No data loaded")
-        return loaded_obj._count_instances("ACLineSegment")
+        result = loaded_obj.triplestore.query(ACLINE_SEGMENTS)
+        return len(result) if result else 0
 
     def get_generators_count(self, loaded_obj):
         """Get all generators (SynchronousMachines) in the network."""

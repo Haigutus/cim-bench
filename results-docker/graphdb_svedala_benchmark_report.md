@@ -13,14 +13,14 @@
 
 ### Graphdb Load Svedala
 
-- **Mean time**: 818.4 ms
-- **Min time**: 734.8 ms
-- **Max time**: 972.4 ms
-- **Std dev**: 92.9 ms
+- **Mean time**: 712.3 ms
+- **Min time**: 659.1 ms
+- **Max time**: 875.7 ms
+- **Std dev**: 91.7 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 1764.0
+- Memory Mb: 1344.3
 - Triples: 84976
 - Lines: 97
 - Generators: 39
@@ -39,11 +39,11 @@
 
 ### Graphdb Get Lines
 
-- **Mean time**: 355.3 μs
-- **Min time**: 169.1 μs
-- **Max time**: 1.8 ms
-- **Std dev**: 213.7 μs
-- **Rounds**: 442
+- **Mean time**: 5.9 ms
+- **Min time**: 3.7 ms
+- **Max time**: 53.3 ms
+- **Std dev**: 5.2 ms
+- **Rounds**: 99
 
 **Metrics**:
 - Line Count: 97
@@ -55,11 +55,11 @@
 
 ### Graphdb Get Generators
 
-- **Mean time**: 116.7 μs
+- **Mean time**: 137.9 μs
 - **Min time**: 62.7 μs
-- **Max time**: 24.6 ms
-- **Std dev**: 489.1 μs
-- **Rounds**: 2559
+- **Max time**: 11.3 ms
+- **Std dev**: 343.4 μs
+- **Rounds**: 1155
 
 **Metrics**:
 - Generator Count: 39
@@ -71,11 +71,11 @@
 
 ### Graphdb Get Loads
 
-- **Mean time**: 205.7 μs
-- **Min time**: 138.8 μs
-- **Max time**: 1.0 ms
-- **Std dev**: 53.4 μs
-- **Rounds**: 1425
+- **Mean time**: 288.6 μs
+- **Min time**: 140.0 μs
+- **Max time**: 65.3 ms
+- **Std dev**: 1.9 ms
+- **Rounds**: 1145
 
 **Metrics**:
 - Load Count: 73
@@ -87,11 +87,11 @@
 
 ### Graphdb Get Substations
 
-- **Mean time**: 80.5 μs
-- **Min time**: 43.8 μs
-- **Max time**: 49.1 ms
-- **Std dev**: 803.6 μs
-- **Rounds**: 4975
+- **Mean time**: 82.4 μs
+- **Min time**: 36.9 μs
+- **Max time**: 60.0 ms
+- **Std dev**: 1.1 ms
+- **Rounds**: 5347
 
 **Metrics**:
 - Substation Count: 57
@@ -103,10 +103,10 @@
 
 ### Graphdb Export Svedala
 
-- **Mean time**: 187.8 ms
-- **Min time**: 180.3 ms
-- **Max time**: 193.8 ms
-- **Std dev**: 5.2 ms
+- **Mean time**: 191.8 ms
+- **Min time**: 178.8 ms
+- **Max time**: 221.8 ms
+- **Std dev**: 17.1 ms
 - **Rounds**: 5
 
 **Metrics**:

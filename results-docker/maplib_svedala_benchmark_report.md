@@ -13,14 +13,14 @@
 
 ### Maplib Load Svedala
 
-- **Mean time**: 223.5 ms
-- **Min time**: 201.9 ms
-- **Max time**: 243.7 ms
-- **Std dev**: 14.8 ms
+- **Mean time**: 218.0 ms
+- **Min time**: 210.4 ms
+- **Max time**: 226.5 ms
+- **Std dev**: 5.9 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 139.6
+- Memory Mb: 140.6
 - Lines: 97
 - Generators: 39
 - Loads: 73
@@ -37,11 +37,11 @@
 
 ### Maplib Get Lines
 
-- **Mean time**: 363.6 μs
-- **Min time**: 242.5 μs
-- **Max time**: 1.5 ms
-- **Std dev**: 78.6 μs
-- **Rounds**: 1277
+- **Mean time**: 14.6 ms
+- **Min time**: 11.1 ms
+- **Max time**: 16.7 ms
+- **Std dev**: 974.8 μs
+- **Rounds**: 71
 
 **Metrics**:
 - Line Count: 97
@@ -53,11 +53,11 @@
 
 ### Maplib Get Generators
 
-- **Mean time**: 351.1 μs
-- **Min time**: 250.9 μs
-- **Max time**: 1.1 ms
-- **Std dev**: 65.0 μs
-- **Rounds**: 2470
+- **Mean time**: 331.3 μs
+- **Min time**: 243.2 μs
+- **Max time**: 800.1 μs
+- **Std dev**: 42.6 μs
+- **Rounds**: 1474
 
 **Metrics**:
 - Generator Count: 39
@@ -69,11 +69,11 @@
 
 ### Maplib Get Loads
 
-- **Mean time**: 897.6 μs
-- **Min time**: 693.4 μs
-- **Max time**: 3.7 ms
-- **Std dev**: 180.9 μs
-- **Rounds**: 729
+- **Mean time**: 869.9 μs
+- **Min time**: 677.1 μs
+- **Max time**: 1.8 ms
+- **Std dev**: 138.4 μs
+- **Rounds**: 1042
 
 **Metrics**:
 - Load Count: 73
@@ -85,11 +85,11 @@
 
 ### Maplib Get Substations
 
-- **Mean time**: 385.3 μs
-- **Min time**: 268.4 μs
+- **Mean time**: 355.0 μs
+- **Min time**: 258.1 μs
 - **Max time**: 1.2 ms
-- **Std dev**: 77.7 μs
-- **Rounds**: 1619
+- **Std dev**: 58.0 μs
+- **Rounds**: 2462
 
 **Metrics**:
 - Substation Count: 57
@@ -101,10 +101,10 @@
 
 ### Maplib Export Svedala
 
-- **Mean time**: 1.29 s
+- **Mean time**: 1.28 s
 - **Min time**: 1.27 s
-- **Max time**: 1.32 s
-- **Std dev**: 21.0 ms
+- **Max time**: 1.31 s
+- **Std dev**: 17.1 ms
 - **Rounds**: 5
 
 **Metrics**:

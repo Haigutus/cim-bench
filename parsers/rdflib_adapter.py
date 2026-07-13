@@ -123,10 +123,12 @@ class RDFlibAdapter(ParserAdapter):
         }
 
     def get_lines_count(self, loaded_obj):
-        """Get all lines (ACLineSegments) in the network."""
+        """Get all lines via PowSyBl's acLineSegments query (full row retrieval)."""
+        from powsybl_queries import acline_segments_query
         if loaded_obj.libgraph is None:
             raise ValueError("No data loaded")
-        return loaded_obj._count_instances("ACLineSegment")
+        query = acline_segments_query(loaded_obj.cim_namespace)
+        return len(list(loaded_obj.libgraph.query(query)))
 
     def get_generators_count(self, loaded_obj):
         """Get all generators (SynchronousMachines) in the network."""

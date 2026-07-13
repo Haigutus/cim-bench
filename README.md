@@ -19,16 +19,21 @@ CGMES (Common Grid Model Exchange Standard) XML/RDF files, each in its own conta
 
 ### Measurement notes
 
-> **⚠️ Query performance is not directly comparable across parsers.** Some parsers
-> (triplets) retrieve **all element data with parameters**, while others use SPARQL
-> `COUNT()` queries that only return **element counts**. Retrieving full data is
-> 10-100x slower but provides complete element information.
+> **Query benchmarks retrieve four sets of network data** — lines, generators,
+> loads and substations. Tools with a **native power-system model** (typed
+> objects or DataFrames) return whatever they define for those objects; tools
+> **without one** — triplestores and graph databases, tagged `sparql` — run
+> [PowSyBl's reference network-data queries](parsers/powsybl_queries.py)
+> (from powsybl-core, namespace-bound per CGMES version), i.e. the same
+> retrieval a downstream power-flow tool would issue. The two groups measure
+> different access paths, so compare within a group, not across.
 
 - **pypowsybl** converts some substations to voltage levels when connected by transformers, so it reports fewer substations on RealGrid.
 - **maplib** exports N-Quads dramatically faster than RDF/XML; the benchmark uses RDF/XML for consistency with other tools.
 - **libcimpp** is only benchmarked on RealGrid (CGMES 2.4.15) — its CGMES 3.0 build fails on Svedala's European extensions.
 - **CLI-only tools** (🖥️) are benchmarked as subprocesses (full process lifecycle per run) and are reported as a **separate family**, never mixed into the library charts.
 - **All available profiles must load** (merged or as separate models) for a tool's benchmarks to count — partial loads are skipped (`IncompleteLoadError` → pytest skip), so every load number covers the same data.
+- **PowSyBl reference queries currently cover lines** (`acLineSegments`); generators, loads and substations follow in [#12](https://github.com/Haigutus/cim-bench/issues/12).
 
 ## Parsers/Serializers
 

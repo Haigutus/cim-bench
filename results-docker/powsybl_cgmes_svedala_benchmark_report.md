@@ -13,14 +13,14 @@
 
 ### Powsybl Cgmes Load Svedala
 
-- **Mean time**: 240.6 ms
-- **Min time**: 222.3 ms
-- **Max time**: 274.8 ms
-- **Std dev**: 20.6 ms
+- **Mean time**: 252.8 ms
+- **Min time**: 224.6 ms
+- **Max time**: 326.0 ms
+- **Std dev**: 41.7 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 445.2
+- Memory Mb: 467.6
 - Triples: 95499
 - Lines: 97
 - Generators: 39
@@ -39,11 +39,11 @@
 
 ### Powsybl Cgmes Get Lines
 
-- **Mean time**: 149.1 μs
-- **Min time**: 59.0 μs
-- **Max time**: 1.5 ms
-- **Std dev**: 136.0 μs
-- **Rounds**: 1393
+- **Mean time**: 8.3 ms
+- **Min time**: 4.4 ms
+- **Max time**: 32.9 ms
+- **Std dev**: 4.9 ms
+- **Rounds**: 44
 
 **Metrics**:
 - Line Count: 97
@@ -55,11 +55,11 @@
 
 ### Powsybl Cgmes Get Generators
 
-- **Mean time**: 60.2 μs
-- **Min time**: 42.1 μs
-- **Max time**: 571.8 μs
-- **Std dev**: 26.1 μs
-- **Rounds**: 3968
+- **Mean time**: 110.1 μs
+- **Min time**: 51.9 μs
+- **Max time**: 2.6 ms
+- **Std dev**: 105.3 μs
+- **Rounds**: 1587
 
 **Metrics**:
 - Generator Count: 39
@@ -71,11 +71,11 @@
 
 ### Powsybl Cgmes Get Loads
 
-- **Mean time**: 173.7 μs
-- **Min time**: 141.4 μs
-- **Max time**: 1.3 ms
-- **Std dev**: 46.2 μs
-- **Rounds**: 1125
+- **Mean time**: 161.8 μs
+- **Min time**: 117.5 μs
+- **Max time**: 1.1 ms
+- **Std dev**: 61.3 μs
+- **Rounds**: 1651
 
 **Metrics**:
 - Load Count: 73
@@ -87,11 +87,11 @@
 
 ### Powsybl Cgmes Get Substations
 
-- **Mean time**: 45.7 μs
-- **Min time**: 28.3 μs
-- **Max time**: 148.5 μs
-- **Std dev**: 10.6 μs
-- **Rounds**: 2847
+- **Mean time**: 74.5 μs
+- **Min time**: 31.4 μs
+- **Max time**: 59.7 ms
+- **Std dev**: 1.3 ms
+- **Rounds**: 2388
 
 **Metrics**:
 - Substation Count: 57
@@ -103,10 +103,10 @@
 
 ### Powsybl Cgmes Export Svedala
 
-- **Mean time**: 150.5 ms
-- **Min time**: 130.3 ms
-- **Max time**: 175.3 ms
-- **Std dev**: 17.6 ms
+- **Mean time**: 168.5 ms
+- **Min time**: 132.9 ms
+- **Max time**: 215.9 ms
+- **Std dev**: 34.6 ms
 - **Rounds**: 5
 
 **Metrics**:
