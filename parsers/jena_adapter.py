@@ -193,10 +193,20 @@ class JenaAdapter(ParserAdapter):
         }
 
     def get_lines_count(self, loaded_obj):
-        """Get all lines (ACLineSegments) in the network."""
+        """Get all lines via PowSyBl's acLineSegments query (full row retrieval)."""
+        from powsybl_queries import acline_segments_query
+        from org.apache.jena.query import QueryFactory, QueryExecutionFactory
         if loaded_obj.model is None:
             raise ValueError("No data loaded")
-        return loaded_obj._count_instances("ACLineSegment")
+
+        query = QueryFactory.create(acline_segments_query(loaded_obj.cim_namespace))
+        count = 0
+        with QueryExecutionFactory.create(query, loaded_obj.model) as qexec:
+            results = qexec.execSelect()
+            while results.hasNext():
+                results.next()
+                count += 1
+        return count
 
     def get_generators_count(self, loaded_obj):
         """Get all generators (SynchronousMachines) in the network."""

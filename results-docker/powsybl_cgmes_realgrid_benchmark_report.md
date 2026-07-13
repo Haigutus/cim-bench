@@ -13,14 +13,14 @@
 
 ### Powsybl Cgmes Load Realgrid
 
-- **Mean time**: 1.81 s
-- **Min time**: 1.73 s
-- **Max time**: 1.89 s
-- **Std dev**: 67.8 ms
+- **Mean time**: 1.77 s
+- **Min time**: 1.72 s
+- **Max time**: 1.80 s
+- **Std dev**: 28.4 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 3739.9
+- Memory Mb: 2721.5
 - Triples: 1146183
 - Lines: 7561
 - Generators: 1347
@@ -39,11 +39,11 @@
 
 ### Powsybl Cgmes Get Lines
 
-- **Mean time**: 1.1 ms
-- **Min time**: 739.0 μs
-- **Max time**: 3.5 ms
-- **Std dev**: 399.7 μs
-- **Rounds**: 274
+- **Mean time**: 347.4 ms
+- **Min time**: 306.8 ms
+- **Max time**: 419.1 ms
+- **Std dev**: 46.2 ms
+- **Rounds**: 5
 
 **Metrics**:
 - Line Count: 7561
@@ -55,11 +55,11 @@
 
 ### Powsybl Cgmes Get Generators
 
-- **Mean time**: 254.4 μs
-- **Min time**: 197.3 μs
-- **Max time**: 676.9 μs
-- **Std dev**: 67.6 μs
-- **Rounds**: 1109
+- **Mean time**: 288.3 μs
+- **Min time**: 165.4 μs
+- **Max time**: 1.1 ms
+- **Std dev**: 110.0 μs
+- **Rounds**: 599
 
 **Metrics**:
 - Generator Count: 1347
@@ -71,11 +71,11 @@
 
 ### Powsybl Cgmes Get Loads
 
-- **Mean time**: 1.1 ms
-- **Min time**: 775.3 μs
-- **Max time**: 2.6 ms
-- **Std dev**: 249.7 μs
-- **Rounds**: 238
+- **Mean time**: 983.1 μs
+- **Min time**: 879.8 μs
+- **Max time**: 2.1 ms
+- **Std dev**: 111.3 μs
+- **Rounds**: 231
 
 **Metrics**:
 - Load Count: 6687
@@ -87,11 +87,11 @@
 
 ### Powsybl Cgmes Get Substations
 
-- **Mean time**: 304.6 μs
-- **Min time**: 272.7 μs
-- **Max time**: 655.6 μs
-- **Std dev**: 53.0 μs
-- **Rounds**: 661
+- **Mean time**: 330.9 μs
+- **Min time**: 287.0 μs
+- **Max time**: 1.6 ms
+- **Std dev**: 80.5 μs
+- **Rounds**: 682
 
 **Metrics**:
 - Substation Count: 4875
@@ -103,10 +103,10 @@
 
 ### Powsybl Cgmes Export Realgrid
 
-- **Mean time**: 2.13 s
-- **Min time**: 2.04 s
-- **Max time**: 2.24 s
-- **Std dev**: 92.0 ms
+- **Mean time**: 2.17 s
+- **Min time**: 2.09 s
+- **Max time**: 2.34 s
+- **Std dev**: 99.5 ms
 - **Rounds**: 5
 
 **Metrics**:

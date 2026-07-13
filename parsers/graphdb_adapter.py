@@ -198,7 +198,16 @@ class GraphDBAdapter(ParserAdapter):
         }
 
     def get_lines_count(self, loaded_obj):
-        return loaded_obj._count_instances("ACLineSegment")
+        """Get all lines via PowSyBl's acLineSegments query (full row retrieval)."""
+        from powsybl_queries import acline_segments_query
+        query = acline_segments_query(loaded_obj.cim_namespace)
+        result = loaded_obj.connection.prepareTupleQuery(query).evaluate()
+        count = 0
+        while result.hasNext():
+            result.next()
+            count += 1
+        result.close()
+        return count
 
     def get_generators_count(self, loaded_obj):
         return loaded_obj._count_instances("SynchronousMachine")

@@ -29,6 +29,7 @@ CGMES (Common Grid Model Exchange Standard) XML/RDF files, each in its own conta
 - **libcimpp** is only benchmarked on RealGrid (CGMES 2.4.15) — its CGMES 3.0 build fails on Svedala's European extensions.
 - **CLI-only tools** (🖥️) are benchmarked as subprocesses (full process lifecycle per run) and are reported as a **separate family**, never mixed into the library charts.
 - **All available profiles must load** (merged or as separate models) for a tool's benchmarks to count — partial loads are skipped (`IncompleteLoadError` → pytest skip), so every load number covers the same data.
+- **SPARQL-tagged tools run PowSyBl's `acLineSegments` template for the lines query** (`parsers/powsybl_queries.py`, from powsybl-core, namespace-bound per CGMES version): full row retrieval of power-flow-relevant line data, not a type count. The other three queries remain COUNT-based (see [#12](https://github.com/Haigutus/cim-bench/issues/12)).
 
 ## Parsers/Serializers
 

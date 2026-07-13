@@ -133,10 +133,14 @@ class MaplibAdapter(ParserAdapter):
         }
 
     def get_lines_count(self, loaded_obj):
-        """Get all lines (ACLineSegments) in the network."""
+        """Get all lines via PowSyBl's acLineSegments query (full row retrieval)."""
+        from powsybl_queries import acline_segments_query
         if loaded_obj.model is None:
             raise ValueError("No data loaded")
-        return loaded_obj._count_instances("ACLineSegment")
+        query = acline_segments_query(loaded_obj.cim_namespace)
+        result = loaded_obj.model.query(query)
+        # maplib returns a Polars DataFrame
+        return len(result) if result is not None else 0
 
     def get_generators_count(self, loaded_obj):
         """Get all generators (SynchronousMachines) in the network."""

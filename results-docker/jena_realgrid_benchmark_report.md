@@ -13,14 +13,14 @@
 
 ### Jena Load Realgrid
 
-- **Mean time**: 1.60 s
-- **Min time**: 1.53 s
-- **Max time**: 1.63 s
-- **Std dev**: 38.3 ms
+- **Mean time**: 1.58 s
+- **Min time**: 1.55 s
+- **Max time**: 1.61 s
+- **Std dev**: 25.7 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 2208.8
+- Memory Mb: 2586.6
 - Triples: 892139
 - Lines: 7561
 - Generators: 1347
@@ -39,11 +39,11 @@
 
 ### Jena Get Lines
 
-- **Mean time**: 3.5 ms
-- **Min time**: 1.3 ms
-- **Max time**: 73.6 ms
-- **Std dev**: 7.7 ms
-- **Rounds**: 91
+- **Mean time**: 203.5 ms
+- **Min time**: 164.9 ms
+- **Max time**: 316.0 ms
+- **Std dev**: 63.9 ms
+- **Rounds**: 5
 
 **Metrics**:
 - Line Count: 7561
@@ -55,11 +55,11 @@
 
 ### Jena Get Generators
 
-- **Mean time**: 506.0 μs
-- **Min time**: 353.2 μs
-- **Max time**: 1.4 ms
-- **Std dev**: 159.7 μs
-- **Rounds**: 336
+- **Mean time**: 519.2 μs
+- **Min time**: 426.5 μs
+- **Max time**: 2.6 ms
+- **Std dev**: 196.3 μs
+- **Rounds**: 236
 
 **Metrics**:
 - Generator Count: 1347
@@ -71,11 +71,11 @@
 
 ### Jena Get Loads
 
-- **Mean time**: 1.9 ms
-- **Min time**: 1.3 ms
-- **Max time**: 7.5 ms
-- **Std dev**: 937.9 μs
-- **Rounds**: 98
+- **Mean time**: 4.9 ms
+- **Min time**: 1.4 ms
+- **Max time**: 126.8 ms
+- **Std dev**: 14.2 ms
+- **Rounds**: 77
 
 **Metrics**:
 - Load Count: 6687
@@ -87,11 +87,11 @@
 
 ### Jena Get Substations
 
-- **Mean time**: 866.7 μs
-- **Min time**: 765.4 μs
-- **Max time**: 2.0 ms
-- **Std dev**: 158.9 μs
-- **Rounds**: 341
+- **Mean time**: 864.4 μs
+- **Min time**: 710.0 μs
+- **Max time**: 3.0 ms
+- **Std dev**: 261.4 μs
+- **Rounds**: 353
 
 **Metrics**:
 - Substation Count: 4875
@@ -103,10 +103,10 @@
 
 ### Jena Export Realgrid
 
-- **Mean time**: 4.35 s
-- **Min time**: 4.27 s
-- **Max time**: 4.47 s
-- **Std dev**: 89.0 ms
+- **Mean time**: 4.29 s
+- **Min time**: 4.26 s
+- **Max time**: 4.35 s
+- **Std dev**: 31.5 ms
 - **Rounds**: 5
 
 **Metrics**:

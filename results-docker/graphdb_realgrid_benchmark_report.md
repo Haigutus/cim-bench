@@ -13,14 +13,14 @@
 
 ### Graphdb Load Realgrid
 
-- **Mean time**: 5.86 s
-- **Min time**: 5.81 s
-- **Max time**: 5.98 s
-- **Std dev**: 67.0 ms
+- **Mean time**: 5.60 s
+- **Min time**: 5.50 s
+- **Max time**: 5.96 s
+- **Std dev**: 199.4 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 1050.8
+- Memory Mb: 2457.4
 - Triples: 1080282
 - Lines: 7561
 - Generators: 1347
@@ -39,11 +39,11 @@
 
 ### Graphdb Get Lines
 
-- **Mean time**: 1.8 ms
-- **Min time**: 1.1 ms
-- **Max time**: 18.1 ms
-- **Std dev**: 1.2 ms
-- **Rounds**: 270
+- **Mean time**: 252.1 ms
+- **Min time**: 243.8 ms
+- **Max time**: 263.7 ms
+- **Std dev**: 8.0 ms
+- **Rounds**: 5
 
 **Metrics**:
 - Line Count: 7561
@@ -55,11 +55,11 @@
 
 ### Graphdb Get Generators
 
-- **Mean time**: 319.1 μs
-- **Min time**: 205.3 μs
-- **Max time**: 60.5 ms
-- **Std dev**: 1.4 ms
-- **Rounds**: 2080
+- **Mean time**: 409.6 μs
+- **Min time**: 231.4 μs
+- **Max time**: 10.5 ms
+- **Std dev**: 453.8 μs
+- **Rounds**: 616
 
 **Metrics**:
 - Generator Count: 1347
@@ -71,11 +71,11 @@
 
 ### Graphdb Get Loads
 
-- **Mean time**: 1.1 ms
-- **Min time**: 879.6 μs
-- **Max time**: 15.4 ms
-- **Std dev**: 762.2 μs
-- **Rounds**: 723
+- **Mean time**: 1.2 ms
+- **Min time**: 918.6 μs
+- **Max time**: 50.4 ms
+- **Std dev**: 2.1 ms
+- **Rounds**: 623
 
 **Metrics**:
 - Load Count: 6687
@@ -87,11 +87,11 @@
 
 ### Graphdb Get Substations
 
-- **Mean time**: 876.5 μs
-- **Min time**: 605.7 μs
-- **Max time**: 15.4 ms
-- **Std dev**: 664.9 μs
-- **Rounds**: 1268
+- **Mean time**: 718.6 μs
+- **Min time**: 604.8 μs
+- **Max time**: 11.3 ms
+- **Std dev**: 567.2 μs
+- **Rounds**: 1231
 
 **Metrics**:
 - Substation Count: 4875
@@ -103,10 +103,10 @@
 
 ### Graphdb Export Realgrid
 
-- **Mean time**: 2.06 s
-- **Min time**: 1.98 s
-- **Max time**: 2.25 s
-- **Std dev**: 108.5 ms
+- **Mean time**: 1.95 s
+- **Min time**: 1.93 s
+- **Max time**: 1.96 s
+- **Std dev**: 10.7 ms
 - **Rounds**: 5
 
 **Metrics**:

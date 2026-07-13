@@ -13,14 +13,14 @@
 
 ### Opencgmes Load Realgrid
 
-- **Mean time**: 1.09 s
-- **Min time**: 1.01 s
-- **Max time**: 1.18 s
-- **Std dev**: 69.7 ms
+- **Mean time**: 1.10 s
+- **Min time**: 1.05 s
+- **Max time**: 1.15 s
+- **Std dev**: 48.0 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 3133.8
+- Memory Mb: 3055.9
 - Triples: 892131
 - Lines: 7561
 - Generators: 1347
@@ -39,11 +39,11 @@
 
 ### Opencgmes Get Lines
 
-- **Mean time**: 3.7 ms
-- **Min time**: 1.9 ms
-- **Max time**: 11.4 ms
-- **Std dev**: 2.1 ms
-- **Rounds**: 83
+- **Mean time**: 144.9 ms
+- **Min time**: 139.6 ms
+- **Max time**: 156.0 ms
+- **Std dev**: 6.7 ms
+- **Rounds**: 6
 
 **Metrics**:
 - Line Count: 7561
@@ -55,11 +55,11 @@
 
 ### Opencgmes Get Generators
 
-- **Mean time**: 775.6 μs
-- **Min time**: 340.2 μs
-- **Max time**: 4.9 ms
-- **Std dev**: 609.8 μs
-- **Rounds**: 247
+- **Mean time**: 521.7 μs
+- **Min time**: 385.3 μs
+- **Max time**: 2.2 ms
+- **Std dev**: 225.5 μs
+- **Rounds**: 222
 
 **Metrics**:
 - Generator Count: 1347
@@ -71,11 +71,11 @@
 
 ### Opencgmes Get Loads
 
-- **Mean time**: 2.2 ms
+- **Mean time**: 2.5 ms
 - **Min time**: 1.2 ms
-- **Max time**: 8.0 ms
+- **Max time**: 10.2 ms
 - **Std dev**: 1.4 ms
-- **Rounds**: 153
+- **Rounds**: 95
 
 **Metrics**:
 - Load Count: 6687
@@ -87,11 +87,11 @@
 
 ### Opencgmes Get Substations
 
-- **Mean time**: 812.7 μs
-- **Min time**: 655.2 μs
-- **Max time**: 3.6 ms
-- **Std dev**: 411.7 μs
-- **Rounds**: 218
+- **Mean time**: 744.9 μs
+- **Min time**: 639.4 μs
+- **Max time**: 2.0 ms
+- **Std dev**: 136.6 μs
+- **Rounds**: 418
 
 **Metrics**:
 - Substation Count: 4875
@@ -103,10 +103,10 @@
 
 ### Opencgmes Export Realgrid
 
-- **Mean time**: 4.15 s
-- **Min time**: 4.02 s
-- **Max time**: 4.38 s
-- **Std dev**: 133.9 ms
+- **Mean time**: 4.00 s
+- **Min time**: 3.94 s
+- **Max time**: 4.13 s
+- **Std dev**: 79.4 ms
 - **Rounds**: 5
 
 **Metrics**:

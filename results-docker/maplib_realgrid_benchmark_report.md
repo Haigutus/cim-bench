@@ -13,14 +13,14 @@
 
 ### Maplib Load Realgrid
 
-- **Mean time**: 2.03 s
+- **Mean time**: 2.01 s
 - **Min time**: 1.98 s
-- **Max time**: 2.06 s
-- **Std dev**: 31.8 ms
+- **Max time**: 2.03 s
+- **Std dev**: 21.2 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 441.4
+- Memory Mb: 454.8
 - Lines: 7561
 - Generators: 1347
 - Loads: 6687
@@ -37,11 +37,11 @@
 
 ### Maplib Get Lines
 
-- **Mean time**: 618.4 μs
-- **Min time**: 413.1 μs
-- **Max time**: 1.5 ms
-- **Std dev**: 114.7 μs
-- **Rounds**: 905
+- **Mean time**: 44.6 ms
+- **Min time**: 42.8 ms
+- **Max time**: 47.7 ms
+- **Std dev**: 1.1 ms
+- **Rounds**: 23
 
 **Metrics**:
 - Line Count: 7561
@@ -53,11 +53,11 @@
 
 ### Maplib Get Generators
 
-- **Mean time**: 485.6 μs
-- **Min time**: 329.3 μs
-- **Max time**: 1.5 ms
-- **Std dev**: 105.3 μs
-- **Rounds**: 1294
+- **Mean time**: 459.0 μs
+- **Min time**: 320.0 μs
+- **Max time**: 900.4 μs
+- **Std dev**: 83.5 μs
+- **Rounds**: 1076
 
 **Metrics**:
 - Generator Count: 1347
@@ -69,11 +69,11 @@
 
 ### Maplib Get Loads
 
-- **Mean time**: 1.2 ms
-- **Min time**: 837.9 μs
-- **Max time**: 3.0 ms
-- **Std dev**: 234.1 μs
-- **Rounds**: 781
+- **Mean time**: 1.1 ms
+- **Min time**: 889.8 μs
+- **Max time**: 2.1 ms
+- **Std dev**: 146.0 μs
+- **Rounds**: 803
 
 **Metrics**:
 - Load Count: 6687
@@ -85,11 +85,11 @@
 
 ### Maplib Get Substations
 
-- **Mean time**: 524.3 μs
-- **Min time**: 359.5 μs
-- **Max time**: 2.9 ms
-- **Std dev**: 105.4 μs
-- **Rounds**: 1433
+- **Mean time**: 485.3 μs
+- **Min time**: 348.6 μs
+- **Max time**: 3.2 ms
+- **Std dev**: 91.4 μs
+- **Rounds**: 1751
 
 **Metrics**:
 - Substation Count: 4875
@@ -101,10 +101,10 @@
 
 ### Maplib Export Realgrid
 
-- **Mean time**: 15.10 s
-- **Min time**: 14.81 s
-- **Max time**: 15.22 s
-- **Std dev**: 165.8 ms
+- **Mean time**: 15.26 s
+- **Min time**: 15.19 s
+- **Max time**: 15.35 s
+- **Std dev**: 75.9 ms
 - **Rounds**: 5
 
 **Metrics**:
