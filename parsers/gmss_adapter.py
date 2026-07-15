@@ -5,8 +5,11 @@ pipeline: each file is loaded through the ABP-registered CimGraphContext and
 parsed into a typed CimFullModel by FullModelReader (the same flow as
 CimDocumentManager.ProcessAsync, minus repository persistence).
 
-Class counts are queried on the underlying dotNetRDF (VDS.RDF) graphs, the
-same rdf:type counting the RDFlib and Jena adapters use.
+The published GMSS packages ship the document/graph layer (typed equipment
+classes are what applications generate with the GMSS code generator), so
+queries run SPARQL on the underlying dotNetRDF (VDS.RDF) graphs via the
+Leviathan engine - the same query family as the other triplestore tools,
+including PowSyBl's acLineSegments reference query for lines.
 
 Repository: https://gitlab.com/gms-squared/modules/gridlab.gmss.cim
 Requires: GMSS_DLL_DIR pointing at the published DLLs, .NET runtime,
@@ -21,7 +24,6 @@ from pathlib import Path
 from parser_adapter import ParserAdapter
 from datasets import DATASETS
 
-RDF_TYPE = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
 CIM_NAMESPACES = [
     "http://iec.ch/TC57/CIM100#",  # CGMES 3.0
     "http://iec.ch/TC57/2013/CIM-schema-cim16#",  # CGMES 2.4.15
@@ -87,7 +89,7 @@ class GmssAdapter(ParserAdapter):
 
     @classmethod
     def get_tags(cls):
-        return ["parser", "query", "typed-model", "c#"]
+        return ["parser", "query", "sparql", "c#"]
 
     def _init_services(self):
         """Bootstrap the ABP module and resolve the GMSS services."""
@@ -162,30 +164,47 @@ class GmssAdapter(ParserAdapter):
         if temp_dir:
             temp_dir.cleanup()
 
+        # SPARQL (Leviathan) over each loaded graph - the published GMSS
+        # packages have no typed equipment model, so queries are SPARQL like
+        # the other triplestore tools
+        from VDS.RDF.Parsing import SparqlQueryParser
+        from VDS.RDF.Query import LeviathanQueryProcessor
+        from VDS.RDF.Query.Datasets import InMemoryDataset
+
+        self._sparql_parser = SparqlQueryParser()
+        self._processors = [LeviathanQueryProcessor(InMemoryDataset(g)) for _, g in self.graphs]
+
         self._detect_namespace()
         return self
+
+    def _query_rows(self, query_text):
+        """Run a SPARQL query on every loaded graph, return total result rows."""
+        query = self._sparql_parser.ParseFromString(query_text)
+        return sum(p.ProcessQuery(query).Results.Count for p in self._processors)
 
     def _detect_namespace(self):
         """Detect the CIM namespace used in the loaded graphs."""
         for ns in CIM_NAMESPACES:
-            if self._count_instances_ns("ACLineSegment", ns) > 0:
+            if self._query_rows(f"SELECT ?s WHERE {{ ?s a <{ns}ACLineSegment> }} LIMIT 1"):
                 self.cim_namespace = ns
                 return
         self.cim_namespace = CIM_NAMESPACES[0]
 
-    def _count_instances_ns(self, class_name, namespace):
-        """Count rdf:type triples of a CIM class across all loaded graphs."""
-        from VDS.RDF import UriFactory
-
-        total = 0
-        for _, graph in self.graphs:
-            rdf_type = graph.CreateUriNode(UriFactory.Create(RDF_TYPE))
-            cim_class = graph.CreateUriNode(UriFactory.Create(namespace + class_name))
-            total += sum(1 for _ in graph.GetTriplesWithPredicateObject(rdf_type, cim_class))
-        return total
-
     def _count_instances(self, class_name):
-        return self._count_instances_ns(class_name, self.cim_namespace)
+        """SPARQL COUNT of a CIM class, summed across the per-profile graphs."""
+        query = self._sparql_parser.ParseFromString(f'''
+        SELECT (COUNT(DISTINCT ?s) as ?count)
+        WHERE {{ ?s a <{self.cim_namespace}{class_name}> . }}
+        ''')
+        total = 0
+        for p in self._processors:
+            results = p.ProcessQuery(query).Results
+            # pythonnet exposes the result as INode; str() gives "39^^xsd:integer".
+            # Graphs without a match return an unbound ?count (None) instead of 0.
+            node = results[0].Value("count") if results.Count else None
+            if node is not None:
+                total += int(str(node).split("^^")[0])
+        return total
 
     def get_load_metrics(self, loaded_obj, memory_mb):
         return {
@@ -198,7 +217,9 @@ class GmssAdapter(ParserAdapter):
         }
 
     def get_lines_count(self, loaded_obj):
-        return loaded_obj._count_instances("ACLineSegment")
+        """Get all lines via PowSyBl's acLineSegments query (full row retrieval)."""
+        from powsybl_queries import acline_segments_query
+        return loaded_obj._query_rows(acline_segments_query(loaded_obj.cim_namespace))
 
     def get_generators_count(self, loaded_obj):
         return loaded_obj._count_instances("SynchronousMachine")

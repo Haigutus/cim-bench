@@ -13,14 +13,14 @@
 
 ### Gmss Load Svedala
 
-- **Mean time**: 982.6 ms
-- **Min time**: 929.2 ms
-- **Max time**: 1.05 s
-- **Std dev**: 49.3 ms
+- **Mean time**: 954.5 ms
+- **Min time**: 902.7 ms
+- **Max time**: 1.01 s
+- **Std dev**: 38.0 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 299.3
+- Memory Mb: 332.7
 - Triples: 95499
 - Lines: 97
 - Generators: 78
@@ -34,15 +34,15 @@
 - Dataset: svedala
 - Display Name: GMSS CIM
 - Color: #512bd4
-- Tags: ['parser', 'query', 'typed-model', 'c#']
+- Tags: ['parser', 'query', 'sparql', 'c#']
 
 ### Gmss Get Lines
 
-- **Mean time**: 106.1 μs
-- **Min time**: 88.2 μs
-- **Max time**: 3.9 ms
-- **Std dev**: 104.2 μs
-- **Rounds**: 5817
+- **Mean time**: 2.82 s
+- **Min time**: 2.72 s
+- **Max time**: 2.93 s
+- **Std dev**: 103.1 ms
+- **Rounds**: 5
 
 **Metrics**:
 - Line Count: 97
@@ -54,11 +54,11 @@
 
 ### Gmss Get Generators
 
-- **Mean time**: 102.4 μs
-- **Min time**: 84.0 μs
-- **Max time**: 1.8 ms
-- **Std dev**: 92.7 μs
-- **Rounds**: 7511
+- **Mean time**: 119.1 μs
+- **Min time**: 94.1 μs
+- **Max time**: 1.1 ms
+- **Std dev**: 61.6 μs
+- **Rounds**: 1574
 
 **Metrics**:
 - Generator Count: 78
@@ -70,11 +70,11 @@
 
 ### Gmss Get Loads
 
-- **Mean time**: 282.5 μs
-- **Min time**: 230.2 μs
-- **Max time**: 2.1 ms
-- **Std dev**: 180.1 μs
-- **Rounds**: 3337
+- **Mean time**: 275.8 μs
+- **Min time**: 234.7 μs
+- **Max time**: 1.5 ms
+- **Std dev**: 75.8 μs
+- **Rounds**: 2571
 
 **Metrics**:
 - Load Count: 146
@@ -86,11 +86,11 @@
 
 ### Gmss Get Substations
 
-- **Mean time**: 96.1 μs
-- **Min time**: 78.6 μs
-- **Max time**: 2.1 ms
-- **Std dev**: 100.2 μs
-- **Rounds**: 8024
+- **Mean time**: 92.5 μs
+- **Min time**: 77.1 μs
+- **Max time**: 1.1 ms
+- **Std dev**: 45.1 μs
+- **Rounds**: 6068
 
 **Metrics**:
 - Substation Count: 57
