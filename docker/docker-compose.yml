@@ -160,12 +160,8 @@ services:
     image: cim-bench/gmss:latest
     command: pytest docker_gmss_svedala_benchmark.py --benchmark-only --benchmark-json=/output/gmss_svedala_benchmark.json
 
-  # gmss-realgrid:
-  #   <<: *common
-  #   image: cim-bench/gmss:latest
-  #   command: pytest docker_gmss_realgrid_benchmark.py --benchmark-only --benchmark-json=/output/gmss_realgrid_benchmark.json
-  #
-  # NOTE: with CimUriValidatorOptions.SupportLegacyIds the RealGrid graphs now
-  # parse, but FullModelReader still rejects the legacy "urn:uuid:_..." FullModel
-  # IDs (CimUriValidator.IsValidForModel has no options overload as of 10.1.1.229).
+  gmss-realgrid:
+    <<: *common
+    image: cim-bench/gmss:latest
+    command: pytest docker_gmss_realgrid_benchmark.py --benchmark-only --benchmark-json=/output/gmss_realgrid_benchmark.json
 

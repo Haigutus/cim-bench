@@ -1,9 +1,11 @@
 """GridLab GMSS CIM (.NET) parser adapter for benchmarking.
 
 Hosts CoreCLR in-process via pythonnet and drives the real GMSS ingestion
-pipeline: each file is loaded through the ABP-registered CimGraphContext and
-parsed into a typed CimFullModel by FullModelReader (the same flow as
-CimDocumentManager.ProcessAsync, minus repository persistence).
+pipeline: each file is loaded through the ABP-registered CimGraphContext
+(GMSS's validated document ingestion). The FullModelReader header step is
+deliberately not run: it adds nothing the benchmark consumes and its
+model-URI validator rejects RealGrid's legacy IDs regardless of
+CimUriValidatorOptions.SupportLegacyIds (see PR #16 discussion).
 
 The published GMSS packages ship the document/graph layer (typed equipment
 classes are what applications generate with the GMSS code generator), so
@@ -58,7 +60,6 @@ class GmssAdapter(ParserAdapter):
 
     def __init__(self):
         self.graphs = None  # list of (name, VDS.RDF IGraph)
-        self.models = None  # list of typed CimFullModel
         self.cim_namespace = None
         self._app = None
 
@@ -99,7 +100,6 @@ class GmssAdapter(ParserAdapter):
         from Volo.Abp import AbpApplicationFactory, AbpApplicationCreationOptions
         from GridLab.Gmss.Cim import CimDomainModule
         from GridLab.Abp.Rdf.GraphContext import IRdfGraphContext
-        from GridLab.Gmss.Cim.Parsing.Readers.FullModels import IFullModelReader
         from GridLab.Abp.Cim.Configuration import CimUriValidatorOptions
         from Microsoft.Extensions.DependencyInjection import (
             LoggingServiceCollectionExtensions,
@@ -128,10 +128,9 @@ class GmssAdapter(ParserAdapter):
         self._app.Initialize()
         provider = self._app.ServiceProvider
         self._graph_context = ServiceProviderServiceExtensions.GetRequiredService[IRdfGraphContext](provider)
-        self._model_reader = ServiceProviderServiceExtensions.GetRequiredService[IFullModelReader](provider)
 
     def load(self, dataset_key: str):
-        """Load all dataset files through the GMSS graph context + full model reader."""
+        """Load all dataset files through the GMSS graph context."""
         self._init_services()
         from GridLab.Abp.Rdf import RdfFormat
         from System.Threading import CancellationToken
@@ -151,7 +150,6 @@ class GmssAdapter(ParserAdapter):
 
         # Load all files (same logic for ZIP and non-ZIP)
         self.graphs = []
-        self.models = []
         for f in files:
             self._graph_context.LoadFromFileAsync(
                 str(f), RdfFormat.RdfXml, f.stem, token
@@ -159,7 +157,6 @@ class GmssAdapter(ParserAdapter):
 
             graph = self._graph_context.GetGraphAsync(f.stem, token).GetAwaiter().GetResult()
             self.graphs.append((f.stem, graph))
-            self.models.append(self._model_reader.GetModelAsync(graph).GetAwaiter().GetResult())
 
         if temp_dir:
             temp_dir.cleanup()
