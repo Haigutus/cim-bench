@@ -98,8 +98,10 @@ class GmssAdapter(ParserAdapter):
         from GridLab.Gmss.Cim import CimDomainModule
         from GridLab.Abp.Rdf.GraphContext import IRdfGraphContext
         from GridLab.Gmss.Cim.Parsing.Readers.FullModels import IFullModelReader
+        from GridLab.Abp.Cim.Configuration import CimUriValidatorOptions
         from Microsoft.Extensions.DependencyInjection import (
             LoggingServiceCollectionExtensions,
+            OptionsServiceCollectionExtensions,
             ServiceProviderServiceExtensions,
         )
 
@@ -107,9 +109,16 @@ class GmssAdapter(ParserAdapter):
         # AddLogging supplies the ILoggerFactory it injects
         from Volo.Abp import AbpAutofacAbpApplicationCreationOptionsExtensions
 
+        def set_legacy_ids(o):
+            # RealGrid uses legacy "urn:uuid:_..." rdf:IDs that the default
+            # strict IEC 61970-552 validator rejects (per the GMSS author)
+            o.SupportLegacyIds = True
+
         def configure(options):
             LoggingServiceCollectionExtensions.AddLogging(options.Services)
             AbpAutofacAbpApplicationCreationOptionsExtensions.UseAutofac(options)
+            OptionsServiceCollectionExtensions.Configure[CimUriValidatorOptions](
+                options.Services, Action[CimUriValidatorOptions](set_legacy_ids))
 
         self._app = AbpApplicationFactory.Create[CimDomainModule](
             Action[AbpApplicationCreationOptions](configure)
