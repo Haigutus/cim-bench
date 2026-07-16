@@ -14,6 +14,16 @@ class IncompleteLoadError(Exception):
     """
 
 
+class QueryUnsupported(Exception):
+    """Raised by a query method the tool cannot run on this dataset.
+
+    Load (and export) may still be benchmarked; only the affected query test
+    is skipped. Use when a query is infeasible rather than unimplemented -
+    e.g. a slow in-memory SPARQL engine that cannot finish a join query on a
+    million-triple graph in reasonable time.
+    """
+
+
 class ParserAdapter(ABC):
     """
     Adapter interface that each parser must implement for benchmarking.

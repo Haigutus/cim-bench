@@ -1,12 +1,17 @@
 """GridLab GMSS CIM (.NET) parser adapter for benchmarking.
 
 Hosts CoreCLR in-process via pythonnet and drives the real GMSS ingestion
-pipeline: each file is loaded through the ABP-registered CimGraphContext and
-parsed into a typed CimFullModel by FullModelReader (the same flow as
-CimDocumentManager.ProcessAsync, minus repository persistence).
+pipeline: each file is loaded through the ABP-registered CimGraphContext
+(GMSS's validated document ingestion). The FullModelReader header step is
+deliberately not run: it adds nothing the benchmark consumes and its
+model-URI validator rejects RealGrid's legacy IDs regardless of
+CimUriValidatorOptions.SupportLegacyIds (see PR #16 discussion).
 
-Class counts are queried on the underlying dotNetRDF (VDS.RDF) graphs, the
-same rdf:type counting the RDFlib and Jena adapters use.
+The published GMSS packages ship the document/graph layer (typed equipment
+classes are what applications generate with the GMSS code generator), so
+queries run SPARQL on the underlying dotNetRDF (VDS.RDF) graphs via the
+Leviathan engine - the same query family as the other triplestore tools,
+including PowSyBl's acLineSegments reference query for lines.
 
 Repository: https://gitlab.com/gms-squared/modules/gridlab.gmss.cim
 Requires: GMSS_DLL_DIR pointing at the published DLLs, .NET runtime,
@@ -18,14 +23,20 @@ import tempfile
 import zipfile
 from pathlib import Path
 
-from parser_adapter import ParserAdapter
+from parser_adapter import ParserAdapter, QueryUnsupported
 from datasets import DATASETS
 
-RDF_TYPE = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
 CIM_NAMESPACES = [
     "http://iec.ch/TC57/CIM100#",  # CGMES 3.0
     "http://iec.ch/TC57/2013/CIM-schema-cim16#",  # CGMES 2.4.15
 ]
+
+# GMSS has no SPARQL engine of its own, so queries run through dotNetRDF's
+# in-memory Leviathan engine. It cannot finish the PowSyBl join queries on a
+# million-triple graph in reasonable time (rdflib needed ~447 s for the same
+# acLineSegments query; Leviathan is slower). Above this triple count the
+# query benchmarks are skipped - load is still measured.
+QUERY_TRIPLE_LIMIT = 500_000
 
 _clr_initialized = False
 
@@ -56,7 +67,6 @@ class GmssAdapter(ParserAdapter):
 
     def __init__(self):
         self.graphs = None  # list of (name, VDS.RDF IGraph)
-        self.models = None  # list of typed CimFullModel
         self.cim_namespace = None
         self._app = None
 
@@ -87,7 +97,7 @@ class GmssAdapter(ParserAdapter):
 
     @classmethod
     def get_tags(cls):
-        return ["parser", "query", "typed-model", "c#"]
+        return ["parser", "query", "sparql", "c#"]
 
     def _init_services(self):
         """Bootstrap the ABP module and resolve the GMSS services."""
@@ -97,9 +107,10 @@ class GmssAdapter(ParserAdapter):
         from Volo.Abp import AbpApplicationFactory, AbpApplicationCreationOptions
         from GridLab.Gmss.Cim import CimDomainModule
         from GridLab.Abp.Rdf.GraphContext import IRdfGraphContext
-        from GridLab.Gmss.Cim.Parsing.Readers.FullModels import IFullModelReader
+        from GridLab.Abp.Cim.Configuration import CimUriValidatorOptions
         from Microsoft.Extensions.DependencyInjection import (
             LoggingServiceCollectionExtensions,
+            OptionsServiceCollectionExtensions,
             ServiceProviderServiceExtensions,
         )
 
@@ -107,9 +118,16 @@ class GmssAdapter(ParserAdapter):
         # AddLogging supplies the ILoggerFactory it injects
         from Volo.Abp import AbpAutofacAbpApplicationCreationOptionsExtensions
 
+        def set_legacy_ids(o):
+            # RealGrid uses legacy "urn:uuid:_..." rdf:IDs that the default
+            # strict IEC 61970-552 validator rejects (per the GMSS author)
+            o.SupportLegacyIds = True
+
         def configure(options):
             LoggingServiceCollectionExtensions.AddLogging(options.Services)
             AbpAutofacAbpApplicationCreationOptionsExtensions.UseAutofac(options)
+            OptionsServiceCollectionExtensions.Configure[CimUriValidatorOptions](
+                options.Services, Action[CimUriValidatorOptions](set_legacy_ids))
 
         self._app = AbpApplicationFactory.Create[CimDomainModule](
             Action[AbpApplicationCreationOptions](configure)
@@ -117,10 +135,9 @@ class GmssAdapter(ParserAdapter):
         self._app.Initialize()
         provider = self._app.ServiceProvider
         self._graph_context = ServiceProviderServiceExtensions.GetRequiredService[IRdfGraphContext](provider)
-        self._model_reader = ServiceProviderServiceExtensions.GetRequiredService[IFullModelReader](provider)
 
     def load(self, dataset_key: str):
-        """Load all dataset files through the GMSS graph context + full model reader."""
+        """Load all dataset files through the GMSS graph context."""
         self._init_services()
         from GridLab.Abp.Rdf import RdfFormat
         from System.Threading import CancellationToken
@@ -140,7 +157,6 @@ class GmssAdapter(ParserAdapter):
 
         # Load all files (same logic for ZIP and non-ZIP)
         self.graphs = []
-        self.models = []
         for f in files:
             self._graph_context.LoadFromFileAsync(
                 str(f), RdfFormat.RdfXml, f.stem, token
@@ -148,53 +164,89 @@ class GmssAdapter(ParserAdapter):
 
             graph = self._graph_context.GetGraphAsync(f.stem, token).GetAwaiter().GetResult()
             self.graphs.append((f.stem, graph))
-            self.models.append(self._model_reader.GetModelAsync(graph).GetAwaiter().GetResult())
 
         if temp_dir:
             temp_dir.cleanup()
 
+        # SPARQL (Leviathan) over each loaded graph - the published GMSS
+        # packages have no typed equipment model, so queries are SPARQL like
+        # the other triplestore tools
+        from VDS.RDF.Parsing import SparqlQueryParser
+        from VDS.RDF.Query import LeviathanQueryProcessor
+        from VDS.RDF.Query.Datasets import InMemoryDataset
+
+        self._sparql_parser = SparqlQueryParser()
+        self._processors = [LeviathanQueryProcessor(InMemoryDataset(g)) for _, g in self.graphs]
+
+        self._n_triples = sum(g.Triples.Count for _, g in self.graphs)
+        self._skip_queries = self._n_triples > QUERY_TRIPLE_LIMIT
+
         self._detect_namespace()
         return self
+
+    def _require_queries(self):
+        """Raise QueryUnsupported when Leviathan can't run queries at this scale."""
+        if self._skip_queries:
+            raise QueryUnsupported(
+                f"{self._n_triples} triples exceed the Leviathan query limit "
+                f"({QUERY_TRIPLE_LIMIT}); load measured, queries skipped")
+
+    def _query_rows(self, query_text):
+        """Run a SPARQL query on every loaded graph, return total result rows."""
+        query = self._sparql_parser.ParseFromString(query_text)
+        return sum(p.ProcessQuery(query).Results.Count for p in self._processors)
 
     def _detect_namespace(self):
         """Detect the CIM namespace used in the loaded graphs."""
         for ns in CIM_NAMESPACES:
-            if self._count_instances_ns("ACLineSegment", ns) > 0:
+            if self._query_rows(f"SELECT ?s WHERE {{ ?s a <{ns}ACLineSegment> }} LIMIT 1"):
                 self.cim_namespace = ns
                 return
         self.cim_namespace = CIM_NAMESPACES[0]
 
-    def _count_instances_ns(self, class_name, namespace):
-        """Count rdf:type triples of a CIM class across all loaded graphs."""
-        from VDS.RDF import UriFactory
-
+    def _count_instances(self, class_name):
+        """SPARQL COUNT of a CIM class, summed across the per-profile graphs."""
+        query = self._sparql_parser.ParseFromString(f'''
+        SELECT (COUNT(DISTINCT ?s) as ?count)
+        WHERE {{ ?s a <{self.cim_namespace}{class_name}> . }}
+        ''')
         total = 0
-        for _, graph in self.graphs:
-            rdf_type = graph.CreateUriNode(UriFactory.Create(RDF_TYPE))
-            cim_class = graph.CreateUriNode(UriFactory.Create(namespace + class_name))
-            total += sum(1 for _ in graph.GetTriplesWithPredicateObject(rdf_type, cim_class))
+        for p in self._processors:
+            results = p.ProcessQuery(query).Results
+            # pythonnet exposes the result as INode; str() gives "39^^xsd:integer".
+            # Graphs without a match return an unbound ?count (None) instead of 0.
+            node = results[0].Value("count") if results.Count else None
+            if node is not None:
+                total += int(str(node).split("^^")[0])
         return total
 
-    def _count_instances(self, class_name):
-        return self._count_instances_ns(class_name, self.cim_namespace)
-
     def get_load_metrics(self, loaded_obj, memory_mb):
-        return {
+        metrics = {
             "memory_mb": f"{memory_mb:.1f}",
-            "triples": sum(g.Triples.Count for _, g in loaded_obj.graphs),
-            "lines": loaded_obj.get_lines_count(loaded_obj),
-            "generators": loaded_obj.get_generators_count(loaded_obj),
-            "loads": loaded_obj.get_loads_count(loaded_obj),
-            "substations": loaded_obj.get_substations_count(loaded_obj),
+            "triples": loaded_obj._n_triples,
         }
+        # Element counts come from SPARQL; omit them where queries are skipped
+        if not loaded_obj._skip_queries:
+            metrics.update({
+                "lines": loaded_obj.get_lines_count(loaded_obj),
+                "generators": loaded_obj.get_generators_count(loaded_obj),
+                "loads": loaded_obj.get_loads_count(loaded_obj),
+                "substations": loaded_obj.get_substations_count(loaded_obj),
+            })
+        return metrics
 
     def get_lines_count(self, loaded_obj):
-        return loaded_obj._count_instances("ACLineSegment")
+        """Get all lines via PowSyBl's acLineSegments query (full row retrieval)."""
+        from powsybl_queries import acline_segments_query
+        loaded_obj._require_queries()
+        return loaded_obj._query_rows(acline_segments_query(loaded_obj.cim_namespace))
 
     def get_generators_count(self, loaded_obj):
+        loaded_obj._require_queries()
         return loaded_obj._count_instances("SynchronousMachine")
 
     def get_loads_count(self, loaded_obj):
+        loaded_obj._require_queries()
         return (
             loaded_obj._count_instances("ConformLoad")
             + loaded_obj._count_instances("NonConformLoad")
@@ -202,6 +254,7 @@ class GmssAdapter(ParserAdapter):
         )
 
     def get_substations_count(self, loaded_obj):
+        loaded_obj._require_queries()
         return loaded_obj._count_instances("Substation")
 
     def cleanup(self):
