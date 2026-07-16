@@ -23,13 +23,20 @@ import tempfile
 import zipfile
 from pathlib import Path
 
-from parser_adapter import ParserAdapter
+from parser_adapter import ParserAdapter, QueryUnsupported
 from datasets import DATASETS
 
 CIM_NAMESPACES = [
     "http://iec.ch/TC57/CIM100#",  # CGMES 3.0
     "http://iec.ch/TC57/2013/CIM-schema-cim16#",  # CGMES 2.4.15
 ]
+
+# GMSS has no SPARQL engine of its own, so queries run through dotNetRDF's
+# in-memory Leviathan engine. It cannot finish the PowSyBl join queries on a
+# million-triple graph in reasonable time (rdflib needed ~447 s for the same
+# acLineSegments query; Leviathan is slower). Above this triple count the
+# query benchmarks are skipped - load is still measured.
+QUERY_TRIPLE_LIMIT = 500_000
 
 _clr_initialized = False
 
@@ -171,8 +178,18 @@ class GmssAdapter(ParserAdapter):
         self._sparql_parser = SparqlQueryParser()
         self._processors = [LeviathanQueryProcessor(InMemoryDataset(g)) for _, g in self.graphs]
 
+        self._n_triples = sum(g.Triples.Count for _, g in self.graphs)
+        self._skip_queries = self._n_triples > QUERY_TRIPLE_LIMIT
+
         self._detect_namespace()
         return self
+
+    def _require_queries(self):
+        """Raise QueryUnsupported when Leviathan can't run queries at this scale."""
+        if self._skip_queries:
+            raise QueryUnsupported(
+                f"{self._n_triples} triples exceed the Leviathan query limit "
+                f"({QUERY_TRIPLE_LIMIT}); load measured, queries skipped")
 
     def _query_rows(self, query_text):
         """Run a SPARQL query on every loaded graph, return total result rows."""
@@ -204,24 +221,32 @@ class GmssAdapter(ParserAdapter):
         return total
 
     def get_load_metrics(self, loaded_obj, memory_mb):
-        return {
+        metrics = {
             "memory_mb": f"{memory_mb:.1f}",
-            "triples": sum(g.Triples.Count for _, g in loaded_obj.graphs),
-            "lines": loaded_obj.get_lines_count(loaded_obj),
-            "generators": loaded_obj.get_generators_count(loaded_obj),
-            "loads": loaded_obj.get_loads_count(loaded_obj),
-            "substations": loaded_obj.get_substations_count(loaded_obj),
+            "triples": loaded_obj._n_triples,
         }
+        # Element counts come from SPARQL; omit them where queries are skipped
+        if not loaded_obj._skip_queries:
+            metrics.update({
+                "lines": loaded_obj.get_lines_count(loaded_obj),
+                "generators": loaded_obj.get_generators_count(loaded_obj),
+                "loads": loaded_obj.get_loads_count(loaded_obj),
+                "substations": loaded_obj.get_substations_count(loaded_obj),
+            })
+        return metrics
 
     def get_lines_count(self, loaded_obj):
         """Get all lines via PowSyBl's acLineSegments query (full row retrieval)."""
         from powsybl_queries import acline_segments_query
+        loaded_obj._require_queries()
         return loaded_obj._query_rows(acline_segments_query(loaded_obj.cim_namespace))
 
     def get_generators_count(self, loaded_obj):
+        loaded_obj._require_queries()
         return loaded_obj._count_instances("SynchronousMachine")
 
     def get_loads_count(self, loaded_obj):
+        loaded_obj._require_queries()
         return (
             loaded_obj._count_instances("ConformLoad")
             + loaded_obj._count_instances("NonConformLoad")
@@ -229,6 +254,7 @@ class GmssAdapter(ParserAdapter):
         )
 
     def get_substations_count(self, loaded_obj):
+        loaded_obj._require_queries()
         return loaded_obj._count_instances("Substation")
 
     def cleanup(self):

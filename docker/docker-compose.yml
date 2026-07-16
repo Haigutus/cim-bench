@@ -160,6 +160,9 @@ services:
     image: cim-bench/gmss:latest
     command: pytest docker_gmss_svedala_benchmark.py --benchmark-only --benchmark-json=/output/gmss_svedala_benchmark.json
 
+  # RealGrid: import is benchmarked; query tests skip (QueryUnsupported) -
+  # GMSS runs dotNetRDF's Leviathan engine, which cannot finish the PowSyBl
+  # queries on the 1.14M-triple graph in reasonable time.
   gmss-realgrid:
     <<: *common
     image: cim-bench/gmss:latest

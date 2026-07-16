@@ -21,7 +21,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "parsers"))
 
 from datasets import DATASETS, get_size_mb
-from parser_adapter import IncompleteLoadError
+from parser_adapter import IncompleteLoadError, QueryUnsupported
 
 
 def get_memory_mb():
@@ -108,7 +108,10 @@ def create_benchmarks(adapter, dataset_key, parser_name, dataset_name):
     # Query tests
     def test_get_lines(benchmark, loaded_object):
         """Benchmark querying lines."""
-        count = benchmark(adapter.get_lines_count, loaded_object)
+        try:
+            count = benchmark(adapter.get_lines_count, loaded_object)
+        except QueryUnsupported as e:
+            pytest.skip(f"query not feasible for this tool/dataset: {e}")
         benchmark.extra_info["line_count"] = count
         benchmark.extra_info["query_type"] = "get_lines"
         benchmark.extra_info["library"] = parser_name
@@ -119,7 +122,10 @@ def create_benchmarks(adapter, dataset_key, parser_name, dataset_name):
 
     def test_get_generators(benchmark, loaded_object):
         """Benchmark querying generators."""
-        count = benchmark(adapter.get_generators_count, loaded_object)
+        try:
+            count = benchmark(adapter.get_generators_count, loaded_object)
+        except QueryUnsupported as e:
+            pytest.skip(f"query not feasible for this tool/dataset: {e}")
         benchmark.extra_info["generator_count"] = count
         benchmark.extra_info["query_type"] = "get_generators"
         benchmark.extra_info["library"] = parser_name
@@ -130,7 +136,10 @@ def create_benchmarks(adapter, dataset_key, parser_name, dataset_name):
 
     def test_get_loads(benchmark, loaded_object):
         """Benchmark querying loads."""
-        count = benchmark(adapter.get_loads_count, loaded_object)
+        try:
+            count = benchmark(adapter.get_loads_count, loaded_object)
+        except QueryUnsupported as e:
+            pytest.skip(f"query not feasible for this tool/dataset: {e}")
         benchmark.extra_info["load_count"] = count
         benchmark.extra_info["query_type"] = "get_loads"
         benchmark.extra_info["library"] = parser_name
@@ -142,7 +151,10 @@ def create_benchmarks(adapter, dataset_key, parser_name, dataset_name):
 
     def test_get_substations(benchmark, loaded_object):
         """Benchmark querying substations."""
-        count = benchmark(adapter.get_substations_count, loaded_object)
+        try:
+            count = benchmark(adapter.get_substations_count, loaded_object)
+        except QueryUnsupported as e:
+            pytest.skip(f"query not feasible for this tool/dataset: {e}")
         benchmark.extra_info["substation_count"] = count
         benchmark.extra_info["query_type"] = "get_substations"
         benchmark.extra_info["library"] = parser_name

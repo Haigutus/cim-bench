@@ -13,14 +13,14 @@
 
 ### Gmss Load Svedala
 
-- **Mean time**: 975.5 ms
-- **Min time**: 917.2 ms
-- **Max time**: 1.01 s
-- **Std dev**: 46.6 ms
+- **Mean time**: 1.01 s
+- **Min time**: 959.2 ms
+- **Max time**: 1.07 s
+- **Std dev**: 42.0 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 394.1
+- Memory Mb: 312.9
 - Triples: 95499
 - Lines: 97
 - Generators: 78
@@ -38,10 +38,10 @@
 
 ### Gmss Get Lines
 
-- **Mean time**: 3.06 s
-- **Min time**: 2.90 s
-- **Max time**: 3.17 s
-- **Std dev**: 99.8 ms
+- **Mean time**: 2.92 s
+- **Min time**: 2.74 s
+- **Max time**: 3.20 s
+- **Std dev**: 178.1 ms
 - **Rounds**: 5
 
 **Metrics**:
@@ -54,11 +54,11 @@
 
 ### Gmss Get Generators
 
-- **Mean time**: 117.8 μs
-- **Min time**: 96.3 μs
-- **Max time**: 671.8 μs
-- **Std dev**: 51.0 μs
-- **Rounds**: 1879
+- **Mean time**: 120.6 μs
+- **Min time**: 98.7 μs
+- **Max time**: 1.1 ms
+- **Std dev**: 59.4 μs
+- **Rounds**: 1361
 
 **Metrics**:
 - Generator Count: 78
@@ -70,11 +70,11 @@
 
 ### Gmss Get Loads
 
-- **Mean time**: 283.2 μs
-- **Min time**: 232.2 μs
-- **Max time**: 1.2 ms
-- **Std dev**: 85.2 μs
-- **Rounds**: 2407
+- **Mean time**: 284.7 μs
+- **Min time**: 237.1 μs
+- **Max time**: 2.0 ms
+- **Std dev**: 100.6 μs
+- **Rounds**: 2372
 
 **Metrics**:
 - Load Count: 146
@@ -86,11 +86,11 @@
 
 ### Gmss Get Substations
 
-- **Mean time**: 90.7 μs
-- **Min time**: 77.5 μs
-- **Max time**: 889.6 μs
-- **Std dev**: 41.8 μs
-- **Rounds**: 4259
+- **Mean time**: 92.1 μs
+- **Min time**: 79.6 μs
+- **Max time**: 3.0 ms
+- **Std dev**: 54.7 μs
+- **Rounds**: 5234
 
 **Metrics**:
 - Substation Count: 57
