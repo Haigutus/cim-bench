@@ -8,7 +8,7 @@ COPY --from=ghcr.io/astral-sh/uv:0.11 /uv /uvx /bin/
 RUN apt-get update && apt-get install -y \
     build-essential \
     cmake \
-    git \
+    wget \
     libxml2-dev \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
@@ -23,9 +23,10 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 # Add Python 3.14 venv to PATH
 ENV PATH="/tmp/build_env/.venv/bin:${PATH}"
 
-# Build libcimpp 2.2.0 for the container architecture.
-RUN git clone --depth 1 --branch release/v2.2.0 --recurse-submodules https://github.com/sogno-platform/libcimpp.git /build/libcimpp
-RUN cmake -S /build/libcimpp -B /build/libcimpp/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=ON -DCIMPP_BUILD_DOC=OFF -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib && cmake --build /build/libcimpp/build -j4 && cmake --install /build/libcimpp/build
+# Download and install libcimpp CGMES 2.4.15 Jan 2020 .deb package (kept for runtime stage)
+WORKDIR /tmp
+RUN wget https://github.com/sogno-platform/libcimpp/releases/download/release/v2.2.0/libcimpp_CGMES_2.4.15_27JAN2020-2.2.0-Linux.deb && \
+    (dpkg -i libcimpp_CGMES_2.4.15_27JAN2020-2.2.0-Linux.deb || apt-get install -f -y)
 
 # Build pybind11 wrapper
 COPY parsers/libcimpp_wrapper /build/wrapper
@@ -47,10 +48,9 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy the native library and its Arabica dependency from the build.
-COPY --from=builder /usr/lib/libcimpp* /usr/lib/
-COPY --from=builder /build/libcimpp/build/arabica/libarabica* /usr/lib/
-RUN ldconfig
+# Install libcimpp from the .deb already downloaded in the builder
+COPY --from=builder /tmp/libcimpp_CGMES_2.4.15_27JAN2020-2.2.0-Linux.deb /tmp/libcimpp_CGMES_2.4.15_27JAN2020-2.2.0-Linux.deb
+RUN dpkg -i /tmp/libcimpp_CGMES_2.4.15_27JAN2020-2.2.0-Linux.deb && rm /tmp/libcimpp_CGMES_2.4.15_27JAN2020-2.2.0-Linux.deb
 
 # Copy built wrapper from builder
 COPY --from=builder /build/wrapper/build/_libcimpp_benchmark*.so /app/lib/

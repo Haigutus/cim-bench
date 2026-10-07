@@ -1,29 +1,14 @@
-"""PowerIO's native balanced model, including every registered CGMES profile.
+"""PowerIO parser adapter for benchmarking."""
 
-The native component-count index is constructed during load. Query timings
-measure access to that index, like other native typed-model adapters; they
-are not SPARQL join timings. No dataset counts are hardcoded.
-"""
-from dataclasses import dataclass
 from importlib.metadata import version
 from pathlib import Path
 import shutil
 import tempfile
-import time
 
 import powerio
-import psutil
 
 from datasets import DATASETS
 from parser_adapter import ParserAdapter
-
-
-@dataclass
-class LoadedPowerIO:
-    module: powerio.PioModule
-    counts: dict[str, int]
-    fresh: object = None
-    preparation: object = None
 
 
 class PowerIOAdapter(ParserAdapter):
@@ -49,64 +34,46 @@ class PowerIOAdapter(ParserAdapter):
 
     def load(self, dataset_key):
         dataset = DATASETS[dataset_key]
-        if "ZIP" in dataset:
-            module = powerio.parse(dataset["ZIP"], format="cgmes")
-        else:
-            # PowerIO's Source confines acquisition to one directory and refuses
-            # symlinks. Copy exactly the registered files, including COMMON.
-            # This cost is deliberately inside the timed load.
-            with tempfile.TemporaryDirectory(prefix="powerio-cim-") as directory:
-                for key, path in dataset.items():
-                    if key != "_metadata":
-                        destination = Path(directory) / path.name
-                        if destination.exists():
-                            raise ValueError(f"duplicate profile filename: {path.name}")
-                        shutil.copyfile(path, destination)
-                module = powerio.parse(directory, format="cgmes")
-        counts = module.value.component_counts()
-        return LoadedPowerIO(module, counts)
+        source = dataset.get("ZIP")
+        temp_dir = None
+        if source is None:
+            temp_dir = tempfile.TemporaryDirectory()
+            source = Path(temp_dir.name)
+            for key, path in dataset.items():
+                if key != "_metadata":
+                    shutil.copyfile(path, source / path.name)
+
+        self.module = powerio.parse(source, format="cgmes")
+        self.network = self.module.value
+        if temp_dir:
+            temp_dir.cleanup()
+        return self
 
     def get_load_metrics(self, loaded_obj, memory_mb):
-        return {"memory_mb": f"{memory_mb:.1f}", **loaded_obj.counts,
-                "diagnostics": len(loaded_obj.module.diagnostics),
-                "query_semantics": "native component-count index built during load",
-                "export_semantics": "fresh CGMES 3.0 EQ/TP/SSH/SV"}
+        return {
+            "memory_mb": f"{memory_mb:.1f}",
+            "lines": self.get_lines_count(loaded_obj),
+            "generators": self.get_generators_count(loaded_obj),
+            "loads": self.get_loads_count(loaded_obj),
+            "substations": self.get_substations_count(loaded_obj),
+        }
 
     def get_lines_count(self, loaded_obj):
-        return loaded_obj.counts["lines"]
+        return loaded_obj.network.n_lines
 
     def get_generators_count(self, loaded_obj):
-        return loaded_obj.counts["generators"]
+        return loaded_obj.network.n_generators
 
     def get_loads_count(self, loaded_obj):
-        return loaded_obj.counts["loads"]
+        return loaded_obj.network.n_loads
 
     def get_substations_count(self, loaded_obj):
-        return loaded_obj.counts["substations"]
-
-    def prepare_export(self, loaded_obj):
-        """Measured separately; retain original module for the replay test."""
-        process = psutil.Process()
-        before = process.memory_info().rss
-        start = time.perf_counter()
-        loaded_obj.fresh = loaded_obj.module.sever_source()
-        loaded_obj.preparation = {
-            "export_preparation_seconds": time.perf_counter() - start,
-            "export_preparation_rss_bytes": process.memory_info().rss - before,
-            "export_semantics": "fresh CGMES 3.0 EQ/TP/SSH/SV",
-        }
-        return loaded_obj.preparation
+        return loaded_obj.network.n_substations
 
     def export(self, loaded_obj, output_path):
-        if loaded_obj is None:  # template's capability probe
-            return
-        if loaded_obj.fresh is None:
-            raise RuntimeError("prepare_export must run outside export timing")
-        destination = Path(output_path).parent / "powerio-fresh"
-        # Each timing includes replacing the previous output, as file writers do.
-        if destination.exists():
-            shutil.rmtree(destination)
-        result = powerio.emit(loaded_obj.fresh, "cgmes", destination)
-        if result.fidelity == "exact_same_format":
-            raise AssertionError("fresh export unexpectedly replayed the input")
-        return destination
+        """Write fresh CGMES profiles alongside the requested output path."""
+        output_dir = Path(output_path).parent
+        emitted = powerio.emit(loaded_obj.module.sever_source(), "cgmes")
+        for artifact in emitted.artifacts:
+            (output_dir / Path(artifact.name).name).write_bytes(artifact.data)
+        return output_dir

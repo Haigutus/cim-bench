@@ -187,9 +187,6 @@ def create_benchmarks(adapter, dataset_key, parser_name, dataset_name):
 
         def test_export(benchmark, loaded_object, export_output):
             """Benchmark exporting dataset."""
-            if hasattr(adapter, "prepare_export"):
-                preparation = adapter.prepare_export(loaded_object)
-                benchmark.extra_info.update(preparation or {})
             result_path = benchmark(adapter.export, loaded_object, export_output)
 
             benchmark.extra_info["library"] = parser_name
@@ -200,7 +197,7 @@ def create_benchmarks(adapter, dataset_key, parser_name, dataset_name):
 
             # Verify export produced output
             output_dir = export_output.parent
-            exported_files = list(output_dir.rglob("*"))
+            exported_files = list(output_dir.iterdir())
             assert len(exported_files) > 0
             assert any(f.stat().st_size > 0 for f in exported_files if f.is_file())
 

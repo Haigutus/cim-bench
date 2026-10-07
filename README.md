@@ -28,43 +28,13 @@ CGMES (Common Grid Model Exchange Standard) XML/RDF files, each in its own conta
 > retrieval a downstream power-flow tool would issue. The two groups measure
 > different access paths, so compare within a group, not across.
 
+- **PowerIO** includes equivalent injections in its native load count and preserves source substations.
 - **pypowsybl** converts some substations to voltage levels when connected by transformers, so it reports fewer substations on RealGrid.
 - **maplib** exports N-Quads dramatically faster than RDF/XML; the benchmark uses RDF/XML for consistency with other tools.
 - **libcimpp** is only benchmarked on RealGrid (CGMES 2.4.15) — its CGMES 3.0 build fails on Svedala's European extensions.
 - **CLI-only tools** (🖥️) are benchmarked as subprocesses (full process lifecycle per run) and are reported as a **separate family**, never mixed into the library charts.
 - **All available profiles must load** (merged or as separate models) for a tool's benchmarks to count — partial loads are skipped (`IncompleteLoadError` → pytest skip), so every load number covers the same data.
 - **PowSyBl reference queries currently cover lines** (`acLineSegments`); generators, loads and substations follow in [#12](https://github.com/Haigutus/cim-bench/issues/12).
-
-### PowerIO
-
-The image builds the immutable PowerIO commit pinned in
-`docker/tools/powerio.dockerfile`; it depends on
-[PowerIO #555](https://github.com/eigenergy/powerio/pull/555) and
-[#557](https://github.com/eigenergy/powerio/pull/557). Build with
-`bash docker/setup.sh powerio`, then run
-`bash docker/run_benchmark.sh --tools powerio`.
-
-All registered profiles load, including Svedala's COMMON file. Staging those
-files and computing the native count index are included in load time. Queries
-read that index. PowerIO includes equivalent injections in its native load
-projection and preserves source substations, so its counts can differ from
-SPARQL or PowSyBl projections.
-
-Export writes fresh CGMES 3.0 profiles. Preparing the module with
-`sever_source()` happens outside export timing and is reported separately;
-replacing previous output is timed. Byte-exact retained-source replay has a
-separate `powerio_replay_benchmark.py` and is excluded from fresh-export rankings:
-
-```sh
-podman-compose -f docker/docker-compose.yml run --rm powerio-svedala   pytest powerio_replay_benchmark.py --benchmark-only   --benchmark-json=/output/powerio_replay_benchmark.json
-```
-
-Thanks to [Mohamed Numair (@MohamedNumair)](https://github.com/MohamedNumair)
-for PowerIO's original CGMES implementation and the benchmark proposal in
-[PowerIO #456](https://github.com/eigenergy/powerio/issues/456), and to
-[Kristjan / Haigutus](https://github.com/Haigutus) and CIM bench's contributors
-for this harness.
-Dataset licenses and contributor notices remain with the existing submodules.
 
 ## Parsers/Serializers
 
@@ -73,7 +43,7 @@ Tool versions and performance live in the [generated results](https://haigutus.g
 | Status | Tool / Library | Language | Main Purpose / Strength | Triplet / Graph Access? | CGMES / CIM Support | GitHub / Source | Notes |
 |--------|----------------|----------|-------------------------|------------------------|---------------------|-----------------|-------|
 | ✅ | **triplets** | Python | Pandas-based RDF parser | pandas DataFrames + lxml | Version-agnostic CIM/CGMES | [triplets](https://github.com/Haigutus/triplets) | Fast loading, low memory, simple API — data extraction, batch processing |
-| ✅ | **PowerIO** | Rust/Python | Typed electrical network import/export | Native component-count index | CGMES 2.4.15/3.0 in, 3.0 out | [eigenergy/powerio](https://github.com/eigenergy/powerio) | Loads every profile; measures fresh EQ/TP/SSH/SV writing |
+| ✅ | **PowerIO** | Rust/Python | Typed electrical network import/export | Native network model | CGMES 2.4.15/3.0 in, 3.0 out | [eigenergy/powerio](https://github.com/eigenergy/powerio) | Format conversion, sparse matrices |
 | ✅ | **pypowsybl** | Python | PowSyBl wrapper (network import/export) | Native network model (Java) | CGMES 2.4.15/3.0 import/export | [powsybl/pypowsybl](https://github.com/powsybl/pypowsybl) | Rich analysis-ready network model — power flow, TSO applications |
 | ✅ | **GridCal/VeraGrid** | Python | Power systems analysis with UI | Custom CGMES parser | CGMES 2.4.15/3.0 import | [SanPen/GridCal](https://github.com/SanPen/GridCal) | Fastest queries (O(1) object access), full circuit model — query-intensive workflows |
 | ✅ | **RDFlib** | Python | Generic RDF parser/triple store | Oxigraph (via oxrdflib) | None (generic) | [RDFLib/rdflib](https://github.com/RDFLib/rdflib) | Standard RDF library, flexible SPARQL — baseline for speed/memory comparison |

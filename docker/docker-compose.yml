@@ -168,7 +168,6 @@ services:
     image: cim-bench/gmss:latest
     command: pytest docker_gmss_realgrid_benchmark.py --benchmark-only --benchmark-json=/output/gmss_realgrid_benchmark.json
 
-
   powerio-svedala:
     <<: *common
     image: cim-bench/powerio:latest

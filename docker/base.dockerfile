@@ -1,4 +1,4 @@
-FROM debian:trixie-slim
+FROM debian:bookworm-slim
 
 # Copy uv from official image (pinned - bump deliberately)
 COPY --from=ghcr.io/astral-sh/uv:0.11 /uv /uvx /bin/

@@ -8,7 +8,7 @@ RUN --mount=type=cache,target=/root/.nuget/packages dotnet publish -c Release -o
 FROM localhost/cim-bench/base:latest
 
 # .NET runtime for pythonnet (coreclr)
-RUN apt-get update && apt-get install -y wget libicu76 libssl3t64 \
+RUN apt-get update && apt-get install -y wget libicu72 libssl3 \
     && wget -q https://dot.net/v1/dotnet-install.sh -O /tmp/dotnet-install.sh \
     && bash /tmp/dotnet-install.sh --channel 10.0 --runtime dotnet --install-dir /usr/share/dotnet \
     && ln -s /usr/share/dotnet/dotnet /usr/local/bin/dotnet \
