@@ -14,7 +14,7 @@ class LibCIMppAdapter(ParserAdapter):
 
     @classmethod
     def get_version(cls):
-        return "2.2.0"  # C++ lib, no Python package metadata
+        return _libcimpp_benchmark.LibCIMppBenchmark.get_release_version()
 
     @classmethod
     def get_display_name(cls):
@@ -26,7 +26,7 @@ class LibCIMppAdapter(ParserAdapter):
 
     @classmethod
     def get_tags(cls):
-        return ["parser", "query", "typed-model", "c++"]
+        return ["parser", "serializer", "query", "typed-model", "c++"]
 
     def load(self, dataset_key: str):
         """Load CIM dataset."""
@@ -76,3 +76,15 @@ class LibCIMppAdapter(ParserAdapter):
 
     def get_substations_count(self, loaded_obj):
         return loaded_obj.benchmark.count_substations()
+
+    def export(self, loaded_obj, output_path):
+        """Export the loaded CIM dataset to RDF/XML files."""
+        if not loaded_obj.benchmark:
+            raise ValueError("No data loaded")
+
+        # Ensure output path is a Path object
+        output_path = Path(output_path)
+
+        # Write the CIM data to RDF/XML files separated by profiles
+        loaded_obj.benchmark.write(str(output_path.with_suffix("")))
+        return output_path

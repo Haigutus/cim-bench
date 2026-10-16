@@ -73,12 +73,10 @@ services:
     image: cim-bench/jena:latest
     command: pytest docker_jena_realgrid_benchmark.py --benchmark-only --benchmark-json=/output/jena_realgrid_benchmark.json
 
-  # libcimpp-svedala:
-  #   <<: *common
-  #   image: cim-bench/libcimpp-cgmes3:latest
-  #   command: pytest libcimpp_svedala_benchmark.py --benchmark-only --benchmark-json=/output/libcimpp_svedala_benchmark.json
-  #
-  # NOTE: libcimpp v2.2.0 with CGMES 3.0 fails to parse Svedala files (European extensions).
+  libcimpp-svedala:
+    <<: *common
+    image: cim-bench/libcimpp-cgmes3:latest
+    command: pytest libcimpp_svedala_benchmark.py --benchmark-only --benchmark-json=/output/libcimpp_svedala_benchmark.json
 
   libcimpp-realgrid:
     <<: *common

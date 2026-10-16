@@ -25,8 +25,8 @@ ENV PATH="/tmp/build_env/.venv/bin:${PATH}"
 
 # Download and install libcimpp CGMES 3.0.0 .deb package (kept for runtime stage)
 WORKDIR /tmp
-RUN wget https://github.com/sogno-platform/libcimpp/releases/download/release/v2.2.0/libcimpp_CGMES_3.0.0-2.2.0-Linux.deb && \
-    (dpkg -i libcimpp_CGMES_3.0.0-2.2.0-Linux.deb || apt-get install -f -y)
+RUN wget https://github.com/sogno-platform/libcimpp/releases/download/release/v2.3.1/libcimpp_CGMES_3.0.0-2.3.1-Linux.deb && \
+    (dpkg -i libcimpp_CGMES_3.0.0-2.3.1-Linux.deb || apt-get install -f -y)
 
 # Build pybind11 wrapper
 COPY parsers/libcimpp_wrapper /build/wrapper
@@ -49,8 +49,8 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install libcimpp from the .deb already downloaded in the builder
-COPY --from=builder /tmp/libcimpp_CGMES_3.0.0-2.2.0-Linux.deb /tmp/libcimpp_CGMES_3.0.0-2.2.0-Linux.deb
-RUN dpkg -i /tmp/libcimpp_CGMES_3.0.0-2.2.0-Linux.deb && rm /tmp/libcimpp_CGMES_3.0.0-2.2.0-Linux.deb
+COPY --from=builder /tmp/libcimpp_CGMES_3.0.0-2.3.1-Linux.deb /tmp/libcimpp_CGMES_3.0.0-2.3.1-Linux.deb
+RUN dpkg -i /tmp/libcimpp_CGMES_3.0.0-2.3.1-Linux.deb && rm /tmp/libcimpp_CGMES_3.0.0-2.3.1-Linux.deb
 
 # Copy built wrapper from builder
 COPY --from=builder /build/wrapper/build/_libcimpp_benchmark*.so /app/lib/

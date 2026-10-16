@@ -28,7 +28,7 @@ while [ $# -gt 0 ]; do
     shift
 done
 
-mkdir -p "$RESULTS_DIR"
+mkdir -p "$RESULTS_DIR" benchmarks/parsers benchmarks/data benchmarks/temp temp
 
 echo "========================================"
 echo "cim-bench Containerized Benchmarks"

@@ -6,6 +6,10 @@
 
 #include "IEC61970.hpp"
 #include "CIMModel.hpp"
+#include "CIMWriter.hpp"
+#include "CGMESProfile.hpp"
+#include "CimConstants.hpp"
+#include "version.hpp"
 
 namespace py = pybind11;
 
@@ -15,6 +19,16 @@ private:
 
 public:
     LibCIMppBenchmark() : model(std::make_unique<CIMModel>()) {}
+
+    static const std::string& get_release_version() {
+        static const std::string release_version(RELEASE_VERSION);
+        return release_version;
+    }
+
+    static const std::string& get_cim_version() {
+        static const std::string cim_version(CimVersion);
+        return cim_version;
+    }
 
     bool load(const std::vector<std::string>& file_paths) {
         try {
@@ -75,6 +89,16 @@ public:
         }
         return count;
     }
+
+    std::map<std::string, std::string> write(const std::string& output_path) {
+        auto classProfileMap = CIMWriter::getClassProfileMap(model->Objects);
+        std::map<CGMESProfile, std::string> profileFileMap = CIMWriter::writeFiles(output_path, model->Objects, output_path, classProfileMap);
+        std::map<std::string, std::string> resultMap;
+        for (const auto& profileAndFile : profileFileMap) {
+            resultMap.emplace(getProfileShortName(profileAndFile.first), profileAndFile.second);
+        }
+        return resultMap;
+    }
 };
 
 PYBIND11_MODULE(_libcimpp_benchmark, m) {
@@ -85,6 +109,10 @@ PYBIND11_MODULE(_libcimpp_benchmark, m) {
         .def("load", &LibCIMppBenchmark::load,
              py::arg("file_paths"),
              "Load CIM files from the given paths")
+        .def_static("get_release_version", &LibCIMppBenchmark::get_release_version,
+             "Get Release Version")
+        .def_static("get_cim_version", &LibCIMppBenchmark::get_cim_version,
+             "Get CIM Version")
         .def("count_acline_segments", &LibCIMppBenchmark::count_acline_segments,
              "Count ACLineSegment objects")
         .def("count_synchronous_machines", &LibCIMppBenchmark::count_synchronous_machines,
@@ -92,5 +120,8 @@ PYBIND11_MODULE(_libcimpp_benchmark, m) {
         .def("count_loads", &LibCIMppBenchmark::count_loads,
              "Count ConformLoad, NonConformLoad, and EnergyConsumer objects")
         .def("count_substations", &LibCIMppBenchmark::count_substations,
-             "Count Substation objects");
+             "Count Substation objects")
+        .def("write", &LibCIMppBenchmark::write,
+             py::arg("output_path"),
+             "Write the CIM data to RDF/XML files separated by profiles. Returns written files as mapping of profile to file");
 }

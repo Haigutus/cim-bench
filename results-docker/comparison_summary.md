@@ -21,7 +21,8 @@
 | graphdb (Svedala) | 712.3 ms | 1344.3 MB | 97 lines, 39 gen, 73 loads, 57 subs | Dataset: 7.3 MB |
 | jena (Realgrid) | 1.58 s | 2586.6 MB | 7561 lines, 1347 gen, 6687 loads, 4875 subs | Dataset: 86.5 MB |
 | jena (Svedala) | 120.1 ms | 402.0 MB | 97 lines, 39 gen, 73 loads, 56 subs | Dataset: 7.3 MB |
-| libcimpp (Realgrid) | 19.53 s | 133.8 MB | 7561 lines, 1347 gen, 6687 loads, 4875 subs | Dataset: 86.5 MB |
+| libcimpp (Realgrid) | 4.90 s | 132.2 MB | 7561 lines, 1347 gen, 6687 loads, 4875 subs | Dataset: 86.5 MB |
+| libcimpp (Svedala) | 135.1 ms | 9.4 MB | 97 lines, 39 gen, 73 loads, 57 subs | Dataset: 7.3 MB |
 | maplib (Realgrid) | 2.01 s | 454.8 MB | 7561 lines, 1347 gen, 6687 loads, 4875 subs | Dataset: 86.5 MB |
 | maplib (Svedala) | 218.0 ms | 140.6 MB | 97 lines, 39 gen, 73 loads, 57 subs | Dataset: 7.3 MB |
 | opencgmes (Realgrid) | 1.10 s | 3055.9 MB | 7561 lines, 1347 gen, 6687 loads, 4875 subs | Dataset: 86.5 MB |
@@ -39,12 +40,12 @@
 
 ### Query Performance
 
-| Query Type | cimoxide (Realgrid) | cimoxide (Svedala) | gmss (Svedala) | graphdb (Realgrid) | graphdb (Svedala) | jena (Realgrid) | jena (Svedala) | libcimpp (Realgrid) | maplib (Realgrid) | maplib (Svedala) | opencgmes (Realgrid) | opencgmes (Svedala) | powsybl_cgmes (Realgrid) | powsybl_cgmes (Svedala) | pypowsybl (Realgrid) | pypowsybl (Svedala) | rdflib (Realgrid) | rdflib (Svedala) | triplets (Realgrid) | triplets (Svedala) | veragrid (Realgrid) | veragrid (Svedala) |
-|------------|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| get_generators | 9.3 ms | 292.4 μs | 120.6 μs | 409.6 μs | 137.9 μs | 519.2 μs | 165.9 μs | 5.4 ms | 459.0 μs | 331.3 μs | 521.7 μs | 160.7 μs | 288.3 μs | 110.1 μs | 2.2 ms | 265.9 μs | 443.7 μs | 68.8 μs | 7.4 ms | 1.5 ms | 0.1 μs | 0.1 μs |
-| get_lines | 12.9 ms | 259.0 μs | 2.92 s | 252.1 ms | 5.9 ms | 203.5 ms | 4.1 ms | 5.4 ms | 44.6 ms | 14.6 ms | 144.9 ms | 4.7 ms | 347.4 ms | 8.3 ms | 33.2 ms | 292.9 μs | 446.88 s | 805.7 ms | 12.6 ms | 1.7 ms | 0.1 μs | 0.0 μs |
-| get_loads | 26.3 ms | 878.1 μs | 284.7 μs | 1.2 ms | 288.6 μs | 4.9 ms | 295.9 μs | 12.8 ms | 1.1 ms | 869.9 μs | 2.5 ms | 251.6 μs | 983.1 μs | 161.8 μs | 16.1 ms | 194.2 μs | 2.1 ms | 199.8 μs | 11.2 ms | 1.7 ms | 0.1 μs | 0.1 μs |
-| get_substations | 7.4 ms | 286.6 μs | 92.1 μs | 718.6 μs | 82.4 μs | 864.4 μs | 64.3 μs | 5.4 ms | 485.3 μs | 355.0 μs | 744.9 μs | 81.7 μs | 330.9 μs | 74.5 μs | 3.5 ms | 120.9 μs | 750.0 μs | 66.3 μs | 6.4 ms | 1.0 ms | 0.1 μs | 0.1 μs |
+| Query Type | cimoxide (Realgrid) | cimoxide (Svedala) | gmss (Svedala) | graphdb (Realgrid) | graphdb (Svedala) | jena (Realgrid) | jena (Svedala) | libcimpp (Realgrid) | libcimpp (Svedala) | maplib (Realgrid) | maplib (Svedala) | opencgmes (Realgrid) | opencgmes (Svedala) | powsybl_cgmes (Realgrid) | powsybl_cgmes (Svedala) | pypowsybl (Realgrid) | pypowsybl (Svedala) | rdflib (Realgrid) | rdflib (Svedala) | triplets (Realgrid) | triplets (Svedala) | veragrid (Realgrid) | veragrid (Svedala) |
+|------------|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| get_generators | 9.3 ms | 292.4 μs | 120.6 μs | 409.6 μs | 137.9 μs | 519.2 μs | 165.9 μs | 14.5 ms | 422.0 μs | 459.0 μs | 331.3 μs | 521.7 μs | 160.7 μs | 288.3 μs | 110.1 μs | 2.2 ms | 265.9 μs | 443.7 μs | 68.8 μs | 7.4 ms | 1.5 ms | 0.1 μs | 0.1 μs |
+| get_lines | 12.9 ms | 259.0 μs | 2.92 s | 252.1 ms | 5.9 ms | 203.5 ms | 4.1 ms | 13.5 ms | 428.4 μs | 44.6 ms | 14.6 ms | 144.9 ms | 4.7 ms | 347.4 ms | 8.3 ms | 33.2 ms | 292.9 μs | 446.88 s | 805.7 ms | 12.6 ms | 1.7 ms | 0.1 μs | 0.0 μs |
+| get_loads | 26.3 ms | 878.1 μs | 284.7 μs | 1.2 ms | 288.6 μs | 4.9 ms | 295.9 μs | 25.1 ms | 1.2 ms | 1.1 ms | 869.9 μs | 2.5 ms | 251.6 μs | 983.1 μs | 161.8 μs | 16.1 ms | 194.2 μs | 2.1 ms | 199.8 μs | 11.2 ms | 1.7 ms | 0.1 μs | 0.1 μs |
+| get_substations | 7.4 ms | 286.6 μs | 92.1 μs | 718.6 μs | 82.4 μs | 864.4 μs | 64.3 μs | 12.4 ms | 417.4 μs | 485.3 μs | 355.0 μs | 744.9 μs | 81.7 μs | 330.9 μs | 74.5 μs | 3.5 ms | 120.9 μs | 750.0 μs | 66.3 μs | 6.4 ms | 1.0 ms | 0.1 μs | 0.1 μs |
 
 ## CLI Tools
 

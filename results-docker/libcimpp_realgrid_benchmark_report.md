@@ -4,23 +4,23 @@
 
 ## Environment
 
-- **CPU**: AMD Ryzen AI 9 HX 370 w/ Radeon 890M
-- **Cores**: 24
+- **CPU**: 11th Gen Intel(R) Core(TM) i7-11850H @ 2.50GHz
+- **Cores**: 4
 - **Python**: 3.14.6
-- **System**: Linux 7.1.3-100.fc43.x86_64
+- **System**: Linux 6.8.0-147-generic
 
 ## Results
 
 ### Libcimpp Load Realgrid
 
-- **Mean time**: 19.53 s
-- **Min time**: 19.41 s
-- **Max time**: 19.64 s
-- **Std dev**: 90.9 ms
+- **Mean time**: 4.90 s
+- **Min time**: 4.85 s
+- **Max time**: 4.96 s
+- **Std dev**: 49.5 ms
 - **Rounds**: 5
 
 **Metrics**:
-- Memory Mb: 133.8
+- Memory Mb: 132.2
 - Lines: 7561
 - Generators: 1347
 - Loads: 6687
@@ -28,20 +28,20 @@
 - Dataset Size Mb: 86.5
 - Cgmes Version: 2.4.15
 - Library: libcimpp
-- Library Version: 2.2.0
+- Library Version: 2.3.1
 - Library Dependencies: {}
 - Dataset: realgrid
 - Display Name: libcimpp
 - Color: #000000
-- Tags: ['parser', 'query', 'typed-model', 'c++']
+- Tags: ['parser', 'serializer', 'query', 'typed-model', 'c++']
 
 ### Libcimpp Get Lines
 
-- **Mean time**: 5.4 ms
-- **Min time**: 3.5 ms
-- **Max time**: 13.6 ms
-- **Std dev**: 2.8 ms
-- **Rounds**: 79
+- **Mean time**: 13.5 ms
+- **Min time**: 12.2 ms
+- **Max time**: 16.5 ms
+- **Std dev**: 878.5 μs
+- **Rounds**: 75
 
 **Metrics**:
 - Line Count: 7561
@@ -53,11 +53,11 @@
 
 ### Libcimpp Get Generators
 
-- **Mean time**: 5.4 ms
-- **Min time**: 3.7 ms
-- **Max time**: 13.9 ms
-- **Std dev**: 2.7 ms
-- **Rounds**: 109
+- **Mean time**: 14.5 ms
+- **Min time**: 13.3 ms
+- **Max time**: 18.1 ms
+- **Std dev**: 611.1 μs
+- **Rounds**: 76
 
 **Metrics**:
 - Generator Count: 1347
@@ -69,11 +69,11 @@
 
 ### Libcimpp Get Loads
 
-- **Mean time**: 12.8 ms
-- **Min time**: 9.2 ms
-- **Max time**: 22.3 ms
-- **Std dev**: 4.5 ms
-- **Rounds**: 60
+- **Mean time**: 25.1 ms
+- **Min time**: 24.0 ms
+- **Max time**: 27.4 ms
+- **Std dev**: 850.0 μs
+- **Rounds**: 41
 
 **Metrics**:
 - Load Count: 6687
@@ -85,16 +85,31 @@
 
 ### Libcimpp Get Substations
 
-- **Mean time**: 5.4 ms
-- **Min time**: 3.6 ms
-- **Max time**: 13.9 ms
-- **Std dev**: 2.7 ms
-- **Rounds**: 107
+- **Mean time**: 12.4 ms
+- **Min time**: 11.7 ms
+- **Max time**: 13.6 ms
+- **Std dev**: 472.5 μs
+- **Rounds**: 70
 
 **Metrics**:
 - Substation Count: 4875
 - Query Type: get_substations
 - Library: libcimpp
 - Dataset: realgrid
+- Display Name: libcimpp
+- Color: #000000
+
+### Libcimpp Export Realgrid
+
+- **Mean time**: 6.39 s
+- **Min time**: 6.36 s
+- **Max time**: 6.45 s
+- **Std dev**: 34.4 ms
+- **Rounds**: 5
+
+**Metrics**:
+- Library: libcimpp
+- Dataset: realgrid
+- Operation: export
 - Display Name: libcimpp
 - Color: #000000
