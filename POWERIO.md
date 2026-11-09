@@ -7,6 +7,9 @@ These are native component counts, not SPARQL result materialization. Compare
 query timings only after checking these semantics and the returned counts.
 The query assertions are API sanity checks; they do not certify the dataset's
 semantic component counts against an independent oracle.
+PowerIO's Python wrapper caches immutable scalar count attributes after their
+first access. Repeated calibrated getter timings therefore measure steady-state
+access, not first-query traversal or index-construction cost.
 
 Each load returns an independently owned module/network. The reusable adapter
 does not retain a previous module during the next timed parse. Temporary input
