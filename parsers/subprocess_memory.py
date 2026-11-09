@@ -9,9 +9,9 @@ import subprocess
 import psutil
 
 
-def measure_peak_rss_mb(args):
-    """Run *args* as a subprocess and return its peak RSS in MB."""
-    proc = psutil.Popen(args, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+def measure_peak_rss_mb(args, stdout=subprocess.DEVNULL):
+    """Return (sampled direct-child peak RSS in MiB, actual return code)."""
+    proc = psutil.Popen(args, stdout=stdout, stderr=subprocess.DEVNULL)
     peak = 0
     while True:
         try:
@@ -28,5 +28,5 @@ def measure_peak_rss_mb(args):
             except psutil.NoSuchProcess:
                 pass
             break
-    proc.wait()
-    return peak / (1024 * 1024)
+    returncode = proc.wait()
+    return peak / (1024 * 1024), returncode

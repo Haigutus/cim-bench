@@ -1,6 +1,7 @@
 """Attach reproducible input/build evidence without adding work to timed calls."""
 
 import hashlib
+import json
 import os
 from pathlib import Path
 import subprocess
@@ -10,6 +11,14 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTCOMES = []
+COLLECTED_DATASETS = set()
+
+
+def pytest_collection_modifyitems(items):
+    # Preserve input provenance even when a CLI fails before timing begins.
+    for item in items:
+        if key := getattr(getattr(item, "obj", None), "_cim_bench_dataset_key", None):
+            COLLECTED_DATASETS.add(key)
 
 
 def git_evidence():
@@ -43,7 +52,10 @@ def input_evidence(dataset):
 
 def pytest_runtest_logreport(report):
     if report.when == "call" or report.outcome != "passed":
-        OUTCOMES.append({"test": report.nodeid, "phase": report.when, "outcome": report.outcome})
+        outcome = {"test": report.nodeid, "phase": report.when, "outcome": report.outcome}
+        if cli := dict(report.user_properties).get("cim_bench_cli"):
+            outcome["cli"] = cli
+        OUTCOMES.append(outcome)
 
 
 def pytest_collectreport(report):
@@ -57,6 +69,13 @@ def pytest_sessionfinish(session, exitstatus):
     session.config._cim_bench_run = {"exit_status": int(exitstatus),
                                     "tests_collected": session.testscollected}
     yield
+    destination = session.config.getoption("benchmark_json", default=None)
+    if destination and not getattr(session.config, "_cim_bench_json_written", False):
+        # pytest-benchmark omits JSON when every operation fails before timing.
+        # Overwrite any stale requested report with explicit failure/skip evidence.
+        report = {"benchmarks": [], "incomplete_run": True}
+        pytest_benchmark_update_json(session.config, [], report)
+        Path(destination).write_text(json.dumps(report, indent=2) + "\n")
 
 
 @pytest.hookimpl(optionalhook=True)
@@ -65,7 +84,10 @@ def pytest_benchmark_update_json(config, benchmarks, output_json):
     # Such values are declared evidence, distinct from an observed checkout.
     from datasets import DATASETS
 
+    config._cim_bench_json_written = True
+
     keys = {b.get("extra_info", {}).get("dataset_key") for b in output_json["benchmarks"]}
+    keys.update(COLLECTED_DATASETS)
     output_json["cim_bench_evidence"] = {
         "schema": "cim-bench-evidence",
         "schema_version": 1,

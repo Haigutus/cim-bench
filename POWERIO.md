@@ -92,6 +92,29 @@ loads**. It is not isolated peak memory, allocation volume or model size. A
 sampled process-tree peak from an independent fresh process is a separate metric
 and must state its sampling interval and whether interpreter startup is included.
 
+## CLI comparisons
+
+CLI measurements remain a separate cohort: each operation includes process
+startup and input loading. The CLI harness checks exit status on preflight, the
+separate memory run and every timed round. Conversion, serialization and query
+operations require their declared nonempty output files in a fresh destination.
+Preparation and verification occur outside the timer, and
+`--benchmark-min-rounds` controls the number of one-command rounds.
+
+cimgo validation accepts exit 1 only when its JSON report contains matching
+`sh:Violation` findings. The violation count and outcome remain in the evidence;
+a completed validation benchmark does not certify a valid input model. Capturing
+that stdout is included in command time, while JSON inspection is outside it.
+CLI memory is the polled peak RSS of the direct child process, including startup;
+it excludes descendants and can miss short-lived peaks. It is distinct from
+library retained RSS and a separately sampled process-tree peak.
+
+Keep the exact CLI harness commit with results. Historical CLI timings discarded
+return codes and reused output paths, so they do not provide the same evidence.
+Input hashes and failed test outcomes are recorded even when a CLI fails before
+its first timed round. Output existence proves neither semantic preservation
+nor independent consumer acceptance.
+
 Run the synthetic contract tests without downloading datasets:
 
 ```sh
