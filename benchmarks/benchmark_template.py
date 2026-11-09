@@ -71,6 +71,7 @@ def create_benchmarks(adapter, dataset_key, parser_name, dataset_name):
             "display_name": adapter.__class__.get_display_name(),
             "color": adapter.__class__.get_color(),
             "tags": adapter.__class__.get_tags(),
+            "export_supported": has_export,
             **adapter.__class__.get_measurement_notes(),
         })
 
@@ -94,6 +95,7 @@ def create_benchmarks(adapter, dataset_key, parser_name, dataset_name):
     # Load test
     def test_load(benchmark, memory_baseline):
         """Benchmark loading dataset."""
+        annotate(benchmark)
         try:
             loaded_obj = benchmark(adapter.load, dataset_key)
         except IncompleteLoadError as e:
@@ -120,7 +122,6 @@ def create_benchmarks(adapter, dataset_key, parser_name, dataset_name):
 
         for key, value in metrics.items():
             benchmark.extra_info[key] = value
-        annotate(benchmark)
 
         # Cleanup if needed
         if hasattr(adapter, 'cleanup'):
@@ -131,47 +132,47 @@ def create_benchmarks(adapter, dataset_key, parser_name, dataset_name):
     # Query tests
     def test_get_lines(benchmark, loaded_object):
         """Benchmark querying lines."""
+        annotate(benchmark)
         try:
             count = benchmark(adapter.get_lines_count, loaded_object)
         except QueryUnsupported as e:
             pytest.skip(f"query not feasible for this tool/dataset: {e}")
         benchmark.extra_info["line_count"] = count
         benchmark.extra_info["query_type"] = "get_lines"
-        annotate(benchmark)
         assert count > 0
 
     def test_get_generators(benchmark, loaded_object):
         """Benchmark querying generators."""
+        annotate(benchmark)
         try:
             count = benchmark(adapter.get_generators_count, loaded_object)
         except QueryUnsupported as e:
             pytest.skip(f"query not feasible for this tool/dataset: {e}")
         benchmark.extra_info["generator_count"] = count
         benchmark.extra_info["query_type"] = "get_generators"
-        annotate(benchmark)
         assert count > 0
 
     def test_get_loads(benchmark, loaded_object):
         """Benchmark querying loads."""
+        annotate(benchmark)
         try:
             count = benchmark(adapter.get_loads_count, loaded_object)
         except QueryUnsupported as e:
             pytest.skip(f"query not feasible for this tool/dataset: {e}")
         benchmark.extra_info["load_count"] = count
         benchmark.extra_info["query_type"] = "get_loads"
-        annotate(benchmark)
-        # RealGrid has 0 loads, so allow >= 0
+        # This is an API sanity check, not fixture-level semantic validation.
         assert count >= 0
 
     def test_get_substations(benchmark, loaded_object):
         """Benchmark querying substations."""
+        annotate(benchmark)
         try:
             count = benchmark(adapter.get_substations_count, loaded_object)
         except QueryUnsupported as e:
             pytest.skip(f"query not feasible for this tool/dataset: {e}")
         benchmark.extra_info["substation_count"] = count
         benchmark.extra_info["query_type"] = "get_substations"
-        annotate(benchmark)
         assert count > 0
 
     # Export test (only if adapter supports it)
@@ -194,9 +195,9 @@ def create_benchmarks(adapter, dataset_key, parser_name, dataset_name):
 
         def test_export(benchmark, loaded_object, export_output, pytestconfig):
             """Benchmark exporting dataset."""
+            annotate(benchmark)
             # Check a first write into an empty directory outside the timing.
-            # Repeated benchmark rounds may overwrite files, but a stale file
-            # from another test cannot make a no-op exporter pass.
+            # Each measured round also starts with an empty destination.
             prepare_export_output(export_output)
             adapter.export(loaded_object, export_output)
             export_files(export_output)
@@ -217,7 +218,6 @@ def create_benchmarks(adapter, dataset_key, parser_name, dataset_name):
             benchmark.extra_info["export_file_count"] = len(exported_files)
             benchmark.extra_info["export_bytes"] = sum(path.stat().st_size for path in exported_files)
             benchmark.extra_info.update(adapter.get_export_metrics(loaded_object, export_output))
-            annotate(benchmark)
 
     # Set proper test names for pytest discovery
     test_load.__name__ = f"test_{parser_name}_load_{dataset_name}"

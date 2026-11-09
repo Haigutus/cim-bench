@@ -5,6 +5,8 @@ CGMES profile and queries the native typed model. Its load count includes
 equivalent injections; substations include retained boundary/source records.
 These are native component counts, not SPARQL result materialization. Compare
 query timings only after checking these semantics and the returned counts.
+The query assertions are API sanity checks; they do not certify the dataset's
+semantic component counts against an independent oracle.
 
 Each load returns an independently owned module/network. The reusable adapter
 does not retain a previous module during the next timed parse. Temporary input
@@ -32,22 +34,42 @@ the current harness before comparing their timings.
 ## Versioned runs
 
 Keep each version and environment in a separate results directory. For example,
-create a separate RC image rather than changing the stable image in place:
+create a separate RC image from an exact Linux wheel. PowerIO RCs are distributed
+through GitHub prereleases and workflow artifacts; they are not published to
+PyPI, crates.io or the Julia registry. Download a wheel for the container's Linux
+architecture from the selected release workflow, or build one from an immutable
+source revision in a matching Linux environment:
 
 ```sh
-podman build -f docker/tools/powerio.dockerfile \
-  --build-arg POWERIO_SPEC='powerio==0.12.0rc1' \
-  -t cim-bench/powerio:0.12.0rc1 .
+# Run in the selected clean PowerIO checkout, inside Linux with Rust, Python
+# >= 3.11 and maturin installed. Record this commit with the resulting wheel.
+git rev-parse HEAD
+maturin build --release --locked --features gridfm -i python3 -o /out
 ```
 
-The prerelease command requires that version to be published. Before that,
-an immutable public source spec or a separately built wheel can be used; retain
-the source commit and wheel hash with the run. The root environment's seven-day
-package-age policy can delay a newly published release; the isolated tool image
-uses its explicit version pin. Do not silently replace a requested version.
+Install that single wheel into a separate image, preserving its wheel filename.
+A macOS wheel cannot be installed in the Linux benchmark container.
+
+```sh
+image_context=$(mktemp -d)
+# Replace this path with the one exact, compatible wheel being evaluated.
+cp /path/to/powerio-0.12.0rc1-cp311-abi3-manylinux_2_35_aarch64.whl "$image_context/"
+cat > "$image_context/Dockerfile" <<'EOF'
+FROM localhost/cim-bench/powerio:latest
+COPY *.whl /tmp/
+RUN uv pip install --python /app/.venv/bin/python --no-deps --reinstall /tmp/*.whl
+EOF
+podman build -t cim-bench/powerio:rc-evaluation "$image_context"
+```
+
+Retain the wheel SHA-256, exact source commit, build features and resulting image
+ID with the run. The root environment's seven-day package-age policy can delay a
+newly published stable release; the isolated tool image uses its explicit version
+pin. Do not silently replace a requested version.
 
 The benchmark JSON's `cim_bench_evidence` records input SHA-256 hashes and byte
-counts, the observed harness commit/dirty state, test outcomes, and optional
+counts, the observed harness commit/dirty state, run exit status, test outcomes
+(including skips, collection errors and teardown failures), and optional
 runner declarations:
 
 - `CIM_BENCH_RUN_ID`: a shared identifier for one comparison run.

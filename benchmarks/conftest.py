@@ -42,8 +42,21 @@ def input_evidence(dataset):
 
 
 def pytest_runtest_logreport(report):
-    if report.when == "call" or (report.when == "setup" and report.outcome != "passed"):
-        OUTCOMES.append({"test": report.nodeid, "outcome": report.outcome})
+    if report.when == "call" or report.outcome != "passed":
+        OUTCOMES.append({"test": report.nodeid, "phase": report.when, "outcome": report.outcome})
+
+
+def pytest_collectreport(report):
+    if report.outcome != "passed":
+        OUTCOMES.append({"test": report.nodeid, "phase": "collection", "outcome": report.outcome})
+
+
+@pytest.hookimpl(hookwrapper=True, tryfirst=True)
+def pytest_sessionfinish(session, exitstatus):
+    # Run before pytest-benchmark writes JSON during its sessionfinish hook.
+    session.config._cim_bench_run = {"exit_status": int(exitstatus),
+                                    "tests_collected": session.testscollected}
+    yield
 
 
 @pytest.hookimpl(optionalhook=True)
@@ -57,6 +70,7 @@ def pytest_benchmark_update_json(config, benchmarks, output_json):
         "schema": "cim-bench-evidence",
         "schema_version": 1,
         "run_id": os.environ.get("CIM_BENCH_RUN_ID", str(uuid.uuid4())),
+        "run": config._cim_bench_run,
         "benchmark": git_evidence(),
         "declared_build": {
             "benchmark_commit": os.environ.get("CIM_BENCH_COMMIT"),

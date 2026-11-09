@@ -79,5 +79,31 @@ create_benchmarks(Adapter(), "synthetic", "synthetic", "synthetic")
     assert export["stats"]["iterations"] == 1
     assert export["extra_info"]["export_file_count"] == 1
     evidence = report["cim_bench_evidence"]
+    assert evidence["run"] == {"exit_status": 0, "tests_collected": 6}
     assert evidence["datasets"]["synthetic"]["inputs"][0]["sha256"] == hashlib.sha256(source.read_bytes()).hexdigest()
     assert len(evidence["tests"]) == 6
+
+
+def test_failed_and_unsupported_operations_remain_visible(pytester):
+    pytester.makeconftest((ROOT / "benchmarks" / "conftest.py").read_text())
+    pytester.makepyfile(f'''
+import sys
+import pytest
+sys.path.insert(0, {str(ROOT / "benchmarks")!r})
+def test_measured(benchmark):
+    benchmark(lambda: 42)
+@pytest.fixture
+def bad_teardown():
+    yield
+    assert False, "teardown failure"
+def test_teardown(bad_teardown): pass
+def test_failed(): assert False
+def test_unsupported(): pytest.skip("operation not supported")
+''')
+    result = pytester.runpytest("--benchmark-min-rounds=2", "--benchmark-max-time=0.01",
+                              "--benchmark-json=report.json", "-q")
+    result.assert_outcomes(passed=2, failed=1, skipped=1, errors=1)
+    evidence = json.loads((pytester.path / "report.json").read_text())["cim_bench_evidence"]
+    assert evidence["run"] == {"exit_status": 1, "tests_collected": 4}
+    assert {("call", "failed"), ("call", "skipped"), ("teardown", "failed")} <= {
+        (item["phase"], item["outcome"]) for item in evidence["tests"]}
