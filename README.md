@@ -29,6 +29,10 @@ CGMES (Common Grid Model Exchange Standard) XML/RDF files, each in its own conta
 > different access paths, so compare within a group, not across.
 
 - **PowerIO** includes equivalent injections in its native load count and preserves source substations.
+- [PowerIO measurement details](POWERIO.md) state the release pin, fresh-export
+  protocol, diagnostic/reparse checks, and exact-input/build evidence. Retained
+  RSS is not a peak-memory measurement; historical runs need a fresh comparable
+  rerun after a measurement-method change.
 - **pypowsybl** converts some substations to voltage levels when connected by transformers, so it reports fewer substations on RealGrid.
 - **maplib** exports N-Quads dramatically faster than RDF/XML; the benchmark uses RDF/XML for consistency with other tools.
 - **libcimpp** is only benchmarked on RealGrid (CGMES 2.4.15) — its CGMES 3.0 build fails on Svedala's European extensions.
