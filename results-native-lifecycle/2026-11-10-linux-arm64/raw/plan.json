@@ -1,0 +1,1931 @@
+{
+  "seed": 202611101,
+  "harness_commit": "ea5444916ef4d038ebf514b4617ec078f83914da",
+  "participants": {
+    "stable": [
+      "powerio",
+      "34a0348d86919fbc054d04b2019be41a35f6d11aface0800f9d3660ef5a73725",
+      "da32f73ea3d9beb283b7d84530985e44eba90741"
+    ],
+    "rc": [
+      "powerio",
+      "9e3edaff79d8159d6fc0e25d18fb29b76b8eee8733586c931654001af7377926",
+      "3abeee34e3c8fc0dc913526d40da27db37041ee6"
+    ],
+    "cimoxide": [
+      "cimoxide",
+      "79fd136ba50dce59250c23412a3a79aed95dc4c55fbff42b273eca06a15d1124",
+      ""
+    ],
+    "veragrid": [
+      "veragrid",
+      "96a89fe5f7d31243b98d5b724dd5e88f71a91adb57b478765c3711c7520ec600",
+      ""
+    ],
+    "libcimpp": [
+      "libcimpp",
+      "cb880fd874d5e371807176f2b52578c0453fc6f9f7e23c387014ac9bca0f63ab",
+      ""
+    ]
+  },
+  "samples": [
+    {
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "stable"
+    },
+    {
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "rc"
+    },
+    {
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "rc"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "stable"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "stable"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "rc"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "stable"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "rc"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "stable"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "rc"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "stable"
+    },
+    {
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "rc"
+    },
+    {
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "stable"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "rc"
+    },
+    {
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "stable"
+    },
+    {
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "rc"
+    },
+    {
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "rc"
+    },
+    {
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "stable"
+    },
+    {
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "stable"
+    },
+    {
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "rc"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "stable"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "rc"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "stable"
+    },
+    {
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "rc"
+    },
+    {
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "stable"
+    },
+    {
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "rc"
+    },
+    {
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "stable"
+    },
+    {
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "rc"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "rc"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "stable"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "stable"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "rc"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "rc"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "stable"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "rc"
+    },
+    {
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "stable"
+    },
+    {
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "stable"
+    },
+    {
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "rc"
+    },
+    {
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "stable"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "rc"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "rc"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "stable"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "stable"
+    },
+    {
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "rc"
+    },
+    {
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "stable"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "rc"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "stable"
+    },
+    {
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "rc"
+    },
+    {
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "rc"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "stable"
+    },
+    {
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "rc"
+    },
+    {
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "stable"
+    },
+    {
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "stable"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "rc"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "rc"
+    },
+    {
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "stable"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "stable"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "rc"
+    },
+    {
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "stable"
+    },
+    {
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "rc"
+    },
+    {
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "rc"
+    },
+    {
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "stable"
+    },
+    {
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "stable"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "rc"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "stable"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "rc"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "stable"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "rc"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "rc"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "stable"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "stable"
+    },
+    {
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "rc"
+    },
+    {
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "stable"
+    },
+    {
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "rc"
+    },
+    {
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "rc"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "stable"
+    },
+    {
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "rc"
+    },
+    {
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "stable"
+    },
+    {
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "rc"
+    },
+    {
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "stable"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "rc"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "stable"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "rc"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "stable"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "rc"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "stable"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "rc"
+    },
+    {
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "stable"
+    },
+    {
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "rc"
+    },
+    {
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "stable"
+    },
+    {
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "stable"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "rc"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "stable"
+    },
+    {
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "rc"
+    },
+    {
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "stable"
+    },
+    {
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "rc"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "rc"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "stable"
+    },
+    {
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "stable"
+    },
+    {
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "rc"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "stable"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "rc"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "stable"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "rc"
+    },
+    {
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "rc"
+    },
+    {
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "stable"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "rc"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "stable"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "rc"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "stable"
+    },
+    {
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "rc"
+    },
+    {
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "stable"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "rc"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "stable"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "rc"
+    },
+    {
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "stable"
+    },
+    {
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "rc"
+    },
+    {
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "stable"
+    },
+    {
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "rc"
+    },
+    {
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "stable"
+    },
+    {
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "rc"
+    },
+    {
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "stable"
+    },
+    {
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "stable"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "rc"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "stable"
+    },
+    {
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "rc"
+    },
+    {
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "stable"
+    },
+    {
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "rc"
+    },
+    {
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "rc"
+    },
+    {
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "stable"
+    },
+    {
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "stable"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "rc"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "rc"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "stable"
+    },
+    {
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "rc"
+    },
+    {
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "stable"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "rc"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "stable"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "veragrid"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "stable"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "cimoxide"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "libcimpp"
+    },
+    {
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "rc"
+    }
+  ],
+  "independent_repeats": 7,
+  "timeout_seconds": 180,
+  "platform": "Linux ARM64 Podman VM on the same macOS host; serial containers; no affinity or cache flush",
+  "exclusions": {
+    "libcimpp/svedala": "Pinned image implements CGMES2.4.15 only; CGMES3 build rejection retained in prior inventory",
+    "pypowsybl": "No Linux ARM64 wheel in the pinned tool build; macOS cohort is separate"
+  },
+  "scope": "Native-model library cohort; all RDF/triplestore and CLI groups remain separately inventoried and unmeasured here"
+}

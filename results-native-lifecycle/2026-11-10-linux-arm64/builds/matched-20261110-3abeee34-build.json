@@ -1,0 +1,42 @@
+{
+  "source_commit": "3abeee34e3c8fc0dc913526d40da27db37041ee6",
+  "source_tree": "ed7f72a133e617c3ee7d794ce41ac66c4c8bd585",
+  "archive": "/private/tmp/cim-perf/source-3abeee34.tar",
+  "archive_sha256": "7183d63928323a1dcb1c07ca73f76ffc513aa42bd1f172093d2cd32f3a43dcd3",
+  "build_source": "git archive of exact immutable commit; no live worktree files",
+  "linux_builder_image": "080f51bbca23e3825ec4d6c6e054c47dae2c6e05729831596eb8122b563ff0ed",
+  "build_options": {
+    "release": true,
+    "locked": true,
+    "features": [
+      "gridfm"
+    ],
+    "default_features": true
+  },
+  "environment_overrides": {
+    "RUSTFLAGS": null,
+    "CARGO_ENCODED_RUSTFLAGS": null,
+    "MACOSX_DEPLOYMENT_TARGET": null,
+    "CARGO_BUILD_TARGET": null,
+    "CARGO_PROFILE_RELEASE_LTO": null,
+    "CARGO_PROFILE_RELEASE_CODEGEN_UNITS": null
+  },
+  "native_rustc": "rustc 1.98.1 (48a229cea 2026-09-01)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: aarch64-apple-darwin\nrelease: 1.98.1\nLLVM version: 22.1.8\n",
+  "native_maturin": "maturin 1.16.0",
+  "native_build_python": "Python 3.13.18",
+  "linux_rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: aarch64-unknown-linux-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+  "wheels": [
+    {
+      "file": "/private/tmp/cim-perf/mac-wheels/3abeee34/powerio-0.12.0rc1-cp311-abi3-macosx_11_0_arm64.whl",
+      "sha256": "a95f1b2f5e2325a395b6ecc03215c9c560136048143f2df07d85d0c8eee9d29b"
+    },
+    {
+      "file": "/private/tmp/cim-perf/final-wheels/matched-20261110-3abeee34/powerio-0.12.0rc1-cp311-abi3-manylinux_2_35_aarch64.whl",
+      "sha256": "533a2076d5eaa29eba388b87c624db62786823d4ff496f840358594129277069"
+    }
+  ],
+  "source_file_manifest": {
+    "file": "/private/tmp/cim-perf/matched-20261110-3abeee34-source-files.json",
+    "sha256": "673a6aea913c8c3207a15ace6b8d730d4f98b91b98ffc6ee1c9662ccf5238c58"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "arch": "arm64",
+  "cpus": 8,
+  "memTotal": 16714772480,
+  "kernel": "7.1.10-200.fc44.aarch64",
+  "os": "linux",
+  "distribution": {
+    "distribution": "fedora",
+    "variant": "podman-machine-os",
+    "version": "44"
+  }
+}

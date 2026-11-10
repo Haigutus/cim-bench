@@ -1,0 +1,6 @@
+{
+  "at": "2026-11-10T20:11:04.523186+00:00",
+  "reason": "Harness assumes git executable, causing libcimpp result capture failure after measurement; restart every participant on a corrected pinned harness.",
+  "complete": false,
+  "stopped_containers": []
+}

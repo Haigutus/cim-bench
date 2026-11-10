@@ -1,0 +1,502 @@
+{
+  "schema": "cim-bench-lifecycle",
+  "schema_version": 1,
+  "tool": "powerio",
+  "dataset": "realgrid_cgmes_2_4",
+  "query_selection": "all",
+  "query_order": [
+    "lines",
+    "generators",
+    "loads",
+    "substations"
+  ],
+  "started_at": "2026-11-10T20:34:16Z",
+  "pid": 1,
+  "python": "3.14.6 (main, Jul 18 2026, 17:01:43) [Clang 22.1.3 ]",
+  "platform": "Linux-7.1.10-200.fc44.aarch64-aarch64-with-glibc2.41",
+  "clock": {
+    "implementation": "clock_gettime(CLOCK_MONOTONIC)",
+    "monotonic": true,
+    "adjustable": false,
+    "resolution": 1e-09
+  },
+  "declared_build": {
+    "CIM_BENCH_RUN_ID": "305-rc-realgrid_cgmes_2_4-all-r7",
+    "CIM_BENCH_COMMIT": "ea5444916ef4d038ebf514b4617ec078f83914da",
+    "CIM_BENCH_IMAGE_ID": "9e3edaff79d8159d6fc0e25d18fb29b76b8eee8733586c931654001af7377926",
+    "CIM_BENCH_TOOL_COMMIT": "3abeee34e3c8fc0dc913526d40da27db37041ee6"
+  },
+  "probe_sha256": "2989fcd63d4295e8f702b047e29af0318cbc6413d44f8275ddacdea43b34386c",
+  "memory_scope": "OS process RSS/high-water mark; excludes child-process memory; includes interpreter and imports",
+  "load_to_use_scope": "adapter.load plus first selected query calls; excludes instrumentation between calls",
+  "first_query_scope": "one call including timer and invocation overhead; no prior load metrics; earlier selected queries can initialize later ones in all mode",
+  "os_file_cache": "uncontrolled warm host cache; fresh process is not cold disk",
+  "cross_tool_semantics": "unverified; returned counts and adapter semantics require separate audit",
+  "memory_before_import": {
+    "rss_bytes": 29876224,
+    "peak_rss_bytes": 29724672,
+    "children": 0
+  },
+  "queries": {
+    "lines": {
+      "count": 7561,
+      "first_ns": 36875,
+      "memory_after_first": {
+        "rss_bytes": 297709568,
+        "peak_rss_bytes": 341880832,
+        "children": 0
+      },
+      "warm": {
+        "iterations_per_batch": 262144,
+        "batch_elapsed_ns": [
+          7702637,
+          7755553,
+          7677303,
+          7700344,
+          7688429,
+          7742887,
+          7686344,
+          7625970,
+          7877386
+        ],
+        "calibration": [
+          {
+            "iterations": 1,
+            "elapsed_ns": 1667
+          },
+          {
+            "iterations": 2,
+            "elapsed_ns": 583
+          },
+          {
+            "iterations": 4,
+            "elapsed_ns": 583
+          },
+          {
+            "iterations": 8,
+            "elapsed_ns": 500
+          },
+          {
+            "iterations": 16,
+            "elapsed_ns": 792
+          },
+          {
+            "iterations": 32,
+            "elapsed_ns": 1458
+          },
+          {
+            "iterations": 64,
+            "elapsed_ns": 2291
+          },
+          {
+            "iterations": 128,
+            "elapsed_ns": 3500
+          },
+          {
+            "iterations": 256,
+            "elapsed_ns": 6708
+          },
+          {
+            "iterations": 512,
+            "elapsed_ns": 14084
+          },
+          {
+            "iterations": 1024,
+            "elapsed_ns": 28958
+          },
+          {
+            "iterations": 2048,
+            "elapsed_ns": 56626
+          },
+          {
+            "iterations": 4096,
+            "elapsed_ns": 115500
+          },
+          {
+            "iterations": 8192,
+            "elapsed_ns": 228667
+          },
+          {
+            "iterations": 16384,
+            "elapsed_ns": 465751
+          },
+          {
+            "iterations": 32768,
+            "elapsed_ns": 919585
+          },
+          {
+            "iterations": 65536,
+            "elapsed_ns": 1928003
+          },
+          {
+            "iterations": 131072,
+            "elapsed_ns": 3971881
+          },
+          {
+            "iterations": 262144,
+            "elapsed_ns": 7691887
+          }
+        ],
+        "timer_and_python_loop_overhead_subtracted": false
+      }
+    },
+    "generators": {
+      "count": 1347,
+      "first_ns": 3458,
+      "memory_after_first": {
+        "rss_bytes": 297709568,
+        "peak_rss_bytes": 341880832,
+        "children": 0
+      },
+      "warm": {
+        "iterations_per_batch": 262144,
+        "batch_elapsed_ns": [
+          7655928,
+          7732470,
+          7670345,
+          7766553,
+          7755428,
+          7668720,
+          7696304,
+          7705386,
+          7735845
+        ],
+        "calibration": [
+          {
+            "iterations": 1,
+            "elapsed_ns": 375
+          },
+          {
+            "iterations": 2,
+            "elapsed_ns": 167
+          },
+          {
+            "iterations": 4,
+            "elapsed_ns": 291
+          },
+          {
+            "iterations": 8,
+            "elapsed_ns": 417
+          },
+          {
+            "iterations": 16,
+            "elapsed_ns": 625
+          },
+          {
+            "iterations": 32,
+            "elapsed_ns": 1250
+          },
+          {
+            "iterations": 64,
+            "elapsed_ns": 2084
+          },
+          {
+            "iterations": 128,
+            "elapsed_ns": 3750
+          },
+          {
+            "iterations": 256,
+            "elapsed_ns": 7167
+          },
+          {
+            "iterations": 512,
+            "elapsed_ns": 40042
+          },
+          {
+            "iterations": 1024,
+            "elapsed_ns": 30126
+          },
+          {
+            "iterations": 2048,
+            "elapsed_ns": 59833
+          },
+          {
+            "iterations": 4096,
+            "elapsed_ns": 118125
+          },
+          {
+            "iterations": 8192,
+            "elapsed_ns": 230875
+          },
+          {
+            "iterations": 16384,
+            "elapsed_ns": 462667
+          },
+          {
+            "iterations": 32768,
+            "elapsed_ns": 920043
+          },
+          {
+            "iterations": 65536,
+            "elapsed_ns": 1901127
+          },
+          {
+            "iterations": 131072,
+            "elapsed_ns": 3872922
+          },
+          {
+            "iterations": 262144,
+            "elapsed_ns": 7658595
+          }
+        ],
+        "timer_and_python_loop_overhead_subtracted": false
+      }
+    },
+    "loads": {
+      "count": 6687,
+      "first_ns": 2166,
+      "memory_after_first": {
+        "rss_bytes": 297709568,
+        "peak_rss_bytes": 341880832,
+        "children": 0
+      },
+      "warm": {
+        "iterations_per_batch": 262144,
+        "batch_elapsed_ns": [
+          8355513,
+          8493429,
+          8304179,
+          8208554,
+          8014637,
+          8279638,
+          7964220,
+          8268429,
+          8114429
+        ],
+        "calibration": [
+          {
+            "iterations": 1,
+            "elapsed_ns": 583
+          },
+          {
+            "iterations": 2,
+            "elapsed_ns": 250
+          },
+          {
+            "iterations": 4,
+            "elapsed_ns": 292
+          },
+          {
+            "iterations": 8,
+            "elapsed_ns": 375
+          },
+          {
+            "iterations": 16,
+            "elapsed_ns": 625
+          },
+          {
+            "iterations": 32,
+            "elapsed_ns": 1250
+          },
+          {
+            "iterations": 64,
+            "elapsed_ns": 2125
+          },
+          {
+            "iterations": 128,
+            "elapsed_ns": 3875
+          },
+          {
+            "iterations": 256,
+            "elapsed_ns": 7208
+          },
+          {
+            "iterations": 512,
+            "elapsed_ns": 15084
+          },
+          {
+            "iterations": 1024,
+            "elapsed_ns": 31125
+          },
+          {
+            "iterations": 2048,
+            "elapsed_ns": 62084
+          },
+          {
+            "iterations": 4096,
+            "elapsed_ns": 123875
+          },
+          {
+            "iterations": 8192,
+            "elapsed_ns": 254292
+          },
+          {
+            "iterations": 16384,
+            "elapsed_ns": 506668
+          },
+          {
+            "iterations": 32768,
+            "elapsed_ns": 998960
+          },
+          {
+            "iterations": 65536,
+            "elapsed_ns": 2011170
+          },
+          {
+            "iterations": 131072,
+            "elapsed_ns": 4122757
+          },
+          {
+            "iterations": 262144,
+            "elapsed_ns": 8504679
+          }
+        ],
+        "timer_and_python_loop_overhead_subtracted": false
+      }
+    },
+    "substations": {
+      "count": 4875,
+      "first_ns": 1417,
+      "memory_after_first": {
+        "rss_bytes": 297709568,
+        "peak_rss_bytes": 341880832,
+        "children": 0
+      },
+      "warm": {
+        "iterations_per_batch": 262144,
+        "batch_elapsed_ns": [
+          7687803,
+          7679344,
+          7730679,
+          7751428,
+          8155679,
+          7523095,
+          7627511,
+          7729678,
+          7778429
+        ],
+        "calibration": [
+          {
+            "iterations": 1,
+            "elapsed_ns": 334
+          },
+          {
+            "iterations": 2,
+            "elapsed_ns": 209
+          },
+          {
+            "iterations": 4,
+            "elapsed_ns": 292
+          },
+          {
+            "iterations": 8,
+            "elapsed_ns": 375
+          },
+          {
+            "iterations": 16,
+            "elapsed_ns": 625
+          },
+          {
+            "iterations": 32,
+            "elapsed_ns": 1209
+          },
+          {
+            "iterations": 64,
+            "elapsed_ns": 2042
+          },
+          {
+            "iterations": 128,
+            "elapsed_ns": 3625
+          },
+          {
+            "iterations": 256,
+            "elapsed_ns": 6917
+          },
+          {
+            "iterations": 512,
+            "elapsed_ns": 14417
+          },
+          {
+            "iterations": 1024,
+            "elapsed_ns": 29041
+          },
+          {
+            "iterations": 2048,
+            "elapsed_ns": 58584
+          },
+          {
+            "iterations": 4096,
+            "elapsed_ns": 117458
+          },
+          {
+            "iterations": 8192,
+            "elapsed_ns": 241459
+          },
+          {
+            "iterations": 16384,
+            "elapsed_ns": 483335
+          },
+          {
+            "iterations": 32768,
+            "elapsed_ns": 960834
+          },
+          {
+            "iterations": 65536,
+            "elapsed_ns": 1932461
+          },
+          {
+            "iterations": 131072,
+            "elapsed_ns": 3785756
+          },
+          {
+            "iterations": 262144,
+            "elapsed_ns": 7867928
+          }
+        ],
+        "timer_and_python_loop_overhead_subtracted": false
+      }
+    }
+  },
+  "status": "success",
+  "import_and_adapter_ns": 35534928,
+  "memory_before_load": {
+    "rss_bytes": 38400000,
+    "peak_rss_bytes": 38297600,
+    "children": 0
+  },
+  "load_ns": 492533488,
+  "memory_after_load": {
+    "rss_bytes": 297644032,
+    "peak_rss_bytes": 341880832,
+    "children": 0
+  },
+  "load_to_use_ns": 492577404,
+  "import_to_use_ns": 528112332,
+  "memory_after_warm": {
+    "rss_bytes": 297709568,
+    "peak_rss_bytes": 341880832,
+    "children": 0
+  },
+  "tool_version": "0.12.0rc1",
+  "measurement_notes": {
+    "query_family": "native_component_count",
+    "count_semantics": {
+      "lines": "native lines; transformers are separate",
+      "generators": "native generators",
+      "loads": "native loads, including equivalent injections",
+      "substations": "retained source substations, including boundary records"
+    },
+    "export_method": "source_retention_removal_then_canonical_CGMES_3_filesystem_write",
+    "source_replay": false,
+    "native_versions": {
+      "bmopf_schema": "0.2.0",
+      "powerio_ir": {
+        "schema": "pio-ir",
+        "version": "0.12.0"
+      },
+      "powerio_version": "0.12.0-rc.1"
+    }
+  },
+  "adapter_sha256": "2b9d9ed00f2eb741bc7f66ab50555d97a4dd5f4804b793c2443b03cb41556384",
+  "inputs": [
+    {
+      "role": "ZIP",
+      "name": "CGMES_v2.4.15_RealGridTestConfiguration_v2.zip",
+      "present": true,
+      "bytes": 3858390,
+      "sha256": "960025ef0f4aba40b6989c8c61736d551062a6d042d20a9089dbc0224eb7e100"
+    }
+  ],
+  "observed_harness_commit": null,
+  "observed_harness_dirty": null
+}
