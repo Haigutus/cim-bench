@@ -153,10 +153,17 @@ def main():
                     item.update(bytes=path.stat().st_size,
                                 sha256=hashlib.file_digest(stream, "sha256").hexdigest())
             record["inputs"].append(item)
-        git = subprocess.run(["git", "-C", str(ROOT), "rev-parse", "HEAD"], capture_output=True, text=True)
-        record["observed_harness_commit"] = git.stdout.strip() if git.returncode == 0 else None
-        dirty = subprocess.run(["git", "-C", str(ROOT), "status", "--porcelain"], capture_output=True, text=True)
-        record["observed_harness_dirty"] = bool(dirty.stdout.strip()) if dirty.returncode == 0 else None
+        record["observed_harness_commit"] = None
+        record["observed_harness_dirty"] = None
+        try:
+            git = subprocess.run(["git", "-C", str(ROOT), "rev-parse", "HEAD"], capture_output=True, text=True)
+            record["observed_harness_commit"] = git.stdout.strip() if git.returncode == 0 else None
+            dirty = subprocess.run(["git", "-C", str(ROOT), "status", "--porcelain"], capture_output=True, text=True)
+            record["observed_harness_dirty"] = bool(dirty.stdout.strip()) if dirty.returncode == 0 else None
+        except OSError as error:
+            # Minimal tool images need not install Git. Missing provenance
+            # tooling must not discard either a measurement or a failed load.
+            record["harness_observation_error"] = {"type": type(error).__name__, "message": str(error)}
         args.output.parent.mkdir(parents=True, exist_ok=True)
         with args.output.open("x") as output:
             json.dump(record, output, indent=2)
