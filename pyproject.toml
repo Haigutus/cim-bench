@@ -8,7 +8,7 @@ dependencies = [
     "pytest-benchmark>=5.2.3",
     "triplets>=0.0.17",
     "pypowsybl>=1.14.0",
-    "powerio>=0.11.10,<0.13",
+    "powerio==0.11.10",
     "psutil>=7.2.2",
     "VeraGrid>=5.6.28",
     "cim-graph>=0.4.3a10",
@@ -16,6 +16,9 @@ dependencies = [
 
 [tool.uv]
 exclude-newer = "P7D"
+# Benchmark this exact reviewed release as soon as it is published.
+# All other dependencies retain the seven-day package-age policy.
+exclude-newer-package = { powerio = false }
 
 [project.optional-dependencies]
 visualization = [

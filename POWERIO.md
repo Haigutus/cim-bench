@@ -66,9 +66,11 @@ podman build -t cim-bench/powerio:rc-evaluation "$image_context"
 ```
 
 Retain the wheel SHA-256, exact source commit, build features and resulting image
-ID with the run. The root environment's seven-day package-age policy can delay a
-newly published stable release; the isolated tool image uses its explicit version
-pin. Do not silently replace a requested version.
+ID with the run. The root environment, isolated tool image and contract CI pin
+PowerIO to exactly 0.11.10. The root's `exclude-newer-package = { powerio = false }`
+allows that reviewed version to be installed as soon as it is published; every
+other dependency retains the seven-day package-age policy. The committed lock
+records the published distributions. Do not silently replace a requested version.
 
 The benchmark JSON's `cim_bench_evidence` records input SHA-256 hashes and byte
 counts, the observed harness commit/dirty state, run exit status, test outcomes
