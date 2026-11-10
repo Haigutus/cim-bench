@@ -1,0 +1,16 @@
+{
+  "case": "t_case9_dcline.m",
+  "table": "transformers_3w",
+  "kind": "candidate",
+  "repeat": 7,
+  "command": [
+    "/private/tmp/cim-perf/mac-venv/bin/python",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/scripts/measure_table_access.py",
+    "/private/tmp/cim-perf/source-da32f73e/tests/data/t_case9_dcline.m",
+    "transformers_3w",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/python-table-access-148e16f4/209-candidate-t_case9_dcline.m-transformers_3w-r7.json"
+  ],
+  "status": 0,
+  "seconds": 0.5013831250000038,
+  "result_sha256": "0694a68e04b20e3b87693363e808a8a5a7f1b7489f4837b5ce075950e2c12c82"
+}

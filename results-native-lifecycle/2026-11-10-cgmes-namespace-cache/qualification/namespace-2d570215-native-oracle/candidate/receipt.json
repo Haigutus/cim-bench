@@ -1,0 +1,1174 @@
+{
+  "kind": "candidate",
+  "powerio_version": "0.12.0-rc.1",
+  "pypowsybl_version": "1.16.1",
+  "scope": "24 synthetic phase-tap/base cases, native imported parameters before and after PowerIO CGMES read/fresh emit; negative controls recreate known wrong voltage base. No power flow solve or comprehensive CGMES conformance claim.",
+  "rows": [
+    {
+      "kv": 20.0,
+      "tap": 0.9,
+      "shift": -10.0,
+      "input_sha256": "5989e499426771ba550291bea0f4857d99fddc7874fb795de4b6958089376fb8",
+      "status": "pass",
+      "observed": {
+        "original": {
+          "r": 0.04,
+          "x": 0.4000000000000001,
+          "rated_u1": 198.0,
+          "rated_u2": 20.0,
+          "steps": {
+            "r": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "g": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "b": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": [
+              0.0,
+              10.0,
+              20.0
+            ]
+          }
+        },
+        "fresh": {
+          "r": 0.04,
+          "x": 0.4000000000000001,
+          "rated_u1": 198.0,
+          "rated_u2": 20.0,
+          "steps": {
+            "r": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "g": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "b": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": [
+              0.0,
+              10.0,
+              20.0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "kv": 20.0,
+      "tap": 0.9,
+      "shift": 10.0,
+      "input_sha256": "2e51a617b06b52fe07b30f679dafba83ee21418c5d8d3bc7fcf4696b1e3a3ee5",
+      "status": "failed",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    },
+    {
+      "kv": 20.0,
+      "tap": 0.9,
+      "shift": 25.0,
+      "input_sha256": "7618349a3c5bcbb6f8501ee304a84cf530de5a0c15a003feea50c55870ba79ae",
+      "status": "failed",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    },
+    {
+      "kv": 20.0,
+      "tap": 1.0,
+      "shift": -10.0,
+      "input_sha256": "09e216e7c84c36dc35fdb78daee529c0c54edb4c490cded9f34ce1c1f5534dd7",
+      "status": "pass",
+      "observed": {
+        "original": {
+          "r": 0.04,
+          "x": 0.4000000000000001,
+          "rated_u1": 220.0,
+          "rated_u2": 20.0,
+          "steps": {
+            "r": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "g": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "b": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": [
+              0.0,
+              10.0,
+              20.0
+            ]
+          }
+        },
+        "fresh": {
+          "r": 0.04,
+          "x": 0.4000000000000001,
+          "rated_u1": 220.0,
+          "rated_u2": 20.0,
+          "steps": {
+            "r": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "g": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "b": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": [
+              0.0,
+              10.0,
+              20.0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "kv": 20.0,
+      "tap": 1.0,
+      "shift": 10.0,
+      "input_sha256": "a6d14af81148f594e5eb3409ab7b771af27f0dc043d2713ca4fe4954e1a8cb56",
+      "status": "pass",
+      "observed": {
+        "original": {
+          "r": 0.04,
+          "x": 0.4000000000000001,
+          "rated_u1": 220.0,
+          "rated_u2": 20.0,
+          "steps": {
+            "r": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "g": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "b": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": [
+              -0.0,
+              -10.0,
+              -20.0
+            ]
+          }
+        },
+        "fresh": {
+          "r": 0.04,
+          "x": 0.4000000000000001,
+          "rated_u1": 220.0,
+          "rated_u2": 20.0,
+          "steps": {
+            "r": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "g": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "b": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": [
+              -0.0,
+              -10.0,
+              -20.0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "kv": 20.0,
+      "tap": 1.0,
+      "shift": 25.0,
+      "input_sha256": "a1cd12238dd3202d9c698c0b8c32b616dcfacc7864fca948054c4d2a9b209d82",
+      "status": "pass",
+      "observed": {
+        "original": {
+          "r": 0.04,
+          "x": 0.4000000000000001,
+          "rated_u1": 220.0,
+          "rated_u2": 20.0,
+          "steps": {
+            "r": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "g": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "b": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": [
+              -0.0,
+              -25.0,
+              -50.0
+            ]
+          }
+        },
+        "fresh": {
+          "r": 0.04,
+          "x": 0.4000000000000001,
+          "rated_u1": 220.0,
+          "rated_u2": 20.0,
+          "steps": {
+            "r": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "g": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "b": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": [
+              -0.0,
+              -25.0,
+              -50.0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "kv": 20.0,
+      "tap": 1.05,
+      "shift": -10.0,
+      "input_sha256": "070a107ff9c3f95c43d3e5008bdca785447728aef828a0f84a8a3d1104caf043",
+      "status": "pass",
+      "observed": {
+        "original": {
+          "r": 0.04,
+          "x": 0.4,
+          "rated_u1": 231.0,
+          "rated_u2": 20.0,
+          "steps": {
+            "r": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "g": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "b": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": [
+              0.0,
+              10.0,
+              20.0
+            ]
+          }
+        },
+        "fresh": {
+          "r": 0.04,
+          "x": 0.4,
+          "rated_u1": 231.0,
+          "rated_u2": 20.0,
+          "steps": {
+            "r": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "g": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "b": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": [
+              0.0,
+              10.0,
+              20.0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "kv": 20.0,
+      "tap": 1.05,
+      "shift": 10.0,
+      "input_sha256": "de3a699d6108b332fb82296a308b7c53108a3944917492901576a42b4687f5de",
+      "status": "failed",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    },
+    {
+      "kv": 20.0,
+      "tap": 1.05,
+      "shift": 25.0,
+      "input_sha256": "6778758baeb3c974f87e60c0eabef1a2b431868d45ab711e48e705d51621c7b2",
+      "status": "failed",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    },
+    {
+      "kv": 20.0,
+      "tap": 1.2,
+      "shift": -10.0,
+      "input_sha256": "cba4d2dc41442cc38f38056141cb2cdcad7c4d76f6d08371bd330040852536e1",
+      "status": "pass",
+      "observed": {
+        "original": {
+          "r": 0.04000000000000001,
+          "x": 0.4000000000000001,
+          "rated_u1": 264.0,
+          "rated_u2": 20.0,
+          "steps": {
+            "r": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "g": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "b": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": [
+              0.0,
+              10.0,
+              20.0
+            ]
+          }
+        },
+        "fresh": {
+          "r": 0.04000000000000001,
+          "x": 0.4000000000000001,
+          "rated_u1": 264.0,
+          "rated_u2": 20.0,
+          "steps": {
+            "r": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "g": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "b": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": [
+              0.0,
+              10.0,
+              20.0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "kv": 20.0,
+      "tap": 1.2,
+      "shift": 10.0,
+      "input_sha256": "4d6381c8d3d6877210dbf63930b1f25adaca72a638e441df6ace20a069bae783",
+      "status": "failed",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    },
+    {
+      "kv": 20.0,
+      "tap": 1.2,
+      "shift": 25.0,
+      "input_sha256": "3d47c867addcd0755f3666ff75c5184121e6d0858efecb36fe80d5cccf5d05f2",
+      "status": "failed",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    },
+    {
+      "kv": 220.0,
+      "tap": 0.9,
+      "shift": -10.0,
+      "input_sha256": "f1a3ef24bd61f5292ae745bfb8e9b915720c7d38541360fa64ab698347c25c75",
+      "status": "pass",
+      "observed": {
+        "original": {
+          "r": 4.840000000000001,
+          "x": 48.40000000000001,
+          "rated_u1": 198.0,
+          "rated_u2": 220.0,
+          "steps": {
+            "r": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "g": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "b": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": [
+              0.0,
+              10.0,
+              20.0
+            ]
+          }
+        },
+        "fresh": {
+          "r": 4.840000000000001,
+          "x": 48.40000000000001,
+          "rated_u1": 198.0,
+          "rated_u2": 220.0,
+          "steps": {
+            "r": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "g": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "b": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": [
+              0.0,
+              10.0,
+              20.0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "kv": 220.0,
+      "tap": 0.9,
+      "shift": 10.0,
+      "input_sha256": "9c65f3419b5bbcea3c522ef1e357e1b173b04763d45fe0cfd30609abf52a4fb6",
+      "status": "failed",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    },
+    {
+      "kv": 220.0,
+      "tap": 0.9,
+      "shift": 25.0,
+      "input_sha256": "bd4642526c60950601202f56f35930ee89eb74c612b6c9ac431fcd3a5c1306c6",
+      "status": "failed",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    },
+    {
+      "kv": 220.0,
+      "tap": 1.0,
+      "shift": -10.0,
+      "input_sha256": "c8b3217ad28f4340e4bd0f49caaedf17d96da87658ca8ac5d34d340a1fad4045",
+      "status": "pass",
+      "observed": {
+        "original": {
+          "r": 4.84,
+          "x": 48.400000000000006,
+          "rated_u1": 220.0,
+          "rated_u2": 220.0,
+          "steps": {
+            "r": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "g": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "b": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": [
+              0.0,
+              10.0,
+              20.0
+            ]
+          }
+        },
+        "fresh": {
+          "r": 4.84,
+          "x": 48.400000000000006,
+          "rated_u1": 220.0,
+          "rated_u2": 220.0,
+          "steps": {
+            "r": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "g": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "b": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": [
+              0.0,
+              10.0,
+              20.0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "kv": 220.0,
+      "tap": 1.0,
+      "shift": 10.0,
+      "input_sha256": "a19e3f577ae72508dbf2782ddb1cda79f0bba28a9c096974b49f848f61c24e22",
+      "status": "pass",
+      "observed": {
+        "original": {
+          "r": 4.84,
+          "x": 48.400000000000006,
+          "rated_u1": 220.0,
+          "rated_u2": 220.0,
+          "steps": {
+            "r": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "g": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "b": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": [
+              -0.0,
+              -10.0,
+              -20.0
+            ]
+          }
+        },
+        "fresh": {
+          "r": 4.84,
+          "x": 48.400000000000006,
+          "rated_u1": 220.0,
+          "rated_u2": 220.0,
+          "steps": {
+            "r": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "g": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "b": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": [
+              -0.0,
+              -10.0,
+              -20.0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "kv": 220.0,
+      "tap": 1.0,
+      "shift": 25.0,
+      "input_sha256": "cbfeed6c23d7b48deb9b6b1697f0b5ab306be656c326956d2560b6417876e01c",
+      "status": "pass",
+      "observed": {
+        "original": {
+          "r": 4.84,
+          "x": 48.400000000000006,
+          "rated_u1": 220.0,
+          "rated_u2": 220.0,
+          "steps": {
+            "r": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "g": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "b": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": [
+              -0.0,
+              -25.0,
+              -50.0
+            ]
+          }
+        },
+        "fresh": {
+          "r": 4.84,
+          "x": 48.400000000000006,
+          "rated_u1": 220.0,
+          "rated_u2": 220.0,
+          "steps": {
+            "r": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "g": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "b": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": [
+              -0.0,
+              -25.0,
+              -50.0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "kv": 220.0,
+      "tap": 1.05,
+      "shift": -10.0,
+      "input_sha256": "40bacf40c94513d8d89d318f352c20d699b2f7e3cb971fa46dc33a004b5b6773",
+      "status": "pass",
+      "observed": {
+        "original": {
+          "r": 4.84,
+          "x": 48.4,
+          "rated_u1": 231.0,
+          "rated_u2": 220.0,
+          "steps": {
+            "r": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "g": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "b": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": [
+              0.0,
+              10.0,
+              20.0
+            ]
+          }
+        },
+        "fresh": {
+          "r": 4.84,
+          "x": 48.4,
+          "rated_u1": 231.0,
+          "rated_u2": 220.0,
+          "steps": {
+            "r": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "g": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "b": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": [
+              0.0,
+              10.0,
+              20.0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "kv": 220.0,
+      "tap": 1.05,
+      "shift": 10.0,
+      "input_sha256": "b6c4297811f134572a4e300625065efb3fa56b6bafa670719910cc51b173c71e",
+      "status": "failed",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    },
+    {
+      "kv": 220.0,
+      "tap": 1.05,
+      "shift": 25.0,
+      "input_sha256": "85fab2b4d32c2efdf78fdb27b28a0226607164f0a6379efc56aacf5f1a3a9405",
+      "status": "failed",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    },
+    {
+      "kv": 220.0,
+      "tap": 1.2,
+      "shift": -10.0,
+      "input_sha256": "52fe045d228f9a020defc9e71f468634e76766788499eea1ee8d10e4740ad76d",
+      "status": "pass",
+      "observed": {
+        "original": {
+          "r": 4.840000000000001,
+          "x": 48.40000000000001,
+          "rated_u1": 264.0,
+          "rated_u2": 220.0,
+          "steps": {
+            "r": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "g": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "b": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": [
+              0.0,
+              10.0,
+              20.0
+            ]
+          }
+        },
+        "fresh": {
+          "r": 4.840000000000001,
+          "x": 48.40000000000001,
+          "rated_u1": 264.0,
+          "rated_u2": 220.0,
+          "steps": {
+            "r": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "x": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "g": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "b": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "alpha": [
+              0.0,
+              10.0,
+              20.0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "kv": 220.0,
+      "tap": 1.2,
+      "shift": 10.0,
+      "input_sha256": "221351b909bc2fe17beef29e8b1e5c872cfc62143f55df0e241daf8e72d1190b",
+      "status": "failed",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    },
+    {
+      "kv": 220.0,
+      "tap": 1.2,
+      "shift": 25.0,
+      "input_sha256": "f2e7d638e59d021a19851a24b1838be6ac543a053aef0163bf9f81b254bbd574",
+      "status": "failed",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    }
+  ],
+  "failures": [
+    {
+      "kv": 20.0,
+      "tap": 0.9,
+      "shift": 10.0,
+      "input_sha256": "2e51a617b06b52fe07b30f679dafba83ee21418c5d8d3bc7fcf4696b1e3a3ee5",
+      "status": "failed",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    },
+    {
+      "kv": 20.0,
+      "tap": 0.9,
+      "shift": 25.0,
+      "input_sha256": "7618349a3c5bcbb6f8501ee304a84cf530de5a0c15a003feea50c55870ba79ae",
+      "status": "failed",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    },
+    {
+      "kv": 20.0,
+      "tap": 1.05,
+      "shift": 10.0,
+      "input_sha256": "de3a699d6108b332fb82296a308b7c53108a3944917492901576a42b4687f5de",
+      "status": "failed",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    },
+    {
+      "kv": 20.0,
+      "tap": 1.05,
+      "shift": 25.0,
+      "input_sha256": "6778758baeb3c974f87e60c0eabef1a2b431868d45ab711e48e705d51621c7b2",
+      "status": "failed",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    },
+    {
+      "kv": 20.0,
+      "tap": 1.2,
+      "shift": 10.0,
+      "input_sha256": "4d6381c8d3d6877210dbf63930b1f25adaca72a638e441df6ace20a069bae783",
+      "status": "failed",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    },
+    {
+      "kv": 20.0,
+      "tap": 1.2,
+      "shift": 25.0,
+      "input_sha256": "3d47c867addcd0755f3666ff75c5184121e6d0858efecb36fe80d5cccf5d05f2",
+      "status": "failed",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    },
+    {
+      "kv": 220.0,
+      "tap": 0.9,
+      "shift": 10.0,
+      "input_sha256": "9c65f3419b5bbcea3c522ef1e357e1b173b04763d45fe0cfd30609abf52a4fb6",
+      "status": "failed",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    },
+    {
+      "kv": 220.0,
+      "tap": 0.9,
+      "shift": 25.0,
+      "input_sha256": "bd4642526c60950601202f56f35930ee89eb74c612b6c9ac431fcd3a5c1306c6",
+      "status": "failed",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    },
+    {
+      "kv": 220.0,
+      "tap": 1.05,
+      "shift": 10.0,
+      "input_sha256": "b6c4297811f134572a4e300625065efb3fa56b6bafa670719910cc51b173c71e",
+      "status": "failed",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    },
+    {
+      "kv": 220.0,
+      "tap": 1.05,
+      "shift": 25.0,
+      "input_sha256": "85fab2b4d32c2efdf78fdb27b28a0226607164f0a6379efc56aacf5f1a3a9405",
+      "status": "failed",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    },
+    {
+      "kv": 220.0,
+      "tap": 1.2,
+      "shift": 10.0,
+      "input_sha256": "221351b909bc2fe17beef29e8b1e5c872cfc62143f55df0e241daf8e72d1190b",
+      "status": "failed",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    },
+    {
+      "kv": 220.0,
+      "tap": 1.2,
+      "shift": 25.0,
+      "input_sha256": "f2e7d638e59d021a19851a24b1838be6ac543a053aef0163bf9f81b254bbd574",
+      "status": "failed",
+      "error": {
+        "type": "AssertionError",
+        "message": ""
+      }
+    }
+  ]
+}

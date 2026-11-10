@@ -1,0 +1,16 @@
+{
+  "case": "case14.m",
+  "table": "hvdc",
+  "kind": "candidate",
+  "repeat": 3,
+  "command": [
+    "/private/tmp/cim-perf/mac-venv/bin/python",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/scripts/measure_table_access.py",
+    "/private/tmp/cim-perf/source-da32f73e/tests/data/case14.m",
+    "hvdc",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/python-table-access-148e16f4/072-candidate-case14.m-hvdc-r3.json"
+  ],
+  "status": 0,
+  "seconds": 0.5014412089999993,
+  "result_sha256": "9a1cb23e84a703fa90d5437ebea89580198baa81027bec48cfafd59530dc48ec"
+}

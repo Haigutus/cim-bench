@@ -76,6 +76,15 @@ class ParserAdapter(ABC):
         return ["parser"]
 
     @classmethod
+    def get_measurement_notes(cls) -> dict:
+        """State adapter-specific operation semantics alongside timing results."""
+        return {}
+
+    def get_export_metrics(self, loaded_obj: Any, output_path: Path) -> dict:
+        """Optional untimed export checks and diagnostics for the result record."""
+        return {}
+
+    @classmethod
     @abstractmethod
     def get_display_name(cls) -> str:
         """Get the display name for this parser (e.g., 'PyPowSyBl', 'Triplets')."""

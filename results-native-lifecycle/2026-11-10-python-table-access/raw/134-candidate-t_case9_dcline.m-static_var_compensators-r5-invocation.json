@@ -1,0 +1,16 @@
+{
+  "case": "t_case9_dcline.m",
+  "table": "static_var_compensators",
+  "kind": "candidate",
+  "repeat": 5,
+  "command": [
+    "/private/tmp/cim-perf/mac-venv/bin/python",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/scripts/measure_table_access.py",
+    "/private/tmp/cim-perf/source-da32f73e/tests/data/t_case9_dcline.m",
+    "static_var_compensators",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/python-table-access-148e16f4/134-candidate-t_case9_dcline.m-static_var_compensators-r5.json"
+  ],
+  "status": 0,
+  "seconds": 0.4996674169999977,
+  "result_sha256": "bd36ad8f59e5cac901e055544adc7ddb39782dfbb4c302fda1764b58b0899df0"
+}

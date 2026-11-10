@@ -1,0 +1,43 @@
+{
+  "source_commit": "da32f73ea3d9beb283b7d84530985e44eba90741",
+  "source_tree": "e453130534a0d225b4726df4885e5702df015a9e",
+  "archive": "/private/tmp/cim-perf/source-da32f73e.tar",
+  "archive_sha256": "c23d785f8e0d5403b2a8a8d909be83aaba7e4730daa75cad84f30fba17cd11c8",
+  "build_source": "git archive of exact immutable commit; no live worktree files",
+  "linux_builder_image": "080f51bbca23e3825ec4d6c6e054c47dae2c6e05729831596eb8122b563ff0ed",
+  "build_options": {
+    "release": true,
+    "locked": true,
+    "features": [
+      "gridfm"
+    ],
+    "default_features": true
+  },
+  "environment_overrides": {
+    "RUSTFLAGS": null,
+    "CARGO_ENCODED_RUSTFLAGS": null,
+    "MACOSX_DEPLOYMENT_TARGET": null,
+    "CARGO_BUILD_TARGET": null,
+    "CARGO_PROFILE_RELEASE_LTO": null,
+    "CARGO_PROFILE_RELEASE_CODEGEN_UNITS": null
+  },
+  "native_rustc": "rustc 1.98.1 (48a229cea 2026-09-01)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: aarch64-apple-darwin\nrelease: 1.98.1\nLLVM version: 22.1.8\n",
+  "native_maturin": "maturin 1.16.0",
+  "native_build_python": "Python 3.13.18",
+  "linux_rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: aarch64-unknown-linux-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+  "wheels": [
+    {
+      "file": "/private/tmp/cim-perf/mac-wheels/da32f73e/powerio-0.11.11-cp311-abi3-macosx_11_0_arm64.whl",
+      "sha256": "cbd86652b0454b1ab4b528510cbd35e0b9007bef292a18f8aec5d7826074541e"
+    },
+    {
+      "file": "/private/tmp/cim-perf/final-wheels/matched-20261110-da32f73e/powerio-0.11.11-cp311-abi3-manylinux_2_35_aarch64.whl",
+      "sha256": "080ebf5293f6f427a6a1ee854899ec302049b80e2622ee1beeb26f1cfaf3a001"
+    }
+  ],
+  "source_file_manifest": {
+    "file": "/private/tmp/cim-perf/matched-20261110-da32f73e-source-files.json",
+    "sha256": "86818b2d24f13f76d2d65e8ffcd47c30f40d536c0a95fa37414b361d123b6cf1"
+  },
+  "metadata_audit": "Queried rustc in the actual build directory from the original launcher environment and verified Cargo cache .rustc_info.json: native compiler1.98.1. A separately launched shell resolved Homebrew1.99.1, which was not used for this build. Prior metadata retained; no compiler value changed."
+}

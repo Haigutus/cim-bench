@@ -1,0 +1,133 @@
+[
+  {
+    "id": "32a761d7441db9584908119493d3b07f1d90d48ac0607e18dc70a0f3a9a6be65",
+    "created": "2026-10-06T20:07:42Z",
+    "CreatedBy": "/bin/sh -c #(nop) CMD [\"pytest\", \"cimoxide_svedala_benchmark.py\", \"--benchmark-only\",      \"--benchmark-json=/output/cimoxide_svedala_benchmark.json\"]",
+    "tags": [
+      "localhost/cim-bench/cimoxide:latest"
+    ],
+    "size": 0,
+    "Created": "2026-10-06T20:07:42Z"
+  },
+  {
+    "id": "<missing>",
+    "created": "2026-10-06T20:07:42Z",
+    "CreatedBy": "/bin/sh -c #(nop) WORKDIR /benchmarks",
+    "tags": [
+      "localhost/cim-bench/cimoxide:latest"
+    ],
+    "size": 0,
+    "Created": "2026-10-06T20:07:42Z"
+  },
+  {
+    "id": "<missing>",
+    "created": "2026-10-06T20:07:42Z",
+    "CreatedBy": "/bin/sh -c #(nop) ENV PATH=\"/app/.venv/bin:${PATH}\"",
+    "tags": [
+      "localhost/cim-bench/cimoxide:latest"
+    ],
+    "size": 0,
+    "Created": "2026-10-06T20:07:42Z"
+  },
+  {
+    "id": "<missing>",
+    "created": "2026-10-06T20:07:39Z",
+    "CreatedBy": "/bin/sh -c --mount=type=cache,target=/root/.cache/uv uv sync",
+    "tags": [
+      "localhost/cim-bench/cimoxide:latest"
+    ],
+    "size": 762408448,
+    "Created": "2026-10-06T20:07:39Z"
+  },
+  {
+    "id": "28a1454686ddd362a797b0b06f6fdc28ef67ffa343a1c22378e6e1c7dbff1f12",
+    "created": "2026-10-06T20:05:03Z",
+    "CreatedBy": "/bin/sh -c #(nop) COPY file:812ed4157794dc5acbe2f65183eb52323e4e7ca956922d9567f41f0dae0f4e67 in .      ",
+    "size": 2560,
+    "Created": "2026-10-06T20:05:03Z"
+  },
+  {
+    "id": "177fe4f3a9221902a375002817e4cb9ccbc0b64d29aea476241dd307053820dd",
+    "created": "2026-10-06T20:03:50Z",
+    "CreatedBy": "/bin/sh -c #(nop) WORKDIR /app",
+    "size": 0,
+    "Created": "2026-10-06T20:03:50Z"
+  },
+  {
+    "id": "<missing>",
+    "created": "2026-10-06T20:03:50Z",
+    "CreatedBy": "/bin/sh -c apt-get update && apt-get install -y --no-install-recommends build-essential && rm -rf /var/lib/apt/lists/*",
+    "size": 245549056,
+    "comment": "FROM localhost/cim-bench/base:latest",
+    "Created": "2026-10-06T20:03:50Z"
+  },
+  {
+    "id": "8c1dbde812214e960f31e66091a56e512d544beb052b27eae035c8f396046b62",
+    "created": "2026-10-06T20:03:39Z",
+    "CreatedBy": "/bin/sh -c #(nop) CMD [\"bash\"]",
+    "tags": [
+      "localhost/cim-bench/base:latest"
+    ],
+    "size": 0,
+    "Created": "2026-10-06T20:03:39Z"
+  },
+  {
+    "id": "<missing>",
+    "created": "2026-10-06T20:03:39Z",
+    "CreatedBy": "/bin/sh -c #(nop) ENV UV_LINK_MODE=copy",
+    "tags": [
+      "localhost/cim-bench/base:latest"
+    ],
+    "size": 0,
+    "Created": "2026-10-06T20:03:39Z"
+  },
+  {
+    "id": "<missing>",
+    "created": "2026-10-06T20:03:39Z",
+    "CreatedBy": "/bin/sh -c #(nop) ENV PYTHONPATH=\"/benchmarks/parsers:${PYTHONPATH}\"",
+    "tags": [
+      "localhost/cim-bench/base:latest"
+    ],
+    "size": 0,
+    "Created": "2026-10-06T20:03:39Z"
+  },
+  {
+    "id": "<missing>",
+    "created": "2026-10-06T20:03:39Z",
+    "CreatedBy": "/bin/sh -c #(nop) WORKDIR /benchmarks",
+    "tags": [
+      "localhost/cim-bench/base:latest"
+    ],
+    "size": 0,
+    "Created": "2026-10-06T20:03:39Z"
+  },
+  {
+    "id": "<missing>",
+    "created": "2026-10-06T20:03:39Z",
+    "CreatedBy": "/bin/sh -c apt-get update && apt-get install -y     ca-certificates     git     && rm -rf /var/lib/apt/lists/*",
+    "tags": [
+      "localhost/cim-bench/base:latest"
+    ],
+    "size": 118829056,
+    "Created": "2026-10-06T20:03:39Z"
+  },
+  {
+    "id": "374c9971c85791fd8e3ec444eac3e58018a98ccd1f3616ea7a626216e5c65acd",
+    "created": "2026-10-06T20:03:29Z",
+    "CreatedBy": "/bin/sh -c #(nop) COPY multi:794966b81b9c2cd3528c7747a77aef53c2de721b2bf8904fe4c1b663a69b924f in /bin/      ",
+    "size": 45299200,
+    "comment": "FROM docker.io/library/debian:trixie-slim",
+    "Created": "2026-10-06T20:03:29Z"
+  },
+  {
+    "id": "c3f38b5c1e1e5b416d5b48fb6b3edd3f6ed640b56f1dbf956548df03e66b4c95",
+    "created": "2026-10-05T00:00:00Z",
+    "CreatedBy": "# debian.sh --arch 'arm64' out/ 'trixie' '@1791158400'",
+    "tags": [
+      "docker.io/library/debian:trixie-slim"
+    ],
+    "size": 103137280,
+    "comment": "debuerreotype 0.17",
+    "Created": "2026-10-05T00:00:00Z"
+  }
+]

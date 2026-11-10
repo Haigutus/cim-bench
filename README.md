@@ -28,6 +28,11 @@ CGMES (Common Grid Model Exchange Standard) XML/RDF files, each in its own conta
 > retrieval a downstream power-flow tool would issue. The two groups measure
 > different access paths, so compare within a group, not across.
 
+- **PowerIO** includes equivalent injections in its native load count and preserves source substations.
+- [PowerIO measurement details](POWERIO.md) state the release pin, fresh-export
+  protocol, diagnostic/reparse checks, and exact-input/build evidence. Retained
+  RSS is not a peak-memory measurement; historical runs need a fresh comparable
+  rerun after a measurement-method change.
 - **pypowsybl** converts some substations to voltage levels when connected by transformers, so it reports fewer substations on RealGrid.
 - **maplib** exports N-Quads dramatically faster than RDF/XML; the benchmark uses RDF/XML for consistency with other tools.
 - **libcimpp** is only benchmarked on RealGrid (CGMES 2.4.15) — its CGMES 3.0 build fails on Svedala's European extensions.
@@ -42,6 +47,7 @@ Tool versions and performance live in the [generated results](https://haigutus.g
 | Status | Tool / Library | Language | Main Purpose / Strength | Triplet / Graph Access? | CGMES / CIM Support | GitHub / Source | Notes |
 |--------|----------------|----------|-------------------------|------------------------|---------------------|-----------------|-------|
 | ✅ | **triplets** | Python | Pandas-based RDF parser | pandas DataFrames + lxml | Version-agnostic CIM/CGMES | [triplets](https://github.com/Haigutus/triplets) | Fast loading, low memory, simple API — data extraction, batch processing |
+| ✅ | **PowerIO** | Rust/Python | Typed electrical network import/export | Native network model | CGMES 2.4.15/3.0 in, 3.0 out | [eigenergy/powerio](https://github.com/eigenergy/powerio) | Format conversion, sparse matrices |
 | ✅ | **pypowsybl** | Python | PowSyBl wrapper (network import/export) | Native network model (Java) | CGMES 2.4.15/3.0 import/export | [powsybl/pypowsybl](https://github.com/powsybl/pypowsybl) | Rich analysis-ready network model — power flow, TSO applications |
 | ✅ | **GridCal/VeraGrid** | Python | Power systems analysis with UI | Custom CGMES parser | CGMES 2.4.15/3.0 import | [SanPen/GridCal](https://github.com/SanPen/GridCal) | Fastest queries (O(1) object access), full circuit model — query-intensive workflows |
 | ✅ | **RDFlib** | Python | Generic RDF parser/triple store | Oxigraph (via oxrdflib) | None (generic) | [RDFLib/rdflib](https://github.com/RDFLib/rdflib) | Standard RDF library, flexible SPARQL — baseline for speed/memory comparison |

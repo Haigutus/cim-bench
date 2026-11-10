@@ -1,0 +1,47 @@
+{
+  "source_commit": "4dcd881266b943f4405351e9e4f2aef30039a8b1",
+  "source_tree": "960216d1fa6f22c0a8b19e1e41e729307cfb5611",
+  "archive": "/private/tmp/cim-perf/source-4dcd8812.tar",
+  "archive_sha256": "fb0516eb92747f78cd31da06bd0ab23de3f83b94a76ee011131fb0cd9c758b87",
+  "build_source": "git archive of exact immutable commit; no live worktree files",
+  "linux_builder_image": "080f51bbca23e3825ec4d6c6e054c47dae2c6e05729831596eb8122b563ff0ed",
+  "build_options": {
+    "release": true,
+    "locked": true,
+    "features": [
+      "gridfm"
+    ],
+    "default_features": true
+  },
+  "environment_overrides": {
+    "RUSTFLAGS": null,
+    "CARGO_ENCODED_RUSTFLAGS": null,
+    "MACOSX_DEPLOYMENT_TARGET": null,
+    "CARGO_BUILD_TARGET": null,
+    "CARGO_PROFILE_RELEASE_LTO": null,
+    "CARGO_PROFILE_RELEASE_CODEGEN_UNITS": null
+  },
+  "native_rustc": "rustc 1.98.1 (48a229cea 2026-09-01)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: aarch64-apple-darwin\nrelease: 1.98.1\nLLVM version: 22.1.8\n",
+  "native_maturin": "maturin 1.16.0",
+  "native_build_python": "Python 3.13.18",
+  "linux_rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: aarch64-unknown-linux-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+  "wheels": [
+    {
+      "file": "/private/tmp/cim-perf/mac-wheels/4dcd8812-rust1981/powerio-0.12.0rc1-cp311-abi3-macosx_11_0_arm64.whl",
+      "sha256": "197e64a0e1b0c3bb39b3a1ea3a9be2f8841a8e587978d52adf57f94b3c5e6f17"
+    },
+    {
+      "file": "/private/tmp/cim-perf/final-wheels/matched-20261110-4dcd8812/powerio-0.12.0rc1-cp311-abi3-manylinux_2_35_aarch64.whl",
+      "sha256": "331556312e0d3022590bac9c3499cd28f7c61e9adc2af9e5622738ad31858091"
+    }
+  ],
+  "source_file_manifest": {
+    "file": "/private/tmp/cim-perf/matched-20261110-4dcd8812-source-files.json",
+    "sha256": "6cc7d1c39514a9af859d050eb2fe3c42e616b235f9500a3d3cd3b9b10b69ee5a"
+  },
+  "provenance_parent": "/private/tmp/cim-perf/matched-20261110-4dcd8812-build.json",
+  "native_build_correction": "The resume launcher recorded its Homebrew compiler after reusing an earlier wheel. That query is not proof of the reused wheel compiler. Preserved the old record; explicitly rebuilt into a new output directory with rustup1.98.1, verified below. Only this corrected wheel is eligible for native comparison.",
+  "native_build_log": "/Users/samuel/datasets/powerio-rc-2026-11-10/native-4dcd-explicit1981.log",
+  "native_rustc_path": "/Users/samuel/.rustup/toolchains/1.98.1-aarch64-apple-darwin/bin/rustc",
+  "native_rustc_file_sha256": "766eda9d8f53afd6fc7f27b3cd2e444dd22afacb5afa710a5625fc8e45b8c941"
+}

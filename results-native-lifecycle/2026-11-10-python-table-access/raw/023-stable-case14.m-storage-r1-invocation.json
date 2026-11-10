@@ -1,0 +1,16 @@
+{
+  "case": "case14.m",
+  "table": "storage",
+  "kind": "stable",
+  "repeat": 1,
+  "command": [
+    "/private/tmp/cim-perf/mac-venv/bin/python",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/scripts/measure_table_access.py",
+    "/private/tmp/cim-perf/source-da32f73e/tests/data/case14.m",
+    "storage",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/python-table-access-148e16f4/023-stable-case14.m-storage-r1.json"
+  ],
+  "status": 0,
+  "seconds": 0.32826904199999873,
+  "result_sha256": "6c87eff3cb135cb07d9ef22cb293ab4f457239afd9cca921bc041108b73884e8"
+}

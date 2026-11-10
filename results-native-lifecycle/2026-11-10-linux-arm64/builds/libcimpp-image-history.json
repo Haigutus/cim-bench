@@ -1,0 +1,160 @@
+[
+  {
+    "id": "77525f23cc3662aa00f4fca208e2cadf8b37b123cb2f43b960b5fc64c8d068b1",
+    "created": "2026-10-06T20:28:08Z",
+    "CreatedBy": "/bin/sh -c #(nop) CMD [\"pytest\", \"libcimpp_realgrid_benchmark.py\", \"--benchmark-only\",      \"--benchmark-json=/output/libcimpp_realgrid_benchmark.json\"]",
+    "tags": [
+      "localhost/cim-bench/libcimpp-cgmes24:latest"
+    ],
+    "size": 0,
+    "Created": "2026-10-06T20:28:08Z"
+  },
+  {
+    "id": "<missing>",
+    "created": "2026-10-06T20:28:08Z",
+    "CreatedBy": "/bin/sh -c #(nop) WORKDIR /benchmarks",
+    "tags": [
+      "localhost/cim-bench/libcimpp-cgmes24:latest"
+    ],
+    "size": 0,
+    "Created": "2026-10-06T20:28:08Z"
+  },
+  {
+    "id": "<missing>",
+    "created": "2026-10-06T20:28:08Z",
+    "CreatedBy": "/bin/sh -c #(nop) ENV PATH=\"/app/.venv/bin:${PATH}\"",
+    "tags": [
+      "localhost/cim-bench/libcimpp-cgmes24:latest"
+    ],
+    "size": 0,
+    "Created": "2026-10-06T20:28:08Z"
+  },
+  {
+    "id": "<missing>",
+    "created": "2026-10-06T20:28:08Z",
+    "CreatedBy": "/bin/sh -c #(nop) ENV PYTHONPATH=\"/app/lib:/benchmarks/parsers:${PYTHONPATH}\"",
+    "tags": [
+      "localhost/cim-bench/libcimpp-cgmes24:latest"
+    ],
+    "size": 0,
+    "Created": "2026-10-06T20:28:08Z"
+  },
+  {
+    "id": "<missing>",
+    "created": "2026-10-06T20:28:08Z",
+    "CreatedBy": "/bin/sh -c #(nop) ENV LD_LIBRARY_PATH=\"/usr/local/lib:/app/lib:${LD_LIBRARY_PATH}\"",
+    "tags": [
+      "localhost/cim-bench/libcimpp-cgmes24:latest"
+    ],
+    "size": 0,
+    "Created": "2026-10-06T20:28:08Z"
+  },
+  {
+    "id": "<missing>",
+    "created": "2026-10-06T20:28:08Z",
+    "CreatedBy": "/bin/sh -c --mount=type=cache,target=/root/.cache/uv UV_LINK_MODE=copy uv sync",
+    "tags": [
+      "localhost/cim-bench/libcimpp-cgmes24:latest"
+    ],
+    "size": 94053376,
+    "Created": "2026-10-06T20:28:08Z"
+  },
+  {
+    "id": "5f7e1d3e68114da4f06100a10c41698b5c726b99a133f7fe4a0e60fcf3c2d6be",
+    "created": "2026-10-06T20:28:04Z",
+    "CreatedBy": "/bin/sh -c #(nop) COPY file:e04021a6e37bcc033bbdd0c3225beeaf0daabce13d241a05e8b22c2958546bff in .      ",
+    "size": 2560,
+    "Created": "2026-10-06T20:28:04Z"
+  },
+  {
+    "id": "3dadc39fa83a672d528f8ee3efe83f6f4b9d75eeb60ca0e1a847106243ae0b19",
+    "created": "2026-10-06T20:28:04Z",
+    "CreatedBy": "/bin/sh -c #(nop) WORKDIR /app",
+    "size": 0,
+    "Created": "2026-10-06T20:28:04Z"
+  },
+  {
+    "id": "<missing>",
+    "created": "2026-10-06T20:28:04Z",
+    "CreatedBy": "/bin/sh -c #(nop) COPY file:a92b65045881b1ced40c22e0bd58bf5b761a9064b85187f1f65c5f709bdf31c9 in /app/lib/      ",
+    "size": 203776,
+    "Created": "2026-10-06T20:28:04Z"
+  },
+  {
+    "id": "85bb3b8929572fb324012ccd9da30f87077ae1e3ff26b44ba260e541fe6c8130",
+    "created": "2026-10-06T20:28:04Z",
+    "CreatedBy": "/bin/sh -c ldconfig",
+    "size": 16384,
+    "Created": "2026-10-06T20:28:04Z"
+  },
+  {
+    "id": "17e59bd491f717f75db785e180a5ce97636da63fc4b46a1b083302eb3e40f149",
+    "created": "2026-10-06T20:28:04Z",
+    "CreatedBy": "/bin/sh -c #(nop) COPY file:11d8ffb3e9c58b6c11caea4a178e0639b60331b13eed8f9acdc9710e4831f5d7 in /usr/lib/      ",
+    "size": 94720,
+    "Created": "2026-10-06T20:28:04Z"
+  },
+  {
+    "id": "4795958b20d4fc35c18199e70d6432e6180850e8a0f9bbd8f451a24c48cdc273",
+    "created": "2026-10-06T20:28:03Z",
+    "CreatedBy": "/bin/sh -c #(nop) COPY file:e675496a5f31501edf74eff4e81ae664bf0637f2f932c7b52469d63a9d7f7e3b in /usr/lib/      ",
+    "size": 12606464,
+    "Created": "2026-10-06T20:28:03Z"
+  },
+  {
+    "id": "38e2c8f6b0ce861067932981bf3f5df363a1bc6403d51fa15fc157a3192da085",
+    "created": "2026-10-06T20:28:03Z",
+    "CreatedBy": "/bin/sh -c apt-get update && apt-get install -y     libxml2     libstdc++6     ca-certificates     && rm -rf /var/lib/apt/lists/*",
+    "size": 48501760,
+    "Created": "2026-10-06T20:28:03Z"
+  },
+  {
+    "id": "9d5b6128bc7d8ea1e875138ff98169c4affe6b1686c9d066aebbf6666b7ff3b9",
+    "created": "2026-10-06T20:07:45Z",
+    "CreatedBy": "/bin/sh -c #(nop) COPY multi:794966b81b9c2cd3528c7747a77aef53c2de721b2bf8904fe4c1b663a69b924f in /bin/      ",
+    "size": 45299200,
+    "comment": "FROM docker.io/library/ubuntu:24.04",
+    "Created": "2026-10-06T20:07:45Z"
+  },
+  {
+    "id": "95d16dfcd4ab8b61154e2280ab9fe4afa2ef03e5eefa8a689e86571e8a1b32cf",
+    "created": "2026-09-18T21:23:13Z",
+    "CreatedBy": "/bin/sh -c #(nop)  CMD [\"/bin/bash\"]",
+    "tags": [
+      "docker.io/library/ubuntu:24.04"
+    ],
+    "size": 0,
+    "Created": "2026-09-18T21:23:13Z"
+  },
+  {
+    "id": "<missing>",
+    "created": "2026-09-18T21:23:13Z",
+    "CreatedBy": "/bin/sh -c #(nop) ADD file:1cd6cb2db79bbe57d4c67f2fc8379cad96159285fa5a44e68dad06261eee82b4 in / ",
+    "tags": [
+      "docker.io/library/ubuntu:24.04"
+    ],
+    "size": 103277568,
+    "Created": "2026-09-18T21:23:13Z"
+  },
+  {
+    "id": "<missing>",
+    "created": "2026-09-18T21:23:10Z",
+    "CreatedBy": "/bin/sh -c #(nop)  LABEL org.opencontainers.image.version=24.04",
+    "size": 0,
+    "Created": "2026-09-18T21:23:10Z"
+  },
+  {
+    "id": "<missing>",
+    "created": "2026-09-18T21:23:09Z",
+    "CreatedBy": "/bin/sh -c #(nop)  ARG LAUNCHPAD_BUILD_ARCH",
+    "size": 0,
+    "Created": "2026-09-18T21:23:09Z"
+  },
+  {
+    "id": "<missing>",
+    "created": "2026-09-18T21:23:09Z",
+    "CreatedBy": "/bin/sh -c #(nop)  ARG RELEASE",
+    "size": 0,
+    "Created": "2026-09-18T21:23:09Z"
+  }
+]

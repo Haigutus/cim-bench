@@ -1,0 +1,54 @@
+[
+  {
+    "name": "fmt",
+    "command": [
+      "cargo",
+      "fmt",
+      "--all",
+      "--check"
+    ],
+    "commit": "2d570215aea1b0dc7d0257e0b0909753869253fb",
+    "started": "2026-11-10T21:36:58.062245+00:00",
+    "returncode": 0,
+    "seconds": 2.2982209169999996
+  },
+  {
+    "name": "workspace",
+    "command": [
+      "cargo",
+      "test",
+      "--locked",
+      "--offline"
+    ],
+    "commit": "2d570215aea1b0dc7d0257e0b0909753869253fb",
+    "started": "2026-11-10T21:37:00.360807+00:00",
+    "returncode": 0,
+    "seconds": 280.83015312500004
+  },
+  {
+    "name": "capi",
+    "command": [
+      "cargo",
+      "test",
+      "-p",
+      "powerio-capi",
+      "--locked",
+      "--offline"
+    ],
+    "commit": "2d570215aea1b0dc7d0257e0b0909753869253fb",
+    "started": "2026-11-10T21:41:41.190862+00:00",
+    "returncode": 0,
+    "seconds": 22.56198458299997
+  },
+  {
+    "name": "clippy",
+    "command": [
+      "bash",
+      "scripts/ci-clippy.sh"
+    ],
+    "commit": "2d570215aea1b0dc7d0257e0b0909753869253fb",
+    "started": "2026-11-10T21:42:03.753146+00:00",
+    "returncode": 0,
+    "seconds": 69.82171420899999
+  }
+]

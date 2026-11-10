@@ -1,0 +1,29 @@
+{
+  "repeat": 4,
+  "dataset": "svedala_igm_cgmes_3",
+  "query": "substations",
+  "kind": "pypowsybl",
+  "command": [
+    "/private/tmp/cim-perf/mac-venv/bin/python",
+    "/private/tmp/cim-perf/harness-c00f8fe/tools/measure_lifecycle.py",
+    "pypowsybl",
+    "svedala_igm_cgmes_3",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/native-lifecycle-c00f8fe/093-pypowsybl-svedala_igm_cgmes_3-substations-r4.json",
+    "--query",
+    "substations"
+  ],
+  "pythonpath": "",
+  "started_at": "2026-11-10T19:34:27Z",
+  "status": 0,
+  "elapsed_seconds": 0.9605226670391858,
+  "ambient_before": {
+    "cpu_percent": 2.4,
+    "load_average": [
+      2.38134765625,
+      3.37890625,
+      4.5322265625
+    ],
+    "available_memory_bytes": 22901260288
+  },
+  "result_sha256": "964b9a086e28de42de755059ce805bbf0d968be5570bf5ea443559945934f707"
+}

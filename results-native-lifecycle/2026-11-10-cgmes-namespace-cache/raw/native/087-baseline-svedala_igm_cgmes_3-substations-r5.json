@@ -1,0 +1,221 @@
+{
+  "schema": "cim-bench-lifecycle",
+  "schema_version": 1,
+  "tool": "powerio",
+  "dataset": "svedala_igm_cgmes_3",
+  "query_selection": "substations",
+  "query_order": [
+    "substations"
+  ],
+  "started_at": "2026-11-10T21:51:23Z",
+  "pid": 95271,
+  "python": "3.13.18 (main, Oct 25 2026, 18:31:23) [Clang 21.0.0 (clang-2100.3.34.2)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "clock": {
+    "implementation": "mach_absolute_time()",
+    "monotonic": true,
+    "adjustable": false,
+    "resolution": 4.166666666666666e-08
+  },
+  "declared_build": {
+    "CIM_BENCH_RUN_ID": "087-baseline-svedala_igm_cgmes_3-substations-r5",
+    "CIM_BENCH_COMMIT": "ea5444916ef4d038ebf514b4617ec078f83914da",
+    "CIM_BENCH_IMAGE_ID": null,
+    "CIM_BENCH_TOOL_COMMIT": "4dcd881266b943f4405351e9e4f2aef30039a8b1"
+  },
+  "probe_sha256": "2989fcd63d4295e8f702b047e29af0318cbc6413d44f8275ddacdea43b34386c",
+  "memory_scope": "OS process RSS/high-water mark; excludes child-process memory; includes interpreter and imports",
+  "load_to_use_scope": "adapter.load plus first selected query calls; excludes instrumentation between calls",
+  "first_query_scope": "one call including timer and invocation overhead; no prior load metrics; earlier selected queries can initialize later ones in all mode",
+  "os_file_cache": "uncontrolled warm host cache; fresh process is not cold disk",
+  "cross_tool_semantics": "unverified; returned counts and adapter semantics require separate audit",
+  "memory_before_import": {
+    "rss_bytes": 23740416,
+    "peak_rss_bytes": 23887872,
+    "children": 0
+  },
+  "queries": {
+    "substations": {
+      "count": 57,
+      "first_ns": 11042,
+      "memory_after_first": {
+        "rss_bytes": 78135296,
+        "peak_rss_bytes": 78135296,
+        "children": 0
+      },
+      "warm": {
+        "iterations_per_batch": 262144,
+        "batch_elapsed_ns": [
+          6672459,
+          6936292,
+          6262958,
+          6328541,
+          6408583,
+          6452250,
+          6566375,
+          6232125,
+          6261584
+        ],
+        "calibration": [
+          {
+            "iterations": 1,
+            "elapsed_ns": 1833
+          },
+          {
+            "iterations": 2,
+            "elapsed_ns": 542
+          },
+          {
+            "iterations": 4,
+            "elapsed_ns": 291
+          },
+          {
+            "iterations": 8,
+            "elapsed_ns": 292
+          },
+          {
+            "iterations": 16,
+            "elapsed_ns": 500
+          },
+          {
+            "iterations": 32,
+            "elapsed_ns": 917
+          },
+          {
+            "iterations": 64,
+            "elapsed_ns": 1709
+          },
+          {
+            "iterations": 128,
+            "elapsed_ns": 2792
+          },
+          {
+            "iterations": 256,
+            "elapsed_ns": 6500
+          },
+          {
+            "iterations": 512,
+            "elapsed_ns": 12458
+          },
+          {
+            "iterations": 1024,
+            "elapsed_ns": 23625
+          },
+          {
+            "iterations": 2048,
+            "elapsed_ns": 47333
+          },
+          {
+            "iterations": 4096,
+            "elapsed_ns": 93875
+          },
+          {
+            "iterations": 8192,
+            "elapsed_ns": 188750
+          },
+          {
+            "iterations": 16384,
+            "elapsed_ns": 391625
+          },
+          {
+            "iterations": 32768,
+            "elapsed_ns": 823625
+          },
+          {
+            "iterations": 65536,
+            "elapsed_ns": 1570917
+          },
+          {
+            "iterations": 131072,
+            "elapsed_ns": 3285917
+          },
+          {
+            "iterations": 262144,
+            "elapsed_ns": 6426292
+          }
+        ],
+        "timer_and_python_loop_overhead_subtracted": false
+      }
+    }
+  },
+  "status": "success",
+  "import_and_adapter_ns": 22239125,
+  "memory_before_load": {
+    "rss_bytes": 34832384,
+    "peak_rss_bytes": 34832384,
+    "children": 0
+  },
+  "load_ns": 49743875,
+  "memory_after_load": {
+    "rss_bytes": 78118912,
+    "peak_rss_bytes": 78118912,
+    "children": 0
+  },
+  "load_to_use_ns": 49754917,
+  "import_to_use_ns": 71994042,
+  "memory_after_warm": {
+    "rss_bytes": 78151680,
+    "peak_rss_bytes": 78151680,
+    "children": 0
+  },
+  "tool_version": "0.12.0rc1",
+  "measurement_notes": {
+    "query_family": "native_component_count",
+    "count_semantics": {
+      "lines": "native lines; transformers are separate",
+      "generators": "native generators",
+      "loads": "native loads, including equivalent injections",
+      "substations": "retained source substations, including boundary records"
+    },
+    "export_method": "source_retention_removal_then_canonical_CGMES_3_filesystem_write",
+    "source_replay": false,
+    "native_versions": {
+      "bmopf_schema": "0.2.0",
+      "powerio_ir": {
+        "schema": "pio-ir",
+        "version": "0.12.0"
+      },
+      "powerio_version": "0.12.0-rc.1"
+    }
+  },
+  "adapter_sha256": "2b9d9ed00f2eb741bc7f66ab50555d97a4dd5f4804b793c2443b03cb41556384",
+  "inputs": [
+    {
+      "role": "EQ",
+      "name": "20220615T2230Z__Svedala_EQ_1.xml",
+      "present": true,
+      "bytes": 4010637,
+      "sha256": "19836f994cf09de55cee6a265e20c9f7d52e89132cfe8befe54b013320d1ac06"
+    },
+    {
+      "role": "SSH",
+      "name": "20220615T2230Z_2D_Svedala_SSH_1.xml",
+      "present": true,
+      "bytes": 1127651,
+      "sha256": "676229aa336f0372fc2535d74d9b9d2d579c77042078736ac765d34c44c64796"
+    },
+    {
+      "role": "SV",
+      "name": "20220615T2230Z_2D_Svedala_SV_1.xml",
+      "present": true,
+      "bytes": 1487295,
+      "sha256": "96c6e914660ec108786f04d6cc8c98bf451f13994d3877b586800aedf512c5d4"
+    },
+    {
+      "role": "TP",
+      "name": "20220615T2230Z_2D_Svedala_TP_1.xml",
+      "present": true,
+      "bytes": 971808,
+      "sha256": "58fc69cc2e66826ab98700439e8b2b00b6e13c425ea23ff4418fcfc2fd73ed75"
+    },
+    {
+      "role": "COMMON",
+      "name": "CommonData_and_Boundary_merged.xml",
+      "present": true,
+      "bytes": 59353,
+      "sha256": "dcda17b23c020bd8ac230b7ebe10098f08672b3ae7078acfe3d47ac47b430fec"
+    }
+  ],
+  "observed_harness_commit": null,
+  "observed_harness_dirty": null
+}

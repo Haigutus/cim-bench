@@ -1,0 +1,29 @@
+{
+  "repeat": 4,
+  "dataset": "realgrid_cgmes_2_4",
+  "query": "all",
+  "kind": "pypowsybl",
+  "command": [
+    "/private/tmp/cim-perf/mac-venv/bin/python",
+    "/private/tmp/cim-perf/harness-c00f8fe/tools/measure_lifecycle.py",
+    "pypowsybl",
+    "realgrid_cgmes_2_4",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/native-lifecycle-c00f8fe/113-pypowsybl-realgrid_cgmes_2_4-all-r4.json",
+    "--query",
+    "all"
+  ],
+  "pythonpath": "",
+  "started_at": "2026-11-10T19:34:57Z",
+  "status": 0,
+  "elapsed_seconds": 5.2473544999957085,
+  "ambient_before": {
+    "cpu_percent": 2.7,
+    "load_average": [
+      2.2490234375,
+      3.25927734375,
+      4.4482421875
+    ],
+    "available_memory_bytes": 22848634880
+  },
+  "result_sha256": "a6378a686b9d8ed2eeceb7bb7a02beeb5098069dec639548a72be922805b1318"
+}

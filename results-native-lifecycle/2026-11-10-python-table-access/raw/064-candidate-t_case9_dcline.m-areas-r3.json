@@ -1,0 +1,46 @@
+{
+  "case": "t_case9_dcline.m",
+  "case_sha256": "7b84ac8d8c9e2b04f2b90e87d8981dc2f6582482c7b127dcaa312038de14267c",
+  "table": "areas",
+  "table_rows": 0,
+  "table_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "import_ns": 14940750,
+  "load_ns": 165042,
+  "first_ns": 5875,
+  "load_to_use_ns": 170917,
+  "iterations_per_batch": 262144,
+  "warm_batches_ns": [
+    35527375,
+    35286583,
+    35448458,
+    35435375,
+    35357708,
+    35476000,
+    35106083,
+    35559584,
+    35380500
+  ],
+  "warm_ns": 135.17522811889648,
+  "before": {
+    "rss_bytes": 31899648,
+    "peak_rss_bytes": 31899648
+  },
+  "after_load": {
+    "rss_bytes": 33472512,
+    "peak_rss_bytes": 33472512
+  },
+  "after_first": {
+    "rss_bytes": 33554432,
+    "peak_rss_bytes": 33554432
+  },
+  "after_warm": {
+    "rss_bytes": 33554432,
+    "peak_rss_bytes": 33554432
+  },
+  "python": "3.13.18 (main, Oct 25 2026, 18:31:23) [Clang 21.0.0 (clang-2100.3.34.2)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "package_path": "/Users/samuel/datasets/powerio-rc-2026-11-10/python-table-access-148e16f4/packages-candidate/powerio/__init__.py",
+  "powerio_version": "0.11.11",
+  "notes": "Native macOS ru_maxrss is bytes; RSS includes interpreter/imports. First query precedes calibration. Timing includes Python getattr and returned independent row copies. Filesystem caches uncontrolled."
+}

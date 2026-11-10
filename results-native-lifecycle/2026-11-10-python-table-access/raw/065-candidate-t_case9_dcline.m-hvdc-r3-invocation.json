@@ -1,0 +1,16 @@
+{
+  "case": "t_case9_dcline.m",
+  "table": "hvdc",
+  "kind": "candidate",
+  "repeat": 3,
+  "command": [
+    "/private/tmp/cim-perf/mac-venv/bin/python",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/scripts/measure_table_access.py",
+    "/private/tmp/cim-perf/source-da32f73e/tests/data/t_case9_dcline.m",
+    "hvdc",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/python-table-access-148e16f4/065-candidate-t_case9_dcline.m-hvdc-r3.json"
+  ],
+  "status": 0,
+  "seconds": 0.5100408330000015,
+  "result_sha256": "ba06031332c4396c3bd17b78b3f78db509d5b08968db9c93eed51b3c1e5ec525"
+}

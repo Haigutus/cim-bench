@@ -1,0 +1,16 @@
+{
+  "case": "case2869pegase.m",
+  "table": "storage",
+  "kind": "stable",
+  "repeat": 5,
+  "command": [
+    "/private/tmp/cim-perf/mac-venv/bin/python",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/scripts/measure_table_access.py",
+    "/private/tmp/cim-perf/source-da32f73e/tests/data/case2869pegase.m",
+    "storage",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/python-table-access-148e16f4/137-stable-case2869pegase.m-storage-r5.json"
+  ],
+  "status": 0,
+  "seconds": 0.4979006659999996,
+  "result_sha256": "c189f0fc347db831bd072d853702beae20e0fb27538dc69843842c9d6ab6bf98"
+}

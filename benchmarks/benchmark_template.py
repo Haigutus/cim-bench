@@ -16,12 +16,27 @@ Usage in benchmark file:
 import psutil
 import pytest
 import sys
+import shutil
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "parsers"))
 
 from datasets import DATASETS, get_size_mb
 from parser_adapter import IncompleteLoadError, QueryUnsupported
+
+
+def export_files(output_path):
+    """Require fresh nonempty output, including adapters that write a directory."""
+    files = sorted(path for path in output_path.parent.rglob("*") if path.is_file())
+    assert files and any(path.stat().st_size for path in files), "export produced no nonempty files"
+    return files
+
+
+def prepare_export_output(output_path):
+    """Remove only this test's output outside the measured export operation."""
+    if output_path.parent.exists():
+        shutil.rmtree(output_path.parent)
+    output_path.parent.mkdir()
 
 
 def get_memory_mb():
@@ -47,6 +62,19 @@ def create_benchmarks(adapter, dataset_key, parser_name, dataset_name):
     import inspect
     caller_globals = inspect.currentframe().f_back.f_globals
 
+    def annotate(benchmark):
+        benchmark.extra_info.update({
+            "library": parser_name,
+            "library_version": adapter.__class__.get_version(),
+            "dataset": dataset_name,
+            "dataset_key": dataset_key,
+            "display_name": adapter.__class__.get_display_name(),
+            "color": adapter.__class__.get_color(),
+            "tags": adapter.__class__.get_tags(),
+            "export_supported": has_export,
+            **adapter.__class__.get_measurement_notes(),
+        })
+
     # Memory baseline fixture
     @pytest.fixture(scope="module")
     def memory_baseline():
@@ -67,6 +95,7 @@ def create_benchmarks(adapter, dataset_key, parser_name, dataset_name):
     # Load test
     def test_load(benchmark, memory_baseline):
         """Benchmark loading dataset."""
+        annotate(benchmark)
         try:
             loaded_obj = benchmark(adapter.load, dataset_key)
         except IncompleteLoadError as e:
@@ -74,6 +103,8 @@ def create_benchmarks(adapter, dataset_key, parser_name, dataset_name):
 
         memory_delta = get_memory_mb() - memory_baseline
         metrics = adapter.get_load_metrics(loaded_obj, memory_delta)
+        metrics["memory_method"] = "retained_RSS_delta_after_calibrated_repeated_loads"
+        metrics["memory_is_peak"] = False
 
         # Add dataset metadata
         dataset = DATASETS[dataset_key]
@@ -82,19 +113,12 @@ def create_benchmarks(adapter, dataset_key, parser_name, dataset_name):
         metrics["cgmes_version"] = metadata["cgmes_version"]
 
         # Add library and dataset metadata
-        metrics["library"] = parser_name
-        metrics["library_version"] = adapter.__class__.get_version()
         metrics["library_dependencies"] = adapter.__class__.get_dependencies()
 
         # Add Java version if available (separate top-level key)
         deps = adapter.__class__.get_dependencies()
         if "java" in deps:
             metrics["java_version"] = deps["java"]
-
-        metrics["dataset"] = dataset_name
-        metrics["display_name"] = adapter.__class__.get_display_name()
-        metrics["color"] = adapter.__class__.get_color()
-        metrics["tags"] = adapter.__class__.get_tags()
 
         for key, value in metrics.items():
             benchmark.extra_info[key] = value
@@ -108,59 +132,47 @@ def create_benchmarks(adapter, dataset_key, parser_name, dataset_name):
     # Query tests
     def test_get_lines(benchmark, loaded_object):
         """Benchmark querying lines."""
+        annotate(benchmark)
         try:
             count = benchmark(adapter.get_lines_count, loaded_object)
         except QueryUnsupported as e:
             pytest.skip(f"query not feasible for this tool/dataset: {e}")
         benchmark.extra_info["line_count"] = count
         benchmark.extra_info["query_type"] = "get_lines"
-        benchmark.extra_info["library"] = parser_name
-        benchmark.extra_info["dataset"] = dataset_name
-        benchmark.extra_info["display_name"] = adapter.__class__.get_display_name()
-        benchmark.extra_info["color"] = adapter.__class__.get_color()
         assert count > 0
 
     def test_get_generators(benchmark, loaded_object):
         """Benchmark querying generators."""
+        annotate(benchmark)
         try:
             count = benchmark(adapter.get_generators_count, loaded_object)
         except QueryUnsupported as e:
             pytest.skip(f"query not feasible for this tool/dataset: {e}")
         benchmark.extra_info["generator_count"] = count
         benchmark.extra_info["query_type"] = "get_generators"
-        benchmark.extra_info["library"] = parser_name
-        benchmark.extra_info["dataset"] = dataset_name
-        benchmark.extra_info["display_name"] = adapter.__class__.get_display_name()
-        benchmark.extra_info["color"] = adapter.__class__.get_color()
         assert count > 0
 
     def test_get_loads(benchmark, loaded_object):
         """Benchmark querying loads."""
+        annotate(benchmark)
         try:
             count = benchmark(adapter.get_loads_count, loaded_object)
         except QueryUnsupported as e:
             pytest.skip(f"query not feasible for this tool/dataset: {e}")
         benchmark.extra_info["load_count"] = count
         benchmark.extra_info["query_type"] = "get_loads"
-        benchmark.extra_info["library"] = parser_name
-        benchmark.extra_info["dataset"] = dataset_name
-        benchmark.extra_info["display_name"] = adapter.__class__.get_display_name()
-        benchmark.extra_info["color"] = adapter.__class__.get_color()
-        # RealGrid has 0 loads, so allow >= 0
+        # This is an API sanity check, not fixture-level semantic validation.
         assert count >= 0
 
     def test_get_substations(benchmark, loaded_object):
         """Benchmark querying substations."""
+        annotate(benchmark)
         try:
             count = benchmark(adapter.get_substations_count, loaded_object)
         except QueryUnsupported as e:
             pytest.skip(f"query not feasible for this tool/dataset: {e}")
         benchmark.extra_info["substation_count"] = count
         benchmark.extra_info["query_type"] = "get_substations"
-        benchmark.extra_info["library"] = parser_name
-        benchmark.extra_info["dataset"] = dataset_name
-        benchmark.extra_info["display_name"] = adapter.__class__.get_display_name()
-        benchmark.extra_info["color"] = adapter.__class__.get_color()
         assert count > 0
 
     # Export test (only if adapter supports it)
@@ -176,30 +188,36 @@ def create_benchmarks(adapter, dataset_key, parser_name, dataset_name):
     has_export = _has_export()
 
     if has_export:
-        REPO_ROOT = Path(__file__).parent.parent
-
         @pytest.fixture
-        def export_output():
-            """Create output directory for exports."""
-            output_dir = REPO_ROOT / "temp" / "export" / parser_name
-            output_dir.mkdir(parents=True, exist_ok=True)
-            yield output_dir / "export_output.xml"
+        def export_output(tmp_path):
+            """Each test starts empty; prior tools/datasets cannot satisfy it."""
+            return tmp_path / "output" / "export_output.xml"
 
-        def test_export(benchmark, loaded_object, export_output):
+        def test_export(benchmark, loaded_object, export_output, pytestconfig):
             """Benchmark exporting dataset."""
-            result_path = benchmark(adapter.export, loaded_object, export_output)
+            annotate(benchmark)
+            # Check a first write into an empty directory outside the timing.
+            # Each measured round also starts with an empty destination.
+            prepare_export_output(export_output)
+            adapter.export(loaded_object, export_output)
+            export_files(export_output)
+            benchmark.pedantic(
+                adapter.export,
+                args=(loaded_object, export_output),
+                setup=lambda: prepare_export_output(export_output),
+                rounds=pytestconfig.getoption("benchmark_min_rounds"),
+                iterations=1,
+            )
 
-            benchmark.extra_info["library"] = parser_name
-            benchmark.extra_info["dataset"] = dataset_name
             benchmark.extra_info["operation"] = "export"
-            benchmark.extra_info["display_name"] = adapter.__class__.get_display_name()
-            benchmark.extra_info["color"] = adapter.__class__.get_color()
+            benchmark.extra_info["export_timing_method"] = "one_call_per_round_with_fresh_destination"
+            benchmark.extra_info["export_cleanup_timed"] = False
 
             # Verify export produced output
-            output_dir = export_output.parent
-            exported_files = list(output_dir.iterdir())
-            assert len(exported_files) > 0
-            assert any(f.stat().st_size > 0 for f in exported_files if f.is_file())
+            exported_files = export_files(export_output)
+            benchmark.extra_info["export_file_count"] = len(exported_files)
+            benchmark.extra_info["export_bytes"] = sum(path.stat().st_size for path in exported_files)
+            benchmark.extra_info.update(adapter.get_export_metrics(loaded_object, export_output))
 
     # Set proper test names for pytest discovery
     test_load.__name__ = f"test_{parser_name}_load_{dataset_name}"

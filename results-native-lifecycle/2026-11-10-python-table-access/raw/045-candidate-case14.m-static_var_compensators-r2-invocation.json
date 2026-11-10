@@ -1,0 +1,16 @@
+{
+  "case": "case14.m",
+  "table": "static_var_compensators",
+  "kind": "candidate",
+  "repeat": 2,
+  "command": [
+    "/private/tmp/cim-perf/mac-venv/bin/python",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/scripts/measure_table_access.py",
+    "/private/tmp/cim-perf/source-da32f73e/tests/data/case14.m",
+    "static_var_compensators",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/python-table-access-148e16f4/045-candidate-case14.m-static_var_compensators-r2.json"
+  ],
+  "status": 0,
+  "seconds": 0.5073839170000021,
+  "result_sha256": "fdff60281ab0c0e2964f954cd8437a43b4aec0b3bbfcdc0f5d8a6e9b6e59a3b6"
+}

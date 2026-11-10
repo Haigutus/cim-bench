@@ -1,0 +1,16 @@
+{
+  "case": "case2869pegase.m",
+  "table": "storage",
+  "kind": "candidate",
+  "repeat": 7,
+  "command": [
+    "/private/tmp/cim-perf/mac-venv/bin/python",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/scripts/measure_table_access.py",
+    "/private/tmp/cim-perf/source-da32f73e/tests/data/case2869pegase.m",
+    "storage",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/python-table-access-148e16f4/200-candidate-case2869pegase.m-storage-r7.json"
+  ],
+  "status": 0,
+  "seconds": 0.5023570000000035,
+  "result_sha256": "a29b8582aa093cb5fe8ab606c0c1201181ebc6f7c8cc9ce08bae9f32dcc3c70f"
+}
