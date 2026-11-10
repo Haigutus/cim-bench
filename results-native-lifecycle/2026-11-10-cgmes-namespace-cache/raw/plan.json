@@ -1,0 +1,2083 @@
+{
+  "seeds": {
+    "native": 202611103,
+    "linux": 202611104
+  },
+  "independent_repeats": 7,
+  "builds": {
+    "baseline": {
+      "source_commit": "4dcd881266b943f4405351e9e4f2aef30039a8b1",
+      "source_tree": "960216d1fa6f22c0a8b19e1e41e729307cfb5611",
+      "archive": "/private/tmp/cim-perf/source-4dcd8812.tar",
+      "archive_sha256": "fb0516eb92747f78cd31da06bd0ab23de3f83b94a76ee011131fb0cd9c758b87",
+      "build_source": "git archive of exact immutable commit; no live worktree files",
+      "linux_builder_image": "080f51bbca23e3825ec4d6c6e054c47dae2c6e05729831596eb8122b563ff0ed",
+      "build_options": {
+        "release": true,
+        "locked": true,
+        "features": [
+          "gridfm"
+        ],
+        "default_features": true
+      },
+      "environment_overrides": {
+        "RUSTFLAGS": null,
+        "CARGO_ENCODED_RUSTFLAGS": null,
+        "MACOSX_DEPLOYMENT_TARGET": null,
+        "CARGO_BUILD_TARGET": null,
+        "CARGO_PROFILE_RELEASE_LTO": null,
+        "CARGO_PROFILE_RELEASE_CODEGEN_UNITS": null
+      },
+      "native_rustc": "rustc 1.98.1 (48a229cea 2026-09-01)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: aarch64-apple-darwin\nrelease: 1.98.1\nLLVM version: 22.1.8\n",
+      "native_maturin": "maturin 1.16.0",
+      "native_build_python": "Python 3.13.18",
+      "linux_rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: aarch64-unknown-linux-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+      "wheels": [
+        {
+          "file": "/private/tmp/cim-perf/mac-wheels/4dcd8812-rust1981/powerio-0.12.0rc1-cp311-abi3-macosx_11_0_arm64.whl",
+          "sha256": "197e64a0e1b0c3bb39b3a1ea3a9be2f8841a8e587978d52adf57f94b3c5e6f17"
+        },
+        {
+          "file": "/private/tmp/cim-perf/final-wheels/matched-20261110-4dcd8812/powerio-0.12.0rc1-cp311-abi3-manylinux_2_35_aarch64.whl",
+          "sha256": "331556312e0d3022590bac9c3499cd28f7c61e9adc2af9e5622738ad31858091"
+        }
+      ],
+      "source_file_manifest": {
+        "file": "/private/tmp/cim-perf/matched-20261110-4dcd8812-source-files.json",
+        "sha256": "6cc7d1c39514a9af859d050eb2fe3c42e616b235f9500a3d3cd3b9b10b69ee5a"
+      },
+      "provenance_parent": "/private/tmp/cim-perf/matched-20261110-4dcd8812-build.json",
+      "native_build_correction": "The resume launcher recorded its Homebrew compiler after reusing an earlier wheel. That query is not proof of the reused wheel compiler. Preserved the old record; explicitly rebuilt into a new output directory with rustup1.98.1, verified below. Only this corrected wheel is eligible for native comparison.",
+      "native_build_log": "/Users/samuel/datasets/powerio-rc-2026-11-10/native-4dcd-explicit1981.log",
+      "native_rustc_path": "/Users/samuel/.rustup/toolchains/1.98.1-aarch64-apple-darwin/bin/rustc",
+      "native_rustc_file_sha256": "766eda9d8f53afd6fc7f27b3cd2e444dd22afacb5afa710a5625fc8e45b8c941"
+    },
+    "candidate": {
+      "source_commit": "2d570215aea1b0dc7d0257e0b0909753869253fb",
+      "source_tree": "809e791c948af707e756c996c5baf1296e33dcab",
+      "archive": "/private/tmp/cim-perf/source-2d570215.tar",
+      "archive_sha256": "831d470d9d0b4c423ba7881f50bbea9d12a78c30e1a94f22265a159285eaedc2",
+      "build_source": "git archive of exact immutable commit; no live worktree files",
+      "linux_builder_image": "080f51bbca23e3825ec4d6c6e054c47dae2c6e05729831596eb8122b563ff0ed",
+      "build_options": {
+        "release": true,
+        "locked": true,
+        "features": [
+          "gridfm"
+        ],
+        "default_features": true
+      },
+      "environment_overrides": {
+        "RUSTFLAGS": null,
+        "CARGO_ENCODED_RUSTFLAGS": null,
+        "MACOSX_DEPLOYMENT_TARGET": null,
+        "CARGO_BUILD_TARGET": null,
+        "CARGO_PROFILE_RELEASE_LTO": null,
+        "CARGO_PROFILE_RELEASE_CODEGEN_UNITS": null
+      },
+      "native_rustc": "rustc 1.98.1 (48a229cea 2026-09-01)\nbinary: rustc\ncommit-hash: 48a229ceaefd4985c50990b14116b6d856af0985\ncommit-date: 2026-09-01\nhost: aarch64-apple-darwin\nrelease: 1.98.1\nLLVM version: 22.1.8\n",
+      "native_maturin": "maturin 1.16.0",
+      "native_build_python": "Python 3.13.18",
+      "linux_rustc": "rustc 1.99.0 (b940084d7 2026-09-28)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: aarch64-unknown-linux-gnu\nrelease: 1.99.0\nLLVM version: 23.1.1\n",
+      "wheels": [
+        {
+          "file": "/private/tmp/cim-perf/mac-wheels/2d570215/powerio-0.12.0rc1-cp311-abi3-macosx_11_0_arm64.whl",
+          "sha256": "de9f6480a85d783571239f6347b292e60b6d78c861374691bb2e4c2248b7e797"
+        },
+        {
+          "file": "/private/tmp/cim-perf/final-wheels/matched-20261110-2d570215/powerio-0.12.0rc1-cp311-abi3-manylinux_2_35_aarch64.whl",
+          "sha256": "fd37cd771e73ae277003b36e84b2b1b47d1613c9ecf410973cbcd983a33b3cae"
+        }
+      ],
+      "source_file_manifest": {
+        "file": "/private/tmp/cim-perf/matched-20261110-2d570215-source-files.json",
+        "sha256": "a806540f15eb0799bf3592ba1fd774f7a0bbeba6c4faa11dd8918f6897da0ab8"
+      }
+    }
+  },
+  "runtimes": {
+    "baseline": {
+      "source_commit": "4dcd881266b943f4405351e9e4f2aef30039a8b1",
+      "wheel": "/private/tmp/cim-perf/final-wheels/matched-20261110-4dcd8812/powerio-0.12.0rc1-cp311-abi3-manylinux_2_35_aarch64.whl",
+      "wheel_sha256": "331556312e0d3022590bac9c3499cd28f7c61e9adc2af9e5622738ad31858091",
+      "tag": "localhost/cim-bench/powerio:matched-20261110-4dcd8812-4dcd8812",
+      "image_id": "5abc490127df554c6c2c032926bd2d2b1e969f3acd052cde7a7dba10a597e78d"
+    },
+    "candidate": {
+      "source_commit": "2d570215aea1b0dc7d0257e0b0909753869253fb",
+      "wheel": "/private/tmp/cim-perf/final-wheels/matched-20261110-2d570215/powerio-0.12.0rc1-cp311-abi3-manylinux_2_35_aarch64.whl",
+      "wheel_sha256": "fd37cd771e73ae277003b36e84b2b1b47d1613c9ecf410973cbcd983a33b3cae",
+      "tag": "localhost/cim-bench/powerio:matched-20261110-2d570215-2d570215",
+      "image_id": "728c822b58911da82384b5c84c3ba24107bb406ed0f5c6c4e0610a7722cf1fab"
+    }
+  },
+  "samples": [
+    {
+      "platform": "native",
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "native",
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "native",
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 1,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 1,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 2,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 2,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 3,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 3,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 4,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 4,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 5,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 5,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 6,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 6,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "generators",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "all",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "loads",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "substations",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "baseline"
+    },
+    {
+      "platform": "linux",
+      "repeat": 7,
+      "dataset": "realgrid_cgmes_2_4",
+      "query": "lines",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "candidate"
+    },
+    {
+      "platform": "linux",
+      "repeat": 7,
+      "dataset": "svedala_igm_cgmes_3",
+      "query": "generators",
+      "kind": "baseline"
+    }
+  ],
+  "harness_commit": "ea5444916ef4d038ebf514b4617ec078f83914da",
+  "timeout_seconds": 180,
+  "scope": "Same PowerIO API and operations, before/after namespace cache; no competitor ranking.",
+  "platform": "Native macOS ARM64 and Linux ARM64 VM, measured as separate groups, serially.",
+  "caches": "No CPU affinity or file-cache flush; fresh processes, warm host file caches.",
+  "ambient_limitations": "Shared desktop host; Codex/browser/window-manager activity persists. No owned builds or oracles run concurrently. Per-sample ambient CPU/load/memory are recorded; no samples are discarded for load.",
+  "stopping": "Run every declared sample, preserve errors/timeouts and unfavorable results."
+}

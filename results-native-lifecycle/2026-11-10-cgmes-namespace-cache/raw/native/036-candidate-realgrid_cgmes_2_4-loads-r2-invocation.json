@@ -1,0 +1,30 @@
+{
+  "platform": "native",
+  "repeat": 2,
+  "dataset": "realgrid_cgmes_2_4",
+  "query": "loads",
+  "kind": "candidate",
+  "command": [
+    "/private/tmp/cim-perf/mac-venv/bin/python",
+    "/private/tmp/cim-perf/harness-ea54449/tools/measure_lifecycle.py",
+    "powerio",
+    "realgrid_cgmes_2_4",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/namespace-2d570215-lifecycle/native/036-candidate-realgrid_cgmes_2_4-loads-r2.json",
+    "--query",
+    "loads"
+  ],
+  "source_commit": "2d570215aea1b0dc7d0257e0b0909753869253fb",
+  "started_at": "2026-11-10T21:50:41.417263+00:00",
+  "ambient_before": {
+    "cpu_percent": 3.3,
+    "load_average": [
+      2.5595703125,
+      3.427734375,
+      4.19580078125
+    ],
+    "available_memory_bytes": 26477363200
+  },
+  "status": 0,
+  "elapsed_seconds": 0.7772081249999978,
+  "result_sha256": "0fbcd5d9dc85319c5a453daac27fa524a0fc66bc1efde202c78543e5eb92227b"
+}

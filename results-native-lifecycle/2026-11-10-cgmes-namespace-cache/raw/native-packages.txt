@@ -1,0 +1,17 @@
+iniconfig==2.3.1
+networkx==3.7
+numpy==2.5.4
+packaging==26.3
+pandas==3.1.1
+pluggy==1.7.0
+powerio @ file:///private/tmp/cim-perf/memory-vectors/combined-531e1b3f-wheel/powerio-0.12.0rc1-cp311-abi3-macosx_11_0_arm64.whl
+prettytable==3.18.0
+psutil==7.2.2
+py-cpuinfo2==10.1.1
+pygments==2.21.0
+pypowsybl==1.16.1
+pytest==9.2.0
+pytest-benchmark==5.3.1
+python-dateutil==4.0.0
+tzdata==2026.6
+wcwidth==0.9.4
