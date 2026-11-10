@@ -1,0 +1,155 @@
+{
+  "schema": "cim-bench-lifecycle",
+  "schema_version": 1,
+  "tool": "pypowsybl",
+  "dataset": "svedala_igm_cgmes_3",
+  "query_selection": "generators",
+  "query_order": [
+    "generators"
+  ],
+  "started_at": "2026-11-10T19:36:38Z",
+  "pid": 64028,
+  "python": "3.13.18 (main, Oct 25 2026, 18:31:23) [Clang 21.0.0 (clang-2100.3.34.2)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "clock": {
+    "implementation": "mach_absolute_time()",
+    "monotonic": true,
+    "adjustable": false,
+    "resolution": 4.166666666666666e-08
+  },
+  "declared_build": {
+    "CIM_BENCH_RUN_ID": "175-pypowsybl-svedala_igm_cgmes_3-generators-r6",
+    "CIM_BENCH_COMMIT": "c00f8fe24ec2c27a3be8e63d5bccca7184b5e551",
+    "CIM_BENCH_IMAGE_ID": null,
+    "CIM_BENCH_TOOL_COMMIT": ""
+  },
+  "probe_sha256": "a0f88d76a552e3537961a2fe41c34b61d8cfadc26f534dfd9b976bf5438a5a81",
+  "memory_scope": "OS process RSS/high-water mark; excludes child-process memory; includes interpreter and imports",
+  "load_to_use_scope": "adapter.load plus first selected query calls; excludes instrumentation between calls",
+  "first_query_scope": "one call including timer and invocation overhead; no prior load metrics; earlier selected queries can initialize later ones in all mode",
+  "os_file_cache": "uncontrolled warm host cache; fresh process is not cold disk",
+  "cross_tool_semantics": "unverified; returned counts and adapter semantics require separate audit",
+  "memory_before_import": {
+    "rss_bytes": 23625728,
+    "peak_rss_bytes": 23789568,
+    "children": 0
+  },
+  "queries": {
+    "generators": {
+      "count": 39,
+      "first_ns": 967750,
+      "memory_after_first": {
+        "rss_bytes": 242532352,
+        "peak_rss_bytes": 242532352,
+        "children": 0
+      },
+      "warm": {
+        "iterations_per_batch": 64,
+        "batch_elapsed_ns": [
+          9468833,
+          9502750,
+          9553167,
+          9292834,
+          9191250,
+          9359583,
+          9227250,
+          9434917,
+          12692333
+        ],
+        "calibration": [
+          {
+            "iterations": 1,
+            "elapsed_ns": 253708
+          },
+          {
+            "iterations": 2,
+            "elapsed_ns": 326709
+          },
+          {
+            "iterations": 4,
+            "elapsed_ns": 600750
+          },
+          {
+            "iterations": 8,
+            "elapsed_ns": 1168500
+          },
+          {
+            "iterations": 16,
+            "elapsed_ns": 2525875
+          },
+          {
+            "iterations": 32,
+            "elapsed_ns": 4666542
+          },
+          {
+            "iterations": 64,
+            "elapsed_ns": 9467375
+          }
+        ],
+        "timer_and_python_loop_overhead_subtracted": false
+      }
+    }
+  },
+  "status": "success",
+  "import_and_adapter_ns": 187249625,
+  "memory_before_load": {
+    "rss_bytes": 122961920,
+    "peak_rss_bytes": 122961920,
+    "children": 0
+  },
+  "load_ns": 316511167,
+  "memory_after_load": {
+    "rss_bytes": 240386048,
+    "peak_rss_bytes": 240386048,
+    "children": 0
+  },
+  "load_to_use_ns": 317478917,
+  "import_to_use_ns": 504728542,
+  "memory_after_warm": {
+    "rss_bytes": 248135680,
+    "peak_rss_bytes": 248135680,
+    "children": 0
+  },
+  "tool_version": "1.16.1",
+  "measurement_notes": {},
+  "adapter_sha256": "0f3763dcffe301ad61eceb5bc64f15c9694754f0b81b75e9db96c93024d7d55f",
+  "inputs": [
+    {
+      "role": "EQ",
+      "name": "20220615T2230Z__Svedala_EQ_1.xml",
+      "present": true,
+      "bytes": 4010637,
+      "sha256": "19836f994cf09de55cee6a265e20c9f7d52e89132cfe8befe54b013320d1ac06"
+    },
+    {
+      "role": "SSH",
+      "name": "20220615T2230Z_2D_Svedala_SSH_1.xml",
+      "present": true,
+      "bytes": 1127651,
+      "sha256": "676229aa336f0372fc2535d74d9b9d2d579c77042078736ac765d34c44c64796"
+    },
+    {
+      "role": "SV",
+      "name": "20220615T2230Z_2D_Svedala_SV_1.xml",
+      "present": true,
+      "bytes": 1487295,
+      "sha256": "96c6e914660ec108786f04d6cc8c98bf451f13994d3877b586800aedf512c5d4"
+    },
+    {
+      "role": "TP",
+      "name": "20220615T2230Z_2D_Svedala_TP_1.xml",
+      "present": true,
+      "bytes": 971808,
+      "sha256": "58fc69cc2e66826ab98700439e8b2b00b6e13c425ea23ff4418fcfc2fd73ed75"
+    },
+    {
+      "role": "COMMON",
+      "name": "CommonData_and_Boundary_merged.xml",
+      "present": true,
+      "bytes": 59353,
+      "sha256": "dcda17b23c020bd8ac230b7ebe10098f08672b3ae7078acfe3d47ac47b430fec"
+    }
+  ],
+  "observed_harness_commit": null,
+  "observed_harness_dirty": null
+}

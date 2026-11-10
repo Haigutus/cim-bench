@@ -1,0 +1,29 @@
+{
+  "repeat": 5,
+  "dataset": "svedala_igm_cgmes_3",
+  "query": "generators",
+  "kind": "stable",
+  "command": [
+    "/private/tmp/cim-perf/mac-venv/bin/python",
+    "/private/tmp/cim-perf/harness-c00f8fe/tools/measure_lifecycle.py",
+    "powerio",
+    "svedala_igm_cgmes_3",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/native-lifecycle-c00f8fe/128-stable-svedala_igm_cgmes_3-generators-r5.json",
+    "--query",
+    "generators"
+  ],
+  "pythonpath": "/Users/samuel/datasets/powerio-rc-2026-11-10/native-lifecycle-c00f8fe/packages-stable",
+  "started_at": "2026-11-10T19:35:27Z",
+  "status": 0,
+  "elapsed_seconds": 0.5084080419037491,
+  "ambient_before": {
+    "cpu_percent": 3.8,
+    "load_average": [
+      1.755859375,
+      3.0419921875,
+      4.3271484375
+    ],
+    "available_memory_bytes": 22862462976
+  },
+  "result_sha256": "d4142bd37be6ce3700d85c4d12e56eb4274d35058745aecb11377f4740c3250c"
+}

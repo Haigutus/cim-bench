@@ -130,6 +130,12 @@ validate sparse matrices, solver results, SHACL compliance or cross-tool fidelit
 
 ## Fresh-process lifecycle measurements
 
+The [2026-11-10 native macOS ARM64 cohort](results-native-lifecycle/2026-11-10-macos-arm64/comparison_summary.md)
+includes all 210 raw process results, build/input identities, uncertainty and
+SVG figures. It records a Svedala load regression in the RC alongside lower
+RealGrid load time and process peak memory. Different native count semantics
+prevent treating these observations as an equivalent-work cross-tool ranking.
+
 `tools/measure_lifecycle.py` complements the calibrated benchmark with one load
 per process, first-query latency, raw warm-query batches, and process RSS/high-water
 marks before and after each stage. Run it with the selected tool's dependencies:

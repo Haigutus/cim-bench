@@ -1,0 +1,316 @@
+{
+  "schema": "cim-bench-lifecycle",
+  "schema_version": 1,
+  "tool": "pypowsybl",
+  "dataset": "svedala_igm_cgmes_3",
+  "query_selection": "all",
+  "query_order": [
+    "lines",
+    "generators",
+    "loads",
+    "substations"
+  ],
+  "started_at": "2026-11-10T19:36:40Z",
+  "pid": 64040,
+  "python": "3.13.18 (main, Oct 25 2026, 18:31:23) [Clang 21.0.0 (clang-2100.3.34.2)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "clock": {
+    "implementation": "mach_absolute_time()",
+    "monotonic": true,
+    "adjustable": false,
+    "resolution": 4.166666666666666e-08
+  },
+  "declared_build": {
+    "CIM_BENCH_RUN_ID": "177-pypowsybl-svedala_igm_cgmes_3-all-r6",
+    "CIM_BENCH_COMMIT": "c00f8fe24ec2c27a3be8e63d5bccca7184b5e551",
+    "CIM_BENCH_IMAGE_ID": null,
+    "CIM_BENCH_TOOL_COMMIT": ""
+  },
+  "probe_sha256": "a0f88d76a552e3537961a2fe41c34b61d8cfadc26f534dfd9b976bf5438a5a81",
+  "memory_scope": "OS process RSS/high-water mark; excludes child-process memory; includes interpreter and imports",
+  "load_to_use_scope": "adapter.load plus first selected query calls; excludes instrumentation between calls",
+  "first_query_scope": "one call including timer and invocation overhead; no prior load metrics; earlier selected queries can initialize later ones in all mode",
+  "os_file_cache": "uncontrolled warm host cache; fresh process is not cold disk",
+  "cross_tool_semantics": "unverified; returned counts and adapter semantics require separate audit",
+  "memory_before_import": {
+    "rss_bytes": 23756800,
+    "peak_rss_bytes": 23887872,
+    "children": 0
+  },
+  "queries": {
+    "lines": {
+      "count": 90,
+      "first_ns": 1052375,
+      "memory_after_first": {
+        "rss_bytes": 242597888,
+        "peak_rss_bytes": 242597888,
+        "children": 0
+      },
+      "warm": {
+        "iterations_per_batch": 32,
+        "batch_elapsed_ns": [
+          6163375,
+          6249083,
+          6114625,
+          6346417,
+          6353750,
+          6369708,
+          6194708,
+          6299625,
+          9901416
+        ],
+        "calibration": [
+          {
+            "iterations": 1,
+            "elapsed_ns": 297500
+          },
+          {
+            "iterations": 2,
+            "elapsed_ns": 419916
+          },
+          {
+            "iterations": 4,
+            "elapsed_ns": 798917
+          },
+          {
+            "iterations": 8,
+            "elapsed_ns": 1733167
+          },
+          {
+            "iterations": 16,
+            "elapsed_ns": 3109416
+          },
+          {
+            "iterations": 32,
+            "elapsed_ns": 6186083
+          }
+        ],
+        "timer_and_python_loop_overhead_subtracted": false
+      }
+    },
+    "generators": {
+      "count": 39,
+      "first_ns": 283625,
+      "memory_after_first": {
+        "rss_bytes": 242843648,
+        "peak_rss_bytes": 242843648,
+        "children": 0
+      },
+      "warm": {
+        "iterations_per_batch": 64,
+        "batch_elapsed_ns": [
+          9412458,
+          9497333,
+          9660083,
+          9311916,
+          9126250,
+          9099292,
+          9410542,
+          9302916,
+          9434083
+        ],
+        "calibration": [
+          {
+            "iterations": 1,
+            "elapsed_ns": 200042
+          },
+          {
+            "iterations": 2,
+            "elapsed_ns": 305458
+          },
+          {
+            "iterations": 4,
+            "elapsed_ns": 575125
+          },
+          {
+            "iterations": 8,
+            "elapsed_ns": 1137167
+          },
+          {
+            "iterations": 16,
+            "elapsed_ns": 2277250
+          },
+          {
+            "iterations": 32,
+            "elapsed_ns": 4621333
+          },
+          {
+            "iterations": 64,
+            "elapsed_ns": 9180333
+          }
+        ],
+        "timer_and_python_loop_overhead_subtracted": false
+      }
+    },
+    "loads": {
+      "count": 73,
+      "first_ns": 342875,
+      "memory_after_first": {
+        "rss_bytes": 242974720,
+        "peak_rss_bytes": 242974720,
+        "children": 0
+      },
+      "warm": {
+        "iterations_per_batch": 64,
+        "batch_elapsed_ns": [
+          8105417,
+          8116416,
+          8037250,
+          8097708,
+          8292084,
+          8101292,
+          8052041,
+          8007542,
+          8225916
+        ],
+        "calibration": [
+          {
+            "iterations": 1,
+            "elapsed_ns": 240292
+          },
+          {
+            "iterations": 2,
+            "elapsed_ns": 268292
+          },
+          {
+            "iterations": 4,
+            "elapsed_ns": 544167
+          },
+          {
+            "iterations": 8,
+            "elapsed_ns": 1076875
+          },
+          {
+            "iterations": 16,
+            "elapsed_ns": 2144500
+          },
+          {
+            "iterations": 32,
+            "elapsed_ns": 4245125
+          },
+          {
+            "iterations": 64,
+            "elapsed_ns": 8051333
+          }
+        ],
+        "timer_and_python_loop_overhead_subtracted": false
+      }
+    },
+    "substations": {
+      "count": 57,
+      "first_ns": 174750,
+      "memory_after_first": {
+        "rss_bytes": 243040256,
+        "peak_rss_bytes": 243040256,
+        "children": 0
+      },
+      "warm": {
+        "iterations_per_batch": 64,
+        "batch_elapsed_ns": [
+          7540458,
+          5698834,
+          5919542,
+          5617459,
+          5617917,
+          5663583,
+          5726500,
+          5722708,
+          5447417
+        ],
+        "calibration": [
+          {
+            "iterations": 1,
+            "elapsed_ns": 144042
+          },
+          {
+            "iterations": 2,
+            "elapsed_ns": 183250
+          },
+          {
+            "iterations": 4,
+            "elapsed_ns": 363708
+          },
+          {
+            "iterations": 8,
+            "elapsed_ns": 707667
+          },
+          {
+            "iterations": 16,
+            "elapsed_ns": 1391500
+          },
+          {
+            "iterations": 32,
+            "elapsed_ns": 2814292
+          },
+          {
+            "iterations": 64,
+            "elapsed_ns": 5725792
+          }
+        ],
+        "timer_and_python_loop_overhead_subtracted": false
+      }
+    }
+  },
+  "status": "success",
+  "import_and_adapter_ns": 188844333,
+  "memory_before_load": {
+    "rss_bytes": 123043840,
+    "peak_rss_bytes": 123043840,
+    "children": 0
+  },
+  "load_ns": 316554333,
+  "memory_after_load": {
+    "rss_bytes": 240418816,
+    "peak_rss_bytes": 240418816,
+    "children": 0
+  },
+  "load_to_use_ns": 318407958,
+  "import_to_use_ns": 507252291,
+  "memory_after_warm": {
+    "rss_bytes": 255361024,
+    "peak_rss_bytes": 255361024,
+    "children": 0
+  },
+  "tool_version": "1.16.1",
+  "measurement_notes": {},
+  "adapter_sha256": "0f3763dcffe301ad61eceb5bc64f15c9694754f0b81b75e9db96c93024d7d55f",
+  "inputs": [
+    {
+      "role": "EQ",
+      "name": "20220615T2230Z__Svedala_EQ_1.xml",
+      "present": true,
+      "bytes": 4010637,
+      "sha256": "19836f994cf09de55cee6a265e20c9f7d52e89132cfe8befe54b013320d1ac06"
+    },
+    {
+      "role": "SSH",
+      "name": "20220615T2230Z_2D_Svedala_SSH_1.xml",
+      "present": true,
+      "bytes": 1127651,
+      "sha256": "676229aa336f0372fc2535d74d9b9d2d579c77042078736ac765d34c44c64796"
+    },
+    {
+      "role": "SV",
+      "name": "20220615T2230Z_2D_Svedala_SV_1.xml",
+      "present": true,
+      "bytes": 1487295,
+      "sha256": "96c6e914660ec108786f04d6cc8c98bf451f13994d3877b586800aedf512c5d4"
+    },
+    {
+      "role": "TP",
+      "name": "20220615T2230Z_2D_Svedala_TP_1.xml",
+      "present": true,
+      "bytes": 971808,
+      "sha256": "58fc69cc2e66826ab98700439e8b2b00b6e13c425ea23ff4418fcfc2fd73ed75"
+    },
+    {
+      "role": "COMMON",
+      "name": "CommonData_and_Boundary_merged.xml",
+      "present": true,
+      "bytes": 59353,
+      "sha256": "dcda17b23c020bd8ac230b7ebe10098f08672b3ae7078acfe3d47ac47b430fec"
+    }
+  ],
+  "observed_harness_commit": null,
+  "observed_harness_dirty": null
+}

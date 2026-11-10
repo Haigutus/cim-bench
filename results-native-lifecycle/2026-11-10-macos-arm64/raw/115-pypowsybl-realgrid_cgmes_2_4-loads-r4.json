@@ -1,0 +1,103 @@
+{
+  "schema": "cim-bench-lifecycle",
+  "schema_version": 1,
+  "tool": "pypowsybl",
+  "dataset": "realgrid_cgmes_2_4",
+  "query_selection": "loads",
+  "query_order": [
+    "loads"
+  ],
+  "started_at": "2026-11-10T19:35:03Z",
+  "pid": 63610,
+  "python": "3.13.18 (main, Oct 25 2026, 18:31:23) [Clang 21.0.0 (clang-2100.3.34.2)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "clock": {
+    "implementation": "mach_absolute_time()",
+    "monotonic": true,
+    "adjustable": false,
+    "resolution": 4.166666666666666e-08
+  },
+  "declared_build": {
+    "CIM_BENCH_RUN_ID": "115-pypowsybl-realgrid_cgmes_2_4-loads-r4",
+    "CIM_BENCH_COMMIT": "c00f8fe24ec2c27a3be8e63d5bccca7184b5e551",
+    "CIM_BENCH_IMAGE_ID": null,
+    "CIM_BENCH_TOOL_COMMIT": ""
+  },
+  "probe_sha256": "a0f88d76a552e3537961a2fe41c34b61d8cfadc26f534dfd9b976bf5438a5a81",
+  "memory_scope": "OS process RSS/high-water mark; excludes child-process memory; includes interpreter and imports",
+  "load_to_use_scope": "adapter.load plus first selected query calls; excludes instrumentation between calls",
+  "first_query_scope": "one call including timer and invocation overhead; no prior load metrics; earlier selected queries can initialize later ones in all mode",
+  "os_file_cache": "uncontrolled warm host cache; fresh process is not cold disk",
+  "cross_tool_semantics": "unverified; returned counts and adapter semantics require separate audit",
+  "memory_before_import": {
+    "rss_bytes": 23642112,
+    "peak_rss_bytes": 23789568,
+    "children": 0
+  },
+  "queries": {
+    "loads": {
+      "count": 6687,
+      "first_ns": 15669750,
+      "memory_after_first": {
+        "rss_bytes": 575356928,
+        "peak_rss_bytes": 709214208,
+        "children": 0
+      },
+      "warm": {
+        "iterations_per_batch": 1,
+        "batch_elapsed_ns": [
+          9144458,
+          8610875,
+          8410166,
+          8410000,
+          8482750,
+          8557125,
+          8367333,
+          8423500,
+          8347333
+        ],
+        "calibration": [
+          {
+            "iterations": 1,
+            "elapsed_ns": 24338334
+          }
+        ],
+        "timer_and_python_loop_overhead_subtracted": false
+      }
+    }
+  },
+  "status": "success",
+  "import_and_adapter_ns": 191166916,
+  "memory_before_load": {
+    "rss_bytes": 122978304,
+    "peak_rss_bytes": 122978304,
+    "children": 0
+  },
+  "load_ns": 3994779209,
+  "memory_after_load": {
+    "rss_bytes": 569606144,
+    "peak_rss_bytes": 709214208,
+    "children": 0
+  },
+  "load_to_use_ns": 4010448959,
+  "import_to_use_ns": 4201615875,
+  "memory_after_warm": {
+    "rss_bytes": 583237632,
+    "peak_rss_bytes": 709214208,
+    "children": 0
+  },
+  "tool_version": "1.16.1",
+  "measurement_notes": {},
+  "adapter_sha256": "0f3763dcffe301ad61eceb5bc64f15c9694754f0b81b75e9db96c93024d7d55f",
+  "inputs": [
+    {
+      "role": "ZIP",
+      "name": "CGMES_v2.4.15_RealGridTestConfiguration_v2.zip",
+      "present": true,
+      "bytes": 3858390,
+      "sha256": "960025ef0f4aba40b6989c8c61736d551062a6d042d20a9089dbc0224eb7e100"
+    }
+  ],
+  "observed_harness_commit": null,
+  "observed_harness_dirty": null
+}
