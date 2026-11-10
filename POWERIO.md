@@ -127,3 +127,33 @@ These tests cover missing profiles, independent ownership, fresh export setup,
 native reparsing, and evidence hashes. Performance scores still require the
 full datasets and comparable fresh runs. The standard benchmark does not itself
 validate sparse matrices, solver results, SHACL compliance or cross-tool fidelity.
+
+## Fresh-process lifecycle measurements
+
+`tools/measure_lifecycle.py` complements the calibrated benchmark with one load
+per process, first-query latency, raw warm-query batches, and process RSS/high-water
+marks before and after each stage. Run it with the selected tool's dependencies:
+
+```sh
+python tools/measure_lifecycle.py powerio svedala_igm_cgmes_3 sample-01.json
+python tools/measure_lifecycle.py powerio svedala_igm_cgmes_3 loads-01.json --query loads
+```
+
+The default `all` mode executes lines, generators, loads, and substations in that
+order before measuring warm calls. Earlier queries can initialize later ones.
+Single-query mode isolates the first call to that query on a new model. Neither
+mode calls load metrics first. Load-to-use is the sum of the load and selected
+first-query calls; the separate import-to-use sum includes adapter import and
+construction. Instrumentation between stages is excluded from these sums.
+
+Use multiple independently launched processes for each tool, case, and query
+mode, interleaving the tools with a recorded order. Within-process warm batches
+are not independent runs. The probe preserves raw batch totals, iteration counts,
+calibration work, timer resolution, input hashes, source declarations, observed
+harness identity, counts, and failures. It refuses to overwrite a result.
+
+The OS file cache is uncontrolled; a fresh process does not imply cold storage.
+Memory includes interpreter and imports but excludes child processes. First-call
+latency includes timer/invocation overhead, which matters for tiny queries.
+Returned counts do not prove equivalent query semantics. CLI tools use the
+separate CLI protocol; this probe supports library adapters on macOS and Linux.
