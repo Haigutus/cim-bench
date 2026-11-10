@@ -1,0 +1,16 @@
+{
+  "case": "case2869pegase.m",
+  "table": "areas",
+  "kind": "stable",
+  "repeat": 7,
+  "command": [
+    "/private/tmp/cim-perf/mac-venv/bin/python",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/scripts/measure_table_access.py",
+    "/private/tmp/cim-perf/source-da32f73e/tests/data/case2869pegase.m",
+    "areas",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/python-table-access-148e16f4/182-stable-case2869pegase.m-areas-r7.json"
+  ],
+  "status": 0,
+  "seconds": 0.4408751670000015,
+  "result_sha256": "9f5296e7bcf69f3c46d0bb87c8d52f75d8be2a714b30d56a98b0e470a511d423"
+}

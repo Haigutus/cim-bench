@@ -1,0 +1,16 @@
+{
+  "case": "t_case9_dcline.m",
+  "table": "storage",
+  "kind": "stable",
+  "repeat": 5,
+  "command": [
+    "/private/tmp/cim-perf/mac-venv/bin/python",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/scripts/measure_table_access.py",
+    "/private/tmp/cim-perf/source-da32f73e/tests/data/t_case9_dcline.m",
+    "storage",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/python-table-access-148e16f4/124-stable-t_case9_dcline.m-storage-r5.json"
+  ],
+  "status": 0,
+  "seconds": 0.3877985000000024,
+  "result_sha256": "5030e364bf1ca2ddc595e2ff06c7985425ea72b3dded65e0a357c887bb5dc591"
+}

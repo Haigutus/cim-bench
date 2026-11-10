@@ -1,0 +1,16 @@
+{
+  "case": "t_case9_dcline.m",
+  "table": "areas",
+  "kind": "candidate",
+  "repeat": 1,
+  "command": [
+    "/private/tmp/cim-perf/mac-venv/bin/python",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/scripts/measure_table_access.py",
+    "/private/tmp/cim-perf/source-da32f73e/tests/data/t_case9_dcline.m",
+    "areas",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/python-table-access-148e16f4/010-candidate-t_case9_dcline.m-areas-r1.json"
+  ],
+  "status": 0,
+  "seconds": 0.48704404199999995,
+  "result_sha256": "8570e8ed1f188ca6e88eab8c555c0b3ece88355a01083f3c0bfc719fbdb7677c"
+}

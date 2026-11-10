@@ -1,0 +1,16 @@
+{
+  "case": "case2869pegase.m",
+  "table": "static_var_compensators",
+  "kind": "candidate",
+  "repeat": 5,
+  "command": [
+    "/private/tmp/cim-perf/mac-venv/bin/python",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/scripts/measure_table_access.py",
+    "/private/tmp/cim-perf/source-da32f73e/tests/data/case2869pegase.m",
+    "static_var_compensators",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/python-table-access-148e16f4/142-candidate-case2869pegase.m-static_var_compensators-r5.json"
+  ],
+  "status": 0,
+  "seconds": 0.4956332909999972,
+  "result_sha256": "d6d847992bbc1f3a82e23f88cac42d61b3cd3e7e462a826fd612399c3a3985a9"
+}

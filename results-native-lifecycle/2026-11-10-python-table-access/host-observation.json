@@ -1,0 +1,10 @@
+{
+  "observed_after_measurement": "2026-11-10T21:08:02.325187+00:00",
+  "cpu": "Apple M5 Pro",
+  "physical_cpus": 18,
+  "logical_cpus": 18,
+  "memory_bytes": 68719476736,
+  "os": "ProductName:\t\tmacOS\nProductVersion:\t\t26.6.2\nBuildVersion:\t\t25G83\n",
+  "ambient_load_recorded": false,
+  "note": "Host identity observed after the experiment; no affinity or cache flushing; no simultaneous compilation or other task-owned benchmark ran during measurement."
+}

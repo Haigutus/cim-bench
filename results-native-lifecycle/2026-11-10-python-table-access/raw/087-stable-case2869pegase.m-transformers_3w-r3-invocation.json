@@ -1,0 +1,16 @@
+{
+  "case": "case2869pegase.m",
+  "table": "transformers_3w",
+  "kind": "stable",
+  "repeat": 3,
+  "command": [
+    "/private/tmp/cim-perf/mac-venv/bin/python",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/scripts/measure_table_access.py",
+    "/private/tmp/cim-perf/source-da32f73e/tests/data/case2869pegase.m",
+    "transformers_3w",
+    "/Users/samuel/datasets/powerio-rc-2026-11-10/python-table-access-148e16f4/087-stable-case2869pegase.m-transformers_3w-r3.json"
+  ],
+  "status": 0,
+  "seconds": 0.44835529200000224,
+  "result_sha256": "8c95085d58ea3e405a0bf036d2c662473c8e9a6d4ae832d2ba90c1a7474e54e7"
+}
